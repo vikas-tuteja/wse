@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-from . import database
+#from . import database
 #DATABASES = {
 #    'default':database.config()
 #    }
