@@ -1,5 +1,0 @@
-RewriteEngine On RewriteBase / RewriteCond %{HTTP_HOST} ^www.iciclecreekrealestate.com [NC] RewriteRule ^(.*)$ http://iciclecreekrealestate.com/$1 [L,R=301]
-
-
-
-//We specialize in providing work force to businesses- small or big, on short term contract basis and thereby providing employment opportunities for part time job seekers.
