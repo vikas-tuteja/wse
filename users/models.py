@@ -5,7 +5,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from master.models import State, City
-from choices import USER_TYPE
 
 
 # Create your models here.
