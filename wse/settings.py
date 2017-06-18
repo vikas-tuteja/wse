@@ -144,7 +144,6 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-import pdb; pdb.set_trace()
 try:
     from devsettings import *
 except:
