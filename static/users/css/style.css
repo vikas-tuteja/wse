@@ -25,9 +25,11 @@ img{max-width:100%;}
 body{
     font-family: Arial, Helvetica, sans-serif;
     background:url(../images/bg.png);
+    width: 100%;
 }
 .wrap{
-    width:1200px;
+    max-width:1200px;
+    width:100%;
     margin:0 auto;
 }
 .content{
@@ -73,10 +75,6 @@ body{
 /*----ollow on----*/
 .follow-on{
     text-align:right;
-    margin-top: 10px;
-    position:fixed;
-    top:10px;
-    right:10px;
 }
 .follow-on h4{
     font-family: 'Ropa Sans', sans-serif;
@@ -84,6 +82,7 @@ body{
     color: #0A5C64;
 }
 .follow-on ul li{
+    margin-right:10px;
     display:inline-block;
 }
 .follow-on ul li a{
@@ -108,7 +107,8 @@ body{
 /*------responive-design--------*/
 @media screen and (max-width:1024px){
     .wrap{
-        width:960px;
+        max-width:960px;
+        width:100%
     }
     .content form {
         width: 54.99%;
@@ -125,7 +125,8 @@ body{
 }
 @media screen and (max-width:800px){
     .wrap{
-        width:760px;
+        max-width:760px;
+        width:100%
     }
     .content form {
         width: 68.99%;
@@ -133,7 +134,8 @@ body{
 }
 @media screen and (max-width:640px){
     .wrap{
-        width:600px;
+        max-width:600px;
+        width:100%
     }
     .content p {
         font-size: 1.4em;
@@ -150,7 +152,8 @@ body{
 }
 @media screen and (max-width:480px){
     .wrap{
-        width:440px;
+        max-width:440px;
+        width:100%
     }
     .content input[type="text"] {
         width: 261px;
