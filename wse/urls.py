@@ -18,13 +18,13 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-
 from django.views.generic import TemplateView
+from django.conf.urls import include
 
-
+# url patterns here
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='shared/coming_soon2.html')), 
     url(r'^admin/', admin.site.urls),
     url(r'^static/(?P<path>.*)$', django.views.static.serve,  {'document_root': settings.STATIC_ROOT }),
-
-]# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    url(r'^events/', include( 'events.urls' )),
+]

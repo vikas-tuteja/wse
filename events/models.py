@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from users.models import User 
-from master.models import City
+from master.models import City, Area
 from choices import CANDIDATE_TYPE, GENDER, CANDIDATE_CLASS
 
 # Create your models here.
@@ -14,6 +14,7 @@ class Event(models.Model):
     name = models.CharField( max_length=100 )
     description = models.CharField( max_length=100 )
     venue = models.CharField( max_length=100 )
+    area = models.ForeignKey( Area )
     city = models.ForeignKey( City )
     event_posted_by = models.ForeignKey( User, limit_choices_to = {'type__slug__in':['client', 'cordinator']} )
     event_start_datetime = models.DateTimeField()

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'events',
     'stats',
     'rest_framework',
+    #'django_filters',
 ]
 
 MIDDLEWARE = [

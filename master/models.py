@@ -19,3 +19,12 @@ class City(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class Area(models.Model):
+    name = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=50)
+    city = models.ForeignKey(City)
+
+    def __unicode__(self):
+        return self.name
