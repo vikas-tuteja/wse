@@ -2,10 +2,11 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import User
 
-from users.models import Client
+from users.models import Client, Cordinator
 from master.models import City
-from choices import CANDIDATE_TYPE, EVENT_STATUS
+from choices import CANDIDATE_TYPE, GENDER, CANDIDATE_CLASS
 
 # Create your models here.
 class Event(models.Model):
@@ -14,8 +15,16 @@ class Event(models.Model):
     description = models.CharField( max_length=100 )
     venue = models.CharField( max_length=100 )
     city = models.ForeignKey( City )
+    event_posted_by = models.ForeignKey( User )
     event_start_datetime = models.DateTimeField()
     event_end_datetime = models.DateTimeField()
+    notes = models.TextField( blank=True, null=True )
+    briefing_datetime = models.DateTimeField( blank=True, null=True ) 
+    briefing_venue = models.CharField( max_length=100, blank=True, null=True )
+    contact_person_name = models.CharField( max_length=100, blank=True, null=True )
+    contact_person_number = models.BigIntegerField( blank=True, null=True)
+    payment_made_by = models.ForeignKey( Cordinator, blank=True, null=True )
+    total_payment = models.BigIntegerField( blank=True, null=True )
 
     def __unicode__( self ):
        return self.name
@@ -24,8 +33,14 @@ class Event(models.Model):
 class EventsRequirement(models.Model):
     event = models.ForeignKey( Event )
     candidate_type = models.CharField( choices = CANDIDATE_TYPE, max_length=20 )
-    no_of_male_candidates = models.IntegerField()
-    no_of_female_candidates = models.IntegerField()
+    work_profile = models.CharField( max_length=255, blank=True, null=True )
+    gender = models.CharField( choices = GENDER, max_length=20 )
+    no_of_candidates = models.IntegerField()
+    no_of_days = models.IntegerField()
+    daily_wage_per_candidate = models.IntegerField()
+    dress_code = models.CharField( max_length=100, blank=True, null=True )
+    candidate_class = models.CharField( choices=CANDIDATE_CLASS, max_length=10, blank=True, null=True, verbose_name="class")
+    communication_criteria = models.CharField( max_length=100, blank=True, null=True )
 
     def __unicode__( self ):
        return self.event

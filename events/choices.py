@@ -12,3 +12,15 @@ EVENT_STATUS = (
     ('completed', 'Completed'),
     ('cancelled', 'Cancelled'),
 )
+
+GENDER = (
+    ('m', 'Male'),
+    ('f', 'Female'),
+    ('a', 'Any')
+)
+
+CANDIDATE_CLASS = (
+    ('A+', 'A+'),
+    ('A', 'A'),
+    ('B', 'B'),
+)
