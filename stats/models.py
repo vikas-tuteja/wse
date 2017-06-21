@@ -20,7 +20,7 @@ class EventStat(models.Model):
 
 
 class CordinatorStat(models.Model):
-    cordinator = models.ForeignKey( User, limit_choices_to={'type':'cordinator'} )
+    cordinator = models.ForeignKey( User, limit_choices_to={'type__slug':'cordinator'} )
     event  = models.ForeignKey( Event )
 
     def __unicode__( self ):
@@ -28,7 +28,7 @@ class CordinatorStat(models.Model):
 
 
 class CandidateStat(models.Model):
-    candidate = models.ForeignKey( User, limit_choices_to={'type':'candidate'})
+    candidate = models.ForeignKey( User, limit_choices_to={'type__slug':'candidate'})
     event = models.ForeignKey( Event )
 
     def __unicode__( self ):

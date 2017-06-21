@@ -10,12 +10,12 @@ from choices import CANDIDATE_TYPE, GENDER, CANDIDATE_CLASS
 
 # Create your models here.
 class Event(models.Model):
-    client = models.ForeignKey( User, limit_choices_to={'type' : 'client'}, related_name='client_user' )
+    client = models.ForeignKey( User, limit_choices_to={'type__slug' : 'client'}, related_name='client_user' )
     name = models.CharField( max_length=100 )
     description = models.CharField( max_length=100 )
     venue = models.CharField( max_length=100 )
     city = models.ForeignKey( City )
-    event_posted_by = models.ForeignKey( User, limit_choices_to = {'type__in':['client', 'cordinator']} )
+    event_posted_by = models.ForeignKey( User, limit_choices_to = {'type__slug__in':['client', 'cordinator']} )
     event_start_datetime = models.DateTimeField()
     event_end_datetime = models.DateTimeField()
     notes = models.TextField( blank=True, null=True )
