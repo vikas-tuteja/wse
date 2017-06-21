@@ -31,27 +31,19 @@ class User(models.Model):
 
     def __unicode__( self ):
        return self.auth_user.username
+    
+    class Meta:
+        verbose_name = "Users extra detail"
 
 
 class Client(models.Model):
     user = models.ForeignKey( User )
-    company_name = models.CharField( max_length=100 )
-    company_address = models.CharField( max_length=100 )
-    establishment_year = models.IntegerField( blank=True, null=True)
+    company_name = models.CharField( max_length=100, blank=True, null=True )
+    company_address = models.CharField( max_length=100, blank=True, null=True )
+    establishment_year = models.IntegerField( blank=True, null=True )
 
     def __unicode__( self ):
        return self.user.auth_user.username
 
-
-class Cordinator(models.Model):
-    user = models.ForeignKey( User )
-
-    def __unicode__( self ):
-       return self.user.auth_user.username
-
-
-class Candidate(models.Model):
-    user = models.ForeignKey( User )
-
-    def __unicode__( self ):
-       return self.user.auth_user.username
+    class Meta:
+        verbose_name = "Client extra information"

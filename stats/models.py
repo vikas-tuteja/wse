@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-from users.models import Cordinator, Candidate
+from users.models import User
 from events.models import Event
 from events.choices import EVENT_STATUS
 
@@ -20,7 +20,7 @@ class EventStat(models.Model):
 
 
 class CordinatorStat(models.Model):
-    cordinator = models.ForeignKey( Cordinator )
+    cordinator = models.ForeignKey( User, limit_choices_to={'type':'cordinator'} )
     event  = models.ForeignKey( Event )
 
     def __unicode__( self ):
@@ -28,7 +28,7 @@ class CordinatorStat(models.Model):
 
 
 class CandidateStat(models.Model):
-    candidate = models.ForeignKey( Candidate )
+    candidate = models.ForeignKey( User, limit_choices_to={'type':'candidate'})
     event = models.ForeignKey( Event )
 
     def __unicode__( self ):

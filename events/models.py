@@ -4,18 +4,18 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 
-from users.models import Client, Cordinator
+from users.models import User 
 from master.models import City
 from choices import CANDIDATE_TYPE, GENDER, CANDIDATE_CLASS
 
 # Create your models here.
 class Event(models.Model):
-    client = models.ForeignKey( Client )
+    client = models.ForeignKey( User, limit_choices_to={'type' : 'client'}, related_name='client_user' )
     name = models.CharField( max_length=100 )
     description = models.CharField( max_length=100 )
     venue = models.CharField( max_length=100 )
     city = models.ForeignKey( City )
-    event_posted_by = models.ForeignKey( User )
+    event_posted_by = models.ForeignKey( User, limit_choices_to = {'type__in':['client', 'cordinator']} )
     event_start_datetime = models.DateTimeField()
     event_end_datetime = models.DateTimeField()
     notes = models.TextField( blank=True, null=True )
@@ -23,7 +23,11 @@ class Event(models.Model):
     briefing_venue = models.CharField( max_length=100, blank=True, null=True )
     contact_person_name = models.CharField( max_length=100, blank=True, null=True )
     contact_person_number = models.BigIntegerField( blank=True, null=True)
-    payment_made_by = models.ForeignKey( Cordinator, blank=True, null=True )
+    #TODO :  make a decision: if we need this column: 
+    # bcoz the oe who posts the event, will make the payment,
+    # hence, we dont need payment_made_by column
+    # define whether cordinator or client or both can make payment.
+    #payment_made_by = models.ForeignKey( User, blank=True, null=True )
     total_payment = models.BigIntegerField( blank=True, null=True )
 
     def __unicode__( self ):
