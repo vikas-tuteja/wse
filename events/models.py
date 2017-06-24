@@ -42,7 +42,7 @@ class Schedule(models.Model):
 
 class Requirement(models.Model):
     event = models.ForeignKey( Event )
-    candidate_type = models.CharField( CandidateType, max_length=20 )
+    candidate_type = models.ForeignKey( CandidateType )
     #work_profile = models.CharField( choices = WORK_PROFILE, max_length=255, blank=True, null=True )
     gender = models.CharField( choices = GENDER, max_length=20 )
     no_of_candidates = models.IntegerField()
