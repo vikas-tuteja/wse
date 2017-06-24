@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'master',
     'users',
     'events',
-    'stats',
     'rest_framework',
     #'django_filters',
 ]
