@@ -5,14 +5,19 @@ CORDINATOR_WORKING_FOR = (
 
 
 LANGUAGE_PROFICIENCY = (
-    ('pro', 'PRO'),
-    ('average', 'Average'),
-    ('poor', 'Poor'),
+    (1, 'Confident in English-speaking'),
+    (2, 'Knows English but not confident'),
+    (3, 'Confident in Hindi'),
+    (4, 'Not much confident in speaking')
 )
 
 
 LOOKS = (
-    ('class', 'Class'),
+    ('classy', 'Classy'),
     ('cool', 'Cool'),
-    ('average', 'Average')
+    ('decent', 'Decent'),
+    ('basic', 'Basic'),
+    ('above-average', 'Above Average'),
+    ('average', 'Average'),
+    ('below-average', 'Below Average'),
 )

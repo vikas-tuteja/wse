@@ -18,5 +18,5 @@ class EventAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Event, EventAdmin)
-admin.site.register(RequirementAllocation)
+admin.site.register(RequirementApplication)
 admin.site.register(AllocationStatus)

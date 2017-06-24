@@ -43,7 +43,7 @@ class User(models.Model):
     area = models.ForeignKey( Area, blank=True, null=True )
     city = models.ForeignKey( City, blank=True, null=True )
     state = models.ForeignKey( State, blank=True, null=True )
-    blacklist_flag = models.BooleanField( default=False )
+    blacklist_flag = models.IntegerField( default=0 )
 
     def __unicode__( self ):
        return self.auth_user.username
@@ -81,7 +81,7 @@ class CandidateAttribute(models.Model):
     user = models.ForeignKey( User )
     language_proficiency = models.CharField( choices=LANGUAGE_PROFICIENCY, max_length=50, blank=True, null=True ) 
     looks = models.CharField( choices=LOOKS, max_length=50, blank=True, null=True ) 
-    open_to_which_kind_of_job = models.CharField( max_length=100, blank=True, null=True )
+    open_to_which_kind_of_job = models.CharField( max_length=100, blank=True, null=True, verbose_name="Open to which kind of jobs / workprofiles" )
     pay_scale = models.CharField( max_length=100, blank=True, null=True )
     comfortable_travelling_outdoor = models.BooleanField( default= False )
     comfortable_for_liquor_promotion = models.BooleanField( default= False )

@@ -56,14 +56,14 @@ class Requirement(models.Model):
        return self.event
 
 
-class RequirementAllocation(models.Model):
+class RequirementApplication(models.Model):
     requirement = models.ForeignKey( Requirement )
     candidate = models.ForeignKey( User, limit_choices_to={'type__slug' : 'candidate'} )
     allocation_datetime = models.DateTimeField( auto_now_add=True )
-    confirmation_status = models.CharField( choices=CONFIRMATION_STATUS, max_length=20 )
+    application_status = models.CharField( choices=APPLICATION_STATUS, max_length=20 )
 
 
 class AllocationStatus(models.Model):
-    allocation = models.ForeignKey( RequirementAllocation )
+    allocation = models.ForeignKey( RequirementApplication )
     allocation_status_datetime = models.DateTimeField( auto_now_add=True )
     allocation_status = models.CharField( choices=ALLOCATION_STATUS, max_length=50 )

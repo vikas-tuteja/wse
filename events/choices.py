@@ -34,17 +34,17 @@ CANDIDATE_CLASS = (
 )
 
 
-CONFIRMATION_STATUS = (
-    ('applied', 'Applid'),
+APPLICATION_STATUS = (
+    ('applied', 'Applied'),
     ('wl', 'WL')
 )
 
 
 ALLOCATION_STATUS = (
-    ('applied', 'Applied'),
+    #('applied', 'Applied'),
+    #('selected', 'Selected'),
     ('shortlisted', 'Shortlisted'),
     ('rejected', 'Rejected'),
-    ('selected', 'Selected'),
     ('backup', 'Backup'),
     ('working', 'Working',),
     ('backed-out', 'Backed out')
