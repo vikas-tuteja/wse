@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 
 from users.models import UserDetail, CandidateType 
@@ -13,12 +14,12 @@ class Event(models.Model):
     client = models.ForeignKey( UserDetail, limit_choices_to={'type__slug' : 'client'}, related_name='client_user' )
     name = models.CharField( max_length=100 )
     slug = models.SlugField( max_length=100 )
-    overview = models.CharField( max_length=100 )
+    short_description = models.TextField( blank=True, null=True )
+    overview = RichTextField( max_length=100 )
     venue = models.CharField( max_length=100 )
     area = models.ForeignKey( Area )
     city = models.ForeignKey( City )
     posted_by = models.ForeignKey( UserDetail, limit_choices_to = {'type__slug__in':['client', 'cordinator']} )
-    notes = models.TextField( blank=True, null=True )
     briefing_datetime = models.DateTimeField( blank=True, null=True ) 
     briefing_venue = models.CharField( max_length=100, blank=True, null=True )
     contact_person_name = models.CharField( max_length=100, blank=True, null=True )
@@ -70,6 +71,6 @@ class RequirementApplication(models.Model):
         unique_together = ('requirement', 'candidate')
 
 class AllocationStatus(models.Model):
-    allocation = models.ForeignKey( RequirementApplication )
-    allocation_status_datetime = models.DateTimeField( auto_now_add=True )
+    application = models.ForeignKey( RequirementApplication )
+    allocation_datetime = models.DateTimeField( auto_now_add=True )
     allocation_status = models.CharField( choices=ALLOCATION_STATUS, max_length=50 )

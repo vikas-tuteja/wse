@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from models import Event, Requirement
+from models import Event, Requirement, RequirementApplication
 
 class ListEventSerializer( serializers.ModelSerializer ):
     client = serializers.CharField(read_only=True, source='client.auth_user.username')
@@ -40,4 +40,10 @@ class EventDetailSerializer( ListEventSerializer ):
 
     class Meta:
         model = Event
+        fields = '__all__'
+
+
+class ApplyRequirementSerializer( serializers.ModelSerializer ):
+    class Meta:
+        model = RequirementApplication
         fields = '__all__'

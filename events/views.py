@@ -3,12 +3,13 @@ from __future__ import unicode_literals
 import django_filters
 from datetime import datetime
 from django.shortcuts import render
+from django.db import IntegrityError
 
 from filters import EventFilters
-from models import Event, Requirement
+from models import Event, Requirement, RequirementApplication
 from utility import mygenerics
-from serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer
-
+from rest_framework import generics
+from serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer, ApplyRequirementSerializer 
 
 # Create your views here.
 class EventListing( mygenerics.ListAPIView ):
@@ -65,3 +66,37 @@ class EventDetail( mygenerics.ListAPIView ):
     def list(self, request, *args, **kwargs):
         response = super(EventDetail, self).list(request, *args, **kwargs)
         return response
+
+
+class ApplyForRequirement( generics.CreateAPIView ):
+    serializer_class = ApplyRequirementSerializer
+
+    def post(self, request, *args, **kwargs):
+        status = False
+        reqObj = Requirement.objects.get(id=kwargs.get('requirement_id'))
+        try:
+            RequirementApplication.objects.create(
+                requirement = reqObj,
+                candidate = request.user,
+                application_status = self.compute_application_status(reqObj)
+            )
+            status, message = True, 'Applied Successfully'
+    
+        except IntegrityError:
+            message = 'You have already applied for this event'
+        return JsonResponse(data={
+            'status':status,
+            'message':message
+        })
+
+    def compute_application_status(self, requirementObj):
+        """
+        check if this requirement is fulfilled
+        return status accordingly -> applied/wl
+
+        """
+        already_applied = requirementObj.requirementapplication_set.all().count()
+        if requirementObj.no_of_candidates < already_applied:
+            return 'applied'
+        else:
+            return 'wl'
