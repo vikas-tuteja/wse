@@ -4,19 +4,20 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 
-from users.models import User, CandidateType 
+from users.models import UserDetail, CandidateType 
 from master.models import City, Area
 from choices import *
 
 # Create your models here.
 class Event(models.Model):
-    client = models.ForeignKey( User, limit_choices_to={'type__slug' : 'client'}, related_name='client_user' )
+    client = models.ForeignKey( UserDetail, limit_choices_to={'type__slug' : 'client'}, related_name='client_user' )
     name = models.CharField( max_length=100 )
+    slug = models.SlugField( max_length=100 )
     overview = models.CharField( max_length=100 )
     venue = models.CharField( max_length=100 )
     area = models.ForeignKey( Area )
     city = models.ForeignKey( City )
-    posted_by = models.ForeignKey( User, limit_choices_to = {'type__slug__in':['client', 'cordinator']} )
+    posted_by = models.ForeignKey( UserDetail, limit_choices_to = {'type__slug__in':['client', 'cordinator']} )
     notes = models.TextField( blank=True, null=True )
     briefing_datetime = models.DateTimeField( blank=True, null=True ) 
     briefing_venue = models.CharField( max_length=100, blank=True, null=True )
@@ -33,8 +34,8 @@ class Schedule(models.Model):
     event = models.ForeignKey( Event )
     start_date = models.DateField()
     end_date = models.DateField()
-    start_date = models.TimeField()
-    end_date = models.TimeField()
+    start_time = models.TimeField()
+    end_time = models.TimeField()
 
     def __unicode__( self ):
        return self.event.name
@@ -53,15 +54,20 @@ class Requirement(models.Model):
     communication_criteria = models.CharField( max_length=100, blank=True, null=True )
 
     def __unicode__( self ):
-       return self.event
+       return "%s-%s-%s-%s" % (self.event.name, self.candidate_type, self.gender, self.no_of_candidates)
 
 
 class RequirementApplication(models.Model):
     requirement = models.ForeignKey( Requirement )
-    candidate = models.ForeignKey( User, limit_choices_to={'type__slug' : 'candidate'} )
+    candidate = models.ForeignKey( UserDetail, limit_choices_to={'type__slug' : 'candidate'} )
     allocation_datetime = models.DateTimeField( auto_now_add=True )
     application_status = models.CharField( choices=APPLICATION_STATUS, max_length=20 )
 
+    def __unicode__( self ):
+        return self.requirement.event.name
+    
+    class Meta:
+        unique_together = ('requirement', 'candidate')
 
 class AllocationStatus(models.Model):
     allocation = models.ForeignKey( RequirementApplication )

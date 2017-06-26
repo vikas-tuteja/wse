@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from models import User, UserRole, ClientAttribute, CordinatorAttribute, CandidateAttribute, CandidateType
+from models import UserDetail, UserRole, ClientAttribute, CordinatorAttribute, CandidateAttribute, CandidateType
 
 # Register your models here.
 class ClientAdminInline(admin.StackedInline):
@@ -32,4 +32,4 @@ class UsersAdmin(admin.ModelAdmin):
 
 admin.site.register( UserRole )
 admin.site.register( CandidateType )
-admin.site.register( User, UsersAdmin )
+admin.site.register( UserDetail, UsersAdmin )

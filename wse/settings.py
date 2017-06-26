@@ -39,11 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # custom apps
+    'monkey_patch',
     'master',
     'users',
     'events',
     'rest_framework',
-    #'django_filters',
 ]
 
 MIDDLEWARE = [
