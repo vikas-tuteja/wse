@@ -175,5 +175,7 @@ class ChangePassword( generics.UpdateAPIView ):
         })
 
 
-# TODO ajax request to check user availibilty, will use redis for this
-# APPLY EVENT API
+# TODO 
+# ajax request to check user availibilty, will use redis for this
+# event allocation status ADMIN for mehul, with multi select status update actions
+# seo meta backend

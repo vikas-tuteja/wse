@@ -61,7 +61,7 @@ class Requirement(models.Model):
 class RequirementApplication(models.Model):
     requirement = models.ForeignKey( Requirement )
     candidate = models.ForeignKey( UserDetail, limit_choices_to={'type__slug' : 'candidate'} )
-    allocation_datetime = models.DateTimeField( auto_now_add=True )
+    application_datetime = models.DateTimeField( auto_now_add=True )
     application_status = models.CharField( choices=APPLICATION_STATUS, max_length=20 )
 
     def __unicode__( self ):
@@ -70,7 +70,16 @@ class RequirementApplication(models.Model):
     class Meta:
         unique_together = ('requirement', 'candidate')
 
+    def allocation_status(self):
+        allocation_status_obj = self.allocationstatus_set.all()
+        if allocation_status_obj:
+            return allocation_status_obj[0]
+        return None
+
 class AllocationStatus(models.Model):
-    application = models.ForeignKey( RequirementApplication )
+    application = models.ForeignKey( RequirementApplication, unique=True )
     allocation_datetime = models.DateTimeField( auto_now_add=True )
     allocation_status = models.CharField( choices=ALLOCATION_STATUS, max_length=50 )
+
+    def __unicode__( self ):
+        return "%s-%s-%s" % (self.application.requirement, self.application.candidate, self.allocation_status)

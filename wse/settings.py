@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'master',
     'users',
     'events',
+    'seo',
     'rest_framework',
 ]
 
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'seo.middleware.MetaDataMiddleware',
 ]
 
 ROOT_URLCONF = 'wse.urls'

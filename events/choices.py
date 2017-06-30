@@ -45,6 +45,7 @@ ALLOCATION_STATUS = (
     #('selected', 'Selected'),
     ('shortlisted', 'Shortlisted'),
     ('rejected', 'Rejected'),
+    ('positions-full', 'Position Full'),
     ('backup', 'Backup'),
     ('working', 'Working',),
     ('backed-out', 'Backed out')
