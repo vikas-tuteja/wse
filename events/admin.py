@@ -31,7 +31,7 @@ def bulk_update_allocation_status_for_candidates(modeladmin, request, queryset):
             )
 
 class RequirementApplicationAdmin(admin.ModelAdmin):
-    list_display = ('requirement', 'candidate', 'application_datetime', 'application_status', 'allocation_status')
+    list_display = ('requirement', 'candidate', 'application_datetime', 'application_status', 'mobile', 'allocation_status')
     search_fields = ('requirement__event__name', )
     action_form = AllocationStatusForm
     actions = [bulk_update_allocation_status_for_candidates]
@@ -50,10 +50,18 @@ class RequirementsAdminInline(admin.StackedInline):
 
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ['client', 'name', 'venue', 'city']
+    search_fields = ('name',)
+    list_display = ['client', 'name', 'venue', 'created_datetime', 'schedule', 'shortlisted_upon_required']
     inlines = ( ScheduleAdminInline, RequirementsAdminInline, )
 
 
+class RequirmentAdmin(admin.ModelAdmin):
+    list_display = ('event', 'candidate_type', 'gender', 'shortlisted_upon_required')
+    search_fields = ('event__name', )
+    def has_add_permission(self, obj):
+        return False
+    
+    
 admin.site.register(Event, EventAdmin)
 admin.site.register(RequirementApplication, RequirementApplicationAdmin)
-admin.site.register(AllocationStatus)
+admin.site.register(Requirement, RequirmentAdmin)

@@ -49,7 +49,7 @@ class UserDetail(models.Model):
        return self.auth_user.username
     
     class Meta:
-        verbose_name = "Users detail"
+        verbose_name = "Create User"
 
 
 class ClientAttribute(models.Model):

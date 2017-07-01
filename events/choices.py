@@ -31,6 +31,7 @@ CANDIDATE_CLASS = (
     ('A+', 'A+'),
     ('A', 'A'),
     ('B', 'B'),
+    ('any', 'Any'),
 )
 
 

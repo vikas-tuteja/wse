@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from itertools import chain
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
@@ -15,7 +16,7 @@ class Event(models.Model):
     name = models.CharField( max_length=100 )
     slug = models.SlugField( max_length=100 )
     short_description = models.TextField( blank=True, null=True )
-    overview = RichTextField( max_length=100 )
+    overview = RichTextField( )
     venue = models.CharField( max_length=100 )
     area = models.ForeignKey( Area )
     city = models.ForeignKey( City )
@@ -26,9 +27,27 @@ class Event(models.Model):
     contact_person_number = models.BigIntegerField( blank=True, null=True)
     is_onboard = models.BooleanField( default=False )
     total_payment = models.BigIntegerField( blank=True, null=True )
+    created_datetime = models.DateTimeField( auto_now_add=True )
+    modify_date = models.DateTimeField( auto_now=True )
 
     def __unicode__( self ):
        return self.name
+    
+    def schedule( self ):
+        return "From %s To %s (%s days) " % (
+            min([x.start_date for x in self.schedule_set.all()]),
+            max([x.end_date for x in self.schedule_set.all()]),
+            sum([(x.end_date - x.start_date).days + 1 for x in self.schedule_set.all()])
+        )
+
+    def shortlisted_upon_required( self ):
+        return "%s / %s" % (
+            len(filter( lambda z: z, 
+                [y.allocationstatus_set.filter(allocation_status='shortlisted').values()
+                for y in chain( *[ x.requirementapplication_set.all() for x in self.requirement_set.all()] )])),
+            sum([ x.no_of_candidates for x in self.requirement_set.all()])
+        )
+    
 
 
 class Schedule(models.Model):
@@ -57,6 +76,14 @@ class Requirement(models.Model):
     def __unicode__( self ):
        return "%s-%s-%s-%s" % (self.event.name, self.candidate_type, self.gender, self.no_of_candidates)
 
+    def shortlisted_upon_required( self ):
+        return "%s / %s" % (
+            len(filter( lambda z: z, 
+                [y.allocationstatus_set.filter(allocation_status='shortlisted').values()
+                for y in self.requirementapplication_set.all() ] )),
+            self.no_of_candidates
+        )
+
 
 class RequirementApplication(models.Model):
     requirement = models.ForeignKey( Requirement )
@@ -76,10 +103,14 @@ class RequirementApplication(models.Model):
             return allocation_status_obj[0]
         return None
 
+    def mobile(self):
+        return self.candidate.mobile
+
+
 class AllocationStatus(models.Model):
     application = models.ForeignKey( RequirementApplication, unique=True )
     allocation_datetime = models.DateTimeField( auto_now_add=True )
     allocation_status = models.CharField( choices=ALLOCATION_STATUS, max_length=50 )
 
     def __unicode__( self ):
-        return "%s-%s-%s" % (self.application.requirement, self.application.candidate, self.allocation_status)
+        return self.allocation_status
