@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+from django_redis import get_redis_connection
 
 from master.models import Area, State, City
 from choices import *
@@ -49,7 +50,14 @@ class UserDetail(models.Model):
        return self.auth_user.username
     
     class Meta:
-        verbose_name = "Create User"
+        verbose_name = "Create / Modify User"
+
+    def save(self, *args, **kwargs):
+        # Add new username to redis set of usernames
+        if not self.id:
+            con = get_redis_connection('default')
+            con.sadd("usernames", self.auth_user.username)
+        return super(UserDetail, self).save(*args, **kwargs)
 
 
 class ClientAttribute(models.Model):

@@ -96,7 +96,7 @@ class ApplyForRequirement( generics.CreateAPIView ):
 
         """
         already_applied = requirementObj.requirementapplication_set.all().count()
-        if requirementObj.no_of_candidates < already_applied:
+        if requirementObj.no_of_candidates != already_applied:
             return 'applied'
         else:
             return 'wl'

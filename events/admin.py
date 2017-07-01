@@ -17,18 +17,21 @@ class AllocationStatusForm(ActionForm):
 # Register your models here.
 def bulk_update_allocation_status_for_candidates(modeladmin, request, queryset):
     for each_req_app_obj in queryset:
-        allocation_status_obj = each_req_app_obj.allocationstatus_set.all()
-        # create new
-        if not allocation_status_obj:
-            AllocationStatus.objects.create(
-                application = each_req_app_obj,
-                allocation_status = request.POST['allocation_status'] 
-            )
-        # update existing's status
-        else:
-            allocation_status_obj.update(
-                allocation_status = request.POST['allocation_status']
-            )
+        # TODO verify before shortlisting, that number of shortlisting candidates of req. X < no of candidates required for req. X
+        # if not dont allow to change allocation status
+        if True:
+            allocation_status_obj = each_req_app_obj.allocationstatus_set.all()
+            # create new
+            if not allocation_status_obj:
+                AllocationStatus.objects.create(
+                    application = each_req_app_obj,
+                    allocation_status = request.POST['allocation_status'] 
+                )
+            # update existing's status
+            else:
+                allocation_status_obj.update(
+                    allocation_status = request.POST['allocation_status']
+                )
 
 class RequirementApplicationAdmin(admin.ModelAdmin):
     list_display = ('requirement', 'candidate', 'application_datetime', 'application_status', 'mobile', 'allocation_status')

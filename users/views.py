@@ -7,8 +7,9 @@ from rest_framework import generics
 from django.http import JsonResponse
 from django.db import IntegrityError
 from django.contrib.auth.models import User
-from django.contrib.auth import login as auth_login
 from django.contrib.auth import authenticate
+from django_redis import get_redis_connection
+from django.contrib.auth import login as auth_login
 
 from serializers import UserSerializer, AuthUserSerializer
 from models import UserDetail, UserRole
@@ -175,7 +176,32 @@ class ChangePassword( generics.UpdateAPIView ):
         })
 
 
+class CheckUsernameExists( generics.ListAPIView ):
+    """
+    check in redis "key : usernames" if the user already exists with us
+    return True if the username already exists, else False
+    GET params : username
+    
+    """
+    serializer_class = AuthUserSerializer
+    queryset = UserDetail.objects.none()
+
+    def get(self, request, *args, **kwargs ):
+
+        status, message = False, str()
+        username = request.GET.get('username')
+        if not username:
+            message = 'Invalid params: Please pass username'
+
+        else:
+            con = get_redis_connection('default')
+            status = con.sismember("usernames", username)
+            
+
+        return JsonResponse(data={
+            'status':status,
+            'message':message
+        })
+
 # TODO 
-# ajax request to check user availibilty, will use redis for this
-# event allocation status ADMIN for mehul, with multi select status update actions
 # seo meta backend
