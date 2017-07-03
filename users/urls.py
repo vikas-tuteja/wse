@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from users.views import CreateUser, LoginUser, ChangePassword, ForgotPassword, CheckUsernameExists
+from users.views import CreateUser, LoginUser, ChangePassword, ForgotPassword, CheckUsernameExists, UserProfileCompletionMeter
 
 
 urlpatterns = [
@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^forgot-password/$', ForgotPassword.as_view()),
     url(r'^change-password/$', ChangePassword.as_view()),
     url(r'^user-exists/$', CheckUsernameExists.as_view()),
+    url(r'^user-meter/$', UserProfileCompletionMeter.as_view()),
 ]

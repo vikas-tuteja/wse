@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import django_filters
 
 from django.db.models import Q
 from django.shortcuts import render
@@ -11,8 +12,10 @@ from django.contrib.auth import authenticate
 from django_redis import get_redis_connection
 from django.contrib.auth import login as auth_login
 
-from serializers import UserSerializer, AuthUserSerializer
-from models import UserDetail, UserRole
+from models import UserDetail, UserRole, CandidateAttribute
+from utility.utils import ComputeCompletion
+from serializers import UserSerializer, AuthUserSerializer, CandidateSerializer
+from filters import CandidateFilters
 
 # Create your views here.
 
@@ -202,6 +205,32 @@ class CheckUsernameExists( generics.ListAPIView ):
             'status':status,
             'message':message
         })
+
+
+class UserProfileCompletionMeter( generics.ListAPIView ):
+    """
+    calculates the percentage of user profile completion
+    input params: username
+    output: a number that indicates the percentage of user profile competed
+    logic : (no of column filled / total no of column ) * 100
+
+    """
+    serializer_class = CandidateSerializer
+    queryset = CandidateAttribute.objects.all()
+    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
+    filter_class = CandidateFilters
+
+    def get(self, *args, **kwargs):
+        response = super(UserProfileCompletionMeter, self).get(*args, **kwargs)
+        #import pdb; pdb.set_trace() 
+        # TODO get CANDIDATEATTRIBUTE all fileds + USERDETAIL ALL FIELDS
+        # assuming that one record will be found in response.data
+        meter = ComputeCompletion(response.data)
+        
+        return JsonResponse(data={
+            'profile_completed':meter.compute_percent(),
+        })
+
 
 # TODO 
 # seo meta backend
