@@ -38,17 +38,15 @@ class ComputeCompletion(object):
     def __init__(self, data):
         if data:
             self.data = data[0]
-            self.data.pop('id')
             self.data_length = len(self.data)
         else:
             self.data_length = 0
 
     def compute_percent(self):
-        if not self.data_length:
-            return "20%"
-
         denominator = self.data_length
         numerator = sum([ 1 for k,v in self.data.items() if v not in (None, '', 0) ])
-        return "%s%s" % ((numerator * 100 / denominator), "%")
+        percent = "%s%s" % ((numerator * 100 / denominator), "%")
+        #TODO add upper limit 95, lower limit 20 percent
+
 
 

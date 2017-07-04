@@ -14,8 +14,9 @@ from django.contrib.auth import login as auth_login
 
 from models import UserDetail, UserRole, CandidateAttribute
 from utility.utils import ComputeCompletion
-from serializers import UserSerializer, AuthUserSerializer, CandidateSerializer
-from filters import CandidateFilters
+from serializers import UserSerializer, AuthUserSerializer, UserMeterSerializer
+
+from filters import UserFilters
 
 # Create your views here.
 
@@ -215,14 +216,20 @@ class UserProfileCompletionMeter( generics.ListAPIView ):
     logic : (no of column filled / total no of column ) * 100
 
     """
-    serializer_class = CandidateSerializer
-    queryset = CandidateAttribute.objects.all()
+    serializer_class = UserMeterSerializer
+    queryset = UserDetail.objects.all()
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
-    filter_class = CandidateFilters
+    filter_class = UserFilters
 
     def get(self, *args, **kwargs):
         response = super(UserProfileCompletionMeter, self).get(*args, **kwargs)
-        #import pdb; pdb.set_trace() 
+        try:
+            candidate_info = response.data[0]['candidate']
+            del response.data[0]['candidate']
+            response.data[0].update(candidate_info)
+        except:
+            pass
+
         # TODO get CANDIDATEATTRIBUTE all fileds + USERDETAIL ALL FIELDS
         # assuming that one record will be found in response.data
         meter = ComputeCompletion(response.data)
