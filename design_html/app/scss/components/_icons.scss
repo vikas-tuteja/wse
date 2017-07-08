@@ -15,13 +15,22 @@ $icon-images: '../images/icons.png';
 }
 
 .icon-logo {
-  height: 30px;
-  width: 130px;
+  background: #fff;
+  border-radius: 100%;
+  box-shadow: 1px 2px 6px $shadow-light;
+  height: 160px;
+  position: absolute;
+  top: -70px;
+  width: 160px;
 
   &::after {
     background-position: -242px -21px;
+    bottom: 0;
     height: 90px;
-    top: -2px;
+    left: 0;
+    margin: auto;
+    right: 0;
+    top: 20px;
     width: 113px;
   }
 }
