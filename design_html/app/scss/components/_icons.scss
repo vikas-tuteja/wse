@@ -1,0 +1,112 @@
+$icon-images: '../images/icons.png';
+
+[class^="icon-"] {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+
+  &::after {
+    background-image: url($icon-images);
+    background-repeat: no-repeat;
+    content: '';
+    display: block;
+    position: absolute;
+  }
+}
+
+.icon-logo {
+  background: #fff;
+  border-radius: 100%;
+  box-shadow: 1px 2px 6px $shadow-light;
+  height: 160px;
+  position: absolute;
+  top: -70px;
+  width: 160px;
+
+  &::after {
+    background-position: -242px -21px;
+    bottom: 0;
+    height: 90px;
+    left: 0;
+    margin: auto;
+    right: 0;
+    top: 20px;
+    width: 113px;
+  }
+}
+
+.icon-cal {
+  height: 29px;
+  width: 29px;
+
+  &::after {
+    background-position: -86px -8px;
+    height: 29px;
+    top: -2px;
+    width: 29px;
+  }
+}
+
+.icon-date {
+  height: 28px;
+  margin-right: 5px;
+  width: 24px;
+
+  &::after {
+    background-position: -41px -9px;
+    height: 28px;
+    width: 24px;
+  }
+}
+
+.icon-girl {
+  height: 30px;
+  margin-right: 5px;
+  width: 28px;
+
+  &::after {
+    background-position: -41px -74px;
+    height: 40px;
+    top: -6px;
+    width: 32px;
+  }
+}
+
+.icon-boy {
+  height: 30px;
+  margin-right: 5px;
+  width: 25px;
+
+  &::after {
+    background-position: 0 -74px;
+    height: 40px;
+    top: -6px;
+    width: 27px;
+  }
+}
+
+.icon-rupees {
+  height: 46px;
+  margin-right: 5px;
+  width: 30px;
+
+  &::after {
+    background-position: 0 0;
+    height: 46px;
+    top: -6px;
+    width: 30px;
+  }
+}
+
+.icon-address {
+  height: 18px;
+  margin-right: 5px;
+  width: 12px;
+
+  &::after {
+    background-position: -126px -14px;
+    height: 18px;
+    top: -2px;
+    width: 12px;
+  }
+}

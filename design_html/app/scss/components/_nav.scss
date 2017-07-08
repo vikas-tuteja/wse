@@ -1,0 +1,49 @@
+.full-screen {
+  background: $bg-gray;
+  border-bottom: 1px dashed $border-gray;
+  border-top: 1px dashed $border-gray;
+  box-shadow: 1px 2px 6px $shadow-light;
+  margin-top: 25px;
+  width: 100%;
+}
+
+.nav-strip {
+  @extend %clear;
+  margin: 0 auto;
+  max-width: 1140px;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.logo {
+  float: left;
+  min-height: 1px;
+  position: relative;
+  width: 160px;
+}
+
+.main-nav {
+  ul {
+    @extend %clear;
+  }
+
+  li {
+    float: left;
+    padding: 6px 12px;
+
+    a {
+      border-radius: .3em;
+      color: $base-blue;
+      display: block;
+      font-size: .8em;
+      padding: 5px;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      &:hover {
+        background: $base-blue;
+        color: $base-white;
+      }
+    }
+  }
+}
