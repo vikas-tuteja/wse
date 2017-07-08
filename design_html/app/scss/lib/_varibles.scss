@@ -1,0 +1,32 @@
+// colors
+$base-blue: #368;
+$base-white:  #fff;
+$base-gray:  #333;
+$base-black: #000;
+$base-lightgray: #ccc;
+$base-dark-blue: #23475f;
+
+// border
+$border-gray: #787878;
+
+// background
+$bg-gray: #e4e4e4;
+
+// shadow color
+$shadow-light: #ddd;
+// xtra small screen / mobile
+$screen-phone: 480px !default;
+
+// Small screen / tablet
+$screen-tablet:              768px !default;
+
+// Medium screen / desktop
+$screen-desktop:             992px !default;
+
+// Large screen / wide desktop
+$screen-lg-desktop:          1200px !default;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-tablet - 1) !default;
+$screen-sm-max:              ($screen-desktop - 1) !default;
+$screen-md-max:              ($screen-lg-desktop - 1) !default;

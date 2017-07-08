@@ -1,0 +1,93 @@
+@import 'components/global';
+
+@import 'components/breadcrumb';
+
+.boxes {
+  @extend %clear;
+  background: $bg-gray;
+  border: 1px dashed $border-gray;
+  box-shadow: 1px 2px 6px $shadow-light;
+  display: inline-block;
+  padding: 15px;
+  width: 100%;
+
+  .left-box {
+    float: left;
+    max-width: calc(100% - 170px);
+    width: 100%;
+  }
+
+  .right-box {
+    float: left;
+    text-align: right;
+    width: 170px;
+  }
+
+  .head {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  address {
+    color: $base-gray;
+    font-size: 15px;
+    margin: 10px 0 15px;
+  }
+}
+
+.events-details {
+  ol {
+    @extend %clear;
+    margin-left: -4px;
+    margin-right: -4px;
+    margin-top: 10px;
+  }
+
+  li {
+    float: left;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
+
+.text-small {
+  color: $base-gray;
+  font-size: 14px;
+}
+
+%dash {
+  background-color: $base-lightgray;
+  border: 1px dashed $border-gray;
+  font-size: 14px;
+  margin: 0 5px;
+  padding: 5px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.dash-input {
+  @extend %dash;
+  font-weight: bold;
+  text-align: center;
+  width: 50px;
+}
+
+.dash-cal {
+  @extend %dash;
+  color: $base-blue;
+  width: 150px;
+}
+
+.event-price {
+  color: $base-gray;
+  display: inline-block;
+  font-size: 14px;
+
+  span {
+    color: $base-black;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}

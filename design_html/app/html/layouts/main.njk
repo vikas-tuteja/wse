@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    {# style sheet #}
+    {% block css %}
+    {% endblock %}
+  </head>
+  <body>
+    {% block nav %}
+      {# navigation here #}
+      {% include "../includes/nav.njk" %}
+    {% endblock %}
+
+    {% block main %}
+      {# mian section here #}
+    {% endblock %}
+
+    {% block footer %}
+      {% include "../includes/footer.njk" %}
+    {% endblock %}
+
+    {# jQuery first #}
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.js" >\x3C/script>')</script>
+    {# script #}
+    {% block js %}
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,31 @@
+.breadcrumb {
+  @extend %clear;
+  border-radius: .25rem;
+  list-style: none;
+  margin-bottom: 1rem;
+  padding: .75rem 1rem;
+
+  li {
+    float: left;
+
+    + li::before {
+      color: $base-blue;
+      content: '/';
+      display: inline-block;
+      padding-left: .5rem;
+      padding-right: .5rem;
+    }
+
+    a {
+      color: $base-blue;
+      font-size: .8em;
+      text-decoration: none;
+    }
+
+    &:last-child {
+      a {
+        cursor: default;
+      }
+    }
+  }
+}

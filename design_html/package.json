@@ -1,0 +1,46 @@
+{
+  "name": "htcampus.com",
+  "version": "1.0.0",
+  "description": "College",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cleanscss": "cd .sass-cache && rm -vr * && cd .."
+  },
+  "author": "Htmedia",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.5.3",
+    "autoprefixer-core": "^6.0.1",
+    "fast-live-reload": "^2.7.1",
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^3.0.4",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-cli": "^1.1.0",
+    "grunt-concurrent": "^2.3.1",
+    "grunt-connect": "^0.2.0",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-imagemin": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-htmlhint-plus": "^0.4.0",
+    "grunt-notify": "^0.4.5",
+    "grunt-nunjucks-2-html": "^3.0.0",
+    "grunt-open": "^0.2.3",
+    "grunt-postcss": "^0.8.0",
+    "grunt-prettify": "^0.4.0",
+    "grunt-purifycss": "^0.1.1",
+    "grunt-sass": "^2.0.0",
+    "grunt-scss-lint": "^0.3.8",
+    "grunt-shell": "^2.1.0",
+    "grunt-sync": "^0.5.2",
+    "grunt-text-replace": "^0.4.0",
+    "load-grunt-tasks": "^3.5.2",
+    "sass": "^0.5.0",
+    "sass-lint": "^1.10.2",
+    "traceur": "0.0.111"
+  },
+  "dependencies": {
+    "grunt-cli": "^1.2.0"
+  }
+}
