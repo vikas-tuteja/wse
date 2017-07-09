@@ -23,6 +23,8 @@
 }
 
 .main-nav {
+  float: left;
+
   ul {
     @extend %clear;
   }
@@ -45,5 +47,59 @@
         color: $base-white;
       }
     }
+  }
+}
+
+.right-menu {
+  float: right;
+}
+
+%right-menu {
+  float: left;
+  margin-top: 5px;
+}
+
+%right-border {
+  &::before {
+    border-right: 1px dashed $border-gray;
+    content: '';
+    height: 25px;
+    left: 0;
+    position: absolute;
+    top: 4px;
+    width: 1px;
+  }
+}
+
+.alert {
+  @extend %right-menu;
+}
+
+.location {
+  @extend %right-menu;
+  @extend %right-border;
+  color: $base-blue;
+  font-size: 14px;
+  padding: 0 10px;
+  position: relative;
+
+  &::before {
+    top: 0;
+  }
+}
+
+.sign-in {
+  @extend %right-border;
+  float: left;
+  font-size: 14px;
+  padding-left: 10px;
+  position: relative;
+
+  a {
+    color: $base-blue;
+    cursor: pointer;
+    display: block;
+    padding: 9px 0;
+    text-decoration: none;
   }
 }

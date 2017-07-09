@@ -120,6 +120,7 @@ $icon-images: '../images/icons.png';
     background-position: -95px -80px;
     height: 34px;
     top: -10px;
+    transform: scale(.6);
     width: 31px;
   }
 }
@@ -133,6 +134,7 @@ $icon-images: '../images/icons.png';
     background-position: -148px -79px;
     height: 35px;
     top: -10px;
+    transform: scale(.6);
     width: 32px;
   }
 }
@@ -150,3 +152,28 @@ $icon-images: '../images/icons.png';
   }
 }
 
+.icon-alert {
+  height: 24px;
+  margin-right: 5px;
+  width: 22px;
+
+  &::after {
+    background-position: -198px -11px;
+    height: 24px;
+    transform: scale(.8);
+    width: 22px;
+  }
+}
+
+.icon-location-main {
+  height: 24px;
+  margin-right: 5px;
+  width: 15px;
+
+  &::after {
+    background-position: -173px -9px;
+    height: 25px;
+    transform: scale(.8);
+    width: 15px;
+  }
+}
