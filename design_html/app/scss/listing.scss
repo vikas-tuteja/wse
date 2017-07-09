@@ -91,3 +91,80 @@
     font-weight: bold;
   }
 }
+
+.page-result {
+  @extend %clear;
+
+  .left-result {
+    float: left;
+
+    h2 {
+      color: #ea6e32;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    span{
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
+
+  .right-result {
+    float: right;
+  }
+}
+
+.filter-head {
+  @extend %clear;
+  margin-bottom: 20px;
+
+  .filter-left {
+    float: left;
+  }
+
+  .filter-right {
+    float: right;
+  }
+}
+
+.filter-name {
+  position: relative;
+
+  &::after {
+    background-color: #ea6e32;
+    bottom: -5px;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 25px;
+  }
+}
+
+.clear-btn {
+  color: #ea6e32;
+  font-size: 12px;
+}
+
+.bar-head {
+  border-bottom: 1px solid #ea6e32;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  width: 100%;
+}
+
+.filter-content {
+  margin-bottom: 15px;
+  max-height: 150px;
+  overflow-y: auto;
+
+  label {
+    display: block;
+    font-size: 14px;
+    padding-bottom: 5px;
+    width: 100%;
+  }
+}
