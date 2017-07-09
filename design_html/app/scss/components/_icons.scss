@@ -110,3 +110,43 @@ $icon-images: '../images/icons.png';
     width: 12px;
   }
 }
+
+.icon-short-by-name {
+  height: 35px;
+  margin-right: 5px;
+  width: 31px;
+
+  &::after {
+    background-position: -95px -80px;
+    height: 34px;
+    top: -10px;
+    width: 31px;
+  }
+}
+
+.icon-short-by-type {
+  height: 35px;
+  margin-left: 5px;
+  width: 35px;
+
+  &::after {
+    background-position: -148px -79px;
+    height: 35px;
+    top: -10px;
+    width: 32px;
+  }
+}
+
+.icon-filterclear {
+  height: 15px;
+  margin-right: 5px;
+  width: 14px;
+
+  &::after {
+    background-position: -149px -15px;
+    height: 15px;
+    top: -2px;
+    width: 14px;
+  }
+}
+
