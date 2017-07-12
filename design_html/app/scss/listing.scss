@@ -15,12 +15,21 @@
     float: left;
     max-width: calc(100% - 170px);
     width: 100%;
+
+    @media (max-width: 549px) {
+      max-width: 100%;
+    }
   }
 
   .right-box {
     float: left;
     text-align: right;
     width: 170px;
+
+    @media (max-width: 549px) {
+      margin-top: 20px;
+      text-align: left;
+    }
   }
 
   .head {
@@ -47,6 +56,10 @@
     float: left;
     padding-left: 4px;
     padding-right: 4px;
+
+    @media (max-width: 991px) {
+      margin: 10px 0;
+    }
   }
 }
 
@@ -107,6 +120,10 @@
     span{
       font-size: 24px;
       font-weight: bold;
+    }
+
+    @media (max-width: 549px) {
+      width: 80%;
     }
   }
 
@@ -235,5 +252,12 @@
       vertical-align: middle;
       white-space: nowrap;
     }
+  }
+}
+
+@media (max-width: 991px) {
+  .left-fixed {
+    left: -300px;
+    position: absolute;
   }
 }
