@@ -9,6 +9,7 @@
 @import 'icons';
 
 .row {
+  @extend %clear;
   margin-left: -15px;
   margin-right: -15px;
 }
@@ -88,6 +89,7 @@
   &.btn-blue {
     background: $base-blue;
     color: $base-white;
+    min-width: 120px;
 
     &:hover {
       background: $base-dark-blue;
