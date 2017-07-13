@@ -54,8 +54,12 @@ class RequirementsAdminInline(admin.StackedInline):
 
 class EventAdmin(admin.ModelAdmin):
     search_fields = ('name',)
-    list_display = ['client', 'name', 'venue', 'created_datetime', 'schedule', 'shortlisted_upon_required']
+    list_display = ['client', 'name', 'venue', 'created_datetime', '__schedule__', 'shortlisted_upon_required']
     inlines = ( ScheduleAdminInline, RequirementsAdminInline, )
+
+    def __schedule__(self, obj):
+        data = obj.schedule()
+        return "From %s To %s (%s days) " % data
 
 
 class RequirmentAdmin(admin.ModelAdmin):

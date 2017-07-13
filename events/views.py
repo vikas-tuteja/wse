@@ -8,8 +8,9 @@ from django.db import IntegrityError
 
 from filters import EventFilters
 from models import Event, Requirement, RequirementApplication
-from utility import mygenerics
+from utility import mygenerics 
 from rest_framework import generics
+from rest_framework.response import Response
 from serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer, ApplyRequirementSerializer 
 
 # Create your views here.
@@ -22,18 +23,16 @@ class EventListing( mygenerics.ListAPIView ):
     serializer_class = ListEventSerializer
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
     filter_class = EventFilters
+    template_name = 'events/listing_base.html'
 
     def get_queryset(self):
         # get events starting from tomorrow order by datetime
         # since cannot apply on same date of event.
         return Event.objects.filter(schedule__start_date__gt=datetime.now().\
             date()).prefetch_related('requirement_set').distinct().order_by('id')
+    # TODO add filter 
+    # TODO pagination
 
-    
-    def list(self, request, *args, **kwargs):
-        response = super(EventListing, self).list(request, *args, **kwargs)
-        return response
-    
     
 class RequirementListing( mygenerics.ListAPIView ):
     """

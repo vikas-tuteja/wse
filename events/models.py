@@ -34,7 +34,7 @@ class Event(models.Model):
        return self.name
     
     def schedule( self ):
-        return "From %s To %s (%s days) " % (
+        return (
             min([x.start_date for x in self.schedule_set.all()]),
             max([x.end_date for x in self.schedule_set.all()]),
             sum([(x.end_date - x.start_date).days + 1 for x in self.schedule_set.all()])

@@ -1,0 +1,18 @@
+{% include "shared/base.html" %}
+
+{% block body %}
+<!-- menu bar -->
+{% include "shared/menu.html" %}
+
+<!-- event listing header & search -->
+{% include "events/header.html" %}
+
+<!-- filters -->
+{% include "events/filters.html" %}
+
+<!-- listing -->
+{% include "events/listing.html" %}
+
+<!-- footer -->
+{% include "shared/footer.html" %}
+{% endblock body %}

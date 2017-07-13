@@ -13,16 +13,16 @@ class ListEventSerializer( serializers.ModelSerializer ):
 
     class Meta:
         model = Event
-        fields = ('id', 'client', 'name', 'slug', 'overview', 'venue', 'area', 'city', 'state', 'posted_by', 'notes', 'contact_person_name', 'contact_person_number', 'candidate_info' )
+        fields = ('id', 'client', 'name', 'slug', 'overview', 'venue', 'area', 'city', 'state', 'posted_by', 'contact_person_name', 'contact_person_number', 'candidate_info', 'schedule' )
 
     def get_candidate_info(self, obj):
-        candidates_required = 0
+        candidates_required = {}
+            
         for req in obj.requirement_set.all():
-            candidates_required += req.no_of_candidates
+            candidates_required[req.gender] = candidates_required.get(req.gender, 0) + req.no_of_candidates
             
         return {
             'candidates_required' : candidates_required,
-            'days' : req.no_of_days,
         }
 
 

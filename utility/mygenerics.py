@@ -4,7 +4,8 @@ class FormatResponse(object):
 
     def get_response(self, response, *args, **kwargs):
         response.data = {
-            'results': response.data
+            'results': response.data,
+            'count': len(response.data)
         }
         return response
 

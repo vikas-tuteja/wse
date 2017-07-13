@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'events',
     'seo',
     'rest_framework',
+    #'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'seo.middleware.MetaDataMiddleware',
+    'users.middleware.BaseMiddleware',
 ]
 
 ROOT_URLCONF = 'wse.urls'
@@ -138,6 +139,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+#MEDIA_URL = '/media/'
+#STATIC_ROOT = 'static'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 STATICFILES_FINDERS = (
@@ -153,6 +156,13 @@ CACHES = {
     }
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.TemplateHTMLRenderer',
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+}
 try:
     from devsettings import *
 except:
