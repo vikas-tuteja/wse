@@ -26,7 +26,7 @@ module.exports = function (grunt) {
         tasks: ['copy:js']
       },
       html: {
-        files: [_htmlpath + '/*.njk', _htmlpath + '/**/*.njk', _htmlpath + '**/*html'],
+        files: [_htmlpath + '/*.njk', _htmlpath + '/**/*.njk', _htmlpath + '/**/*html', _htmlpath + '/*.html'],
         tasks: ['nunjucks', 'htmlhintplus'],
         options: {
           spawn: false,

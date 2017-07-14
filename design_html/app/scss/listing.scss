@@ -15,12 +15,21 @@
     float: left;
     max-width: calc(100% - 170px);
     width: 100%;
+
+    @media (max-width: 549px) {
+      max-width: 100%;
+    }
   }
 
   .right-box {
     float: left;
     text-align: right;
     width: 170px;
+
+    @media (max-width: 549px) {
+      margin-top: 20px;
+      text-align: left;
+    }
   }
 
   .head {
@@ -45,8 +54,12 @@
 
   li {
     float: left;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 1px;
+    padding-right: 1px;
+
+    @media (max-width: 991px) {
+      margin: 10px 0;
+    }
   }
 }
 
@@ -71,7 +84,7 @@
   @extend %dash;
   font-weight: bold;
   text-align: center;
-  width: 50px;
+  width: 30px;
 }
 
 .dash-cal {
@@ -104,9 +117,13 @@
       margin-bottom: 15px;
     }
 
-    span{
+    span {
       font-size: 24px;
       font-weight: bold;
+    }
+
+    @media (max-width: 549px) {
+      width: 80%;
     }
   }
 
@@ -164,8 +181,13 @@
   label {
     display: block;
     font-size: 12px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     width: 100%;
+
+    input {
+      margin-right: 5px;
+      vertical-align: -2px;
+    }
   }
 }
 
@@ -174,6 +196,10 @@
   margin-right: 15px;
   min-width: 150px;
   width: 30%;
+
+  @media (min-width: 992px) {
+    float: left;
+  }
 }
 
 .input-group {
@@ -235,5 +261,12 @@
       vertical-align: middle;
       white-space: nowrap;
     }
+  }
+}
+
+@media (max-width: 991px) {
+  .left-fixed {
+    left: -300px;
+    position: absolute;
   }
 }

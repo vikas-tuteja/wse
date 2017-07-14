@@ -1,8 +1,10 @@
 .breadcrumb {
   @extend %clear;
   border-radius: .25rem;
+  float: left;
   list-style: none;
   margin-bottom: 1rem;
+  min-width: 265px;
   padding: .75rem 1rem;
 
   li {
