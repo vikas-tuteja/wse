@@ -18,6 +18,8 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 1140px;
+  padding-left: 15px;
+  padding-right: 15px;
   position: relative;
   width: 100%;
 }
@@ -29,16 +31,20 @@
 }
 
 .left-fixed {
-  width: 300px;
+  width: 250px;
 }
 
 .right-col {
   width: 100%;
 }
 
+.ad-box {
+  width: 200px;
+}
+
 @media (min-width: 992px) {
   .right-col {
-    width: calc(100% - 300px)
+    width: calc(100% - 450px)
   }
 }
 

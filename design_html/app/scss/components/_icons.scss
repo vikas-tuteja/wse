@@ -42,7 +42,7 @@ $icon-images: '../images/icons.png';
   &::after {
     background-position: -86px -8px;
     height: 29px;
-    top: -2px;
+    transform: scale(.8);
     width: 29px;
   }
 }
@@ -55,6 +55,7 @@ $icon-images: '../images/icons.png';
   &::after {
     background-position: -41px -9px;
     height: 28px;
+    transform: scale(.8);
     width: 24px;
   }
 }
@@ -68,6 +69,7 @@ $icon-images: '../images/icons.png';
     background-position: -41px -74px;
     height: 40px;
     top: -6px;
+    transform: scale(.7);
     width: 32px;
   }
 }
@@ -81,6 +83,7 @@ $icon-images: '../images/icons.png';
     background-position: 0 -74px;
     height: 40px;
     top: -6px;
+    transform: scale(.7);
     width: 27px;
   }
 }
@@ -93,7 +96,8 @@ $icon-images: '../images/icons.png';
   &::after {
     background-position: 0 0;
     height: 46px;
-    top: -6px;
+    top: -2px;
+    transform: scale(.8);
     width: 30px;
   }
 }

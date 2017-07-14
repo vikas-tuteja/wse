@@ -54,8 +54,8 @@
 
   li {
     float: left;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 1px;
+    padding-right: 1px;
 
     @media (max-width: 991px) {
       margin: 10px 0;
@@ -84,7 +84,7 @@
   @extend %dash;
   font-weight: bold;
   text-align: center;
-  width: 50px;
+  width: 30px;
 }
 
 .dash-cal {
@@ -117,7 +117,7 @@
       margin-bottom: 15px;
     }
 
-    span{
+    span {
       font-size: 24px;
       font-weight: bold;
     }
@@ -181,8 +181,13 @@
   label {
     display: block;
     font-size: 12px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     width: 100%;
+
+    input {
+      margin-right: 5px;
+      vertical-align: -2px;
+    }
   }
 }
 
