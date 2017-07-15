@@ -2,9 +2,9 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.core import urlresolvers
 
 URL_CHOICE_TYPE = ((False, "No"), (True, "Yes"),)
-
 
 # Create your models here.
 class MetaData(models.Model):
@@ -22,7 +22,7 @@ class MetaData(models.Model):
                   b) holds static data for a specific-complete url.
     """
     regular_expression = models.BooleanField(choices=URL_CHOICE_TYPE, default=False)
-    path = models.CharField(max_length=250, unique=True, help_text="Specify the path (URL) for this page (only if static data is to be displayed) or Specify the path's regular expression (only if same data is to be displayed for all regex matches)")
+    path = models.CharField( max_length=250, unique=True, help_text="Specify the path (URL) for this page (only if static data is to be displayed) or Specify the path's regular expression (only if same data is to be displayed for all regex matches)")
     title = models.TextField(default="", blank=True, help_text="This is the meta (page) title, that appears in the title bar.")
     keywords = models.TextField(default="", blank=True, help_text="Comma-separated keywords for search engines.")
     description = models.TextField(default="", blank=True, help_text="A short description, displayed in search results.")

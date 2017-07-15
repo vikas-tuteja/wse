@@ -7,6 +7,7 @@ class EventFilters(django_filters.FilterSet):
     area = django_filters.CharFilter(name="area__slug")
     venue = django_filters.Filter(method="get_venue")
     name = django_filters.Filter(method="search_events")
+    sort = django_filters.Filter(method="sort_data")
 
     class Meta:
         model = Event
@@ -18,4 +19,9 @@ class EventFilters(django_filters.FilterSet):
 
     def search_events(self, queryset, name, value):
         qs = queryset.filter(name__icontains=value)
+        return qs
+
+    def sort_data(self, queryset, name, value):
+        value = value.replace('date', 'schedule__start_date')
+        qs = queryset.order_by(value)
         return qs

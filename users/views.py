@@ -237,7 +237,3 @@ class UserProfileCompletionMeter( generics.ListAPIView ):
         return JsonResponse(data={
             'profile_completed':meter.compute_percent(),
         })
-
-
-# TODO 
-# seo meta backend

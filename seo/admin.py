@@ -30,4 +30,11 @@ class MetaDataAdmin(admin.ModelAdmin):
     search_fields = ('path', )
     list_filter = ('regular_expression',AbsolutePathFilter)
 
+    class Media:
+        js = (
+            '/static/shared/js/jquery.js',
+            '/static/admin/js/seo.js',
+        )
+
+
 admin.site.register(MetaData, MetaDataAdmin)

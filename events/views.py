@@ -5,16 +5,18 @@ import django_filters
 from datetime import datetime
 from django.shortcuts import render
 from django.db import IntegrityError
+from django.http import JsonResponse
 
 from filters import EventFilters
 from models import Event, Requirement, RequirementApplication
-from utility import mygenerics 
+from utility import mygenerics
 from rest_framework import generics
 from rest_framework.response import Response
 from serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer, ApplyRequirementSerializer 
+from master.views import AreaList
 
 # Create your views here.
-class EventListing( mygenerics.ListAPIView ):
+class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
     """
     As the name says, lists all Events
     GET PARAMS: filters will be applied
@@ -24,14 +26,15 @@ class EventListing( mygenerics.ListAPIView ):
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
     filter_class = EventFilters
     template_name = 'events/listing_base.html'
+    related_views = {
+        'area': (AreaList.as_data(), '*', 1),
+    }
 
     def get_queryset(self):
         # get events starting from tomorrow order by datetime
         # since cannot apply on same date of event.
         return Event.objects.filter(schedule__start_date__gt=datetime.now().\
             date()).prefetch_related('requirement_set').distinct().order_by('id')
-    # TODO add filter 
-    # TODO pagination
 
     
 class RequirementListing( mygenerics.ListAPIView ):

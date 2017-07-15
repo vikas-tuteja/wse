@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^static/(?P<path>.*)$', django.views.static.serve,  {'document_root': settings.STATIC_ROOT }),
     url(r'^events/', include( 'events.urls' )),
-    url(r'^/', include('seo.urls')),
+    url(r'^seo/', include('seo.urls')),
     url(r'^', include( 'users.urls' )),
+    url(r'^master/', include('master.urls')),
 ]
