@@ -5,12 +5,9 @@
     </div>
     <nav class="main-nav"> 
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Clients</a></li>
-            <li><a href="#">Testimonial</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Contact us</a></li>
+            {% for x in menu %}
+                <li><a href="{% url x.0 %}" class = "{{x.2}}">{{x.1}}</a></li>
+            {% endfor %}
         </ul>
     </nav>
     <div class="right-menu">

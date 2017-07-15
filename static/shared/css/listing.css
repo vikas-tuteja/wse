@@ -181,24 +181,31 @@ body {
   width: 160px; }
 
 .main-nav {
-  float: left; }
-  .main-nav li {
+  float: left; 
+}
+.selected {
+    background: #368;
+    color: #fff !important; 
+}
+.main-nav li {
     float: left;
-    padding: 6px 12px; }
-    .main-nav li a {
-      -webkit-border-radius: .3em;
-         -moz-border-radius: .3em;
-              border-radius: .3em;
-      color: #368;
-      display: block;
-      font-size: .8em;
-      padding: 5px;
-      text-decoration: none;
-      text-transform: uppercase; }
-      .main-nav li a:hover {
-        background: #368;
-        color: #fff; }
-
+    padding: 6px 12px;
+}
+.main-nav li a {
+    -webkit-border-radius: .3em;
+     -moz-border-radius: .3em;
+          border-radius: .3em;
+    color: #368;
+    display: block;
+    font-size: .9em;
+    padding: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.main-nav li a:hover {
+    background: #368;
+    color: #fff; 
+}
 .right-menu {
   float: right; }
 

@@ -30,31 +30,49 @@ class BaseMiddleware(MiddlewareMixin):
 
     def process_template_response(self, request, response):
         if response.status_code == 200 and "/admin/" not in request.path:
-            # append static url in the response
-            response.data['STATIC_URL'] = settings.STATIC_URL
+            try:
+                # append static url in the response
+                response.data['STATIC_URL'] = settings.STATIC_URL
 
-            # append seo meta in views other than admin
-            url_name = resolve(request.path).url_name
-            obj = MetaData.objects.filter(path=url_name)
-            if obj:
-                obj = obj[0]
-                meta = {
-                    'title':obj.title,
-                    'keywords':obj.keywords,
-                    'description':obj.description,
-                }
-                response.data['meta'] = meta
+                # append seo meta in views other than admin
+                url_name = resolve(request.path).url_name
+                obj = MetaData.objects.filter(path=url_name)
+                if obj:
+                    obj = obj[0]
+                    meta = {
+                        'title':obj.title,
+                        'keywords':obj.keywords,
+                        'description':obj.description,
+                    }
+                    response.data['meta'] = meta
 
+            except:
+                url_name = None
+            # calling related views of a view
+            try:
+                related_views = request.resolver_match.func.cls.related_views
+                for key, func in related_views.items():
+                    try:
+                        response.data[key] = json.loads(func[0](func[1])._container[0])['results']
+                    except:
+                        response.data[key] = None
+            except:
+                pass
 
-        # calling related views of a view
-        try:
-            related_views = request.resolver_match.func.cls.related_views
-            for key, func in related_views.items():
-                try:
-                    response.data[key] = json.loads(func[0](func[1])._container[0])['results']
-                except:
-                    response.data[key] = None
-        except:
-            pass
-
+            response.data['menu'] = self.getmenu(url_name)
         return response
+
+
+    def getmenu(self, page):
+        menu = [
+            ['home', 'Home'],
+            ['event_listing', 'Events'],
+            #['clients', 'Clients'],
+            #['testimonials', 'Testimonial'],
+            #['articles', 'Articles'],
+            #['faqs', 'FAQ'],
+            #['contant_us', 'Contact us'],
+        ]
+        
+        [ x.append("selected") if page == x[0] else x.append(None) for x in menu]
+        return menu
