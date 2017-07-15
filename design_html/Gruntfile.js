@@ -22,7 +22,7 @@ module.exports = function (grunt) {
         tasks: ['copy:img']
       },
       js: {
-        files: [_jspath],
+        files: [_jspath + "/*"],
         tasks: ['copy:js']
       },
       html: {
@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         }
       },
       sass: {
-        files: [_innerscss, scsspath + '**/*.scss'],
+        files: [_innerscss, scsspath + '**/*.scss', scsspath + "*"],
         tasks: ['sass', 'postcss', 'notify:sass'],
         options: {
           spawn: false
