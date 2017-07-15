@@ -67,11 +67,11 @@ class BaseMiddleware(MiddlewareMixin):
         menu = [
             ['home', 'Home'],
             ['event_listing', 'Events'],
-            #['clients', 'Clients'],
-            #['testimonials', 'Testimonial'],
-            #['articles', 'Articles'],
-            #['faqs', 'FAQ'],
-            #['contant_us', 'Contact us'],
+            ['clients', 'Clients'],
+            ['testimonials', 'Testimonial'],
+            ['articles', 'Articles'],
+            ['faqs', 'FAQ'],
+            ['contact_us', 'Contact us'],
         ]
         
         [ x.append("selected") if page == x[0] else x.append(None) for x in menu]

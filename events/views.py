@@ -6,6 +6,7 @@ from datetime import datetime
 from django.shortcuts import render
 from django.db import IntegrityError
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
 from filters import EventFilters
 from models import Event, Requirement, RequirementApplication

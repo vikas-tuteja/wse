@@ -49,5 +49,6 @@ ALLOCATION_STATUS = (
     ('positions-full', 'Position Full'),
     ('backup', 'Backup'),
     ('working', 'Working',),
-    ('backed-out', 'Backed out')
+    ('backed-out', 'Backed out'),
+    ('completed', 'Completed'),
 )

@@ -8,6 +8,7 @@ class EventFilters(django_filters.FilterSet):
     venue = django_filters.Filter(method="get_venue")
     name = django_filters.Filter(method="search_events")
     sort = django_filters.Filter(method="sort_data")
+    user = django_filters.Filter(method="user_history")
 
     class Meta:
         model = Event
@@ -24,4 +25,8 @@ class EventFilters(django_filters.FilterSet):
     def sort_data(self, queryset, name, value):
         value = value.replace('date', 'schedule__start_date')
         qs = queryset.order_by(value)
+        return qs
+
+    def user_history(self, queryset, name, value):
+        qs = queryset.filter(requirement__requirementapplication__candidate__auth_user__email=value)
         return qs

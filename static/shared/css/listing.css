@@ -200,7 +200,8 @@ body {
     font-size: .9em;
     padding: 5px;
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: capitalize;
+    #text-transform: uppercase;
 }
 .main-nav li a:hover {
     background: #368;

@@ -26,8 +26,9 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='shared/coming_soon2.html'), name="home"), 
     url(r'^admin/', admin.site.urls),
     url(r'^static/(?P<path>.*)$', django.views.static.serve,  {'document_root': settings.STATIC_ROOT }),
+    url(r'^master/', include('master.urls')),
     url(r'^', include( 'events.urls' )),
     url(r'^', include('seo.urls')),
     url(r'^', include( 'users.urls' )),
-    url(r'^master/', include('master.urls')),
+    url(r'^', include( 'miscellanous.urls' )),
 ]
