@@ -2,6 +2,9 @@
 
 @import 'components/breadcrumb';
 
+@import 'components/pagination';
+
+
 .boxes {
   @extend %clear;
   background: $bg-gray;
