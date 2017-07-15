@@ -7,6 +7,10 @@
   min-width: 265px;
   padding: .75rem 1rem;
 
+  @media (max-width: 425px) {
+    width: 100%;
+  }
+
   li {
     float: left;
 

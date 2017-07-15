@@ -42,6 +42,11 @@
   width: 200px;
 }
 
+.overhide {
+  overflow: hidden;
+  height: 80vh;
+}
+
 @media (min-width: 992px) {
   .right-col {
     width: calc(100% - 450px)
