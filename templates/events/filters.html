@@ -1,0 +1,48 @@
+    <div class="container">
+        <div class="row">
+            <div class="col left-fixed">
+                <div class="filter-head">
+                    <div class="filter-left">
+                        <h3 class="filter-name">Filters</h3>
+                    </div>
+                    <div class="filter-right">
+                        <span id="clear" class="clear-btn">
+                            <i class="icon-filterclear"></i>
+                            Clear
+                        </span>&nbsp;
+                        <span id="apply" class="clear-btn">
+                            <i></i>
+                            Apply
+                        </span>
+                    </div>
+                </div>
+                <div class="boxes">
+                    <h4 class="bar-head">Area</h4>
+                    <div class="filter-content">
+                        {% for a in area %}
+                            <label><input type="checkbox" name="area" id="area" value="{{a.slug}}">{{a.name}}</label>
+                        {% endfor %}
+                    </div>
+                    <h4 class="bar-head">Gender</h4>
+                    <div class="filter-content">
+                        <label><input type="radio" name="gender" id="gender" value="m" {% if filters.gender == "m" %} checked {% endif %}> Male</label>
+                        <label><input type="radio" name="gender" id="gender" value="f" {% if filters.gender == "f" %} checked {% endif %}> Female</label>
+                    </div>
+                                        
+                    <h4 class="bar-head">Event Duration</h4>
+                    <div class="filter-content">
+                        <label><input type="radio" name="duration" id="duration" value="1" {% if filters.duration == "1" %} checked {% endif %}> 1 Day</label>
+                        <label><input type="radio" name="duration" id="duration" value="2" {% if filters.duration == "2" %} checked {% endif %}> Upto 7 Days</label>
+                        <label><input type="radio" name="duration" id="duration" value="3" {% if filters.duration == "3" %} checked {% endif %}> More than 7 Days</label>
+                        <label><input type="radio" name="duration" id="duration" value="4" {% if filters.duration == "4" %} checked {% endif %}> Only Weekends</label>
+                    </div>
+                    
+                    <h4 class="bar-head">Candidate Type</h4>
+                    <div class="filter-content">
+                        {% for t in type %}
+                            <label><input type="checkbox" name="type" id="type" value="{{t.0}}" {% if t.0 in filters.requirement %} checked {%endif%}>{{t.1}}</label>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+

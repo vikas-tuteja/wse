@@ -1,0 +1,73 @@
+{% load paginate from paginate_tag %}
+            <div class="col right-col">
+                <div class="page-result">
+                    <div class="left-result">
+                        <h2><span>{{count}}</span> Events Found in Mumbai</h2>
+                    </div>
+                    <div class="right-result">
+                        <a id="sort_name" data-key="name" data-order="{{sort_order}}"><i class="icon-short-by-name" title="sort by name"></i></a>
+                        <a id="sort_date" data-key="date" data-order="{{sort_order}}"><i class="icon-short-by-type" title="sort by date"></i></a>
+                    </div>
+                </div>
+                {% for e in results  %}
+                    <div class="boxes mb-15">
+                        <div class="left-box">
+                            <h3><a class="head blue" href='{% url "event_detail" event_slug=e.slug %}'>{{e.name}}</a></h3>
+                            <address><span class="icon-address"></span>{{e.venue}}, {{e.area}}, {{e.city}}</address>
+                            <div class="events-details">
+                                <ol>
+                                    <li>
+                                        <div class="event-cal">
+                                            <i class="icon-cal"></i>
+                                            <input type="text" readonly class="dash-cal" value="{{e.schedule.0}} - {{e.schedule.1}}">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="event-day">
+                                            <!--i class="icon-date"></i-->
+                                            <i class=""></i>
+                                            <span class="text-small">Days</span>
+                                            <input type="text" readonly class="dash-input" value="{{e.schedule.2}}">
+                                        </div>                                
+                                    </li>
+                                    {% if e.candidate_info.candidates_required.f %}
+                                    <li>
+                                        <div class="event-girls">
+                                            <i class="icon-girl"></i>
+                                            <input type="text" readonly class="dash-input" value="{{e.candidate_info.candidates_required.f}}">
+                                        </div>
+                                    </li>
+                                    {% endif %}
+                                    {% if e.candidate_info.candidates_required.m %}
+                                    <li>
+                                        <div class="event-boys">
+                                            <i class="icon-boy"></i>
+                                            <input type="text" readonly class="dash-input" value="{{e.candidate_info.candidates_required.m}}">
+                                        </div>                                
+                                    </li>
+                                    {% endif %}
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="right-box">
+                            <div>
+                                <i class="icon-rupees"></i>
+                                <p class="event-price"><span style="color:#ea6e32;font-size:24px;">{{e.candidate_info.paisa}}</span>/Day</p>
+                            </div>
+                            <button class="btn btn-blue mt-15">Apply</button>
+                        </div>
+                    </div>
+                {% endfor %} 
+                <div class="pagination">
+                    <ul>
+                        {% paginate pagesize=10 currentpage=page resultcount=count %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col ad-box">
+                ad here
+            </div>
+        </div>
+    </div>
+    
+

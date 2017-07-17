@@ -15,6 +15,8 @@ from rest_framework import generics
 from rest_framework.response import Response
 from serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer, ApplyRequirementSerializer 
 from master.views import AreaList
+from utility.utils import get_prefix
+from events.choices import CANDIDATE_TYPE
 
 # Create your views here.
 class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
@@ -36,6 +38,19 @@ class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
         # since cannot apply on same date of event.
         return Event.objects.filter(schedule__start_date__gt=datetime.now().\
             date()).prefetch_related('requirement_set').distinct().order_by('id')
+
+    def get(self, request, *args, **kwargs):
+        response = super(EventListing, self).get(request, *args, **kwargs)
+
+        # prefix '' or '-' in sort params
+        response.data['sort_order'] = get_prefix(request.GET.get('sort'))
+        response.data['filters'] = request.GET.dict()
+        response.data['type'] = CANDIDATE_TYPE
+
+        if request.is_ajax():
+            return JsonResponse( response.data )
+
+        return response
 
     
 class RequirementListing( mygenerics.ListAPIView ):

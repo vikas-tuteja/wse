@@ -9,6 +9,10 @@ class EventFilters(django_filters.FilterSet):
     name = django_filters.Filter(method="search_events")
     sort = django_filters.Filter(method="sort_data")
     user = django_filters.Filter(method="user_history")
+    gender = django_filters.Filter(method="get_gender")
+    requirement = django_filters.Filter(method="get_requirement_type")
+    duration = django_filters.Filter(method="get_duration")
+
 
     class Meta:
         model = Event
@@ -29,4 +33,17 @@ class EventFilters(django_filters.FilterSet):
 
     def user_history(self, queryset, name, value):
         qs = queryset.filter(requirement__requirementapplication__candidate__auth_user__email=value)
+        return qs
+
+    def get_gender(self, queryset, name, value):
+        qs = queryset.filter(requirement__gender=value)
+        return qs
+
+    def get_requirement_type(self, queryset, name, value):
+        qs = queryset.filter(requirement__candidate_type__slug__in=value.split(','))
+        return qs
+
+    def get_duration(self, queryset, name, value):
+        # TODO add days filter
+        qs = queryset.filter()
         return qs

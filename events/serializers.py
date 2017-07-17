@@ -16,13 +16,15 @@ class ListEventSerializer( serializers.ModelSerializer ):
         fields = ('id', 'client', 'name', 'slug', 'overview', 'venue', 'area', 'city', 'state', 'posted_by', 'contact_person_name', 'contact_person_number', 'candidate_info', 'schedule' )
 
     def get_candidate_info(self, obj):
-        candidates_required = {}
+        candidates_required, paisa = {}, []
             
         for req in obj.requirement_set.all():
             candidates_required[req.gender] = candidates_required.get(req.gender, 0) + req.no_of_candidates
+            paisa.append(req.daily_wage_per_candidate)
             
         return {
             'candidates_required' : candidates_required,
+            'paisa': max(paisa)
         }
 
 

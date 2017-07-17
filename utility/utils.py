@@ -49,4 +49,13 @@ class ComputeCompletion(object):
         #TODO add upper limit 95, lower limit 20 percent
 
 
+def get_prefix(name=None):
+    """
+    if sort=data, then return None
+    elif sort=-data, then return '-'
 
+    """
+    try:
+        return '-' if name[0] != '-' else ''
+    except:
+        return ''

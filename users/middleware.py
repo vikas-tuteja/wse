@@ -60,6 +60,7 @@ class BaseMiddleware(MiddlewareMixin):
                 pass
 
             response.data['menu'] = self.getmenu(url_name)
+            response.data['page'] = request.GET.get('page', 1)
         return response
 
 

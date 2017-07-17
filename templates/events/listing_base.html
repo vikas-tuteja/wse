@@ -11,8 +11,18 @@
 {% include "events/filters.html" %}
 
 <!-- listing -->
-{% include "events/listing.html" %}
+{% include "events/events.html" %}
 
 <!-- footer -->
 {% include "shared/footer.html" %}
 {% endblock body %}
+
+{% block customjs %}
+    <script src="{{STATIC_URL}}events/js/events.js"></script>
+
+    <script type="text/javascript">
+        EventListing.init({
+        });
+    </script>
+
+{% endblock customjs %}
