@@ -1,2 +1,26 @@
+{% block customjs %}
+<script type="text/javascript" src="{{STATIC_URL}}shared/js/jquery.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}shared/js/common.js"></script>
+
+<script type="text/javascript">
+$(function(){
+
+    $('.mobile-menu').on('click', function() {
+        $('.main-nav').css('display', 'block');
+        $('.right-menu').css('display', 'block');
+        $('body').addClass('overhide');
+    });
+
+    $('.close-nav').on('click', function() {
+        $('body').removeClass('overhide');
+        $('.main-nav').css('display', '');
+        $('.right-menu').css('display', '');
+    });
+});
+
+</script>
+
+
+{% endblock customjs %}
 </body>
 </html>

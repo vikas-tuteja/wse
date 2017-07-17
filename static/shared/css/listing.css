@@ -191,34 +191,74 @@ body {
   width: 160px; }
 
 .main-nav {
-  float: left; 
-}
+  float: left; }
+  @media (max-width: 991px) {
+    .main-nav {
+      background: #e4e4e4;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto; } }
+  @media (max-width: 991px) {
+    .main-nav ul {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto; } }
+  .main-nav li {
+    float: left;
+    padding: 6px 12px; }
+    @media (max-width: 991px) {
+      .main-nav li {
+        width: 100%;
+        text-align: center;
+        padding: 0;
+        border-bottom: 1px dashed #787878; }
+        .main-nav li:last-child {
+          border-bottom: none; } }
+    .main-nav li a {
+      -webkit-border-radius: .3em;
+         -moz-border-radius: .3em;
+              border-radius: .3em;
+      color: #368;
+      display: block;
+      font-size: .8em;
+      padding: 5px;
+      text-decoration: none;
+      text-transform: uppercase; }
+      @media (max-width: 991px) {
+        .main-nav li a {
+          padding: 20px; } }
+      .main-nav li a:hover {
+        background: #368;
+        color: #fff; }
 .selected {
     background: #368;
     color: #fff !important; 
 }
-.main-nav li {
-    float: left;
-    padding: 6px 12px;
-}
-.main-nav li a {
-    -webkit-border-radius: .3em;
-     -moz-border-radius: .3em;
-          border-radius: .3em;
-    color: #368;
-    display: block;
-    font-size: .8em;
-    padding: 5px;
-    text-decoration: none;
-    text-transform: capitalize;
-    #text-transform: uppercase;
-}
-.main-nav li a:hover {
-    background: #368;
-    color: #fff; 
-}
 .right-menu {
   float: right; }
+  @media (max-width: 424px) {
+    .right-menu {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      z-index: 999;
+      left: 0;
+      right: 0;
+      padding: 15px;
+      width: 100%;
+      text-align: center; }
+      .right-menu > div {
+        display: inline-block;
+        float: none; } }
 
 .alert, .location {
   float: left;
@@ -258,6 +298,9 @@ body {
   margin-left: 15px;
   margin-top: 2px;
   width: 25px; }
+  @media (max-width: 424px) {
+    .mobile-menu {
+      float: right; } }
   .mobile-menu span {
     background: #368;
     display: block;
@@ -267,11 +310,38 @@ body {
 
 @media (max-width: 991px) {
   .main-nav {
-    display: none; } }
+    display: none;
+    overflow: auto; } }
 
 @media (min-width: 992px) {
   .mobile-menu {
     display: none; } }
+
+.close-nav {
+  display: none; }
+  .close-nav button {
+    font-family: sans-serif;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    -webkit-appearance: none;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    padding: 10px 15px; }
+    .close-nav button:hover {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+      opacity: .75; }
+  @media (max-width: 991px) {
+    .close-nav {
+      display: block; } }
 
 [class^="icon-"] {
   display: inline-block;
@@ -396,7 +466,7 @@ body {
   .icon-short-by-name::after {
     background-position: -95px -80px;
     height: 34px;
-    top: -10px;
+    top: 0;
     -webkit-transform: scale(0.6);
        -moz-transform: scale(0.6);
         -ms-transform: scale(0.6);
@@ -412,7 +482,7 @@ body {
   .icon-short-by-type::after {
     background-position: -148px -79px;
     height: 35px;
-    top: -10px;
+    top: 0;
     -webkit-transform: scale(0.6);
        -moz-transform: scale(0.6);
         -ms-transform: scale(0.6);
@@ -485,6 +555,11 @@ body {
 .ad-box {
   width: 200px; }
 
+.overhide {
+  overflow: hidden;
+  height: 80%;
+  height: 80vh; }
+
 @media (min-width: 992px) {
   .right-col {
     width: -webkit-calc(100% - 450px);
@@ -544,6 +619,10 @@ body {
   margin-bottom: 1rem;
   min-width: 265px;
   padding: .75rem 1rem; }
+  @media (max-width: 425px) {
+    .breadcrumb {
+      width: 100%;
+      margin-top: 10px; } }
   .breadcrumb li {
     float: left; }
     .breadcrumb li + li::before {
@@ -621,21 +700,27 @@ body {
   width: 100%; }
   .boxes .left-box {
     float: left;
-    max-width: -webkit-calc(100% - 150px);
-    max-width: -moz-calc(100% - 150px);
-    max-width: calc(100% - 150px);
+    max-width: -webkit-calc(100% - 170px);
+    max-width: -moz-calc(100% - 170px);
+    max-width: calc(100% - 170px);
     width: 100%; }
-    @media (max-width: 569px) {
+    @media (max-width: 549px) {
       .boxes .left-box {
         max-width: 100%; } }
   .boxes .right-box {
-    float: right;
+    float: left;
     text-align: right;
-    width: 150px; }
+    width: 170px; }
     @media (max-width: 549px) {
       .boxes .right-box {
         margin-top: 20px;
-        text-align: left; } }
+        text-align: left;
+        width: 100%; }
+        .boxes .right-box > div {
+          float: left; }
+        .boxes .right-box > div + button {
+          margin-top: 5px;
+          float: right; } }
   .boxes .head {
     font-size: 20px;
     font-weight: bold; }
@@ -656,6 +741,9 @@ body {
   @media (max-width: 991px) {
     .events-details li {
       margin: 10px 0; } }
+  @media (max-width: 400px) {
+    .events-details li:first-child {
+      width: 100%; } }
 
 .text-small {
   color: #333;
@@ -677,7 +765,7 @@ body {
 
 .dash-cal {
   color: #368;
-  width: 100%;
+  width: 150px;
   text-align:center;
  }
 
@@ -701,7 +789,10 @@ body {
     font-weight: bold; }
   @media (max-width: 549px) {
     .page-result .left-result {
-      width: 80%; } }
+      width: 75%; } }
+  @media (max-width: 320px) {
+    .page-result .left-result {
+      width: 100%; } }
 .orange{
     color:#ea6e32;
     font-weight:bold;
@@ -711,6 +802,9 @@ body {
 }
 .page-result .right-result {
   float: right; }
+  @media (max-width: 320px) {
+    .page-result .right-result {
+      float: left; } }
 
 .filter-head {
   margin-bottom: 20px; }
@@ -765,6 +859,11 @@ body {
   @media (min-width: 992px) {
     .search-box {
       float: left; } }
+  @media (max-width: 425px) {
+    .search-box {
+      width: 100%;
+      padding: 0 15px 15px;
+      float: none; } }
 
 .input-group {
   display: -webkit-box;

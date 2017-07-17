@@ -1,5 +1,8 @@
 {% include "shared/base.html" %}
 
+{% block customcss %}
+    <link href="{{STATIC_URL}}shared/css/popup.css" rel="stylesheet">
+{% endblock customcss %}
 {% block body %}
 <!-- menu bar -->
 {% include "shared/menu.html" %}
