@@ -25,13 +25,47 @@
 .main-nav {
   float: left;
 
+  @media (max-width: 991px) {
+    background: #e4e4e4;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
   ul {
     @extend %clear;
+
+    @media (max-width: 991px) {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
   }
 
   li {
     float: left;
     padding: 6px 12px;
+
+    @media (max-width: 991px) {
+      width: 100%;
+      text-align: center;
+      padding: 0;
+      border-bottom: 1px dashed #787878;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+    }
 
     a {
       border-radius: .3em;
@@ -41,6 +75,10 @@
       padding: 5px;
       text-decoration: none;
       text-transform: uppercase;
+
+      @media (max-width: 991px) {
+        padding: 20px;
+      }
 
       &:hover {
         background: $base-blue;
@@ -52,6 +90,23 @@
 
 .right-menu {
   float: right;
+
+  @media (max-width: 424px) {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    
+    > div {
+      display: inline-block;
+      float: none;
+    }
+  }
 }
 
 %right-menu {
@@ -110,6 +165,10 @@
   margin-top: 2px;
   width: 25px;
 
+  @media (max-width: 424px) {
+    float: right;
+  }
+
   span {
     background: #368;
     display: block;
@@ -122,11 +181,44 @@
 @media (max-width: 991px) {
   .main-nav {
     display: none;
+    overflow: auto;
   }
 }
 
 @media (min-width: 992px) {
   .mobile-menu {
     display: none;
+  }
+}
+
+.close-nav {
+  display: none;
+
+  button {
+    font-family: sans-serif;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    -webkit-appearance: none;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    padding: 10px 15px;
+
+    &:hover {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+      opacity: .75;
+    } 
+  }
+
+  @media (max-width: 991px) {
+    display: block;
   }
 }

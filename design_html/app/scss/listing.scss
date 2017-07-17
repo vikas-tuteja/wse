@@ -32,6 +32,16 @@
     @media (max-width: 549px) {
       margin-top: 20px;
       text-align: left;
+      width: 100%;
+
+      > div {
+        float: left;
+      }
+
+      > div + button {
+        margin-top: 5px;
+        float: right;
+      }
     }
   }
 
@@ -62,6 +72,12 @@
 
     @media (max-width: 991px) {
       margin: 10px 0;
+    }
+
+    @media (max-width: 400px) {
+      &:first-child {
+        width: 100%;
+      }
     }
   }
 }
@@ -126,12 +142,20 @@
     }
 
     @media (max-width: 549px) {
-      width: 80%;
+      width: 75%;
+    }
+
+    @media (max-width: 320px) {
+      width: 100%;
     }
   }
 
   .right-result {
     float: right;
+
+    @media (max-width: 320px) {
+      float: left;
+    }
   }
 }
 
@@ -202,6 +226,12 @@
 
   @media (min-width: 992px) {
     float: left;
+  }
+
+  @media (max-width: 425px) {
+    width: 100%;
+    padding: 0 15px 15px;
+    float: none;
   }
 }
 
