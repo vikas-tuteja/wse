@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'users',
     'events',
     'seo',
+    'miscellanous',
     'rest_framework',
     #'django_filters',
 ]
