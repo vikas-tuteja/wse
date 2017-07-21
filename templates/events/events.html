@@ -12,7 +12,7 @@
                 {% for e in results  %}
                     <div class="boxes mb-15">
                         <div class="left-box">
-                            <h3><a class="head blue" href='{% url "event_detail" event_slug=e.slug %}'>{{e.name}}</a></h3>
+                            <h3><a class="head blue a-clean" href='{% url "event_detail" event_slug=e.slug %}'>{{e.name}}</a></h3>
                             <address><span class="icon-address"></span>{{e.venue}}, {{e.area}}, {{e.city}}</address>
                             <div class="events-details">
                                 <ol>
@@ -28,7 +28,7 @@
                                             <i class=""></i>
                                             <span class="text-small">Days</span>
                                             <input type="text" readonly class="dash-input" value="{{e.schedule.2}}">
-                                        </div>                                
+                                        </div>
                                     </li>
                                     {% if e.candidate_info.candidates_required.f %}
                                     <li>
@@ -43,7 +43,7 @@
                                         <div class="event-boys">
                                             <i class="icon-boy"></i>
                                             <input type="text" readonly class="dash-input" value="{{e.candidate_info.candidates_required.m}}">
-                                        </div>                                
+                                        </div>
                                     </li>
                                     {% endif %}
                                 </ol>
@@ -58,7 +58,7 @@
                             <!--a class="button" href="#openModal">Open it up!</a-->
                         </div>
                     </div>
-                {% endfor %} 
+                {% endfor %}
                 <div class="pagination">
                     <ul>
                         {% paginate pagesize=10 currentpage=page resultcount=count %}
@@ -70,7 +70,7 @@
             </div>
         </div>
     </div>
-    
+
 
  <!-- pop up div -->
 <div id="openModal" class="modalbg">

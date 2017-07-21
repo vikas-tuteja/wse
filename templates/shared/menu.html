@@ -3,7 +3,12 @@
     <div class="logo">
         <i class="icon-logo"></i>
     </div>
-    <nav class="main-nav"> 
+    <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav class="main-nav">
         <ul>
             {% for x in menu %}
                 <li><a href="{% url x.0 %}" class = "{{x.2}}">{{x.1}}</a></li>
