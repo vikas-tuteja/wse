@@ -2,9 +2,31 @@ import django_filters
 
 from models import Event
 
+
+class EventFilterBackend(object):
+    """
+    filters from url patterns, not used as of now
+
+    """
+    def filter_queryset(self, request, queryset, view):
+        fltr = {}
+        for dbk, k in (('area','area_slug'), ('city','city_slug')):
+            slug = view.kwargs.get(k)
+            if slug:
+                fltr.update({
+                    "%s__slug" % dbk : slug,
+                })
+        queryset = queryset.filter(**fltr)
+        return queryset.all()
+
+
 class EventFilters(django_filters.FilterSet):
+    """
+    filters from kwargs
+
+    """
     city = django_filters.CharFilter(name="city__slug")
-    area = django_filters.CharFilter(name="area__slug")
+    area = django_filters.Filter(method="get_area")
     venue = django_filters.Filter(method="get_venue")
     name = django_filters.Filter(method="search_events")
     sort = django_filters.Filter(method="sort_data")
@@ -16,7 +38,11 @@ class EventFilters(django_filters.FilterSet):
 
     class Meta:
         model = Event
-        fields = ('city', 'area', 'venue')
+        fields = ('venue', 'city', 'area')
+
+    def get_area(self, queryset, name, value):
+        qs = queryset.filter(area__slug__in=value.split(','))
+        return qs
 
     def get_venue(self, queryset, name, value):
         qs = queryset.filter(venue__icontains=value)
@@ -45,5 +71,23 @@ class EventFilters(django_filters.FilterSet):
 
     def get_duration(self, queryset, name, value):
         # TODO add days filter
-        qs = queryset.filter()
+        if value == '1':
+            qs = [ x for x in queryset.all() if x.schedule()[2] == 1 ]
+        elif value == '7':
+            qs = [ x for x in queryset.all() if x.schedule()[2] <= 7 ]
+        elif value == '8':
+            qs = [ x for x in queryset.all() if x.schedule()[2] >= 8 ]
+        elif value == '2':
+            # only weeknd events
+            qs = []
+            for obj in queryset.all():
+                weekend = True
+                for each_date in obj.schedule_set.all():
+                    if each_date.start_date.isoweekday() not in (6,7):
+                        weekend = False
+                        break
+                
+                if weekend:
+                    qs.append(obj)
+
         return qs

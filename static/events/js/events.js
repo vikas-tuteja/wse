@@ -51,20 +51,35 @@
             // TODO ask pawan about area filters
             var url = '';
             var type = '';
+            var area_url = '';
+            var area = [];
 
             var gender = $("#gender:checked").val();
             var duration = $("#duration:checked").val();
+            $("#area:checked").each(function (idx, val){
+                if(idx==0) {
+                    area_url = $(this).val();
+                }
+                area.push($(this).val());
+            });
             $("#type:checked").each(function (){
                 type += $(this).val() + ",";
             });
 
+            // area comes in url not queryparams + TODO check from PAWAN
+            if(area_url) {
+                url = '/events-in-' + area_url + '/';
+                if(area.length > 0 ) {
+                    url = Common.form_unique_params('area', area, url, false);
+                }
+            }
             if(gender && gender != undefined) {
                 url = Common.form_unique_params('gender', gender, url, false);
             }
             if(type) {
                 url = Common.form_unique_params('requirement', type, url, false);
             }
-            if(duration) {
+            if(duration && duration != undefined) {
                 url = Common.form_unique_params('duration', duration, url, false);
             }
 
@@ -85,7 +100,7 @@
             $.each(["type","area"], function(idx, elem){
                 $("#"+elem+":checked").removeAttr("checked");
             });
-            window.location.href = document.URL.split('?')[0]
+            window.location.href = '/events/';
             
         });
 

@@ -8,7 +8,7 @@ from django.db import IntegrityError
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 
-from filters import EventFilters
+from filters import EventFilters, EventFilterBackend
 from models import Event, Requirement, RequirementApplication
 from utility import mygenerics
 from rest_framework import generics

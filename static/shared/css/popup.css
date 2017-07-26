@@ -1,7 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+#@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
 body {
   width: 100%;
-  #background: url(http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/grid.png) repeat #fefefe;
 }
 /*.button {
   margin: 40px;

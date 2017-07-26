@@ -26,23 +26,24 @@
                                         <div class="event-day">
                                             <!--i class="icon-date"></i-->
                                             <i class=""></i>
-                                            <span class="text-small">Days</span>
-                                            <input type="text" readonly class="dash-input" value="{{e.schedule.2}}">
+                                            <!--input type="text" readonly class="dash-input" value="{{e.schedule.2}}"-->
+                                            <b>{{e.schedule.2}}</b>
+                                            <span class="text-small">Day(s)</span>
                                         </div>
                                     </li>
                                     {% if e.candidate_info.candidates_required.f %}
                                     <li>
                                         <div class="event-girls">
-                                            <i class="icon-girl"></i>
                                             <input type="text" readonly class="dash-input" value="{{e.candidate_info.candidates_required.f}}">
+                                            <i class="icon-girl"></i>
                                         </div>
                                     </li>
                                     {% endif %}
                                     {% if e.candidate_info.candidates_required.m %}
                                     <li>
                                         <div class="event-boys">
-                                            <i class="icon-boy"></i>
                                             <input type="text" readonly class="dash-input" value="{{e.candidate_info.candidates_required.m}}">
+                                            <i class="icon-boy"></i>
                                         </div>
                                     </li>
                                     {% endif %}

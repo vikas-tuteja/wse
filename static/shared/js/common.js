@@ -12,16 +12,18 @@
             var lis = '';
             $(resultelem).html(lis);
 
-            var data = param + "=" + $.trim($(elem).val());
-            var x = ajaxcall(url, 'GET', data);
+            if($.trim($(elem).val())) {
+                var data = param + "=" + $.trim($(elem).val());
+                var x = ajaxcall(url, 'GET', data);
             
-            x.done(function(resp){
-                var response = resp.results;
-                $.each(response, function(i, e){
-                    lis += '<a class="suggest_item" href="' + url + e.slug + '/">' + e.name + '</a>';
+                x.done(function(resp){
+                    var response = resp.results;
+                    $.each(response, function(i, e){
+                        lis += '<a class="suggest_item" href="' + url + e.slug + '/">' + e.name + '</a>';
+                    });
+                    $(resultelem).html(lis);
                 });
-                $(resultelem).html(lis);
-            });
+            }
         });
     }
 
