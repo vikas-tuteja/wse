@@ -1,0 +1,25 @@
+{% include "shared/base.html" %}
+
+{% block customcss %}
+    <link href="" rel="stylesheet">
+{% endblock customcss %}
+{% block body %}
+<!-- menu bar -->
+{% include "shared/menu.html" %}
+
+<!-- my profile -->
+{% include "users/my_profile.html" %}
+
+<!-- footer -->
+{% include "shared/footer.html" %}
+{% endblock body %}
+
+{% block customjs %}
+    <script src="{{STATIC_URL}}users/js/my_profile.js"></script>
+
+    <script type="text/javascript">
+        MyProfile.init({
+        });
+    </script>
+
+{% endblock customjs %}

@@ -1,0 +1,15 @@
+{% include "shared/base.html" %}
+{% block customcss %}
+    <link href="{{STATIC_URL}}shared/css/listing.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}shared/css/about_us.css" rel="stylesheet">
+{% endblock customcss %}
+{% block body %}
+<!-- menu bar -->
+{% include "shared/menu.html" %}
+
+<!-- footer -->
+{% include "shared/footer.html" %}
+{% endblock body %}
+
+{% block customjs %}
+{% endblock customjs %}

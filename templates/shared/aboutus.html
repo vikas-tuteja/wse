@@ -1,0 +1,65 @@
+{% include "shared/base.html" %}
+{% block customcss %}
+    <link href="{{STATIC_URL}}shared/css/listing.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}shared/css/about_us.css" rel="stylesheet">
+{% endblock customcss %}
+{% block body %}
+<!-- menu bar -->
+{% include "shared/menu.html" %}
+<div class="body-center">
+    <p class="blue"><b>&nbsp;&nbsp;WHO WE ARE</b></p>
+
+    <div class="divider"></div>
+    <p class="sub">Something something something...
+    bla bla bla...</p>
+
+    <p class="blue" style="margin-top:30px;"><b>&nbsp;&nbsp;WHAT DO WE DO</b></p>
+    <div class="divider"></div>
+    <p class="sub">Something something something...
+    bla bla bla...</p>
+
+    <p class="blue" style="margin-top:30px;"><b>&nbsp;&nbsp;MEET OUR TEAM</b></p>
+    <div class="divider"></div>
+
+    <div class="clearfix">
+        <div class="col-33">
+            <div class="circle"></div>
+            <div>
+                <h3 class="blue">Vikas Tuteja</h3>
+                <p class="smallsub">Head of Technology & Co-Founder</p>
+                <p class="sub">"7+ years of experience in Software Development and Web Technologies."</p>
+            </div>
+        </div>
+        <div class="divider-vertical"></div>
+
+
+        <div class="col-33">
+            <div class="circle"></div>
+            <div>
+                <h3 class="blue">Koushik Patnaik</h3>
+                <p class="smallsub">Product Head & Co-Founder</p>
+                <p class="sub">"Vast experience of approximately 8 years in designing products."</p>
+                
+            </div>
+        </div>
+        <div class="divider-vertical"></div>
+
+
+        <div class="col-33">
+            <div class="circle"></div>
+            <div>
+                <h3 class="blue">Mehul Tuteja</h3>
+                <p class="smallsub">Sales / Operations Head & Co-Founder</p>
+                <p class="sub">"3+ years of experience in Managing Events and Sales / Operations."</p>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+{% include "shared/footer.html" %}
+{% endblock body %}
+
+{% block customjs %}
+{% endblock customjs %}

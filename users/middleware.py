@@ -66,13 +66,14 @@ class BaseMiddleware(MiddlewareMixin):
 
     def getmenu(self, page):
         menu = [
-            ['home', 'Home'],
+            #['home', 'Home'],
             ['event_listing', 'Events'],
             ['clients', 'Clients'],
             ['testimonials', 'Testimonial'],
             ['articles', 'Articles'],
             ['faqs', 'FAQ'],
             ['contact_us', 'Contact us'],
+            ['about_us', 'About us'],
         ]
         
         [ x.append("selected") if page == x[0] else x.append(None) for x in menu]

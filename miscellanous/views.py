@@ -14,16 +14,19 @@ class Common( generics.ListAPIView):
     template_name = "shared/menu.html"
     
 class Faqs( Common ):
-    pass
+    template_name = "shared/faqs.html"
 
 class Articles( Common ):
-    pass
+    template_name = "shared/articles.html"
 
 class Clients( Common ):
     pass
 
 class Testimonials( Common ):
-    pass
+    template_name = "shared/testimonials.html"
 
 class ContactUs( Common ):
-    pass
+    template_name = "shared/contact_us.html"
+
+class AboutUs( Common ):
+    template_name = "shared/aboutus.html"

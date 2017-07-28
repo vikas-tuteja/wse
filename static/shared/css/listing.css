@@ -141,6 +141,12 @@ table {
 .nav-strip::after, .main-nav ul::after, .row::after, .breadcrumb::after, .boxes::after, .events-details ol::after, .page-result::after, .filter-head::after {
   clear: both; }
 
+.clearfix:after {
+    clear:both;
+    content:'';
+    display:block;
+    visibility:hidden;
+}
 body {
   background-color: #f8f8f8;
   font-family: 'Roboto', Verdana, Geneva, sans-serif;
@@ -799,6 +805,7 @@ body {
 }
 .blue {
   color:#368;
+  font-style:bold;
 }
 .page-result .right-result {
   float: right; }

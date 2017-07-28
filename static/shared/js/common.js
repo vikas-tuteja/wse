@@ -1,4 +1,4 @@
-;(function($i, Common){
+;(function($, Common){
     
     function init(options) {
     }

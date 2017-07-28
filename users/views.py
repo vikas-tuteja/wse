@@ -31,6 +31,7 @@ class CreateUser( generics.CreateAPIView ):
                : user_role
                : mobile
     
+    PS: if not password, then mobile = password
     """
     serializer_class = UserSerializer
     queryset = UserDetail.objects.all()
@@ -53,13 +54,13 @@ class CreateUser( generics.CreateAPIView ):
                     username = email,
                     email = email,
                 )
-                auth_user.set_password(kwargs.get('password'))
+                auth_user.set_password(kwargs.get('password', kwargs.get('mobile')))
                 auth_user.save()
                 
                 # then create userdetails
                 user_detail = UserDetail.objects.create(
                     auth_user = auth_user,
-                    type = UserRole.objects.get(slug=kwargs.get('user_role')),
+                    type = UserRole.objects.get(slug=kwargs.get('user_role', 'candidate')),
                     mobile = mobile,
                 )
                 user_detail.save()
@@ -73,7 +74,7 @@ class CreateUser( generics.CreateAPIView ):
             message = 'User with this email or mobile already exists '
 
         return JsonResponse(data={
-            'status':True,
+            'status':status,
             'message':message
         })
         
@@ -237,3 +238,10 @@ class UserProfileCompletionMeter( generics.ListAPIView ):
         return JsonResponse(data={
             'profile_completed':meter.compute_percent(),
         })
+
+class UserProfile( generics.ListAPIView ):
+    serializer_class = UserMeterSerializer
+    queryset = UserDetail.objects.all()
+    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
+    filter_class = UserFilters
+    template_name = 'users/my_profile_base.html'
