@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
-from django_redis import get_redis_connection
+# from django_redis import get_redis_connection
 
 from master.models import Area, State, City
 from choices import *

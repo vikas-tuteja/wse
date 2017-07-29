@@ -1,0 +1,183 @@
+$icon-images: '../images/icons.png';
+
+[class^="icon-"] {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+
+  &::after {
+    background-image: url($icon-images);
+    background-repeat: no-repeat;
+    content: '';
+    display: block;
+    position: absolute;
+  }
+}
+
+.icon-logo {
+  background: #fff;
+  border-radius: 100%;
+  box-shadow: 1px 2px 6px $shadow-light;
+  height: 160px;
+  position: absolute;
+  top: -70px;
+  width: 160px;
+
+  &::after {
+    background-position: -242px -21px;
+    bottom: 0;
+    height: 90px;
+    left: 0;
+    margin: auto;
+    right: 0;
+    top: 20px;
+    width: 113px;
+  }
+}
+
+.icon-cal {
+  height: 29px;
+  width: 29px;
+
+  &::after {
+    background-position: -86px -8px;
+    height: 29px;
+    transform: scale(.8);
+    width: 29px;
+  }
+}
+
+.icon-date {
+  height: 28px;
+  margin-right: 5px;
+  width: 24px;
+
+  &::after {
+    background-position: -41px -9px;
+    height: 28px;
+    transform: scale(.8);
+    width: 24px;
+  }
+}
+
+.icon-girl {
+  height: 30px;
+  margin-right: 5px;
+  width: 28px;
+
+  &::after {
+    background-position: -41px -74px;
+    height: 40px;
+    top: -6px;
+    transform: scale(.7);
+    width: 32px;
+  }
+}
+
+.icon-boy {
+  height: 30px;
+  margin-right: 5px;
+  width: 25px;
+
+  &::after {
+    background-position: 0 -74px;
+    height: 40px;
+    top: -6px;
+    transform: scale(.7);
+    width: 27px;
+  }
+}
+
+.icon-rupees {
+  height: 46px;
+  margin-right: 5px;
+  width: 30px;
+
+  &::after {
+    background-position: 0 0;
+    height: 46px;
+    top: -2px;
+    transform: scale(.8);
+    width: 30px;
+  }
+}
+
+.icon-address {
+  height: 18px;
+  margin-right: 5px;
+  width: 12px;
+
+  &::after {
+    background-position: -126px -14px;
+    height: 18px;
+    top: -2px;
+    width: 12px;
+  }
+}
+
+.icon-short-by-name {
+  height: 35px;
+  margin-right: 5px;
+  width: 31px;
+
+  &::after {
+    background-position: -95px -80px;
+    height: 34px;
+    top: 0;
+    transform: scale(.6);
+    width: 31px;
+  }
+}
+
+.icon-short-by-type {
+  height: 35px;
+  margin-left: 5px;
+  width: 35px;
+
+  &::after {
+    background-position: -148px -79px;
+    height: 35px;
+    top: 0;
+    transform: scale(.6);
+    width: 32px;
+  }
+}
+
+.icon-filterclear {
+  height: 15px;
+  margin-right: 5px;
+  width: 14px;
+
+  &::after {
+    background-position: -149px -15px;
+    height: 15px;
+    top: -2px;
+    width: 14px;
+  }
+}
+
+.icon-alert {
+  height: 24px;
+  margin-right: 5px;
+  width: 22px;
+
+  &::after {
+    background-position: -198px -11px;
+    height: 24px;
+    transform: scale(.8);
+    width: 22px;
+  }
+}
+
+.icon-location-main {
+  height: 24px;
+  margin-right: 5px;
+  width: 15px;
+
+  &::after {
+    background-position: -173px -9px;
+    height: 25px;
+    transform: scale(.8);
+    width: 15px;
+  }
+}

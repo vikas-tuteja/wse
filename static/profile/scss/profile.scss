@@ -1,0 +1,24 @@
+@import '../../scss/components/global';
+
+@import '../../scss/components/breadcrumb';
+
+%left-box {
+  float: left;
+}
+
+.columns {
+  @extend %clear;
+  width: 100%;
+
+  &-profile {
+    @extend %left-box;
+  }
+
+  &-listing {
+    @extend %left-box;
+  }
+
+  &-details {
+    @extend %left-box;
+  }
+}
