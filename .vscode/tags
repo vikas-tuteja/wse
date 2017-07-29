@@ -1,0 +1,790 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+0001_initial.py	../events/migrations/0001_initial.py	1;"	kind:file	line:1
+0001_initial.py	../master/migrations/0001_initial.py	1;"	kind:file	line:1
+0001_initial.py	../seo/migrations/0001_initial.py	1;"	kind:file	line:1
+0001_initial.py	../users/migrations/0001_initial.py	1;"	kind:file	line:1
+0002_area.py	../master/migrations/0002_area.py	1;"	kind:file	line:1
+0002_auto_20170624_1542.py	../events/migrations/0002_auto_20170624_1542.py	1;"	kind:file	line:1
+0002_auto_20170624_1815.py	../users/migrations/0002_auto_20170624_1815.py	1;"	kind:file	line:1
+0003_auto_20170624_1815.py	../events/migrations/0003_auto_20170624_1815.py	1;"	kind:file	line:1
+0003_auto_20170625_1717.py	../users/migrations/0003_auto_20170625_1717.py	1;"	kind:file	line:1
+0004_auto_20170625_1728.py	../events/migrations/0004_auto_20170625_1728.py	1;"	kind:file	line:1
+0004_auto_20170625_1728.py	../users/migrations/0004_auto_20170625_1728.py	1;"	kind:file	line:1
+0005_auto_20170625_1745.py	../events/migrations/0005_auto_20170625_1745.py	1;"	kind:file	line:1
+0005_auto_20170626_0712.py	../users/migrations/0005_auto_20170626_0712.py	1;"	kind:file	line:1
+0006_auto_20170626_0714.py	../users/migrations/0006_auto_20170626_0714.py	1;"	kind:file	line:1
+0006_event_slug.py	../events/migrations/0006_event_slug.py	1;"	kind:file	line:1
+0007_auto_20170626_0739.py	../users/migrations/0007_auto_20170626_0739.py	1;"	kind:file	line:1
+0007_auto_20170626_1820.py	../events/migrations/0007_auto_20170626_1820.py	1;"	kind:file	line:1
+0008_auto_20170630_1238.py	../events/migrations/0008_auto_20170630_1238.py	1;"	kind:file	line:1
+0008_auto_20170701_0641.py	../users/migrations/0008_auto_20170701_0641.py	1;"	kind:file	line:1
+0009_auto_20170701_0641.py	../events/migrations/0009_auto_20170701_0641.py	1;"	kind:file	line:1
+0009_auto_20170718_1516.py	../users/migrations/0009_auto_20170718_1516.py	1;"	kind:file	line:1
+0010_auto_20170718_1516.py	../events/migrations/0010_auto_20170718_1516.py	1;"	kind:file	line:1
+ALLOCATION_STATUS	../events/choices.py	/^ALLOCATION_STATUS = ($/;"	kind:variable	line:44
+ALLOWED_HOSTS	../wse/devsettings.py	/^ALLOWED_HOSTS = ['www.worksmartevents.com', '127.0.0.1', '172.16.64.91']$/;"	kind:variable	line:1
+ALLOWED_HOSTS	../wse/settings.py	/^ALLOWED_HOSTS = ['www.worksmartevents.com', 'worksmartevents.com']$/;"	kind:variable	line:28
+APPLICATION_STATUS	../events/choices.py	/^APPLICATION_STATUS = ($/;"	kind:variable	line:38
+AS_MAIN	../utility/mygenerics.py	/^AS_MAIN=1$/;"	kind:variable	line:25
+AUTH_PASSWORD_VALIDATORS	../wse/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:109
+AboutUs	../miscellanous/views.py	/^class AboutUs( Common ):$/;"	kind:class	line:31
+AbsolutePathFilter	../seo/admin.py	/^class AbsolutePathFilter(admin.SimpleListFilter):$/;"	kind:class	line:11
+AllocationStatus	../events/models.py	/^class AllocationStatus(models.Model):$/;"	kind:class	line:110
+AllocationStatusForm	../events/admin.py	/^class AllocationStatusForm(ActionForm):$/;"	kind:class	line:14
+ApplyForRequirement	../events/views.py	/^class ApplyForRequirement( generics.CreateAPIView ):$/;"	kind:class	line:90
+ApplyRequirementSerializer	../events/serializers.py	/^class ApplyRequirementSerializer( serializers.ModelSerializer ):$/;"	kind:class	line:48
+Area	../master/models.py	/^class Area(models.Model):$/;"	kind:class	line:24
+AreaAdmin	../master/admin.py	/^class AreaAdmin(admin.ModelAdmin):$/;"	kind:class	line:13
+AreaList	../master/views.py	/^class AreaList( generics.ListAPIView, mygenerics.RelatedView ):$/;"	kind:class	line:13
+AreaSerializer	../master/serializers.py	/^class AreaSerializer( serializers.ModelSerializer ):$/;"	kind:class	line:5
+Articles	../miscellanous/views.py	/^class Articles( Common ):$/;"	kind:class	line:19
+AuthUserSerializer	../users/serializers.py	/^class AuthUserSerializer( serializers.ModelSerializer ):$/;"	kind:class	line:7
+BASE_DIR	../wse/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:16
+BaseMiddleware	../users/middleware.py	/^class BaseMiddleware(MiddlewareMixin):$/;"	kind:class	line:10
+CACHES	../wse/settings.py	/^CACHES = {$/;"	kind:variable	line:153
+CANDIDATE_CLASS	../events/choices.py	/^CANDIDATE_CLASS = ($/;"	kind:variable	line:30
+CANDIDATE_TYPE	../events/choices.py	/^CANDIDATE_TYPE = ($/;"	kind:variable	line:1
+CORDINATOR_WORKING_FOR	../users/choices.py	/^CORDINATOR_WORKING_FOR = ($/;"	kind:variable	line:1
+CandidateAdminInline	../users/admin.py	/^class CandidateAdminInline(admin.StackedInline):$/;"	kind:class	line:21
+CandidateAttribute	../users/models.py	/^class CandidateAttribute(models.Model):$/;"	kind:class	line:88
+CandidateType	../users/models.py	/^class CandidateType(models.Model):$/;"	kind:class	line:29
+ChangePassword	../users/views.py	/^class ChangePassword( generics.UpdateAPIView ):$/;"	kind:class	line:148
+CheckUsernameExists	../users/views.py	/^class CheckUsernameExists( generics.ListAPIView ):$/;"	kind:class	line:184
+City	../master/models.py	/^class City(models.Model):$/;"	kind:class	line:15
+CityAdmin	../master/admin.py	/^class CityAdmin(admin.ModelAdmin):$/;"	kind:class	line:10
+ClientAdminInline	../users/admin.py	/^class ClientAdminInline(admin.StackedInline):$/;"	kind:class	line:9
+ClientAttribute	../users/models.py	/^class ClientAttribute(models.Model):$/;"	kind:class	line:63
+Clients	../miscellanous/views.py	/^class Clients( Common ):$/;"	kind:class	line:22
+Common	../miscellanous/views.py	/^class Common( generics.ListAPIView):$/;"	kind:class	line:11
+ComputeCompletion	../utility/utils.py	/^class ComputeCompletion(object):$/;"	kind:class	line:33
+ContactUs	../miscellanous/views.py	/^class ContactUs( Common ):$/;"	kind:class	line:28
+CordinatorAdminInline	../users/admin.py	/^class CordinatorAdminInline(admin.StackedInline):$/;"	kind:class	line:15
+CordinatorAttribute	../users/models.py	/^class CordinatorAttribute(models.Model):$/;"	kind:class	line:77
+CreateUser	../users/views.py	/^class CreateUser( generics.CreateAPIView ):$/;"	kind:class	line:23
+DATABASES	../wse/devsettings.py	/^DATABASES = {$/;"	kind:variable	line:3
+DATABASES	../wse/settings.py	/^DATABASES = {$/;"	kind:variable	line:93
+DEBUG	../wse/settings.py	/^DEBUG = True$/;"	kind:variable	line:26
+EVENT_STATUS	../events/choices.py	/^EVENT_STATUS = ($/;"	kind:variable	line:22
+Event	../events/models.py	/^class Event(models.Model):$/;"	kind:class	line:14
+EventAdmin	../events/admin.py	/^class EventAdmin(admin.ModelAdmin):$/;"	kind:class	line:55
+EventDetail	../events/views.py	/^class EventDetail( mygenerics.ListAPIView ):$/;"	kind:class	line:73
+EventDetailSerializer	../events/serializers.py	/^class EventDetailSerializer( ListEventSerializer ):$/;"	kind:class	line:40
+EventFilterBackend	../events/filters.py	/^class EventFilterBackend(object):$/;"	kind:class	line:6
+EventFilters	../events/filters.py	/^class EventFilters(django_filters.FilterSet):$/;"	kind:class	line:23
+EventListing	../events/views.py	/^class EventListing( generics.ListAPIView, mygenerics.RelatedView ):$/;"	kind:class	line:22
+EventsConfig	../events/apps.py	/^class EventsConfig(AppConfig):$/;"	kind:class	line:7
+Faqs	../miscellanous/views.py	/^class Faqs( Common ):$/;"	kind:class	line:16
+ForgotPassword	../users/views.py	/^class ForgotPassword( generics.UpdateAPIView ):$/;"	kind:class	line:112
+FormatResponse	../utility/mygenerics.py	/^class FormatResponse(object):$/;"	kind:class	line:5
+GENDER	../events/choices.py	/^GENDER = ($/;"	kind:variable	line:15
+INSTALLED_APPS	../wse/settings.py	/^INSTALLED_APPS = [$/;"	kind:variable	line:33
+LANGUAGE_CODE	../wse/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	kind:variable	line:128
+LANGUAGE_PROFICIENCY	../users/choices.py	/^LANGUAGE_PROFICIENCY = ($/;"	kind:variable	line:7
+LOOKS	../users/choices.py	/^LOOKS = ($/;"	kind:variable	line:15
+ListAPIView	../utility/mygenerics.py	/^                  generics.GenericAPIView):$/;"	kind:class	line:16
+ListEventSerializer	../events/serializers.py	/^class ListEventSerializer( serializers.ModelSerializer ):$/;"	kind:class	line:5
+ListRequirementSerializer	../events/serializers.py	/^class ListRequirementSerializer( serializers.ModelSerializer ):$/;"	kind:class	line:31
+LoginUser	../users/views.py	/^class LoginUser( generics.ListAPIView ):$/;"	kind:class	line:82
+MIDDLEWARE	../wse/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:52
+Mask	../utility/utils.py	/^class Mask(object):$/;"	kind:class	line:1
+MasterConfig	../master/apps.py	/^class MasterConfig(AppConfig):$/;"	kind:class	line:7
+Media	../seo/admin.py	/^    class Media:$/;"	kind:class	line:33
+Meta	../events/filters.py	/^    class Meta:$/;"	kind:class	line:39
+Meta	../events/models.py	/^    class Meta:$/;"	kind:class	line:97
+Meta	../events/serializers.py	/^    class Meta:$/;"	kind:class	line:14
+Meta	../events/serializers.py	/^    class Meta:$/;"	kind:class	line:35
+Meta	../events/serializers.py	/^    class Meta:$/;"	kind:class	line:43
+Meta	../events/serializers.py	/^    class Meta:$/;"	kind:class	line:49
+Meta	../master/serializers.py	/^    class Meta: $/;"	kind:class	line:8
+Meta	../seo/forms.py	/^    class Meta:$/;"	kind:class	line:20
+Meta	../users/filters.py	/^    class Meta:$/;"	kind:class	line:7
+Meta	../users/models.py	/^    class Meta:$/;"	kind:class	line:103
+Meta	../users/models.py	/^    class Meta:$/;"	kind:class	line:52
+Meta	../users/models.py	/^    class Meta:$/;"	kind:class	line:73
+Meta	../users/models.py	/^    class Meta:$/;"	kind:class	line:84
+Meta	../users/serializers.py	/^    class Meta:$/;"	kind:class	line:14
+Meta	../users/serializers.py	/^    class Meta:$/;"	kind:class	line:22
+Meta	../users/serializers.py	/^    class Meta:$/;"	kind:class	line:8
+MetaData	../seo/models.py	/^class MetaData(models.Model):$/;"	kind:class	line:10
+MetaDataAdmin	../seo/admin.py	/^class MetaDataAdmin(admin.ModelAdmin):$/;"	kind:class	line:25
+MetaDataMiddleware	../seo/middleware.py	/^class MetaDataMiddleware():pass$/;"	kind:class	line:1
+Migration	../events/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:10
+Migration	../events/migrations/0002_auto_20170624_1542.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+Migration	../events/migrations/0003_auto_20170624_1815.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+Migration	../events/migrations/0004_auto_20170625_1728.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../events/migrations/0005_auto_20170625_1745.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+Migration	../events/migrations/0006_event_slug.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../events/migrations/0007_auto_20170626_1820.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+Migration	../events/migrations/0008_auto_20170630_1238.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../events/migrations/0009_auto_20170701_0641.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:11
+Migration	../events/migrations/0010_auto_20170718_1516.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../master/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+Migration	../master/migrations/0002_area.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+Migration	../seo/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../users/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:11
+Migration	../users/migrations/0002_auto_20170624_1815.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../users/migrations/0003_auto_20170625_1717.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+Migration	../users/migrations/0004_auto_20170625_1728.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:10
+Migration	../users/migrations/0005_auto_20170626_0712.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../users/migrations/0006_auto_20170626_0714.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:10
+Migration	../users/migrations/0007_auto_20170626_0739.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../users/migrations/0008_auto_20170701_0641.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../users/migrations/0009_auto_20170718_1516.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+MiscellanousConfig	../miscellanous/apps.py	/^class MiscellanousConfig(AppConfig):$/;"	kind:class	line:7
+MonkeyPatchConfig	../monkey_patch/apps.py	/^class MonkeyPatchConfig(AppConfig):$/;"	kind:class	line:7
+MyModelForm	../seo/forms.py	/^class MyModelForm(forms.ModelForm):$/;"	kind:class	line:5
+NoPagination	../utility/mygenerics.py	/^class NoPagination(object):$/;"	kind:class	line:49
+PaginateNode	../events/templatetags/paginate_tag.py	/^class PaginateNode(template.Node):$/;"	kind:class	line:10
+REST_FRAMEWORK	../wse/settings.py	/^REST_FRAMEWORK = {$/;"	kind:variable	line:160
+ROOT_URLCONF	../wse/settings.py	/^ROOT_URLCONF = 'wse.urls'$/;"	kind:variable	line:63
+RelatedView	../utility/mygenerics.py	/^class RelatedView(object):$/;"	kind:class	line:26
+Requirement	../events/models.py	/^class Requirement(models.Model):$/;"	kind:class	line:64
+RequirementApplication	../events/models.py	/^class RequirementApplication(models.Model):$/;"	kind:class	line:88
+RequirementApplicationAdmin	../events/admin.py	/^class RequirementApplicationAdmin(admin.ModelAdmin):$/;"	kind:class	line:36
+RequirementListing	../events/views.py	/^class RequirementListing( mygenerics.ListAPIView ):$/;"	kind:class	line:56
+RequirementsAdminInline	../events/admin.py	/^class RequirementsAdminInline(admin.StackedInline):$/;"	kind:class	line:49
+RequirmentAdmin	../events/admin.py	/^class RequirmentAdmin(admin.ModelAdmin):$/;"	kind:class	line:65
+STATICFILES_DIRS	../wse/settings.py	/^STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)$/;"	kind:variable	line:145
+STATICFILES_FINDERS	../wse/settings.py	/^STATICFILES_FINDERS = ($/;"	kind:variable	line:147
+STATIC_URL	../wse/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:142
+Schedule	../events/models.py	/^class Schedule(models.Model):$/;"	kind:class	line:53
+ScheduleAdminInline	../events/admin.py	/^class ScheduleAdminInline(admin.StackedInline):$/;"	kind:class	line:43
+SeoConfig	../seo/apps.py	/^class SeoConfig(AppConfig):$/;"	kind:class	line:7
+State	../master/models.py	/^class State(models.Model):$/;"	kind:class	line:7
+TEMPLATES	../wse/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:65
+TEMPLATE_LOADERS	../wse/settings.py	/^TEMPLATE_LOADERS = ($/;"	kind:variable	line:81
+TIME_ZONE	../wse/settings.py	/^TIME_ZONE = 'UTC'$/;"	kind:variable	line:130
+Testimonials	../miscellanous/views.py	/^class Testimonials( Common ):$/;"	kind:class	line:25
+URL_CHOICE_TYPE	../seo/models.py	/^URL_CHOICE_TYPE = ((False, "No"), (True, "Yes"),)$/;"	kind:variable	line:7
+USE_I18N	../wse/settings.py	/^USE_I18N = True$/;"	kind:variable	line:132
+USE_L10N	../wse/settings.py	/^USE_L10N = True$/;"	kind:variable	line:134
+USE_TZ	../wse/settings.py	/^USE_TZ = True$/;"	kind:variable	line:136
+UserDetail	../users/models.py	/^class UserDetail(models.Model):$/;"	kind:class	line:37
+UserFilters	../users/filters.py	/^class UserFilters(django_filters.FilterSet):$/;"	kind:class	line:4
+UserMeterSerializer	../users/serializers.py	/^class UserMeterSerializer( serializers.ModelSerializer ):$/;"	kind:class	line:19
+UserProfile	../users/views.py	/^class UserProfile( generics.ListAPIView ):$/;"	kind:class	line:242
+UserProfileCompletionMeter	../users/views.py	/^class UserProfileCompletionMeter( generics.ListAPIView ):$/;"	kind:class	line:212
+UserRole	../users/models.py	/^class UserRole(models.Model):$/;"	kind:class	line:21
+UserSerializer	../users/serializers.py	/^class UserSerializer( serializers.ModelSerializer ):$/;"	kind:class	line:13
+UsersAdmin	../users/admin.py	/^class UsersAdmin(admin.ModelAdmin):$/;"	kind:class	line:28
+UsersConfig	../users/apps.py	/^class UsersConfig(AppConfig):$/;"	kind:class	line:7
+WSGI_APPLICATION	../wse/settings.py	/^WSGI_APPLICATION = 'wse.wsgi.application'$/;"	kind:variable	line:87
+__call__	../users/middleware.py	/^    def __call__(self, request):$/;"	kind:member	line:20
+__init__	../events/templatetags/paginate_tag.py	/^    def __init__(self,currentpage,pagesize,resultcount):$/;"	kind:member	line:11
+__init__	../users/middleware.py	/^    def __init__(self, get_response):$/;"	kind:member	line:16
+__init__	../utility/utils.py	/^    def __init__(self, data):$/;"	kind:member	line:38
+__init__	../utility/utils.py	/^    def __init__(self, name, mask_flag = True, maskcharacter = '*'):$/;"	kind:member	line:7
+__init__.py	../events/__init__.py	1;"	kind:file	line:1
+__init__.py	../events/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../events/templatetags/__init__.py	1;"	kind:file	line:1
+__init__.py	../master/__init__.py	1;"	kind:file	line:1
+__init__.py	../master/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../miscellanous/__init__.py	1;"	kind:file	line:1
+__init__.py	../miscellanous/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../monkey_patch/__init__.py	1;"	kind:file	line:1
+__init__.py	../monkey_patch/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../seo/__init__.py	1;"	kind:file	line:1
+__init__.py	../seo/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../users/__init__.py	1;"	kind:file	line:1
+__init__.py	../users/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../utility/__init__.py	1;"	kind:file	line:1
+__init__.py	../wse/__init__.py	1;"	kind:file	line:1
+__schedule__	../events/admin.py	/^    def __schedule__(self, obj):$/;"	kind:member	line:60
+__unicode__	../events/models.py	/^    def __unicode__( self ):$/;"	kind:member	line:115
+__unicode__	../events/models.py	/^    def __unicode__( self ):$/;"	kind:member	line:33
+__unicode__	../events/models.py	/^    def __unicode__( self ):$/;"	kind:member	line:60
+__unicode__	../events/models.py	/^    def __unicode__( self ):$/;"	kind:member	line:76
+__unicode__	../events/models.py	/^    def __unicode__( self ):$/;"	kind:member	line:94
+__unicode__	../master/models.py	/^    def __unicode__(self):$/;"	kind:member	line:11
+__unicode__	../master/models.py	/^    def __unicode__(self):$/;"	kind:member	line:20
+__unicode__	../master/models.py	/^    def __unicode__(self):$/;"	kind:member	line:29
+__unicode__	../seo/models.py	/^    def __unicode__(self):$/;"	kind:member	line:31
+__unicode__	../users/models.py	/^    def __unicode__( self ):$/;"	kind:member	line:100
+__unicode__	../users/models.py	/^    def __unicode__( self ):$/;"	kind:member	line:49
+__unicode__	../users/models.py	/^    def __unicode__( self ):$/;"	kind:member	line:70
+__unicode__	../users/models.py	/^    def __unicode__( self ):$/;"	kind:member	line:81
+__unicode__	../users/models.py	/^    def __unicode__(self):$/;"	kind:member	line:25
+__unicode__	../users/models.py	/^    def __unicode__(self):$/;"	kind:member	line:33
+action_form	../events/admin.py	/^    action_form = AllocationStatusForm$/;"	kind:variable	line:39
+actions	../events/admin.py	/^    actions = [bulk_update_allocation_status_for_candidates]$/;"	kind:variable	line:40
+address	../users/models.py	/^    address	= models.CharField( max_length=100, blank=True, null=True )$/;"	kind:variable	line:42
+admin.py	../events/admin.py	1;"	kind:file	line:1
+admin.py	../master/admin.py	1;"	kind:file	line:1
+admin.py	../miscellanous/admin.py	1;"	kind:file	line:1
+admin.py	../monkey_patch/admin.py	1;"	kind:file	line:1
+admin.py	../seo/admin.py	1;"	kind:file	line:1
+admin.py	../users/admin.py	1;"	kind:file	line:1
+allocation_datetime	../events/models.py	/^    allocation_datetime = models.DateTimeField( auto_now_add=True )$/;"	kind:variable	line:112
+allocation_status	../events/admin.py	/^    allocation_status = forms.ChoiceField( choices=ALLOCATION_STATUS, required=True, label='select allocation status' )$/;"	kind:variable	line:15
+allocation_status	../events/models.py	/^    allocation_status = models.CharField( choices=ALLOCATION_STATUS, max_length=50 )$/;"	kind:variable	line:113
+allocation_status	../events/models.py	/^    def allocation_status(self):$/;"	kind:member	line:100
+application	../events/models.py	/^    application = models.ForeignKey( RequirementApplication, unique=True )$/;"	kind:variable	line:111
+application	../wse/wsgi.py	/^application = get_wsgi_application()$/;"	kind:variable	line:16
+application_datetime	../events/models.py	/^    application_datetime = models.DateTimeField( auto_now_add=True )$/;"	kind:variable	line:91
+application_status	../events/models.py	/^    application_status = models.CharField( choices=APPLICATION_STATUS, max_length=20 )$/;"	kind:variable	line:92
+apps.py	../events/apps.py	1;"	kind:file	line:1
+apps.py	../master/apps.py	1;"	kind:file	line:1
+apps.py	../miscellanous/apps.py	1;"	kind:file	line:1
+apps.py	../monkey_patch/apps.py	1;"	kind:file	line:1
+apps.py	../seo/apps.py	1;"	kind:file	line:1
+apps.py	../users/apps.py	1;"	kind:file	line:1
+area	../events/filters.py	/^    area = django_filters.Filter(method="get_area")$/;"	kind:variable	line:29
+area	../events/models.py	/^    area = models.ForeignKey( Area )$/;"	kind:variable	line:21
+area	../events/serializers.py	/^    area = serializers.CharField(read_only=True, source='area.name')$/;"	kind:variable	line:7
+area	../users/models.py	/^    area = models.ForeignKey( Area, blank=True, null=True )$/;"	kind:variable	line:44
+as_data	../utility/mygenerics.py	/^    def as_data(cls,**initkwargs):$/;"	kind:member	line:31
+auth_user	../users/models.py	/^    auth_user = models.OneToOneField( User )$/;"	kind:variable	line:38
+base_paginate	../events/templatetags/paginate_tag.py	/^    def base_paginate(requrl, pagesize, currentpage, resultcount):$/;"	kind:member	line:17
+blacklist_flag	../users/models.py	/^    blacklist_flag = models.IntegerField( default=0 )$/;"	kind:variable	line:47
+briefing_datetime	../events/models.py	/^    briefing_datetime = models.DateTimeField( blank=True, null=True ) $/;"	kind:variable	line:24
+briefing_venue	../events/models.py	/^    briefing_venue = models.CharField( max_length=100, blank=True, null=True )$/;"	kind:variable	line:25
+bulk_update_allocation_status_for_candidates	../events/admin.py	/^def bulk_update_allocation_status_for_candidates(modeladmin, request, queryset):$/;"	kind:function	line:18
+candidate	../events/models.py	/^    candidate = models.ForeignKey( UserDetail, limit_choices_to={'type__slug' : 'candidate'} )$/;"	kind:variable	line:90
+candidate	../users/serializers.py	/^    candidate = serializers.SerializerMethodField()$/;"	kind:variable	line:20
+candidate_class	../events/models.py	/^    candidate_class = models.CharField( choices=CANDIDATE_CLASS, max_length=10, blank=True, null=True, verbose_name="class")$/;"	kind:variable	line:73
+candidate_info	../events/serializers.py	/^    candidate_info = serializers.SerializerMethodField()$/;"	kind:variable	line:11
+candidate_profile	../users/models.py	/^    candidate_profile = models.ManyToManyField( CandidateType )$/;"	kind:variable	line:98
+candidate_type	../events/models.py	/^    candidate_type = models.ForeignKey( CandidateType )$/;"	kind:variable	line:66
+candidate_type	../events/serializers.py	/^    candidate_type = serializers.CharField(read_only=True, source='candidate_type.name')$/;"	kind:variable	line:32
+choices.py	../events/choices.py	1;"	kind:file	line:1
+choices.py	../users/choices.py	1;"	kind:file	line:1
+city	../events/filters.py	/^    city = django_filters.CharFilter(name="city__slug")$/;"	kind:variable	line:28
+city	../events/models.py	/^    city = models.ForeignKey( City )$/;"	kind:variable	line:22
+city	../events/serializers.py	/^    city = serializers.CharField(read_only=True, source='city.name')$/;"	kind:variable	line:8
+city	../master/models.py	/^    city = models.ForeignKey(City)$/;"	kind:variable	line:27
+city	../users/models.py	/^    city = models.ForeignKey( City, blank=True, null=True )$/;"	kind:variable	line:45
+clean	../seo/forms.py	/^    def clean(self, *args, **kwargs):$/;"	kind:member	line:6
+client	../events/models.py	/^    client = models.ForeignKey( UserDetail, limit_choices_to={'type__slug' : 'client'}, related_name='client_user' )$/;"	kind:variable	line:15
+client	../events/serializers.py	/^    client = serializers.CharField(read_only=True, source='client.auth_user.username')$/;"	kind:variable	line:6
+comfortable_for_liquor_promotion	../users/models.py	/^    comfortable_for_liquor_promotion = models.BooleanField( default= False )$/;"	kind:variable	line:96
+comfortable_travelling_outdoor	../users/models.py	/^    comfortable_travelling_outdoor = models.BooleanField( default= False )$/;"	kind:variable	line:95
+comfortable_working_at_odd_timings	../users/models.py	/^    comfortable_working_at_odd_timings = models.BooleanField( default= False )$/;"	kind:variable	line:97
+communication_criteria	../events/models.py	/^    communication_criteria = models.CharField( max_length=100, blank=True, null=True )$/;"	kind:variable	line:74
+company_address	../users/models.py	/^    company_address = models.CharField( max_length=100, blank=True, null=True )$/;"	kind:variable	line:67
+company_name	../users/models.py	/^    company_name = models.CharField( max_length=100, blank=True, null=True )$/;"	kind:variable	line:66
+complete_masking	../utility/utils.py	/^    def complete_masking(self):$/;"	kind:member	line:22
+compute_application_status	../events/views.py	/^    def compute_application_status(self, requirementObj):$/;"	kind:member	line:111
+compute_percent	../utility/utils.py	/^    def compute_percent(self):$/;"	kind:member	line:45
+contact_person_name	../events/models.py	/^    contact_person_name = models.CharField( max_length=100, blank=True, null=True )$/;"	kind:variable	line:26
+contact_person_number	../events/models.py	/^    contact_person_number = models.BigIntegerField( blank=True, null=True)$/;"	kind:variable	line:27
+created_datetime	../events/models.py	/^    created_datetime = models.DateTimeField( auto_now_add=True )$/;"	kind:variable	line:30
+daily_wage_per_candidate	../events/models.py	/^    daily_wage_per_candidate = models.IntegerField()$/;"	kind:variable	line:71
+dependencies	../events/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:14
+dependencies	../events/migrations/0002_auto_20170624_1542.py	/^    dependencies = [$/;"	kind:variable	line:13
+dependencies	../events/migrations/0003_auto_20170624_1815.py	/^    dependencies = [$/;"	kind:variable	line:11
+dependencies	../events/migrations/0004_auto_20170625_1728.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../events/migrations/0005_auto_20170625_1745.py	/^    dependencies = [$/;"	kind:variable	line:11
+dependencies	../events/migrations/0006_event_slug.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../events/migrations/0007_auto_20170626_1820.py	/^    dependencies = [$/;"	kind:variable	line:11
+dependencies	../events/migrations/0008_auto_20170630_1238.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../events/migrations/0009_auto_20170701_0641.py	/^    dependencies = [$/;"	kind:variable	line:13
+dependencies	../events/migrations/0010_auto_20170718_1516.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../master/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:13
+dependencies	../master/migrations/0002_area.py	/^    dependencies = [$/;"	kind:variable	line:11
+dependencies	../seo/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:12
+dependencies	../users/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:15
+dependencies	../users/migrations/0002_auto_20170624_1815.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../users/migrations/0003_auto_20170625_1717.py	/^    dependencies = [$/;"	kind:variable	line:11
+dependencies	../users/migrations/0004_auto_20170625_1728.py	/^    dependencies = [$/;"	kind:variable	line:12
+dependencies	../users/migrations/0005_auto_20170626_0712.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../users/migrations/0006_auto_20170626_0714.py	/^    dependencies = [$/;"	kind:variable	line:12
+dependencies	../users/migrations/0007_auto_20170626_0739.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../users/migrations/0008_auto_20170701_0641.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../users/migrations/0009_auto_20170718_1516.py	/^    dependencies = [$/;"	kind:variable	line:10
+description	../seo/models.py	/^    description = models.TextField(default="", blank=True, help_text="A short description, displayed in search results.")$/;"	kind:variable	line:28
+designation	../users/models.py	/^    designation = models.CharField ( max_length=100, blank=True, null=True )$/;"	kind:variable	line:65
+devsettings.py	../wse/devsettings.py	1;"	kind:file	line:1
+display_page_controls	../utility/mygenerics.py	/^    display_page_controls = False$/;"	kind:variable	line:54
+dress_code	../events/models.py	/^    dress_code = models.CharField( max_length=100, blank=True, null=True )$/;"	kind:variable	line:72
+duration	../events/filters.py	/^    duration = django_filters.Filter(method="get_duration")$/;"	kind:variable	line:36
+end_date	../events/models.py	/^    end_date = models.DateField()$/;"	kind:variable	line:56
+end_time	../events/models.py	/^    end_time = models.TimeField()$/;"	kind:variable	line:58
+establishment_year	../users/models.py	/^    establishment_year = models.IntegerField( blank=True, null=True )$/;"	kind:variable	line:68
+event	../events/models.py	/^    event = models.ForeignKey( Event )$/;"	kind:variable	line:54
+event	../events/models.py	/^    event = models.ForeignKey( Event )$/;"	kind:variable	line:65
+event_slug	../events/serializers.py	/^    event_slug = serializers.CharField(read_only=True, source='event.slug')$/;"	kind:variable	line:33
+extra	../events/admin.py	/^    extra = 1$/;"	kind:variable	line:45
+extra	../events/admin.py	/^    extra = 1$/;"	kind:variable	line:52
+extra	../users/admin.py	/^    extra = 1$/;"	kind:variable	line:11
+extra	../users/admin.py	/^    extra = 1$/;"	kind:variable	line:17
+extra	../users/admin.py	/^    extra = 1$/;"	kind:variable	line:24
+field	../events/migrations/0002_auto_20170624_1542.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='client_user', to='users.User'),$/;"	kind:variable	line:48
+field	../events/migrations/0002_auto_20170624_1542.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.Event'),$/;"	kind:variable	line:33
+field	../events/migrations/0002_auto_20170624_1542.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.Requirement'),$/;"	kind:variable	line:28
+field	../events/migrations/0002_auto_20170624_1542.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.RequirementAllocation'),$/;"	kind:variable	line:58
+field	../events/migrations/0002_auto_20170624_1542.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='master.Area'),$/;"	kind:variable	line:38
+field	../events/migrations/0002_auto_20170624_1542.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='master.City'),$/;"	kind:variable	line:43
+field	../events/migrations/0002_auto_20170624_1542.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.User'),$/;"	kind:variable	line:23
+field	../events/migrations/0002_auto_20170624_1542.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.User'),$/;"	kind:variable	line:53
+field	../events/migrations/0003_auto_20170624_1815.py	/^            field=models.CharField(choices=[(b'shortlisted', b'Shortlisted'), (b'rejected', b'Rejected'), (b'backup', b'Backup'), (b'working', b'Working'), (b'backed-out', b'Backed out')], max_length=50),$/;"	kind:variable	line:42
+field	../events/migrations/0003_auto_20170624_1815.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.Requirement'),$/;"	kind:variable	line:55
+field	../events/migrations/0003_auto_20170624_1815.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.RequirementApplication'),$/;"	kind:variable	line:37
+field	../events/migrations/0003_auto_20170624_1815.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.CandidateType'),$/;"	kind:variable	line:47
+field	../events/migrations/0005_auto_20170625_1745.py	/^            field=models.DateField(),$/;"	kind:variable	line:31
+field	../events/migrations/0005_auto_20170625_1745.py	/^            field=models.DateField(),$/;"	kind:variable	line:36
+field	../events/migrations/0005_auto_20170625_1745.py	/^            field=models.TimeField(default=datetime.datetime(2017, 6, 25, 17, 45, 27, 759833)),$/;"	kind:variable	line:19
+field	../events/migrations/0005_auto_20170625_1745.py	/^            field=models.TimeField(default=datetime.datetime(2017, 6, 25, 17, 45, 33, 296837)),$/;"	kind:variable	line:25
+field	../events/migrations/0006_event_slug.py	/^            field=models.SlugField(default='', max_length=100),$/;"	kind:variable	line:18
+field	../events/migrations/0007_auto_20170626_1820.py	/^            field=ckeditor.fields.RichTextField(max_length=100),$/;"	kind:variable	line:34
+field	../events/migrations/0009_auto_20170701_0641.py	/^            field=ckeditor.fields.RichTextField(),$/;"	kind:variable	line:42
+field	../events/migrations/0009_auto_20170701_0641.py	/^            field=models.CharField(blank=True, choices=[(b'A+', b'A+'), (b'A', b'A'), (b'B', b'B'), (b'any', b'Any')], max_length=10, null=True, verbose_name='class'),$/;"	kind:variable	line:47
+field	../events/migrations/0009_auto_20170701_0641.py	/^            field=models.CharField(choices=[(b'shortlisted', b'Shortlisted'), (b'rejected', b'Rejected'), (b'positions-full', b'Position Full'), (b'backup', b'Backup'), (b'working', b'Working'), (b'backed-out', b'Backed out')], max_length=50),$/;"	kind:variable	line:32
+field	../events/migrations/0009_auto_20170701_0641.py	/^            field=models.DateTimeField(auto_now=True),$/;"	kind:variable	line:27
+field	../events/migrations/0009_auto_20170701_0641.py	/^            field=models.DateTimeField(auto_now_add=True, default=datetime.datetime(2017, 7, 1, 6, 41, 2, 202907)),$/;"	kind:variable	line:21
+field	../events/migrations/0009_auto_20170701_0641.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='events.RequirementApplication', unique=True),$/;"	kind:variable	line:37
+field	../events/migrations/0010_auto_20170718_1516.py	/^            field=models.CharField(choices=[(b'shortlisted', b'Shortlisted'), (b'rejected', b'Rejected'), (b'positions-full', b'Position Full'), (b'backup', b'Backup'), (b'working', b'Working'), (b'backed-out', b'Backed out'), (b'completed', b'Completed')], max_length=50),$/;"	kind:variable	line:18
+field	../master/migrations/0001_initial.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='master.State'),$/;"	kind:variable	line:36
+field	../users/migrations/0001_initial.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.User'),$/;"	kind:variable	line:104
+field	../users/migrations/0001_initial.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.User'),$/;"	kind:variable	line:114
+field	../users/migrations/0001_initial.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.User'),$/;"	kind:variable	line:99
+field	../users/migrations/0001_initial.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.UserRole'),$/;"	kind:variable	line:94
+field	../users/migrations/0001_initial.py	/^            field=models.ManyToManyField(blank=True, null=True, to='users.CandidateType'),$/;"	kind:variable	line:109
+field	../users/migrations/0002_auto_20170624_1815.py	/^            field=models.CharField(blank=True, choices=[(1, b'Confident in English-speaking'), (2, b'Knows English but not confident'), (3, b'Confident in Hindi'), (4, b'Not much confident in speaking')], max_length=50, null=True),$/;"	kind:variable	line:18
+field	../users/migrations/0002_auto_20170624_1815.py	/^            field=models.CharField(blank=True, choices=[(b'classy', b'Classy'), (b'cool', b'Cool'), (b'decent', b'Decent'), (b'basic', b'Basic'), (b'above-average', b'Above Average'), (b'average', b'Average'), (b'below-average', b'Below Average')], max_length=50, null=True),$/;"	kind:variable	line:23
+field	../users/migrations/0002_auto_20170624_1815.py	/^            field=models.CharField(blank=True, max_length=100, null=True, verbose_name='Open to which kind of jobs \/ workprofiles'),$/;"	kind:variable	line:28
+field	../users/migrations/0002_auto_20170624_1815.py	/^            field=models.IntegerField(default=0),$/;"	kind:variable	line:33
+field	../users/migrations/0003_auto_20170625_1717.py	/^            field=models.BigIntegerField(max_length=10),$/;"	kind:variable	line:24
+field	../users/migrations/0004_auto_20170625_1728.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, unique=True),$/;"	kind:variable	line:20
+field	../users/migrations/0006_auto_20170626_0714.py	/^            field=models.BigIntegerField(),$/;"	kind:variable	line:30
+field	../users/migrations/0006_auto_20170626_0714.py	/^            field=models.ManyToManyField(to='users.CandidateType'),$/;"	kind:variable	line:20
+field	../users/migrations/0006_auto_20170626_0714.py	/^            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),$/;"	kind:variable	line:25
+field	../users/migrations/0007_auto_20170626_0739.py	/^            field=models.BigIntegerField(unique=True),$/;"	kind:variable	line:18
+fields	../events/filters.py	/^        fields = ('venue', 'city', 'area')$/;"	kind:variable	line:41
+fields	../events/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:20
+fields	../events/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:28
+fields	../events/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:44
+fields	../events/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:58
+fields	../events/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:66
+fields	../events/migrations/0003_auto_20170624_1815.py	/^            fields=[$/;"	kind:variable	line:19
+fields	../events/serializers.py	/^        fields = '__all__'$/;"	kind:variable	line:45
+fields	../events/serializers.py	/^        fields = '__all__'$/;"	kind:variable	line:51
+fields	../events/serializers.py	/^        fields = ('id', 'client', 'name', 'slug', 'overview', 'venue', 'area', 'city', 'state', 'posted_by', 'contact_person_name', 'contact_person_number', 'candidate_info', 'schedule' )$/;"	kind:variable	line:16
+fields	../events/serializers.py	/^        fields = ('id', 'event_slug', 'candidate_type', 'gender', 'no_of_candidates', 'no_of_days', 'daily_wage_per_candidate', 'dress_code', 'candidate_class', 'communication_criteria' )$/;"	kind:variable	line:37
+fields	../master/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:19
+fields	../master/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:27
+fields	../master/migrations/0002_area.py	/^            fields=[$/;"	kind:variable	line:18
+fields	../master/serializers.py	/^        fields = ('id', 'name', 'slug')$/;"	kind:variable	line:10
+fields	../seo/forms.py	/^        fields = '__all__'$/;"	kind:variable	line:25
+fields	../seo/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:18
+fields	../users/filters.py	/^        fields = ('username',) $/;"	kind:variable	line:9
+fields	../users/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:23
+fields	../users/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:36
+fields	../users/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:44
+fields	../users/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:57
+fields	../users/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:67
+fields	../users/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:85
+fields	../users/serializers.py	/^        fields = '__all__'$/;"	kind:variable	line:16
+fields	../users/serializers.py	/^        fields = ('auth_user', 'type', 'mobile', 'whatsapp_number', 'address', 'image', 'area', 'city', 'state', 'blacklist_flag', 'candidate')$/;"	kind:variable	line:24
+fields	../users/serializers.py	/^        fields = ('username', 'email', )$/;"	kind:variable	line:10
+filter_backends	../events/views.py	/^    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)$/;"	kind:variable	line:29
+filter_backends	../events/views.py	/^    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)$/;"	kind:variable	line:62
+filter_backends	../events/views.py	/^    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)$/;"	kind:variable	line:79
+filter_backends	../users/views.py	/^    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)$/;"	kind:variable	line:222
+filter_backends	../users/views.py	/^    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)$/;"	kind:variable	line:245
+filter_class	../events/views.py	/^    filter_class = EventFilters$/;"	kind:variable	line:30
+filter_class	../users/views.py	/^    filter_class = UserFilters$/;"	kind:variable	line:223
+filter_class	../users/views.py	/^    filter_class = UserFilters$/;"	kind:variable	line:246
+filter_horizontal	../users/admin.py	/^    filter_horizontal = ('candidate_profile',)$/;"	kind:variable	line:23
+filter_queryset	../events/filters.py	/^    def filter_queryset(self, request, queryset, view):$/;"	kind:member	line:11
+filters.py	../events/filters.py	1;"	kind:file	line:1
+filters.py	../users/filters.py	1;"	kind:file	line:1
+form	../seo/admin.py	/^    form = MyModelForm$/;"	kind:variable	line:27
+forms.py	../seo/forms.py	1;"	kind:file	line:1
+gender	../events/filters.py	/^    gender = django_filters.Filter(method="get_gender")$/;"	kind:variable	line:34
+gender	../events/models.py	/^    gender = models.CharField( choices = GENDER, max_length=20 )$/;"	kind:variable	line:68
+get	../events/views.py	/^    def get(self, request, *args, **kwargs):$/;"	kind:member	line:42
+get	../master/views.py	/^    def get(self, request, *args, **kwargs ):$/;"	kind:member	line:18
+get	../users/views.py	/^    def get(self, *args, **kwargs):$/;"	kind:member	line:225
+get	../users/views.py	/^    def get(self, request, *args, **kwargs ):$/;"	kind:member	line:194
+get	../utility/mygenerics.py	/^    def get(self, request, *args, **kwargs):$/;"	kind:member	line:20
+get_area	../events/filters.py	/^    def get_area(self, queryset, name, value):$/;"	kind:member	line:43
+get_candidate	../users/serializers.py	/^    def get_candidate(self, obj):$/;"	kind:member	line:26
+get_candidate_info	../events/serializers.py	/^    def get_candidate_info(self, obj):$/;"	kind:member	line:18
+get_duration	../events/filters.py	/^    def get_duration(self, queryset, name, value):$/;"	kind:member	line:72
+get_gender	../events/filters.py	/^    def get_gender(self, queryset, name, value):$/;"	kind:member	line:64
+get_named_url_list	../seo/views.py	/^def get_named_url_list(request):$/;"	kind:function	line:10
+get_paginated_response	../utility/mygenerics.py	/^    def get_paginated_response(self,data):$/;"	kind:member	line:60
+get_prefix	../utility/utils.py	/^def get_prefix(name=None):$/;"	kind:function	line:52
+get_queryset	../events/views.py	/^    def get_queryset(self):$/;"	kind:member	line:36
+get_queryset	../events/views.py	/^    def get_queryset(self):$/;"	kind:member	line:64
+get_queryset	../events/views.py	/^    def get_queryset(self):$/;"	kind:member	line:81
+get_requirement_type	../events/filters.py	/^    def get_requirement_type(self, queryset, name, value):$/;"	kind:member	line:68
+get_response	../utility/mygenerics.py	/^    def get_response(self, response, *args, **kwargs):$/;"	kind:member	line:7
+get_results	../utility/mygenerics.py	/^    def get_results(self, data):$/;"	kind:member	line:63
+get_username	../users/filters.py	/^    def get_username(self, queryset, name, value):$/;"	kind:member	line:11
+get_venue	../events/filters.py	/^    def get_venue(self, queryset, name, value):$/;"	kind:member	line:47
+getmenu	../users/middleware.py	/^    def getmenu(self, page):$/;"	kind:member	line:67
+has_add_permission	../events/admin.py	/^    def has_add_permission(self, obj):$/;"	kind:member	line:68
+image	../users/models.py	/^    image = models.ImageField( upload_to=uploadpath, blank=True, null=True )$/;"	kind:variable	line:43
+initial	../events/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:12
+initial	../events/migrations/0002_auto_20170624_1542.py	/^    initial = True$/;"	kind:variable	line:11
+initial	../master/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:11
+initial	../seo/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:10
+initial	../users/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:13
+inlines	../events/admin.py	/^    inlines = ( ScheduleAdminInline, RequirementsAdminInline, )$/;"	kind:variable	line:58
+inlines	../users/admin.py	/^    inlines = (ClientAdminInline, CordinatorAdminInline, CandidateAdminInline)$/;"	kind:variable	line:30
+is_onboard	../events/models.py	/^    is_onboard = models.BooleanField( default=False )$/;"	kind:variable	line:28
+jointrel	../utility/mygenerics.py	/^    jointrel = None$/;"	kind:variable	line:29
+js	../seo/admin.py	/^        js = ($/;"	kind:variable	line:34
+keywords	../seo/models.py	/^    keywords = models.TextField(default="", blank=True, help_text="Comma-separated keywords for search engines.")$/;"	kind:variable	line:27
+language_proficiency	../users/models.py	/^    language_proficiency = models.CharField( choices=LANGUAGE_PROFICIENCY, max_length=50, blank=True, null=True ) $/;"	kind:variable	line:91
+list	../events/views.py	/^    def list(self, request, *args, **kwargs):$/;"	kind:member	line:68
+list	../events/views.py	/^    def list(self, request, *args, **kwargs):$/;"	kind:member	line:85
+list_display	../events/admin.py	/^    list_display = ('event', 'candidate_type', 'gender', 'no_of_candidates', 'no_of_days', 'daily_wage_per_candidate')$/;"	kind:variable	line:50
+list_display	../events/admin.py	/^    list_display = ('event', 'candidate_type', 'gender', 'shortlisted_upon_required')$/;"	kind:variable	line:66
+list_display	../events/admin.py	/^    list_display = ('requirement', 'candidate', 'application_datetime', 'application_status', 'mobile', 'allocation_status')$/;"	kind:variable	line:37
+list_display	../events/admin.py	/^    list_display = ['client', 'name', 'venue', 'created_datetime', '__schedule__', 'shortlisted_upon_required']$/;"	kind:variable	line:57
+list_display	../master/admin.py	/^    list_display = ['name', 'city' ]$/;"	kind:variable	line:15
+list_display	../master/admin.py	/^    list_display = ['name', 'state']$/;"	kind:variable	line:11
+list_display	../seo/admin.py	/^    list_display = ('path', 'regular_expression', )$/;"	kind:variable	line:29
+list_display	../users/admin.py	/^    list_display = ['auth_user', 'type', 'mobile', 'blacklist_flag']$/;"	kind:variable	line:29
+list_filter	../seo/admin.py	/^    list_filter = ('regular_expression',AbsolutePathFilter)$/;"	kind:variable	line:31
+looks	../users/models.py	/^    looks = models.CharField( choices=LOOKS, max_length=50, blank=True, null=True ) $/;"	kind:variable	line:92
+lookup_field	../users/views.py	/^    lookup_field = "auth_user__email"$/;"	kind:variable	line:158
+lookup_url_kwarg	../users/views.py	/^    lookup_url_kwarg = "user_email"$/;"	kind:variable	line:159
+lookups	../seo/admin.py	/^    def lookups(self, request, model_admin):$/;"	kind:member	line:15
+manage.py	../manage.py	1;"	kind:file	line:1
+max_num	../users/admin.py	/^    max_num = 1$/;"	kind:variable	line:12
+max_num	../users/admin.py	/^    max_num = 1$/;"	kind:variable	line:18
+max_num	../users/admin.py	/^    max_num = 1$/;"	kind:variable	line:25
+middleware.py	../seo/middleware.py	1;"	kind:file	line:1
+middleware.py	../users/middleware.py	1;"	kind:file	line:1
+min_num	../events/admin.py	/^    min_num = 1$/;"	kind:variable	line:46
+mobile	../events/models.py	/^    def mobile(self):$/;"	kind:member	line:106
+mobile	../users/models.py	/^    mobile = models.BigIntegerField( unique=True )$/;"	kind:variable	line:40
+model	../events/admin.py	/^    model = Requirement$/;"	kind:variable	line:51
+model	../events/admin.py	/^    model = Schedule$/;"	kind:variable	line:44
+model	../events/filters.py	/^        model = Event$/;"	kind:variable	line:40
+model	../events/serializers.py	/^        model = Event$/;"	kind:variable	line:15
+model	../events/serializers.py	/^        model = Event$/;"	kind:variable	line:44
+model	../events/serializers.py	/^        model = Requirement$/;"	kind:variable	line:36
+model	../events/serializers.py	/^        model = RequirementApplication$/;"	kind:variable	line:50
+model	../master/serializers.py	/^        model = Area$/;"	kind:variable	line:9
+model	../seo/forms.py	/^        model = MetaData$/;"	kind:variable	line:21
+model	../users/admin.py	/^    model = CandidateAttribute$/;"	kind:variable	line:22
+model	../users/admin.py	/^    model = ClientAttribute$/;"	kind:variable	line:10
+model	../users/admin.py	/^    model = CordinatorAttribute$/;"	kind:variable	line:16
+model	../users/filters.py	/^        model = UserDetail $/;"	kind:variable	line:8
+model	../users/serializers.py	/^        model = User$/;"	kind:variable	line:9
+model	../users/serializers.py	/^        model = UserDetail$/;"	kind:variable	line:15
+model	../users/serializers.py	/^        model = UserDetail$/;"	kind:variable	line:23
+model_name	../events/migrations/0002_auto_20170624_1542.py	/^            model_name='allocationstatus',$/;"	kind:variable	line:56
+model_name	../events/migrations/0002_auto_20170624_1542.py	/^            model_name='event',$/;"	kind:variable	line:36
+model_name	../events/migrations/0002_auto_20170624_1542.py	/^            model_name='event',$/;"	kind:variable	line:41
+model_name	../events/migrations/0002_auto_20170624_1542.py	/^            model_name='event',$/;"	kind:variable	line:46
+model_name	../events/migrations/0002_auto_20170624_1542.py	/^            model_name='event',$/;"	kind:variable	line:51
+model_name	../events/migrations/0002_auto_20170624_1542.py	/^            model_name='requirement',$/;"	kind:variable	line:31
+model_name	../events/migrations/0002_auto_20170624_1542.py	/^            model_name='requirementallocation',$/;"	kind:variable	line:21
+model_name	../events/migrations/0002_auto_20170624_1542.py	/^            model_name='requirementallocation',$/;"	kind:variable	line:26
+model_name	../events/migrations/0003_auto_20170624_1815.py	/^            model_name='allocationstatus',$/;"	kind:variable	line:35
+model_name	../events/migrations/0003_auto_20170624_1815.py	/^            model_name='allocationstatus',$/;"	kind:variable	line:40
+model_name	../events/migrations/0003_auto_20170624_1815.py	/^            model_name='requirement',$/;"	kind:variable	line:45
+model_name	../events/migrations/0003_auto_20170624_1815.py	/^            model_name='requirementallocation',$/;"	kind:variable	line:27
+model_name	../events/migrations/0003_auto_20170624_1815.py	/^            model_name='requirementallocation',$/;"	kind:variable	line:31
+model_name	../events/migrations/0003_auto_20170624_1815.py	/^            model_name='requirementapplication',$/;"	kind:variable	line:53
+model_name	../events/migrations/0005_auto_20170625_1745.py	/^            model_name='schedule',$/;"	kind:variable	line:17
+model_name	../events/migrations/0005_auto_20170625_1745.py	/^            model_name='schedule',$/;"	kind:variable	line:23
+model_name	../events/migrations/0005_auto_20170625_1745.py	/^            model_name='schedule',$/;"	kind:variable	line:29
+model_name	../events/migrations/0005_auto_20170625_1745.py	/^            model_name='schedule',$/;"	kind:variable	line:34
+model_name	../events/migrations/0006_event_slug.py	/^            model_name='event',$/;"	kind:variable	line:16
+model_name	../events/migrations/0007_auto_20170626_1820.py	/^            model_name='allocationstatus',$/;"	kind:variable	line:17
+model_name	../events/migrations/0007_auto_20170626_1820.py	/^            model_name='allocationstatus',$/;"	kind:variable	line:22
+model_name	../events/migrations/0007_auto_20170626_1820.py	/^            model_name='event',$/;"	kind:variable	line:27
+model_name	../events/migrations/0007_auto_20170626_1820.py	/^            model_name='event',$/;"	kind:variable	line:32
+model_name	../events/migrations/0008_auto_20170630_1238.py	/^            model_name='requirementapplication',$/;"	kind:variable	line:16
+model_name	../events/migrations/0009_auto_20170701_0641.py	/^            model_name='allocationstatus',$/;"	kind:variable	line:30
+model_name	../events/migrations/0009_auto_20170701_0641.py	/^            model_name='allocationstatus',$/;"	kind:variable	line:35
+model_name	../events/migrations/0009_auto_20170701_0641.py	/^            model_name='event',$/;"	kind:variable	line:19
+model_name	../events/migrations/0009_auto_20170701_0641.py	/^            model_name='event',$/;"	kind:variable	line:25
+model_name	../events/migrations/0009_auto_20170701_0641.py	/^            model_name='event',$/;"	kind:variable	line:40
+model_name	../events/migrations/0009_auto_20170701_0641.py	/^            model_name='requirement',$/;"	kind:variable	line:45
+model_name	../events/migrations/0010_auto_20170718_1516.py	/^            model_name='allocationstatus',$/;"	kind:variable	line:16
+model_name	../master/migrations/0001_initial.py	/^            model_name='city',$/;"	kind:variable	line:34
+model_name	../users/migrations/0001_initial.py	/^            model_name='candidateattribute',$/;"	kind:variable	line:107
+model_name	../users/migrations/0001_initial.py	/^            model_name='candidateattribute',$/;"	kind:variable	line:112
+model_name	../users/migrations/0001_initial.py	/^            model_name='clientattribute',$/;"	kind:variable	line:102
+model_name	../users/migrations/0001_initial.py	/^            model_name='cordinatorattribute',$/;"	kind:variable	line:97
+model_name	../users/migrations/0001_initial.py	/^            model_name='user',$/;"	kind:variable	line:92
+model_name	../users/migrations/0002_auto_20170624_1815.py	/^            model_name='candidateattribute',$/;"	kind:variable	line:16
+model_name	../users/migrations/0002_auto_20170624_1815.py	/^            model_name='candidateattribute',$/;"	kind:variable	line:21
+model_name	../users/migrations/0002_auto_20170624_1815.py	/^            model_name='candidateattribute',$/;"	kind:variable	line:26
+model_name	../users/migrations/0002_auto_20170624_1815.py	/^            model_name='user',$/;"	kind:variable	line:31
+model_name	../users/migrations/0003_auto_20170625_1717.py	/^            model_name='user',$/;"	kind:variable	line:22
+model_name	../users/migrations/0004_auto_20170625_1728.py	/^            model_name='user',$/;"	kind:variable	line:18
+model_name	../users/migrations/0006_auto_20170626_0714.py	/^            model_name='candidateattribute',$/;"	kind:variable	line:18
+model_name	../users/migrations/0006_auto_20170626_0714.py	/^            model_name='userdetail',$/;"	kind:variable	line:23
+model_name	../users/migrations/0006_auto_20170626_0714.py	/^            model_name='userdetail',$/;"	kind:variable	line:28
+model_name	../users/migrations/0007_auto_20170626_0739.py	/^            model_name='userdetail',$/;"	kind:variable	line:16
+models.py	../events/models.py	1;"	kind:file	line:1
+models.py	../master/models.py	1;"	kind:file	line:1
+models.py	../miscellanous/models.py	1;"	kind:file	line:1
+models.py	../monkey_patch/models.py	1;"	kind:file	line:1
+models.py	../seo/models.py	1;"	kind:file	line:1
+models.py	../users/models.py	1;"	kind:file	line:1
+modify_date	../events/models.py	/^    modify_date = models.DateTimeField( auto_now=True )$/;"	kind:variable	line:31
+monkey_patch_auth	../monkey_patch/models.py	/^def monkey_patch_auth():$/;"	kind:function	line:9
+mygenerics.py	../utility/mygenerics.py	1;"	kind:file	line:1
+name	../events/apps.py	/^    name = 'events'$/;"	kind:variable	line:8
+name	../events/filters.py	/^    name = django_filters.Filter(method="search_events")$/;"	kind:variable	line:31
+name	../events/migrations/0001_initial.py	/^            name='AllocationStatus',$/;"	kind:variable	line:19
+name	../events/migrations/0001_initial.py	/^            name='Event',$/;"	kind:variable	line:27
+name	../events/migrations/0001_initial.py	/^            name='Requirement',$/;"	kind:variable	line:43
+name	../events/migrations/0001_initial.py	/^            name='RequirementAllocation',$/;"	kind:variable	line:57
+name	../events/migrations/0001_initial.py	/^            name='Schedule',$/;"	kind:variable	line:65
+name	../events/migrations/0002_auto_20170624_1542.py	/^            name='allocation',$/;"	kind:variable	line:57
+name	../events/migrations/0002_auto_20170624_1542.py	/^            name='area',$/;"	kind:variable	line:37
+name	../events/migrations/0002_auto_20170624_1542.py	/^            name='candidate',$/;"	kind:variable	line:22
+name	../events/migrations/0002_auto_20170624_1542.py	/^            name='city',$/;"	kind:variable	line:42
+name	../events/migrations/0002_auto_20170624_1542.py	/^            name='client',$/;"	kind:variable	line:47
+name	../events/migrations/0002_auto_20170624_1542.py	/^            name='event',$/;"	kind:variable	line:32
+name	../events/migrations/0002_auto_20170624_1542.py	/^            name='posted_by',$/;"	kind:variable	line:52
+name	../events/migrations/0002_auto_20170624_1542.py	/^            name='requirement',$/;"	kind:variable	line:27
+name	../events/migrations/0003_auto_20170624_1815.py	/^            name='RequirementAllocation',$/;"	kind:variable	line:50
+name	../events/migrations/0003_auto_20170624_1815.py	/^            name='RequirementApplication',$/;"	kind:variable	line:18
+name	../events/migrations/0003_auto_20170624_1815.py	/^            name='allocation',$/;"	kind:variable	line:36
+name	../events/migrations/0003_auto_20170624_1815.py	/^            name='allocation_status',$/;"	kind:variable	line:41
+name	../events/migrations/0003_auto_20170624_1815.py	/^            name='candidate',$/;"	kind:variable	line:28
+name	../events/migrations/0003_auto_20170624_1815.py	/^            name='candidate_type',$/;"	kind:variable	line:46
+name	../events/migrations/0003_auto_20170624_1815.py	/^            name='requirement',$/;"	kind:variable	line:32
+name	../events/migrations/0003_auto_20170624_1815.py	/^            name='requirement',$/;"	kind:variable	line:54
+name	../events/migrations/0004_auto_20170625_1728.py	/^            name='requirementapplication',$/;"	kind:variable	line:17
+name	../events/migrations/0005_auto_20170625_1745.py	/^            name='end_date',$/;"	kind:variable	line:30
+name	../events/migrations/0005_auto_20170625_1745.py	/^            name='end_time',$/;"	kind:variable	line:18
+name	../events/migrations/0005_auto_20170625_1745.py	/^            name='start_date',$/;"	kind:variable	line:35
+name	../events/migrations/0005_auto_20170625_1745.py	/^            name='start_time',$/;"	kind:variable	line:24
+name	../events/migrations/0006_event_slug.py	/^            name='slug',$/;"	kind:variable	line:17
+name	../events/migrations/0007_auto_20170626_1820.py	/^            name='overview',$/;"	kind:variable	line:33
+name	../events/migrations/0009_auto_20170701_0641.py	/^            name='allocation_status',$/;"	kind:variable	line:31
+name	../events/migrations/0009_auto_20170701_0641.py	/^            name='application',$/;"	kind:variable	line:36
+name	../events/migrations/0009_auto_20170701_0641.py	/^            name='candidate_class',$/;"	kind:variable	line:46
+name	../events/migrations/0009_auto_20170701_0641.py	/^            name='created_datetime',$/;"	kind:variable	line:20
+name	../events/migrations/0009_auto_20170701_0641.py	/^            name='modify_date',$/;"	kind:variable	line:26
+name	../events/migrations/0009_auto_20170701_0641.py	/^            name='overview',$/;"	kind:variable	line:41
+name	../events/migrations/0010_auto_20170718_1516.py	/^            name='allocation_status',$/;"	kind:variable	line:17
+name	../events/models.py	/^    name = models.CharField( max_length=100 )$/;"	kind:variable	line:16
+name	../master/apps.py	/^    name = 'master'$/;"	kind:variable	line:8
+name	../master/migrations/0001_initial.py	/^            name='City',$/;"	kind:variable	line:18
+name	../master/migrations/0001_initial.py	/^            name='State',$/;"	kind:variable	line:26
+name	../master/migrations/0001_initial.py	/^            name='state',$/;"	kind:variable	line:35
+name	../master/migrations/0002_area.py	/^            name='Area',$/;"	kind:variable	line:17
+name	../master/models.py	/^    name = models.CharField(max_length=50)$/;"	kind:variable	line:16
+name	../master/models.py	/^    name = models.CharField(max_length=50)$/;"	kind:variable	line:25
+name	../master/models.py	/^    name = models.CharField(max_length=50)$/;"	kind:variable	line:8
+name	../miscellanous/apps.py	/^    name = 'miscellanous'$/;"	kind:variable	line:8
+name	../monkey_patch/apps.py	/^    name = 'monkey_patch'$/;"	kind:variable	line:8
+name	../seo/apps.py	/^    name = 'seo'$/;"	kind:variable	line:8
+name	../seo/migrations/0001_initial.py	/^            name='MetaData',$/;"	kind:variable	line:17
+name	../users/apps.py	/^    name = 'users'$/;"	kind:variable	line:8
+name	../users/migrations/0001_initial.py	/^            name='CandidateAttribute',$/;"	kind:variable	line:22
+name	../users/migrations/0001_initial.py	/^            name='CandidateType',$/;"	kind:variable	line:35
+name	../users/migrations/0001_initial.py	/^            name='ClientAttribute',$/;"	kind:variable	line:43
+name	../users/migrations/0001_initial.py	/^            name='CordinatorAttribute',$/;"	kind:variable	line:56
+name	../users/migrations/0001_initial.py	/^            name='User',$/;"	kind:variable	line:66
+name	../users/migrations/0001_initial.py	/^            name='UserRole',$/;"	kind:variable	line:84
+name	../users/migrations/0001_initial.py	/^            name='candidate_profile',$/;"	kind:variable	line:108
+name	../users/migrations/0001_initial.py	/^            name='type',$/;"	kind:variable	line:93
+name	../users/migrations/0001_initial.py	/^            name='user',$/;"	kind:variable	line:103
+name	../users/migrations/0001_initial.py	/^            name='user',$/;"	kind:variable	line:113
+name	../users/migrations/0001_initial.py	/^            name='user',$/;"	kind:variable	line:98
+name	../users/migrations/0002_auto_20170624_1815.py	/^            name='blacklist_flag',$/;"	kind:variable	line:32
+name	../users/migrations/0002_auto_20170624_1815.py	/^            name='language_proficiency',$/;"	kind:variable	line:17
+name	../users/migrations/0002_auto_20170624_1815.py	/^            name='looks',$/;"	kind:variable	line:22
+name	../users/migrations/0002_auto_20170624_1815.py	/^            name='open_to_which_kind_of_job',$/;"	kind:variable	line:27
+name	../users/migrations/0003_auto_20170625_1717.py	/^            name='candidateattribute',$/;"	kind:variable	line:18
+name	../users/migrations/0003_auto_20170625_1717.py	/^            name='mobile',$/;"	kind:variable	line:23
+name	../users/migrations/0003_auto_20170625_1717.py	/^            name='user',$/;"	kind:variable	line:27
+name	../users/migrations/0004_auto_20170625_1728.py	/^            name='auth_user',$/;"	kind:variable	line:19
+name	../users/migrations/0004_auto_20170625_1728.py	/^            name='user',$/;"	kind:variable	line:23
+name	../users/migrations/0006_auto_20170626_0714.py	/^            name='auth_user',$/;"	kind:variable	line:24
+name	../users/migrations/0006_auto_20170626_0714.py	/^            name='candidate_profile',$/;"	kind:variable	line:19
+name	../users/migrations/0006_auto_20170626_0714.py	/^            name='mobile',$/;"	kind:variable	line:29
+name	../users/migrations/0007_auto_20170626_0739.py	/^            name='mobile',$/;"	kind:variable	line:17
+name	../users/migrations/0008_auto_20170701_0641.py	/^            name='userdetail',$/;"	kind:variable	line:16
+name	../users/migrations/0009_auto_20170718_1516.py	/^            name='userdetail',$/;"	kind:variable	line:16
+name	../users/models.py	/^    name = models.CharField( max_length=50 )$/;"	kind:variable	line:30
+name	../users/models.py	/^    name = models.CharField(max_length=50)$/;"	kind:variable	line:22
+new_name	../events/migrations/0007_auto_20170626_1820.py	/^            new_name='allocation_datetime',$/;"	kind:variable	line:19
+new_name	../events/migrations/0007_auto_20170626_1820.py	/^            new_name='application',$/;"	kind:variable	line:24
+new_name	../events/migrations/0007_auto_20170626_1820.py	/^            new_name='short_description',$/;"	kind:variable	line:29
+new_name	../events/migrations/0008_auto_20170630_1238.py	/^            new_name='application_datetime',$/;"	kind:variable	line:18
+new_name	../users/migrations/0005_auto_20170626_0712.py	/^            new_name='UserDetail',$/;"	kind:variable	line:17
+no_of_candidates	../events/models.py	/^    no_of_candidates = models.IntegerField()$/;"	kind:variable	line:69
+no_of_days	../events/models.py	/^    no_of_days = models.IntegerField()$/;"	kind:variable	line:70
+old_name	../events/migrations/0007_auto_20170626_1820.py	/^            old_name='allocation',$/;"	kind:variable	line:23
+old_name	../events/migrations/0007_auto_20170626_1820.py	/^            old_name='allocation_status_datetime',$/;"	kind:variable	line:18
+old_name	../events/migrations/0007_auto_20170626_1820.py	/^            old_name='notes',$/;"	kind:variable	line:28
+old_name	../events/migrations/0008_auto_20170630_1238.py	/^            old_name='allocation_datetime',$/;"	kind:variable	line:17
+old_name	../users/migrations/0005_auto_20170626_0712.py	/^            old_name='User',$/;"	kind:variable	line:16
+open_to_which_kind_of_job	../users/models.py	/^    open_to_which_kind_of_job = models.CharField( max_length=100, blank=True, null=True, verbose_name="Open to which kind of jobs \/ workprofiles" )$/;"	kind:variable	line:93
+operations	../events/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:17
+operations	../events/migrations/0002_auto_20170624_1542.py	/^    operations = [$/;"	kind:variable	line:19
+operations	../events/migrations/0003_auto_20170624_1815.py	/^    operations = [$/;"	kind:variable	line:16
+operations	../events/migrations/0004_auto_20170625_1728.py	/^    operations = [$/;"	kind:variable	line:15
+operations	../events/migrations/0005_auto_20170625_1745.py	/^    operations = [$/;"	kind:variable	line:15
+operations	../events/migrations/0006_event_slug.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../events/migrations/0007_auto_20170626_1820.py	/^    operations = [$/;"	kind:variable	line:15
+operations	../events/migrations/0008_auto_20170630_1238.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../events/migrations/0009_auto_20170701_0641.py	/^    operations = [$/;"	kind:variable	line:17
+operations	../events/migrations/0010_auto_20170718_1516.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../master/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:16
+operations	../master/migrations/0002_area.py	/^    operations = [$/;"	kind:variable	line:15
+operations	../seo/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:15
+operations	../users/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:20
+operations	../users/migrations/0002_auto_20170624_1815.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../users/migrations/0003_auto_20170625_1717.py	/^    operations = [$/;"	kind:variable	line:16
+operations	../users/migrations/0004_auto_20170625_1728.py	/^    operations = [$/;"	kind:variable	line:16
+operations	../users/migrations/0005_auto_20170626_0712.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../users/migrations/0006_auto_20170626_0714.py	/^    operations = [$/;"	kind:variable	line:16
+operations	../users/migrations/0007_auto_20170626_0739.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../users/migrations/0008_auto_20170701_0641.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../users/migrations/0009_auto_20170718_1516.py	/^    operations = [$/;"	kind:variable	line:14
+options	../users/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:51
+options	../users/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:61
+options	../users/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:79
+options	../users/migrations/0003_auto_20170625_1717.py	/^            options={'verbose_name': 'Candidate Attributes (to be filled only if user type is cordinator)'},$/;"	kind:variable	line:19
+options	../users/migrations/0008_auto_20170701_0641.py	/^            options={'verbose_name': 'Create User'},$/;"	kind:variable	line:17
+options	../users/migrations/0009_auto_20170718_1516.py	/^            options={'verbose_name': 'Create \/ Modify User'},$/;"	kind:variable	line:17
+overview	../events/models.py	/^    overview = RichTextField( )$/;"	kind:variable	line:19
+paginate	../events/templatetags/paginate_tag.py	/^def paginate(parser,token):$/;"	kind:function	line:57
+paginate_queryset	../utility/mygenerics.py	/^    def paginate_queryset(self,queryset,request,view=None):$/;"	kind:member	line:55
+paginate_tag.py	../events/templatetags/paginate_tag.py	1;"	kind:file	line:1
+pagination_class	../master/views.py	/^    pagination_class = mygenerics.NoPagination$/;"	kind:variable	line:16
+parameter_name	../seo/admin.py	/^    parameter_name = 'abs_path'$/;"	kind:variable	line:13
+partial_masking	../utility/utils.py	/^    def partial_masking(self):$/;"	kind:member	line:12
+path	../seo/models.py	/^    path = models.CharField( max_length=250, unique=True, help_text="Specify the path (URL) for this page (only if static data is to be displayed) or Specify the path's regular expression (only if same data is to be displayed for all regex matches)")$/;"	kind:variable	line:25
+pay_scale	../users/models.py	/^    pay_scale = models.CharField( max_length=100, blank=True, null=True )$/;"	kind:variable	line:94
+post	../events/views.py	/^    def post(self, request, *args, **kwargs):$/;"	kind:member	line:93
+post	../users/views.py	/^    def post(self, request, *args, **kwargs):$/;"	kind:member	line:39
+post	../users/views.py	/^    def post(self, request, *args, **kwargs):$/;"	kind:member	line:91
+posted_by	../events/models.py	/^    posted_by = models.ForeignKey( UserDetail, limit_choices_to = {'type__slug__in':['client', 'cordinator']} )$/;"	kind:variable	line:23
+posted_by	../events/serializers.py	/^    posted_by = serializers.CharField(read_only=True, source='event_posted_by.auth_user.username')$/;"	kind:variable	line:10
+preserve_default	../events/migrations/0005_auto_20170625_1745.py	/^            preserve_default=False,$/;"	kind:variable	line:20
+preserve_default	../events/migrations/0005_auto_20170625_1745.py	/^            preserve_default=False,$/;"	kind:variable	line:26
+preserve_default	../events/migrations/0006_event_slug.py	/^            preserve_default=False,$/;"	kind:variable	line:19
+preserve_default	../events/migrations/0009_auto_20170701_0641.py	/^            preserve_default=False,$/;"	kind:variable	line:22
+process_template_response	../users/middleware.py	/^    def process_template_response(self, request, response):$/;"	kind:member	line:31
+put	../users/views.py	/^    def put(self, request, *args, **kwargs):$/;"	kind:member	line:125
+put	../users/views.py	/^    def put(self, request, *args, **kwargs):$/;"	kind:member	line:161
+queryset	../master/views.py	/^    queryset = Area.objects.all()$/;"	kind:variable	line:15
+queryset	../miscellanous/views.py	/^    queryset = UserDetail.objects.none()$/;"	kind:variable	line:12
+queryset	../seo/admin.py	/^    def queryset(self, request, queryset):$/;"	kind:member	line:18
+queryset	../users/views.py	/^    queryset = User.objects.all()$/;"	kind:variable	line:89
+queryset	../users/views.py	/^    queryset = UserDetail.objects.all()$/;"	kind:variable	line:121
+queryset	../users/views.py	/^    queryset = UserDetail.objects.all()$/;"	kind:variable	line:157
+queryset	../users/views.py	/^    queryset = UserDetail.objects.all()$/;"	kind:variable	line:221
+queryset	../users/views.py	/^    queryset = UserDetail.objects.all()$/;"	kind:variable	line:244
+queryset	../users/views.py	/^    queryset = UserDetail.objects.all()$/;"	kind:variable	line:37
+queryset	../users/views.py	/^    queryset = UserDetail.objects.none()$/;"	kind:variable	line:192
+register	../events/templatetags/paginate_tag.py	/^register = Library()$/;"	kind:variable	line:8
+regular_expression	../seo/models.py	/^    regular_expression = models.BooleanField(choices=URL_CHOICE_TYPE, default=False)$/;"	kind:variable	line:24
+related_views	../events/views.py	/^    related_views = {$/;"	kind:variable	line:32
+relview	../utility/mygenerics.py	/^    relview = None$/;"	kind:variable	line:28
+render	../events/templatetags/paginate_tag.py	/^    def render(self,context):$/;"	kind:member	line:32
+requirement	../events/filters.py	/^    requirement = django_filters.Filter(method="get_requirement_type")$/;"	kind:variable	line:35
+requirement	../events/models.py	/^    requirement = models.ForeignKey( Requirement )$/;"	kind:variable	line:89
+requirement_details	../events/serializers.py	/^    requirement_details = ListRequirementSerializer(many=True, source='requirement_set')$/;"	kind:variable	line:41
+save	../users/models.py	/^    def save(self, *args, **kwargs):$/;"	kind:member	line:55
+schedule	../events/models.py	/^    def schedule( self ):$/;"	kind:member	line:36
+search_events	../events/filters.py	/^    def search_events(self, queryset, name, value):$/;"	kind:member	line:51
+search_fields	../events/admin.py	/^    search_fields = ('event__name', )$/;"	kind:variable	line:67
+search_fields	../events/admin.py	/^    search_fields = ('name',)$/;"	kind:variable	line:56
+search_fields	../events/admin.py	/^    search_fields = ('requirement__event__name', )$/;"	kind:variable	line:38
+search_fields	../master/admin.py	/^    search_fields = ('name',)$/;"	kind:variable	line:14
+search_fields	../seo/admin.py	/^    search_fields = ('path', )$/;"	kind:variable	line:30
+serializer_class	../events/views.py	/^    serializer_class = ApplyRequirementSerializer$/;"	kind:variable	line:91
+serializer_class	../events/views.py	/^    serializer_class = EventDetailSerializer$/;"	kind:variable	line:78
+serializer_class	../events/views.py	/^    serializer_class = ListEventSerializer$/;"	kind:variable	line:28
+serializer_class	../events/views.py	/^    serializer_class = ListRequirementSerializer$/;"	kind:variable	line:61
+serializer_class	../master/views.py	/^    serializer_class = AreaSerializer$/;"	kind:variable	line:14
+serializer_class	../miscellanous/views.py	/^    serializer_class = UserSerializer$/;"	kind:variable	line:13
+serializer_class	../users/views.py	/^    serializer_class = AuthUserSerializer$/;"	kind:variable	line:191
+serializer_class	../users/views.py	/^    serializer_class = AuthUserSerializer$/;"	kind:variable	line:88
+serializer_class	../users/views.py	/^    serializer_class = UserMeterSerializer$/;"	kind:variable	line:220
+serializer_class	../users/views.py	/^    serializer_class = UserMeterSerializer$/;"	kind:variable	line:243
+serializer_class	../users/views.py	/^    serializer_class = UserSerializer$/;"	kind:variable	line:120
+serializer_class	../users/views.py	/^    serializer_class = UserSerializer$/;"	kind:variable	line:156
+serializer_class	../users/views.py	/^    serializer_class = UserSerializer$/;"	kind:variable	line:36
+serializers.py	../events/serializers.py	1;"	kind:file	line:1
+serializers.py	../master/serializers.py	1;"	kind:file	line:1
+serializers.py	../users/serializers.py	1;"	kind:file	line:1
+settings.py	../wse/settings.py	1;"	kind:file	line:1
+short_description	../events/models.py	/^    short_description = models.TextField( blank=True, null=True )$/;"	kind:variable	line:18
+shortlisted_upon_required	../events/models.py	/^    def shortlisted_upon_required( self ):$/;"	kind:member	line:43
+shortlisted_upon_required	../events/models.py	/^    def shortlisted_upon_required( self ):$/;"	kind:member	line:79
+slug	../events/models.py	/^    slug = models.SlugField( max_length=100 )$/;"	kind:variable	line:17
+slug	../master/models.py	/^    slug = models.SlugField(max_length=50)$/;"	kind:variable	line:17
+slug	../master/models.py	/^    slug = models.SlugField(max_length=50)$/;"	kind:variable	line:26
+slug	../master/models.py	/^    slug = models.SlugField(max_length=50)$/;"	kind:variable	line:9
+slug	../users/models.py	/^    slug = models.SlugField( max_length=50 )$/;"	kind:variable	line:31
+slug	../users/models.py	/^    slug = models.SlugField(max_length=50)$/;"	kind:variable	line:23
+sort	../events/filters.py	/^    sort = django_filters.Filter(method="sort_data")$/;"	kind:variable	line:32
+sort_data	../events/filters.py	/^    def sort_data(self, queryset, name, value):$/;"	kind:member	line:55
+start_date	../events/models.py	/^    start_date = models.DateField()$/;"	kind:variable	line:55
+start_time	../events/models.py	/^    start_time = models.TimeField()$/;"	kind:variable	line:57
+state	../events/serializers.py	/^    state = serializers.CharField(read_only=True, source='city.state.name')$/;"	kind:variable	line:9
+state	../master/models.py	/^    state = models.ForeignKey(State)$/;"	kind:variable	line:18
+state	../users/models.py	/^    state = models.ForeignKey( State, blank=True, null=True )$/;"	kind:variable	line:46
+template_name	../events/views.py	/^    template_name = 'events\/listing_base.html'$/;"	kind:variable	line:31
+template_name	../miscellanous/views.py	/^    template_name = "shared\/aboutus.html"$/;"	kind:variable	line:32
+template_name	../miscellanous/views.py	/^    template_name = "shared\/articles.html"$/;"	kind:variable	line:20
+template_name	../miscellanous/views.py	/^    template_name = "shared\/contact_us.html"$/;"	kind:variable	line:29
+template_name	../miscellanous/views.py	/^    template_name = "shared\/faqs.html"$/;"	kind:variable	line:17
+template_name	../miscellanous/views.py	/^    template_name = "shared\/menu.html"$/;"	kind:variable	line:14
+template_name	../miscellanous/views.py	/^    template_name = "shared\/testimonials.html"$/;"	kind:variable	line:26
+template_name	../users/views.py	/^    template_name = 'users\/my_profile_base.html'$/;"	kind:variable	line:247
+tests.py	../events/tests.py	1;"	kind:file	line:1
+tests.py	../master/tests.py	1;"	kind:file	line:1
+tests.py	../miscellanous/tests.py	1;"	kind:file	line:1
+tests.py	../monkey_patch/tests.py	1;"	kind:file	line:1
+tests.py	../seo/tests.py	1;"	kind:file	line:1
+tests.py	../users/tests.py	1;"	kind:file	line:1
+title	../seo/admin.py	/^    title = 'Absolute Path'$/;"	kind:variable	line:12
+title	../seo/models.py	/^    title = models.TextField(default="", blank=True, help_text="This is the meta (page) title, that appears in the title bar.")$/;"	kind:variable	line:26
+total_payment	../events/models.py	/^    total_payment = models.BigIntegerField( blank=True, null=True )$/;"	kind:variable	line:29
+type	../users/models.py	/^    type = models.ForeignKey( UserRole )$/;"	kind:variable	line:39
+unique_together	../events/migrations/0004_auto_20170625_1728.py	/^            unique_together=set([('requirement', 'candidate')]),$/;"	kind:variable	line:18
+unique_together	../events/models.py	/^        unique_together = ('requirement', 'candidate')$/;"	kind:variable	line:98
+unique_together	../users/migrations/0003_auto_20170625_1717.py	/^            unique_together=set([('id', 'auth_user')]),$/;"	kind:variable	line:28
+unique_together	../users/migrations/0004_auto_20170625_1728.py	/^            unique_together=set([]),$/;"	kind:variable	line:24
+uploadpath	../users/models.py	/^def uploadpath(instance, filename):$/;"	kind:function	line:11
+urlpatterns	../events/urls.py	/^urlpatterns = [$/;"	kind:variable	line:5
+urlpatterns	../master/urls.py	/^urlpatterns = [$/;"	kind:variable	line:4
+urlpatterns	../miscellanous/urls.py	/^urlpatterns = [$/;"	kind:variable	line:4
+urlpatterns	../seo/urls.py	/^urlpatterns = [$/;"	kind:variable	line:4
+urlpatterns	../users/urls.py	/^urlpatterns = [$/;"	kind:variable	line:6
+urlpatterns	../wse/urls.py	/^urlpatterns = [$/;"	kind:variable	line:25
+urls.py	../events/urls.py	1;"	kind:file	line:1
+urls.py	../master/urls.py	1;"	kind:file	line:1
+urls.py	../miscellanous/urls.py	1;"	kind:file	line:1
+urls.py	../seo/urls.py	1;"	kind:file	line:1
+urls.py	../users/urls.py	1;"	kind:file	line:1
+urls.py	../wse/urls.py	1;"	kind:file	line:1
+user	../events/filters.py	/^    user = django_filters.Filter(method="user_history")$/;"	kind:variable	line:33
+user	../users/models.py	/^    user = models.ForeignKey( UserDetail )$/;"	kind:variable	line:64
+user	../users/models.py	/^    user = models.ForeignKey( UserDetail )$/;"	kind:variable	line:78
+user	../users/models.py	/^    user = models.ForeignKey( UserDetail )$/;"	kind:variable	line:89
+user_history	../events/filters.py	/^    def user_history(self, queryset, name, value):$/;"	kind:member	line:60
+username	../users/filters.py	/^    username = django_filters.Filter(method = "get_username")$/;"	kind:variable	line:5
+utils.py	../utility/utils.py	1;"	kind:file	line:1
+venue	../events/filters.py	/^    venue = django_filters.Filter(method="get_venue")$/;"	kind:variable	line:30
+venue	../events/models.py	/^    venue = models.CharField( max_length=100 )$/;"	kind:variable	line:20
+verbose_name	../users/models.py	/^        verbose_name = "Candidate Attributes (to be filled only if user type is cordinator)"$/;"	kind:variable	line:104
+verbose_name	../users/models.py	/^        verbose_name = "Client Attributes (to be filled only if user type is client)"$/;"	kind:variable	line:74
+verbose_name	../users/models.py	/^        verbose_name = "Cordinator Attributes (to be filled only if user type is cordinator)"$/;"	kind:variable	line:85
+verbose_name	../users/models.py	/^        verbose_name = "Create \/ Modify User"$/;"	kind:variable	line:53
+view	../utility/mygenerics.py	/^        def view(request,*args,**kwargs):$/;"	kind:function	line:32
+views.py	../events/views.py	1;"	kind:file	line:1
+views.py	../master/views.py	1;"	kind:file	line:1
+views.py	../miscellanous/views.py	1;"	kind:file	line:1
+views.py	../monkey_patch/views.py	1;"	kind:file	line:1
+views.py	../seo/views.py	1;"	kind:file	line:1
+views.py	../users/views.py	1;"	kind:file	line:1
+whatsapp_number	../users/models.py	/^    whatsapp_number = models.BigIntegerField( blank=True, null=True )$/;"	kind:variable	line:41
+widgets	../seo/forms.py	/^        widgets = {$/;"	kind:variable	line:22
+working_for	../users/models.py	/^    working_for = models.CharField( choices=CORDINATOR_WORKING_FOR, max_length=50, blank=True, null=True  )$/;"	kind:variable	line:79
+wsgi.py	../wse/wsgi.py	1;"	kind:file	line:1

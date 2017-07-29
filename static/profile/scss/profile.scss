@@ -1,0 +1,149 @@
+@import '../../scss/components/global';
+
+@import '../../scss/components/breadcrumb';
+
+%left-box {
+  float: left;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+%hover-stat {
+  background: #ea6e32;
+  color: #fff;
+}
+
+.columns {
+  @extend %clear;
+  width: 100%;
+
+  &-profile {
+    @extend %left-box;
+    max-width: 200px;
+    width: 100%;
+  }
+
+  &-listing {
+    @extend %left-box;
+    height: 100%;
+    height: 100vh;
+    max-height: 500px;
+    max-width: 300px;
+    width: 100%;
+  }
+
+  &-details {
+    @extend %left-box;
+    max-height: 500px;
+    max-width: 640px;
+    width: 100%;
+
+    > div {
+      height: 100%;
+      height: 100vh;
+      max-height: 500px;
+    }
+  }
+}
+
+.user-pic {
+  background-color: #ccc;
+  display: block;
+  height: 150px;
+  margin: 10px auto;
+  width: 150px;
+}
+
+// tabs
+.user-events-tabs {
+  margin-left: -15px;
+  margin-right: -15px;
+
+  li {
+    margin-bottom: 5px;
+  }
+
+  a {
+    color: #ea6e32;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+
+    &:hover {
+      @extend %hover-stat;
+      cursor: pointer;
+      outline: none;
+    }
+  }
+
+  .active {
+    a {
+      @extend %hover-stat;
+    }
+  }
+}
+
+.bdr-orange {
+  border: 1px solid #ea6e32;
+}
+
+.event-lisitng {
+  @extend %clear;
+  border-bottom: 1px solid #ea6e32;
+  margin-top: 15px;
+
+  li {
+    float: left;
+    padding-top: 3px;
+
+    a {
+      background: #ea6e32;
+      border: 1px solid #ea6e32;
+      color: #fff;
+      display: block;
+      margin-right: 2px;
+      padding: 8px 15px;
+      position: relative;
+      text-decoration: none;
+      transition: all 0.3ms ease;
+
+      &::focus {
+        outline: none;
+      }
+    }
+  }
+
+  .active {
+    padding-top: 0;
+
+    a {
+      background: #fff;
+      border-bottom: 0;
+      color: #ea6e32;
+      padding: 10px 15px;
+      transition: all 0.3ms ease;
+
+      &:after {
+        background: #fff;
+        bottom: -1px;
+        content: '';
+        height: 1px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+      }
+    }
+  }
+
+}
+
+.event-lisitng-container {
+  background: #fff;
+  border: 1px solid #ea6e32;
+  border-top: 0;
+  height: 100%;
+  margin-bottom: 15px;
+  max-height: 399px;
+  padding: 15px;
+  overflow-y: auto;
+}
