@@ -6,55 +6,15 @@
     <h2 class="mt-15">Welcome {{ user }}</h2>
 
     <div class="columns">
-      <div class="columns-profile">
-        <div class="user-pic">
-          {# <img src="" alt=""> #}
-        </div>
-        <div class="user-events-tabs">
-          <ul>
-            <li class="active"><a href="#">Events</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Notifications</a></li>
-            <li><a href="#">Your Stats</a></li>
-          </ul>
-        </div>
-      </div>
-      {# end----  #}
-      <div class="columns-listing bdr-orange">
-        <h3 class="mt-15">Your Events History</h3>
-        <ul class="event-lisitng">
-          <li class="active"><a href="#">All</a></li>
-          <li><a href="#">Upcoming</a></li>
-          <li><a href="#">Previous</a></li>
-        </ul>
-        <div class="event-lisitng-container">
-          <div class="" id="js-all">
-            <ul>
-              {% for i in "123" %}
-              <li>
-                <div class="history-listing">
-                  <div class="history-tag">Applied</div>
-                  <p class="history-event-name">Event Name</p>
-                  <p class="history-client-name">Client Name</p>
-                  <p class="history-date">Event date - <time>29 June 2017</time></p>
-                  <address class="history-location">Loation - Delhi</address> 
-                </div>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-          <div class="" id="js-upcoming">
-          </div>
-          <div class="" id="js-previous">
-          </div>
-        </div>
-      </div>
-      {# end----  #}
-      <div class="columns-details">
-        <div class="bdr-orange">
-        </div>
-      </div>
-      {# end----  #}
+      {% if 'my_profile' == request.resolver_match.url_name %}
+        {% include "users/profile.html" %}
+      {% elif 'my_notify' == request.resolver_match.url_name %}
+        {% include "users/notify.html" %}
+      {% elif 'my_stat' == request.resolver_match.url_name %}
+        {% include "users/stats.html" %}
+      {% else %}
+        {% include "users/overview.html" %}
+      {% endif %}
     </div>
   </div>
 </div>

@@ -1,0 +1,13 @@
+<div class="columns-profile">
+    <div class="user-pic">
+        {# <img src="" alt=""> #}
+    </div>
+    <div class="user-events-tabs">
+        <ul>
+        <li {% if active == 'overview' %}class="active"{% endif %}><a href="{% url 'my_overview' %}">Events</a></li>
+        <li {% if active == 'profile' %}class="active"{% endif %}><a href="{% url 'my_profile' %}">Profile</a></li>
+        <li {% if active == 'notify' %}class="active"{% endif %}><a href="{% url 'my_notify' %}">Notifications</a></li>
+        <li {% if active == 'stat' %}class="active"{% endif %}><a href="{% url 'my_stat' %}">Your Stats</a></li>
+        </ul>
+    </div>
+</div>

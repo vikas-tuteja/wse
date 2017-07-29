@@ -590,7 +590,9 @@ body {
     .columns-details > div {
       height: 100%;
       height: 100vh;
-      max-height: 500px; }
+      max-height: 500px;
+      overflow-y: auto;
+      padding: 15px; }
 
 .user-pic {
   background-color: #ccc;
@@ -705,5 +707,66 @@ body {
 .history-location {
   font-size: 13px;
   margin-top: 5px; }
+
+.tags {
+  display: inline-block;
+  padding: 10px 15px 10px 30px;
+  position: relative;
+  margin-right: 25px;
+  border-radius: 3px 0 0 3px;
+  color: #fff;
+  background-color: #5cb85c;
+  margin-top: 5px;
+  margin-bottom: 5px; }
+  .tags::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 10px;
+    height: 10px;
+    left: 10px;
+    border-radius: 10px;
+    background: #f8f8f8; }
+  .tags::after {
+    background: transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #5cb85c;
+    border-top: 19px solid transparent;
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: 0; }
+  .tags.tags-pending {
+    background-color: #d9534f; }
+    .tags.tags-pending::after {
+      border-left: 20px solid #d9534f; }
+
+.alerts {
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+  background-color: #368; }
+  .alerts li + li {
+    margin-top: 10px; }
+  .alerts .alert-checked {
+    color: #5cb85c; }
+  .alerts .alert-pending {
+    color: #d9534f; }
+
+.checked:after {
+  content: '\002714'; }
+
+.pending:after {
+  content: '\002718'; }
+
+.details-para {
+  margin-top: 15px; }
+  .details-para h5 {
+    margin-bottom: 10px;
+    font-weight: bold; }
+  .details-para p {
+    font-size: 14px; }
 
 /*# sourceMappingURL=profile.css.map */
