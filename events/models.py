@@ -108,7 +108,7 @@ class RequirementApplication(models.Model):
 
 
 class AllocationStatus(models.Model):
-    application = models.ForeignKey( RequirementApplication, unique=True )
+    application = models.OneToOneField( RequirementApplication )
     allocation_datetime = models.DateTimeField( auto_now_add=True )
     allocation_status = models.CharField( choices=ALLOCATION_STATUS, max_length=50 )
 
