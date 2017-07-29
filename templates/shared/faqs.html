@@ -7,6 +7,15 @@
 <!-- menu bar -->
 {% include "shared/menu.html" %}
 
+<!-- body -->
+<div class="body-center">
+    {% for faq in results.0.faq %}
+        <p class="blue m-t-36"><b>&nbsp;&nbsp;{{faq.0}}</b></p>
+        <div class="divider"></div>
+        <p class="sub">{{faq.1}}</p>
+    {% endfor %}
+</div>
+
 <!-- footer -->
 {% include "shared/footer.html" %}
 {% endblock body %}

@@ -1,4 +1,5 @@
 {% include "shared/base.html" %}
+{% load islist from tag %}
 {% block customcss %}
     <link href="{{STATIC_URL}}shared/css/listing.css" rel="stylesheet">
     <link href="{{STATIC_URL}}shared/css/about_us.css" rel="stylesheet">
@@ -7,53 +8,27 @@
 <!-- menu bar -->
 {% include "shared/menu.html" %}
 <div class="body-center">
-    <p class="blue"><b>&nbsp;&nbsp;WHO WE ARE</b></p>
-
-    <div class="divider"></div>
-    <p class="sub">Something something something...
-    bla bla bla...</p>
-
-    <p class="blue" style="margin-top:30px;"><b>&nbsp;&nbsp;WHAT DO WE DO</b></p>
-    <div class="divider"></div>
-    <p class="sub">Something something something...
-    bla bla bla...</p>
-
-    <p class="blue" style="margin-top:30px;"><b>&nbsp;&nbsp;MEET OUR TEAM</b></p>
-    <div class="divider"></div>
-
-    <div class="clearfix">
-        <div class="col-33">
-            <div class="circle"><img src="{{STATIC_URL}}shared/images/F2344.jpg"></div>
-            <div>
-                <h3 class="blue">Vikas Tuteja</h3>
-                <p class="smallsub">Head of Technology & Co-Founder</p>
-                <p class="sub">"7+ years of experience in Software Development and Web Technologies."</p>
-            </div>
-        </div>
-        <div class="divider-vertical"></div>
-
-
-        <div class="col-33">
-            <div class="circle"></div>
-            <div>
-                <h3 class="blue">Koushik Patnaik</h3>
-                <p class="smallsub">Product Head & Co-Founder</p>
-                <p class="sub">"Vast experience of approximately 8 years in designing products."</p>
-                
-            </div>
-        </div>
-        <div class="divider-vertical"></div>
-
-
-        <div class="col-33">
-            <div class="circle"></div>
-            <div>
-                <h3 class="blue">Mehul Tuteja</h3>
-                <p class="smallsub">Sales / Operations Head & Co-Founder</p>
-                <p class="sub">"3+ years of experience in Managing Events and Sales / Operations."</p>
-                
-            </div>
-        </div>
+    {% for about in results.0.aboutus %}
+        {% for head, value in about.items %} 
+            <p class="blue m-t-36"><b>&nbsp;&nbsp;{{head}}</b></p>
+            <div class="divider"></div>
+            {% if not value|islist %}
+                <p class="sub">{{value}}</p>
+            {% else %}
+                <div class="clearfix">
+                {% for i in value %}
+                    <div class="col-33">
+                        <div class="circle"><img src="{{STATIC_URL}}shared/images/{{i.3}}"></div>
+                        <div>
+                            <h3 class="blue">{{i.0}}</h3>
+                            <p class="smallsub">{{i.1}}</p>
+                            <p class="sub">"{{i.2}}"</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
     </div>
 </div>
 
