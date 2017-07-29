@@ -15,6 +15,7 @@
 
 .columns {
   @extend %clear;
+  margin-top: 15px;
   width: 100%;
 
   &-profile {
@@ -50,7 +51,7 @@
   background-color: #ccc;
   display: block;
   height: 150px;
-  margin: 10px auto;
+  margin: 15px auto;
   width: 150px;
 }
 
@@ -142,8 +143,72 @@
   border: 1px solid #ea6e32;
   border-top: 0;
   height: 100%;
+  height: calc(100% - 99px);
   margin-bottom: 15px;
-  max-height: 399px;
-  padding: 15px;
   overflow-y: auto;
+  padding: 15px;
 }
+
+.history {
+  &-listing {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+
+  &-tag {
+    background: #5cb85c;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-left: -20px;
+    padding: 5px 20px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      z-index: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 10px 10px 0;
+      border-color: transparent  #347034 transparent transparent;
+
+    }
+
+    &::after {
+          background: #fff;
+          border-bottom: 11px solid transparent;
+          border-left: 12px solid #5cb85c;
+          border-top: 11px solid transparent;
+          content: '';
+          position: absolute;
+          right: -10px;
+          top: 0;
+    }
+  }
+
+  &-event-name {
+    font-size: 16px;
+  }
+
+  &-client-name {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  &-date {
+    font-size: 13px;
+    margin-top: 5px;
+  }
+
+  &-location {
+    font-size: 13px;
+    margin-top: 5px;
+  }
+}
+

@@ -121,7 +121,6 @@ table {
   padding: 0;
   box-sizing: border-box; }
 
-
 .nav-strip::before, .main-nav ul::before, .row::before, .breadcrumb::before, .columns::before, .event-lisitng::before, .nav-strip::after, .main-nav ul::after, .row::after, .breadcrumb::after, .columns::after, .event-lisitng::after {
   content: ' ';
   display: table; }
@@ -573,6 +572,7 @@ body {
   color: #fff; }
 
 .columns {
+  margin-top: 15px;
   width: 100%; }
   .columns-profile {
     max-width: 200px;
@@ -596,7 +596,7 @@ body {
   background-color: #ccc;
   display: block;
   height: 150px;
-  margin: 10px auto;
+  margin: 15px auto;
   width: 150px; }
 
 .user-events-tabs {
@@ -656,9 +656,54 @@ body {
   border: 1px solid #ea6e32;
   border-top: 0;
   height: 100%;
+  height: calc(100% - 99px);
   margin-bottom: 15px;
-  max-height: 399px;
-  padding: 15px;
-  overflow-y: auto; }
+  overflow-y: auto;
+  padding: 15px; }
+
+.history-listing {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px; }
+.history-tag {
+  background: #5cb85c;
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  margin-bottom: 10px;
+  margin-left: -20px;
+  padding: 5px 20px;
+  position: relative; }
+  .history-tag::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    z-index: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 10px 0;
+    border-color: transparent  #347034 transparent transparent; }
+  .history-tag::after {
+    background: #fff;
+    border-bottom: 11px solid transparent;
+    border-left: 12px solid #5cb85c;
+    border-top: 11px solid transparent;
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 0; }
+.history-event-name {
+  font-size: 16px; }
+.history-client-name {
+  font-size: 14px;
+  margin-top: 5px; }
+.history-date {
+  font-size: 13px;
+  margin-top: 5px; }
+.history-location {
+  font-size: 13px;
+  margin-top: 5px; }
 
 /*# sourceMappingURL=profile.css.map */
