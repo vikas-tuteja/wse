@@ -59,8 +59,11 @@ class BaseMiddleware(MiddlewareMixin):
             except:
                 pass
 
-            response.data['menu'] = self.getmenu(url_name)
-            response.data['page'] = request.GET.get('page', 1)
+            try:
+                response.data['menu'] = self.getmenu(url_name)
+                response.data['page'] = request.GET.get('page', 1)
+            except:
+                pass
         return response
 
 

@@ -27,4 +27,4 @@ class ContactUsSerializer( serializers.ModelSerializer ):
         fields = ('contactus',)
 
     def get_contactus(self, obj):
-        return json.loads(obj.contactus_content)
+        return obj.contactus_content
