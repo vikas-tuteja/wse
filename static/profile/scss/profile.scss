@@ -224,6 +224,7 @@
   background-color: #5cb85c;
   margin-top: 5px;
   margin-bottom: 5px;
+  font-size: 14px;
 
   &::before {
     content: '';
@@ -240,9 +241,9 @@
 
   &::after {
     background: transparent;
-    border-bottom: 20px solid transparent;
+    border-bottom: 18px solid transparent;
     border-left: 20px solid #5cb85c;
-    border-top: 19px solid transparent;
+    border-top: 18px solid transparent;
     content: '';
     position: absolute;
     right: -20px;
@@ -303,3 +304,32 @@
     font-size: 14px;
   }
 }
+
+.times-badges {
+  margin: 5px 0;
+  padding: 5px 10px;
+  font-size: 16px;
+  background: #f0f0f0;
+  display: inline-block;
+  border: 1px dashed #368;
+}
+
+.event-head {
+  color: rgba(0,0,0,0.87);
+  font-size: 28px;
+
+  &-client {
+    padding: 10px;
+    background: #ccc;
+    margin-top: 10px;
+    border-radius: 3px 3px 0 0;
+  }
+
+  &-required {
+    padding: 10px;
+    background: #ddd;
+    margin-bottom: 10px;
+    border-radius: 0 0 3px 3px;
+  }
+}
+
