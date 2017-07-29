@@ -121,6 +121,7 @@ table {
   padding: 0;
   box-sizing: border-box; }
 
+
 .nav-strip::before, .main-nav ul::before, .row::before, .breadcrumb::before, .columns::before, .event-lisitng::before, .nav-strip::after, .main-nav ul::after, .row::after, .breadcrumb::after, .columns::after, .event-lisitng::after {
   content: ' ';
   display: table; }

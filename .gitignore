@@ -1,1 +1,4 @@
 *.pyc
+node_module/
+.vscode/
+.sass-cache/
