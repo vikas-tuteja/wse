@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.db import IntegrityError
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-# from django_redis import get_redis_connection
+from django_redis import get_redis_connection
 from django.contrib.auth import login as auth_login
 
 from models import UserDetail, UserRole, CandidateAttribute
