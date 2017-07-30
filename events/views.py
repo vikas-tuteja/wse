@@ -26,7 +26,7 @@ class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
 
     """
     serializer_class = ListEventSerializer
-    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
+    filter_backends = (django_filters.rest_framework.DjangoFilterBackend, EventFilterBackend)
     filter_class = EventFilters
     template_name = 'events/listing_base.html'
     related_views = {
@@ -40,6 +40,7 @@ class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
             date()).prefetch_related('requirement_set').distinct().order_by('id')
 
     def get(self, request, *args, **kwargs):
+        
         response = super(EventListing, self).get(request, *args, **kwargs)
 
         # prefix '' or '-' in sort params

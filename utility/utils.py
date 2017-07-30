@@ -59,3 +59,23 @@ def get_prefix(name=None):
         return '-' if name[0] != '-' else ''
     except:
         return ''
+
+class UserSession(object):
+    @staticmethod
+    def set_session_user(request):
+        """
+        sets user after login from request to session
+
+        """
+        if request.user.is_authenticated():
+            request.session.__setattr__('user', request.user)
+
+    @staticmethod
+    def get_session_user(request):
+        """
+        sets user at every request from middleware from session to request object before view is called
+
+        """
+        if getattr(request.session, 'user', None):
+            if request.session.user.is_authenticated():
+                request.__setattr__('user', request.user)

@@ -1,9 +1,8 @@
 {% load i18n %}
-{% trans "Koushik" as user %}
 
 <div class="container">
   <div class="row">
-    <h2 class="mt-15">Welcome {{ user }}</h2>
+    <h2 class="mt-15">Welcome {{ results.0.name }}</h2>
 
     <div class="columns">
       {% if 'my_profile' == request.resolver_match.url_name %}

@@ -9,11 +9,13 @@ class ListEventSerializer( serializers.ModelSerializer ):
     state = serializers.CharField(read_only=True, source='city.state.name')
     posted_by = serializers.CharField(read_only=True, source='event_posted_by.auth_user.username')
     candidate_info = serializers.SerializerMethodField()
+    req = serializers.SerializerMethodField()
+    #userprofile_status = serializers.SerializerMethodField()
 
 
     class Meta:
         model = Event
-        fields = ('id', 'client', 'name', 'slug', 'overview', 'venue', 'area', 'city', 'state', 'posted_by', 'contact_person_name', 'contact_person_number', 'candidate_info', 'schedule' )
+        fields = ('id', 'client', 'name', 'slug', 'overview', 'venue', 'area', 'city', 'state', 'posted_by', 'contact_person_name', 'contact_person_number', 'candidate_info', 'schedule', 'req', 'briefing_datetime', 'short_description')
 
     def get_candidate_info(self, obj):
         candidates_required, paisa = {}, []
@@ -26,6 +28,21 @@ class ListEventSerializer( serializers.ModelSerializer ):
             'candidates_required' : candidates_required,
             'paisa': max(paisa)
         }
+
+    def get_req(self, obj):
+        req = []
+        #import pdb; pdb.set_trace()
+        for x in obj.requirement_set.all():
+            r = {
+                'id':x.id,
+                'type':x.candidate_type.name,
+            }
+            for each in x.requirementapplication_set.filter():
+                r['application_status'] = each.application_status
+                r['candidate'] = each.candidate.id
+                r['auth_id'] = each.candidate.auth_user.id
+            req.append(r)
+        return req
 
 
 class ListRequirementSerializer( serializers.ModelSerializer ):

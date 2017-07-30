@@ -3,6 +3,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.utils.deprecation import MiddlewareMixin
 from django.core.urlresolvers import resolve
+from utility.utils import UserSession
 
 from seo.models import MetaData
 
@@ -20,7 +21,10 @@ class BaseMiddleware(MiddlewareMixin):
     def __call__(self, request):
         # Code to be executed for each request before
         # the view (and later middleware) are called.
-        
+
+        # sets session user to request
+        UserSession.get_session_user(request)
+ 
         response = self.get_response(request)
 
         # Code to be executed for each request/response after
@@ -53,7 +57,7 @@ class BaseMiddleware(MiddlewareMixin):
                 related_views = request.resolver_match.func.cls.related_views
                 for key, func in related_views.items():
                     try:
-                        response.data[key] = json.loads(func[0](func[1])._container[0])['results']
+                        response.data[key] = json.loads(func[0](request)._container[0])['results']
                     except:
                         response.data[key] = None
             except:
@@ -62,6 +66,7 @@ class BaseMiddleware(MiddlewareMixin):
             try:
                 response.data['menu'] = self.getmenu(url_name)
                 response.data['page'] = request.GET.get('page', 1)
+                response.data['user'] = request.user.id
             except:
                 pass
         return response

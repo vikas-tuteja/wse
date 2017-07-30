@@ -7,13 +7,22 @@ from models import UserDetail, CandidateAttribute
 class AuthUserSerializer( serializers.ModelSerializer ):
     class Meta:
         model = User
-        fields = ('username', 'email', )
+        fields = ('username', 'password', )
 
 
 class UserSerializer( serializers.ModelSerializer ):
+    auth_id = serializers.CharField(read_only=True, source='auth_user.id')
+    username = serializers.CharField(read_only=True, source='auth_user.username')
+    email = serializers.CharField(read_only=True, source='auth_user.email')
+    name = serializers.CharField(read_only=True, source='auth_user.first_name')
+    image = serializers.SerializerMethodField()
+
     class Meta:
         model = UserDetail
-        fields = '__all__'
+        fields = ('auth_id', 'username','email','mobile', 'image', 'name')
+
+    def get_image(self, obj):
+        return "/%s"%obj.image.url
 
 
 class UserMeterSerializer( serializers.ModelSerializer ):

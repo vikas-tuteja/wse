@@ -13,8 +13,11 @@ from django_redis import get_redis_connection
 from django.contrib.auth import login as auth_login
 
 from models import UserDetail, UserRole, CandidateAttribute
-from utility.utils import ComputeCompletion
+from utility.utils import ComputeCompletion, UserSession
 from serializers import UserSerializer, AuthUserSerializer, UserMeterSerializer
+from events.views import EventListing
+from events.models import AllocationStatus
+from utility import mygenerics
 
 from filters import UserFilters
 
@@ -78,6 +81,10 @@ class CreateUser( generics.CreateAPIView ):
             'message':message
         })
         
+class Logout():
+    pass
+    #TODO remove user from session as well as request 
+    #TODO use fn UserSession.removeuser
 
 class LoginUser( generics.ListAPIView ):
     """
@@ -91,15 +98,14 @@ class LoginUser( generics.ListAPIView ):
     def post(self, request, *args, **kwargs):
         kwargs.update(request.POST.dict())
         status = False
-        user = authenticate( 
-            username = kwargs.get('email'),
-            password = kwargs.get('password')
-        )
+        user = authenticate( username = kwargs.get('username', kwargs.get('email')), password = kwargs.get('password') )
 
         if not user:
             message = 'Error: Invalid credentials'
         else:
             auth_login(request, user)
+            # sets session request to user
+            # UserSession.set_session_user(request)
             status = True
             message = 'Successfully logged in'
 
@@ -239,9 +245,33 @@ class UserProfileCompletionMeter( generics.ListAPIView ):
             'profile_completed':meter.compute_percent(),
         })
 
-class UserProfile( generics.ListAPIView ):
-    serializer_class = UserMeterSerializer
-    queryset = UserDetail.objects.all()
+class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
+    serializer_class = UserSerializer
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
     filter_class = UserFilters
     template_name = 'users/my_profile_base.html'
+
+    def get_queryset(self, *args, **kwargs):
+        queryset = UserDetail.objects.filter(auth_user__username='vikastuteja21@gmail.com')
+        return queryset
+
+    def get(self, request, *args, **kwargs):
+        # TODO remove auth user login from here, and it should be manages using cookie or sessions
+        #if not request.user.is_authenticated():
+        #    return JsonResponse(data={
+        #        'status': False,
+        #        'message': 'Unauthorized user, please login'
+        #    })
+        auth_user = authenticate( 
+            username = 'reachvikastuteja@gmail.com',
+            password = 'qwerty123'
+        )
+        auth_login(request, auth_user)
+
+        # view starts
+        response = super(UserProfile, self).get(request, *args, **kwargs)
+    
+        userdetail = response.data['results'][0]['auth_id']
+        
+        response.data['events'] = EventListing.as_data()(request, userprofile=userdetail)
+        return response

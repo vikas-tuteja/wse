@@ -98,9 +98,10 @@ class RequirementApplication(models.Model):
         unique_together = ('requirement', 'candidate')
 
     def allocation_status(self):
-        allocation_status_obj = self.allocationstatus_set.all()
-        if allocation_status_obj:
-            return allocation_status_obj[0]
+        #import pdb; pdb.set_trace()
+        #allocation_status_obj = self.allocationstatus_set.all()
+        #if allocation_status_obj:
+        #    return allocation_status_obj[0]
         return None
 
     def mobile(self):
@@ -108,7 +109,7 @@ class RequirementApplication(models.Model):
 
 
 class AllocationStatus(models.Model):
-    application = models.OneToOneField( RequirementApplication )
+    application = models.ForeignKey( RequirementApplication )
     allocation_datetime = models.DateTimeField( auto_now_add=True )
     allocation_status = models.CharField( choices=ALLOCATION_STATUS, max_length=50 )
 
