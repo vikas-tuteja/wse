@@ -13,10 +13,11 @@ from django_redis import get_redis_connection
 from django.contrib.auth import login as auth_login
 
 from models import UserDetail, UserRole, CandidateAttribute
-from utility.utils import ComputeCompletion, UserSession
+from utility.utils import ComputeCompletion
 from serializers import UserSerializer, AuthUserSerializer, UserMeterSerializer
 from events.views import EventListing
 from events.models import AllocationStatus
+from events.serializers import ProfileEventSerializer
 from utility import mygenerics
 
 from filters import UserFilters
@@ -93,7 +94,7 @@ class LoginUser( generics.ListAPIView ):
                : password
     """
     serializer_class = AuthUserSerializer
-    queryset = User.objects.all()
+    queryset = User.objects.none()
     
     def post(self, request, *args, **kwargs):
         kwargs.update(request.POST.dict())
@@ -104,8 +105,6 @@ class LoginUser( generics.ListAPIView ):
             message = 'Error: Invalid credentials'
         else:
             auth_login(request, user)
-            # sets session request to user
-            # UserSession.set_session_user(request)
             status = True
             message = 'Successfully logged in'
 
@@ -246,6 +245,10 @@ class UserProfileCompletionMeter( generics.ListAPIView ):
         })
 
 class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
+    """
+    /my-profile/ page 
+
+    """
     serializer_class = UserSerializer
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
     filter_class = UserFilters
@@ -256,22 +259,14 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
         return queryset
 
     def get(self, request, *args, **kwargs):
-        # TODO remove auth user login from here, and it should be manages using cookie or sessions
-        #if not request.user.is_authenticated():
-        #    return JsonResponse(data={
-        #        'status': False,
-        #        'message': 'Unauthorized user, please login'
-        #    })
-        auth_user = authenticate( 
-            username = 'reachvikastuteja@gmail.com',
-            password = 'qwerty123'
-        )
-        auth_login(request, auth_user)
+        if not request.user.is_authenticated():
+            return JsonResponse(data={
+                'status': False,
+                'message': 'Unauthorized user, please login'
+            })
 
         # view starts
         response = super(UserProfile, self).get(request, *args, **kwargs)
-    
-        userdetail = response.data['results'][0]['auth_id']
-        
-        response.data['events'] = EventListing.as_data()(request, userprofile=userdetail)
+        response.data['events'] = EventListing.as_data(serializer_class=ProfileEventSerializer)(request, userprofile=request.user.id)
+
         return response

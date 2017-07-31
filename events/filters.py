@@ -29,7 +29,7 @@ class EventFilterBackend(object):
         qs = []
         for eachqs in queryset:
             for req in eachqs.requirement_set.all():
-                for app in req.requirementapplication_set.filter(candidate__auth_user_id=value):
+                for app in req.requirementapplication_set.filter(candidate__id=value):
                     for allocation in app.allocationstatus_set.filter():
                         qs.append(eachqs)
     

@@ -3,7 +3,6 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.utils.deprecation import MiddlewareMixin
 from django.core.urlresolvers import resolve
-from utility.utils import UserSession
 
 from seo.models import MetaData
 
@@ -22,9 +21,6 @@ class BaseMiddleware(MiddlewareMixin):
         # Code to be executed for each request before
         # the view (and later middleware) are called.
 
-        # sets session user to request
-        UserSession.get_session_user(request)
- 
         response = self.get_response(request)
 
         # Code to be executed for each request/response after

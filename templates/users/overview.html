@@ -64,13 +64,13 @@
             </div>
             <div class="tags-list">
                 <div class="tags">
-                Per day Pay - Rs.100
+                    Per day Pay - Rs.{{each.req.0.payments.0.paisa}}
                 </div>
                 <div class="tags">
-                    Earnings - Rs.500
+                    Estimated Earnings - Rs.{% widthratio each.schedule.2 1 each.req.0.payments.0.paisa %}
                 </div>
                 <div class="tags tags-pending">
-                    Payment Status - Pending
+                    Event Allocation Status - {{each.req.0.payments.0.allocation_status|title}}
                 </div>
             </div>
             <div class="details-para">

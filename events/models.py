@@ -12,7 +12,7 @@ from choices import *
 
 # Create your models here.
 class Event(models.Model):
-    client = models.ForeignKey( UserDetail, limit_choices_to={'type__slug' : 'client'}, related_name='client_user' )
+    client = models.ForeignKey( User, limit_choices_to={'userdetail__type__slug' : 'client'}, related_name='client_user' )
     name = models.CharField( max_length=100 )
     slug = models.SlugField( max_length=100 )
     short_description = models.TextField( blank=True, null=True )
@@ -20,7 +20,7 @@ class Event(models.Model):
     venue = models.CharField( max_length=100 )
     area = models.ForeignKey( Area )
     city = models.ForeignKey( City )
-    posted_by = models.ForeignKey( UserDetail, limit_choices_to = {'type__slug__in':['client', 'cordinator']} )
+    posted_by = models.ForeignKey( User, limit_choices_to = {'userdetail__type__slug__in':['client', 'cordinator']} )
     briefing_datetime = models.DateTimeField( blank=True, null=True ) 
     briefing_venue = models.CharField( max_length=100, blank=True, null=True )
     contact_person_name = models.CharField( max_length=100, blank=True, null=True )
@@ -87,7 +87,7 @@ class Requirement(models.Model):
 
 class RequirementApplication(models.Model):
     requirement = models.ForeignKey( Requirement )
-    candidate = models.ForeignKey( UserDetail, limit_choices_to={'type__slug' : 'candidate'} )
+    candidate = models.ForeignKey( User, limit_choices_to={'userdetail__type__slug' : 'candidate'} )
     application_datetime = models.DateTimeField( auto_now_add=True )
     application_status = models.CharField( choices=APPLICATION_STATUS, max_length=20 )
 
@@ -105,7 +105,7 @@ class RequirementApplication(models.Model):
         return None
 
     def mobile(self):
-        return self.candidate.mobile
+        return self.candidate.userdetail.mobile
 
 
 class AllocationStatus(models.Model):
