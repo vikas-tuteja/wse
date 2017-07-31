@@ -85,7 +85,6 @@ class CreateUser( generics.CreateAPIView ):
 class Logout():
     pass
     #TODO remove user from session as well as request 
-    #TODO use fn UserSession.removeuser
 
 class LoginUser( generics.ListAPIView ):
     """
@@ -124,8 +123,6 @@ class ForgotPassword( generics.UpdateAPIView ):
     """
     serializer_class = UserSerializer
     queryset = UserDetail.objects.all()
-    #lookup_field = "auth_user__email"
-    #lookup_url_kwarg = "user_email"
 
     def put(self, request, *args, **kwargs):
         status = False
