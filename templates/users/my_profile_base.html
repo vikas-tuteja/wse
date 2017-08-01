@@ -2,6 +2,8 @@
 
 {% block customcss %}
     <link href="{{STATIC_URL}}profile/css/profile.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}shared/css/login.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}shared/css/font-awesome.min.css" rel="stylesheet">    
 {% endblock customcss %}
 {% block body %}
 <!-- menu bar -->
@@ -12,6 +14,7 @@
 
 <!-- footer -->
 {% include "shared/footer.html" %}
+{% include "login/login.html" %}
 {% endblock body %}
 
 {% block customjs %}
@@ -20,6 +23,17 @@
     <script type="text/javascript">
         MyProfile.init({
         });
-    </script>
 
+        $(document).ready(function(){
+            $('.btn-close').on('click', function(){
+                $('.container-login').removeClass('login-show');
+                $(this).parents('.pop-overlay').hide(500);
+            });
+
+            $('.sign-in').on('click', function(){
+                $('.pop-overlay').show(500);
+                $('.container-login').addClass('login-show');
+            });
+        })
+    </script>
 {% endblock customjs %}
