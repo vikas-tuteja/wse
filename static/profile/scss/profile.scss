@@ -47,13 +47,22 @@
       padding: 15px;
     }
   }
+
+  &-form {
+    @extend %left-box;
+    width: 70%;
+    width: calc(100% - 210px);
+    height: 100%;
+    height: 100vh;
+    max-height: 500px;
+  }
 }
 
 .user-pic {
   background-color: #ccc;
   display: block;
   height: 150px;
-  margin: 15px auto;
+  margin: 0 auto 15px auto;
   width: 150px;
 }
 
@@ -330,6 +339,94 @@
     background: #ddd;
     margin-bottom: 10px;
     border-radius: 0 0 3px 3px;
+  }
+}
+
+.tab-line {
+  border-bottom: 1px solid #ea6e32;
+}
+
+.tabs-profile {
+  @extend %clear;
+  margin-top: 15px;
+
+  li {
+    float: left;
+
+    a {
+      background-color: #ea6e32;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      display: block;
+      margin-right: 10px;
+      padding: 15px;
+      text-decoration: none;
+    }
+
+    &.active {
+      a {
+        background: #fff;
+        border: 1px solid #ea6e32;
+        border-bottom: 0;
+        color: #ea6e32;
+        margin-bottom: -1px;
+      }
+    }
+  }
+}
+
+.tabs-profile-container {
+  background: #fff;
+  border: 1px solid #ea6e32;
+  border-top: 0;
+  padding: 15px;
+  height: 100%;
+  height: calc(100% - 75px);
+  margin-bottom: 15px;
+  overflow-y: auto;
+}
+
+.container-head {
+  @extend %clear;
+
+  .container-left {
+    float: left;
+  }
+
+  .container-right {
+    float: right;
+  }
+}
+
+.custom-input {
+  position: relative;
+
+  input {
+    padding: 5px;
+
+    &:focus {
+      outline: none;
+      + span {
+        font-size: 12px;
+        line-height: 14px;
+        top: -14px;
+        transition: all 0.5ms ease;
+      }
+    }
+  }
+
+  span {
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 8px;
+    display: block;
+    line-height: 18px;
+    pointer-events: none;
+    transition: all 0.5ms ease;    
   }
 }
 

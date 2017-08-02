@@ -1,0 +1,111 @@
+%center {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+%center-x {
+  left: 0;
+  right: 0;
+}
+
+.pop-overlay {
+  @extend %center;
+  display: block;
+  background-color: rgba(0,0,0,0.8);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.container-login { 
+  background: #fff;
+  border: 1px dashed #787878;
+  max-width: 400px;
+  padding: 30px;
+  width: 100%;
+  margin: 2em auto;
+  max-height: 400px;
+  position: relative;
+  transition: all 1s ease;
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.login-show {
+  transition: all 1s ease;
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+.login-label {
+  border: 1px solid #ea6e32;
+  border-radius: 3px;
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative;
+
+  input {
+    border: 0;  
+    width: 100%;
+    padding: 20px 15px 10px 45px;
+    border-radius: 3px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.btn-login {
+  border: 1px solid #95441d;
+  background: #ea6e32;
+  color: #fff;
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.login-head {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.btn-close {
+  background: #fff;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 7px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.8);
+  border-radius: 50%;
+
+  &:focus, &:active {
+    outline: none;
+  }
+}
+
+%uicon {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.user-icon {
+  @extend %uicon;
+  height: 33px;
+  left: 5px;
+}
+
+.pwd-icon {
+  @extend %uicon;
+  height: 25px;
+  left: 10px;
+}
