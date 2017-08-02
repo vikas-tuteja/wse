@@ -45,10 +45,10 @@ class CreateUser( generics.CreateAPIView ):
         kwargs.update(request.POST.dict())
         
         # check if user already exists
-        email = kwargs.get('email')
+        email = kwargs.get('username', kwargs.get('email'))
         mobile = kwargs.get('mobile')[-10:]
         exists = UserDetail.objects.filter(
-            Q(auth_user__email=email) | Q(mobile=mobile)
+            Q(auth_user__username=email) | Q(auth_user__email=email) | Q(mobile=mobile) 
         )
 
         if not exists:
@@ -68,6 +68,10 @@ class CreateUser( generics.CreateAPIView ):
                     mobile = mobile,
                 )
                 user_detail.save()
+            
+                # automatic login after registration
+                user = authenticate( username = kwargs.get('username', kwargs.get('email')), password = kwargs.get('password') )
+                auth_login(request, user)
 
                 status = True
                 message = 'User created successfully'
@@ -88,15 +92,15 @@ class Logout():
 
 class LoginUser( generics.ListAPIView ):
     """
-    METHOD : POST
+    METHOD : GET
     POST PARAMS: email
                : password
     """
     serializer_class = AuthUserSerializer
     queryset = User.objects.none()
     
-    def post(self, request, *args, **kwargs):
-        kwargs.update(request.POST.dict())
+    def get(self, request, *args, **kwargs):
+        kwargs.update(request.GET.dict())
         status = False
         user = authenticate( username = kwargs.get('username', kwargs.get('email')), password = kwargs.get('password') )
 

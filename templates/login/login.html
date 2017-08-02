@@ -1,15 +1,40 @@
 <div class="pop-overlay">   
+    <!-- login form -->
     <div class="container-login">
         <button class="btn-close"><i class="fa fa-times" aria-hidden="true"></i></button>
         <p class="login-head">Sign in</p>
+        <p class="error" style="" id="login_message">.</p>
         <label class="login-label">
             <span class="user-icon"><i class="fa fa-2x fa-user-circle-o" aria-hidden="true"></i></span>
-            <input type="text">
+            <input type="text" id="username" autocomplete="off">
         </label>
         <label class="login-label">
             <span class="pwd-icon"><i class="fa fa-2x fa-unlock-alt" aria-hidden="true"></i></span>
-            <input type="password">
+            <input type="password" id="password" autocomplete="off">
         </label>
-        <button class="btn btn-login">Login</button>
+        <button class="btn btn-login" id="login">Login</button>
+
+        <!-- registration form  -->
+        <p class="login-head">Register</p>
+        <p class="error" style="" id="register_message">.</p>
+        <label class="login-label">
+            <span class="user-icon"><i class="fa fa-2x fa-user-circle-o" aria-hidden="true"></i></span>
+            <input type="text" id="reg_username" autocomplete="off">
+        </label>
+        <label class="login-label">
+            <span class="user-icon"><i class="fa fa-2x fa-user-circle-o" aria-hidden="true"></i></span>
+            <input type="text" id="reg_mobile" autocomplete="off">
+        </label>
+
+        <label class="login-label">
+            <span class="pwd-icon"><i class="fa fa-2x fa-unlock-alt" aria-hidden="true"></i></span>
+            <input type="password" id="reg_password" autocomplete="off">
+        </label>
+
+        <label class="login-label">
+            <span class="pwd-icon"><i class="fa fa-2x fa-unlock-alt" aria-hidden="true"></i></span>
+            <input type="password" id="reg_confirm_password" autocomplete="off">
+        </label>
+        <button class="btn btn-login" id="register">Register</button>
     </div>
 </div>

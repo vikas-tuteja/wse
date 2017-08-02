@@ -36,6 +36,11 @@
                         url:url,
                         method:method,
                         data:param,
+                        beforeSend: function(xhr, settings) {
+                            if (method=='POST') {
+                                xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                            }
+                        }
                     });
         return response;
     }
@@ -86,6 +91,24 @@
         return args[0] + '?' + final_args + uniq
     }
 
+    function verify_mandatory(obj, elem, error_message) {
+        $.each(obj, function(key, val){
+            // if any value blank, return false
+            if($.trim(val) == '' ) {
+                $(elem).html(error_message);
+                return false;
+            }
+
+            // if mobile in key then, value should be integer and 10 digit long
+            if(key.indexOf('mobile') != -1) {
+                if(val.length != 10 || !$.isNumeric(val)) {
+                    $(elem).html(Common.mobile_mandatory);
+                }
+            }
+        });
+        return true;
+    }
+
     /*
     */
     function forceregister(user, action, isajax=true) {
@@ -95,6 +118,33 @@
         // hide requirement application form
         // show message returned by ajaxcall
     }
+
+
+    // using jQuery
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    // list all urls to be used, whether ajax or redirect url
+    Common.login_url = "/login/";
+    Common.register_url = "/create-user/";
+
+
+    // list of all messages
+    Common.mandatory_params = "Error: Mandatory parameters missing";
+    Common.mobile_mandatory = "Error: Mobile number should be 10 digit integer";
+
     Common.init = init;
     Common.forceregister = forceregister;
     Common.bind_onkeyup = bind_onkeyup;
@@ -102,5 +152,6 @@
     Common.ajaxcall = ajaxcall;
     Common.is_param_exist = is_param_exist;
     Common.form_unique_params = form_unique_params;
+    Common.verify_mandatory = verify_mandatory;
 
 })($,(window.Common = window.Common || {}));
