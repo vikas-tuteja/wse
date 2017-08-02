@@ -64,7 +64,29 @@
 .m-t-36 {
     margin-top: 36px;
 }
+
+.right {
+    text-align:center;
+    display:inline-block;
+    margin-top:60px;
+}
+
+.ph {
+    float:left;
+    margin-left:200px;
+    margin-right:100px;
+    margin-top:80px;
+}
+
 @media (max-width:640px) {
+    .ph {
+        margin-top:20px;
+        text-align:center;
+        margin-left:70px;
+    }
+    .right {
+        margin-left:20px;
+    }
     .m-t-36 {
         margin-top: 24px;
     }
@@ -91,4 +113,5 @@
         margin-top:25px;
     }
 }
+
 

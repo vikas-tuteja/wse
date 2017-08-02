@@ -15,6 +15,10 @@ from django.contrib.auth import login as auth_login
 from models import UserDetail, UserRole, CandidateAttribute
 from utility.utils import ComputeCompletion
 from serializers import UserSerializer, AuthUserSerializer, UserMeterSerializer
+from events.views import EventListing
+from events.models import AllocationStatus
+from events.serializers import ProfileEventSerializer
+from utility import mygenerics
 
 from filters import UserFilters
 
@@ -78,6 +82,9 @@ class CreateUser( generics.CreateAPIView ):
             'message':message
         })
         
+class Logout():
+    pass
+    #TODO remove user from session as well as request 
 
 class LoginUser( generics.ListAPIView ):
     """
@@ -86,15 +93,12 @@ class LoginUser( generics.ListAPIView ):
                : password
     """
     serializer_class = AuthUserSerializer
-    queryset = User.objects.all()
+    queryset = User.objects.none()
     
     def post(self, request, *args, **kwargs):
         kwargs.update(request.POST.dict())
         status = False
-        user = authenticate( 
-            username = kwargs.get('email'),
-            password = kwargs.get('password')
-        )
+        user = authenticate( username = kwargs.get('username', kwargs.get('email')), password = kwargs.get('password') )
 
         if not user:
             message = 'Error: Invalid credentials'
@@ -119,8 +123,6 @@ class ForgotPassword( generics.UpdateAPIView ):
     """
     serializer_class = UserSerializer
     queryset = UserDetail.objects.all()
-    #lookup_field = "auth_user__email"
-    #lookup_url_kwarg = "user_email"
 
     def put(self, request, *args, **kwargs):
         status = False
@@ -239,9 +241,29 @@ class UserProfileCompletionMeter( generics.ListAPIView ):
             'profile_completed':meter.compute_percent(),
         })
 
-class UserProfile( generics.ListAPIView ):
-    serializer_class = UserMeterSerializer
-    queryset = UserDetail.objects.all()
+class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
+    """
+    /my-profile/ page 
+
+    """
+    serializer_class = UserSerializer
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
     filter_class = UserFilters
     template_name = 'users/my_profile_base.html'
+
+    def get_queryset(self, *args, **kwargs):
+        queryset = UserDetail.objects.filter(auth_user__username='vikastuteja21@gmail.com')
+        return queryset
+
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated():
+            return JsonResponse(data={
+                'status': False,
+                'message': 'Unauthorized user, please login'
+            })
+
+        # view starts
+        response = super(UserProfile, self).get(request, *args, **kwargs)
+        response.data['events'] = EventListing.as_data(serializer_class=ProfileEventSerializer)(request, userprofile=request.user.id)
+
+        return response

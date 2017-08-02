@@ -14,7 +14,7 @@ def uploadpath(instance, filename):
         data_model = "%s" % instance.auth_user.username
     except:
         data_model = "%s" % str(instance.id)
-    return "uploads/files/%s/%s" % (data_model, filename.replace(' ', '-'))
+    return "uploads/profile/%s/%s" % (data_model, filename.replace(' ', '-'))
 
 
 # Create your models here.

@@ -1,6 +1,10 @@
 <div class="columns-profile">
     <div class="user-pic">
-        {# <img src="" alt=""> #}
+        {% if results.0.image %}
+            <img src="{{results.0.image}}" alt="">
+        {% else %}
+            <img src="{{STATIC_URL}}shared/images/default.png" alt="image not available">
+        {% endif %}
     </div>
     <div class="user-events-tabs">
         <ul>

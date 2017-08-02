@@ -1,7 +1,7 @@
 {% include "users/picandtabs.html" with active='overview' %}
 {# end here  #}
 <div class="columns-listing bdr-orange">
-    <h3 class="mt-15">Your Events History</h3>
+    <h3 class="mt-15"><p class="blue">Your Events History</p></h3>
     <ul class="event-lisitng">
         <li class="active"><a href="#">All</a></li>
         <li><a href="#">Upcoming</a></li>
@@ -10,14 +10,14 @@
     <div class="event-lisitng-container">
         <div class="" id="js-all">
         <ul>
-            {% for i in "123" %}
+            {% for each in events.results %}
             <li>
-            <div class="history-listing">
+            <div class="history-listing" style="cursor:pointer;" id="label-{{forloop.counter}}" data-num="{{forloop.counter}}">
                 <div class="history-tag">Applied</div>
-                <p class="history-event-name">Event Name</p>
-                <p class="history-client-name">Client Name</p>
-                <p class="history-date">Event date - <time>29 June 2017</time></p>
-                <address class="history-location">Loation - Delhi</address> 
+                <p class="history-event-name">{{each.name}}</p>
+                {% if each.client %}<p class="history-client-name">{{each.client}}</p>{% endif %}
+                <p class="history-date">Event date - <time>{{each.schedule.0}}</time></p>
+                <address class="history-location">Loation - {{each.area}}, {{each.city}}</address> 
             </div>
             </li>
             {% endfor %}
@@ -34,52 +34,56 @@
 {# end----  #}
 <div class="columns-details">
     <div class="bdr-orange">
-        <h2 class="event-head">Event Name will be display here</h2>
-        <p class="event-head-client">Client - <strong>State Bank of India</strong></p>
-        <p class="event-head-required">Required - Anchors, Emcee</p>
-        <div class="alerts">
-            <ul>
-                <li class="alert-checked"><i class="checked"></i> You have selected as an anchor in this event</li>
-                <li class="alert-pending"><i class="pending"></i> Position of Emcee is on Hold as we have too many entries</li>                
-            </ul>
-        </div>
-        <div class="times-badges">
-            Selection/Briefing <time>1st July - 30th July 2017</time>
-        </div>
-        <div class="times-badges">
-            Event Date <time>1st July - 30th July 2017</time>
-        </div>
-        <div class="tags-list">
-            <div class="tags">
-            Per day Pay - Rs.100
+        {% for each in events.results %}
+          <div id="content-{{forloop.counter}}" data-num="{{forloop.counter}}">
+            <h2 class="event-head"><p class="blue">{{each.name}}</p></h2>
+            {% if each.client %}<p class="event-head-client">Client - <strong>{{each.client}}</strong></p>{% endif %}
+            <p class="event-head-required">Required - 
+            {% for x in each.req%} {{x.type}}, {% endfor %}
+            </p>
+            <div class="alerts">
+                <ul>
+                    {% for x in each.req %}
+                        {% if user and user == x.auth_id %}
+                            {% if x.application_status == "aplied" %}
+                                <li class="alert-checked"><i class="checked"></i> You have been selected as an anchor in this event</li>
+                            {% elif x.application_status == "wl" %}
+                                <li class="alert-pending"><i class="pending"></i> Position of {{x.type}} is on Hold as we have too many entries</li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
             </div>
-            <div class="tags">
-                Earnings - Rs.500
+            {% if each.briefing_datetime %}
+                <div class="times-badges">
+                    Selection/Briefing <time>{{ each.briefing_datetime }}</time>
+                </div>
+            {% endif %}
+            <div class="times-badges">
+                Event Date <time>{{each.schedule.0}} - {{each.schedule.1}}</time>
             </div>
-            <div class="tags tags-pending">
-                Payment Status - Pending
+            <div class="tags-list">
+                <div class="tags">
+                    Per day Pay - Rs.{{each.req.0.payments.0.paisa}}
+                </div>
+                <div class="tags">
+                    Estimated Earnings - Rs.{% widthratio each.schedule.2 1 each.req.0.payments.0.paisa %}
+                </div>
+                <div class="tags tags-pending">
+                    Event Allocation Status - {{each.req.0.payments.0.allocation_status|title}}
+                </div>
+            </div>
+            <div class="details-para">
+                <h5>Events Details</h5>
+                <p>{{each.short_description}}</p>
+            </div>
+            <div class="details-para">
+                <!--h5>Client Details</h5>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                  of Lorem Ipsum.</p-->
             </div>
         </div>
-        <div class="details-para">
-            <h5>Events Details</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-            It has survived not only five centuries, but also the leap into electronic typesetting, remaining 
-            essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-             Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
-              of Lorem Ipsum.</p>
-        </div>
-        <div class="details-para">
-            <h5>Client Details</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-            It has survived not only five centuries, but also the leap into electronic typesetting, remaining 
-            essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-             Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
-              of Lorem Ipsum.</p>
-        </div>
+      {% endfor %}
     </div>
 </div>
 {# end----  #}

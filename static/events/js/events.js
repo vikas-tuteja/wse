@@ -18,7 +18,7 @@
         )
         
         // bind popup
-        $(".requirement_apply").on('click', function() {
+        $(".event_apply").on('click', function() {
             var event_slug = $(this).attr('id').split('~~');
             var a = Common.ajaxcall("/events/requirements/" + event_slug[0] + "/", 'GET', {'format':'json'})
             a.done(function(resp){
@@ -104,7 +104,21 @@
             
         });
 
-        
+        // bind requirement apply on click
+        $("#requirement_apply").on('click', function() {
+            var ajaxurl = "/events/apply/" + $(this).id;
+            Common.forceregister(
+                options.user,
+                ajaxurl,
+                true
+             )
+        });
+        /*$("#requirement_apply").on('click', function() {
+            var x = Common.ajaxcall(, 'POST', {})
+            x.done(function(resp) {
+                alert(resp.status + ' -- ' + resp.message);
+            });
+        });*/
     }
     
 

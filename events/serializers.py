@@ -13,7 +13,7 @@ class ListEventSerializer( serializers.ModelSerializer ):
 
     class Meta:
         model = Event
-        fields = ('id', 'client', 'name', 'slug', 'overview', 'venue', 'area', 'city', 'state', 'posted_by', 'contact_person_name', 'contact_person_number', 'candidate_info', 'schedule' )
+        fields = ('id', 'client', 'name', 'slug', 'overview', 'venue', 'area', 'city', 'state', 'posted_by', 'contact_person_name', 'contact_person_number', 'candidate_info', 'schedule', 'briefing_datetime', 'short_description')
 
     def get_candidate_info(self, obj):
         candidates_required, paisa = {}, []
@@ -49,3 +49,32 @@ class ApplyRequirementSerializer( serializers.ModelSerializer ):
     class Meta:
         model = RequirementApplication
         fields = '__all__'
+
+
+class ProfileEventSerializer( ListEventSerializer ):
+    req = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Event
+        fields = ('id', 'client', 'name', 'slug', 'overview', 'venue', 'area', 'city', 'state', 'posted_by', 'contact_person_name', 'contact_person_number', 'candidate_info', 'schedule', 'briefing_datetime', 'short_description', 'req')
+
+
+    def get_req(self, obj):
+        req = []
+        for x in obj.requirement_set.all():
+            r = {
+                'id':x.id,
+                'type':x.candidate_type.name,
+            }
+            for each in x.requirementapplication_set.filter():
+                r['application_status'] = each.application_status
+                r['candidate'] = each.candidate.id
+                r['payments'] = []
+                for allocation in each.allocationstatus_set.all():
+                    al = {
+                        'allocation_status':allocation.allocation_status,
+                        'paisa':x.daily_wage_per_candidate,
+                    }
+                    r['payments'].append(al)
+            req.append(r)
+        return req

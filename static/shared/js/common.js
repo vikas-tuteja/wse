@@ -86,7 +86,17 @@
         return args[0] + '?' + final_args + uniq
     }
 
+    /*
+    */
+    function forceregister(user, action, isajax=true) {
+        // show registration/login form
+        // on successful registration/login, call action if isajax=true
+        // hide registration form
+        // hide requirement application form
+        // show message returned by ajaxcall
+    }
     Common.init = init;
+    Common.forceregister = forceregister;
     Common.bind_onkeyup = bind_onkeyup;
     Common.redirect = redirect;
     Common.ajaxcall = ajaxcall;

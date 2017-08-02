@@ -9,7 +9,7 @@ class EventFilterBackend(object):
 
     """
     def filter_queryset(self, request, queryset, view):
-        fltr = {}
+        """fltr = {}
         for dbk, k in (('area','area_slug'), ('city','city_slug')):
             slug = view.kwargs.get(k)
             if slug:
@@ -17,8 +17,23 @@ class EventFilterBackend(object):
                     "%s__slug" % dbk : slug,
                 })
         queryset = queryset.filter(**fltr)
-        return queryset.all()
-
+        return queryset.all()"""
+        try:
+            value = request.query_params.get('userprofile')
+            if not value:
+                value = view.kwargs.get('userprofile')
+            int(value)
+        except:
+            return queryset
+  
+        qs = []
+        for eachqs in queryset:
+            for req in eachqs.requirement_set.all():
+                for app in req.requirementapplication_set.filter(candidate__id=value):
+                    for allocation in app.allocationstatus_set.filter():
+                        qs.append(eachqs)
+    
+        return qs or queryset
 
 class EventFilters(django_filters.FilterSet):
     """
@@ -34,11 +49,13 @@ class EventFilters(django_filters.FilterSet):
     gender = django_filters.Filter(method="get_gender")
     requirement = django_filters.Filter(method="get_requirement_type")
     duration = django_filters.Filter(method="get_duration")
+    #userprofile = django_filters.Filter(method="get_userprofile")
 
 
     class Meta:
         model = Event
         fields = ('venue', 'city', 'area')
+
 
     def get_area(self, queryset, name, value):
         qs = queryset.filter(area__slug__in=value.split(','))
@@ -91,3 +108,18 @@ class EventFilters(django_filters.FilterSet):
                     qs.append(obj)
 
         return qs
+
+    """def get_userprofile(self, queryset, name, value):
+        qs = []
+        try:
+            int(value)
+        except:
+            return qs
+  
+        for eachqs in queryset:
+            for req in eachqs.requirement_set.all():
+                for app in req.requirementapplication_set.filter(candidate__id=value):
+                    for allocation in app.allocationstatus_set.filter(allocation_status='shortlisted'):
+                        qs.append(eachqs)
+    
+        return qs"""
