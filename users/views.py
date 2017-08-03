@@ -130,9 +130,9 @@ class ForgotPassword( generics.UpdateAPIView ):
 
     def put(self, request, *args, **kwargs):
         status = False
-        email = request.POST.get('email')
+        email = request.POST.get('username')
         if not email:
-            message = 'Error: Please enter email id.'
+            message = 'Error: Please enter username.'
 
         else:
             userObj = UserDetail.objects.get(auth_user__email=email)

@@ -20,6 +20,7 @@
         // js for my profile page events link -- ends
         
         bind_login("#login");
+        bind_forgot_password("#forgot_password");
         bind_registration("#register");
     }
     
@@ -44,6 +45,27 @@
         });
     }
 
+    function bind_forgot_password(elem) {
+        $(elem).on('click', function() {
+            var credentials = {
+                'username':$("#fp_username").val(),
+            }
+            var verify = Common.verify_mandatory(credentials, '#forgot_password_message', Common.forgot_password_message);
+            if(!verify) {
+                return false;
+            }
+            else {
+                x = Common.ajaxcall(Common.forgot_password_url, 'PUT', credentials);
+                x.done(function(resp) {
+                    $("#forgot_password_message").html(resp.message);
+                    if(resp.status==true){
+                        $(".btn-close").trigger("click");
+                        // TODO change sign in icon to user profile icon 
+                    }
+                });
+            }
+        });
+    }
 
     function bind_registration(elem) {
         $(elem).on('click', function() {

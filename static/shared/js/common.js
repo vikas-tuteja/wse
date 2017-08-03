@@ -37,7 +37,7 @@
                         method:method,
                         data:param,
                         beforeSend: function(xhr, settings) {
-                            if (method=='POST') {
+                            if (method=='POST' || method=='PUT') {
                                 xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
                             }
                         }
@@ -92,21 +92,27 @@
     }
 
     function verify_mandatory(obj, elem, error_message) {
+        var error = 0;
         $.each(obj, function(key, val){
             // if any value blank, return false
             if($.trim(val) == '' ) {
+                error += 1;
                 $(elem).html(error_message);
-                return false;
             }
 
             // if mobile in key then, value should be integer and 10 digit long
             if(key.indexOf('mobile') != -1) {
                 if(val.length != 10 || !$.isNumeric(val)) {
+                    error += 1;
                     $(elem).html(Common.mobile_mandatory);
                 }
             }
         });
-        return true;
+        if(error==0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /*
@@ -139,11 +145,13 @@
     // list all urls to be used, whether ajax or redirect url
     Common.login_url = "/login/";
     Common.register_url = "/create-user/";
+    Common.forgot_password_url = "/forgot-password/";
 
 
     // list of all messages
     Common.mandatory_params = "Error: Mandatory parameters missing";
     Common.mobile_mandatory = "Error: Mobile number should be 10 digit integer";
+    Common.forgot_password_message = "Error: Please enter username";
 
     Common.init = init;
     Common.forceregister = forceregister;
