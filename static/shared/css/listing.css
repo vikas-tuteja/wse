@@ -196,6 +196,27 @@ body {
   position: relative;
   width: 160px; }
 
+.user-signed {
+    float: left;
+    background: transparent; }
+
+.user-signed img {
+    border-radius: 50%;
+    border: 0;
+    height: 40px;
+    width: 40px; }
+
+.login_drop {
+    background-color: #fff;
+    border: 1px solid #c9c9c9;
+    border-top: 0 none;
+    border-radius: 0 0 3px 3px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    cursor: pointer; }
 .main-nav {
   float: left; }
   @media (max-width: 991px) {

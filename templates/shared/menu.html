@@ -29,9 +29,24 @@
             <i class="icon-location-main"></i>
             Delhi
         </div>
-        <div class="sign-in">
-            <a href="#">Sign In</a>
-        </div>
+        {% if not user %}
+            <div class="sign-in">
+                <a href="#">Sign In</a>
+            </div>
+        {% else %}
+            <a><div class="user-signed">
+                <img src="">
+            </div></a>
+        {% endif %}
     </div>
 </header>
 </div>
+<ul class="login_drop" style="display:none;">
+    <li>
+        <a href="#"><sup class="profile_icon"></sup>Profile</a>
+    </li>
+    <li>
+        <a href="/logout"><sup class="logout_icon"></sup>Logout</a>
+    </li>
+</ul>
+
