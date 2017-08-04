@@ -7,8 +7,13 @@ from models import UserDetail, CandidateAttribute
 class AuthUserSerializer( serializers.ModelSerializer ):
     class Meta:
         model = User
-        fields = ('username', 'password', )
+        fields = ('username', 'password')
 
+
+class AuthUserSer( serializers.ModelSerializer ):
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name')
 
 class UserSerializer( serializers.ModelSerializer ):
     auth_id = serializers.CharField(read_only=True, source='auth_user.id')

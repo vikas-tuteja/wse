@@ -4,8 +4,8 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from rest_framework import generics
 
-from miscellanous.models import Miscellaneous
-from miscellanous.serializers import FaqSerializer, AboutUsSerializer, ContactUsSerializer
+from miscellanous.models import Miscellaneous, Testimonial, Article
+from miscellanous.serializers import FaqSerializer, AboutUsSerializer, ContactUsSerializer, TestimonialsSerializer, ArticleSerializer
 
 # Create your views here.
 class Common( generics.ListAPIView):
@@ -28,8 +28,12 @@ class AboutUs( Common ):
 class Clients( Common ):
     pass
 
-class Testimonials( Common ):
+class Testimonials( generics.ListAPIView ):
+    serializer_class = TestimonialsSerializer
+    queryset = Testimonial.objects.filter(show_on_site=1).distinct()
     template_name = "shared/testimonials.html"
 
-class Articles( Common ):
+class Articles( generics.ListAPIView ):
+    serializer_class = ArticleSerializer
+    queryset = Article.objects.filter(show_on_site=1)
     template_name = "shared/articles.html"

@@ -1,6 +1,7 @@
 import json
 from rest_framework import serializers
-from models import Miscellaneous
+from models import Miscellaneous, Testimonial, Article
+from users.serializers import AuthUserSer
 
 class FaqSerializer( serializers.ModelSerializer ):
     faq = serializers.SerializerMethodField()
@@ -28,3 +29,17 @@ class ContactUsSerializer( serializers.ModelSerializer ):
 
     def get_contactus(self, obj):
         return obj.contactus_content
+
+
+class TestimonialsSerializer( serializers.ModelSerializer ):
+    author = AuthUserSer(source='user')
+    class Meta:
+        model = Testimonial
+        fields = ('author', 'title', 'content')
+
+
+class ArticleSerializer( serializers.ModelSerializer ):
+    author = AuthUserSer(source='user')
+    class Meta:
+        model = Article
+        fields = ('author', 'title', 'content')
