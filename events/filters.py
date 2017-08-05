@@ -30,7 +30,7 @@ class EventFilterBackend(object):
         for eachqs in queryset:
             for req in eachqs.requirement_set.all():
                 for app in req.requirementapplication_set.filter(candidate__id=value):
-                    for allocation in app.allocationstatus_set.filter():
+                    #for allocation in app.allocationstatus_set.filter():
                         qs.append(eachqs)
     
         return qs or queryset

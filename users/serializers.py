@@ -45,5 +45,6 @@ class UserMeterSerializer( serializers.ModelSerializer ):
         if candidate_attribute:
             for field in candidate_fields:
                 candidate_data[field] = eval("candidate_attribute[0].%s" % field)
-            return candidate_data
-        return {}
+        else:
+            [ candidate_data.update({field:None}) for field in candidate_fields ]
+        return candidate_data

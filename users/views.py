@@ -160,7 +160,7 @@ class ChangePassword( generics.UpdateAPIView ):
                : new password
     """
     serializer_class = UserSerializer
-    queryset = UserDetail.objects.all()
+    queryset = UserDetail.objects.none()
     lookup_field = "auth_user__email"
     lookup_url_kwarg = "user_email"
 
@@ -231,23 +231,74 @@ class UserProfileCompletionMeter( generics.ListAPIView ):
     def get(self, *args, **kwargs):
         response = super(UserProfileCompletionMeter, self).get(*args, **kwargs)
         try:
-            candidate_info = response.data[0]['candidate']
-            del response.data[0]['candidate']
-            response.data[0].update(candidate_info)
+            candidate_info = response.data['results'][0]['candidate']
+            del response.data['results'][0]['candidate']
+            response.data['results'][0].update(candidate_info)
         except:
             pass
 
         # TODO get CANDIDATEATTRIBUTE all fileds + USERDETAIL ALL FIELDS
         # assuming that one record will be found in response.data
-        meter = ComputeCompletion(response.data)
+        meter = ComputeCompletion(response.data['results'])
         
         return JsonResponse(data={
             'profile_completed':meter.compute_percent(),
         })
 
+class UpdateUserInfo( generics.UpdateAPIView ):
+    """
+    update user profile basic information in UserDetail Table
+    can update 3 table Auth_user, UserDetail or CandidateAttribute, not applicaable for clients, co-ordinators
+
+    """
+    serializer_class = UserMeterSerializer
+    queryset = UserDetail.objects.none()
+    user_dict = {
+        'user': ('first_name', 'last_name'),
+        'userdetail': ('mobile', 'whatsapp_number', 'address', 'image', 'area', 'city', 'state'),
+        'candidateattribute': ('language_proficiency', 'looks', 'open_to_which_kind_of_job', 'pay_scale', 'comfortable_travelling_outdoor', 'comfortable_for_liquor_promotion', 'comfortable_working_at_odd_timings', 'candidate_profile')
+    }
+
+    def put(self, request, *args, **kwargs):
+        """ 
+            TABLE auth_user : first_name, last_name
+            TABLE USERDETAIL : mobile, whatsapp_number, address, image, area, city, state
+            TABLE CandidateAttribute : language_proficiency, looks, open_to_which_kind_of_job, pay_scale, comfortable_travelling_outdoor, comfortable_for_liquor_promotion, comfortable_working_at_odd_timings, candidate_profile
+            """
+        user, userdetail, candidateattribute = {}, {}, {}
+        # TODO change this to POST after integration
+        kwargs.update(request.GET.dict())
+        for model, keys in self.user_dict.items():
+            for key in keys:
+                if key in kwargs and kwargs[key] not in (None, ''):
+                    eval("%s.update({ key:kwargs[key] })" % model)
+
+        # TODO test this
+        # update auth_user attributes
+        User.objects.filter(id=request.user.id).update(**user)
+
+        # update userdetails
+        ud = UserDetail.objects.filter(auth_user=request.user)
+        ud.update(**userdetail)
+
+        # check if candidateattribute exists or not, create/update its attributes accordingly
+        ca = CandidateAttribute.objects.filter(user=ud[0])
+        if ca:
+            ca.update(**candidateattribute)
+        else:
+            ca = CandidateAttribute.objects.create(**candidateattribute)
+            ca.save()
+
+        return JsonResponse(data={
+            'status': True,
+            'message': 'Profile Info Updated Successfully'
+        })
+
+
 class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
     """
     /my-profile/ page 
+    get users event info
 
     """
     serializer_class = UserSerializer
@@ -256,7 +307,10 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
     template_name = 'users/my_profile_base.html'
 
     def get_queryset(self, *args, **kwargs):
-        queryset = UserDetail.objects.filter(auth_user__username='vikastuteja21@gmail.com')
+        if self.request._request.user:
+            queryset = UserDetail.objects.filter(auth_user=self.request._request.user)
+        else:
+            queryset = UserDetail.objects.filter()
         return queryset
 
     def get(self, request, *args, **kwargs):

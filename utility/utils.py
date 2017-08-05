@@ -45,8 +45,12 @@ class ComputeCompletion(object):
     def compute_percent(self):
         denominator = self.data_length
         numerator = sum([ 1 for k,v in self.data.items() if v not in (None, '', 0) ])
-        percent = "%s%s" % ((numerator * 100 / denominator), "%")
-        #TODO add upper limit 95, lower limit 20 percent
+        percent = "%d" % ((numerator * 100 / denominator), )
+        if percent < 20:
+            percent = 20
+        
+        percent = "%s%s" %(percent, "%")
+        return percent
 
 
 def get_prefix(name=None):

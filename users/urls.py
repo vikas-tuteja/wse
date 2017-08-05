@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from users.views import CreateUser, LoginUser, ChangePassword, ForgotPassword, CheckUsernameExists, UserProfileCompletionMeter, UserProfile
+from users.views import CreateUser, LoginUser, ChangePassword, ForgotPassword, CheckUsernameExists, UserProfileCompletionMeter, UserProfile, UpdateUserInfo
 
 urlpatterns = [
     url(r'^create-user/$', CreateUser.as_view(), name="create_user"),
@@ -9,6 +9,10 @@ urlpatterns = [
     url(r'^change-password/$', ChangePassword.as_view(), name="change_password"),
     url(r'^user-exists/$', CheckUsernameExists.as_view(), name="user_exists"),
     url(r'^user-meter/$', UserProfileCompletionMeter.as_view(), name="user_meter"),
+    url(r'^update-info/$', UpdateUserInfo.as_view(), name="update_info"),
+
+
+    # my profile page
     url(r'^my-profile/$', UserProfile.as_view(), name="my_profile"),
     url(r'^my-profile/overview/$', UserProfile.as_view(), name="my_overview"),  
     url(r'^my-profile/profile/$', UserProfile.as_view(), name="my_profile"),    

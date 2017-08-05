@@ -13,7 +13,7 @@
             {% for each in events.results %}
             <li>
             <div class="history-listing" style="cursor:pointer;" id="label-{{forloop.counter}}" data-num="{{forloop.counter}}">
-                <div class="history-tag">Applied</div>
+                <div class="history-tag">{{each.req.0.application_status}}</div>
                 <p class="history-event-name">{{each.name}}</p>
                 {% if each.client %}<p class="history-client-name">{{each.client}}</p>{% endif %}
                 <p class="history-date">Event date - <time>{{each.schedule.0}}</time></p>
@@ -44,11 +44,11 @@
             <div class="alerts">
                 <ul>
                     {% for x in each.req %}
-                        {% if user and user == x.auth_id %}
-                            {% if x.application_status == "aplied" %}
-                                <li class="alert-checked"><i class="checked"></i> You have been selected as an anchor in this event</li>
+                        {% if user and user == x.candidate %}
+                            {% if x.application_status == "applied" %}
+                                <li class="alert-checked"><i class="checked"></i> You have been selected as an {{x.type|title}} in this event</li>
                             {% elif x.application_status == "wl" %}
-                                <li class="alert-pending"><i class="pending"></i> Position of {{x.type}} is on Hold as we have too many entries</li>
+                                <li class="alert-pending"><i class="pending"></i> Position of {{x.type|title}} is on Hold as we have too many entries</li>
                             {% endif %}
                         {% endif %}
                     {% endfor %}
@@ -64,13 +64,15 @@
             </div>
             <div class="tags-list">
                 <div class="tags">
-                    Per day Pay - Rs.{{each.req.0.payments.0.paisa}}
+                    Per day Pay - Rs.{{each.candidate_info.paisa}}
                 </div>
+                {% if each.candidate_info.paisa %}
                 <div class="tags">
-                    Estimated Earnings - Rs.{% widthratio each.schedule.2 1 each.req.0.payments.0.paisa %}
+                    Estimated Earnings - Rs.{% widthratio each.schedule.2 1 each.candidate_info.paisa %}
                 </div>
+                {% endif %}
                 <div class="tags tags-pending">
-                    Event Allocation Status - {{each.req.0.payments.0.allocation_status|title}}
+                    Event Allocation Status - {% if not each.req.0.payments.0.allocation_status %}{{each.req.0.application_status|title}}{% else %}{{each.req.0.payments.0.allocation_status|title}}{% endif%}
                 </div>
             </div>
             <div class="details-para">
