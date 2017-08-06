@@ -2,9 +2,7 @@
 
 {% block customcss %}
     <link href="{{STATIC_URL}}shared/css/listing.css" rel="stylesheet">
-    <link href="{{STATIC_URL}}profile/css/profile.css" rel="stylesheet">
-    <link href="{{STATIC_URL}}shared/css/login.css" rel="stylesheet">
-    <link href="{{STATIC_URL}}shared/css/font-awesome.min.css" rel="stylesheet">    
+    <link href="{{STATIC_URL}}profile/css/profile.css" rel="stylesheet">   
 {% endblock customcss %}
 {% block body %}
 <!-- menu bar -->
@@ -35,6 +33,7 @@
                 $('.pop-overlay').show(500);
                 $('.container-login').addClass('login-show');
             });
+
         })
     </script>
 {% endblock customjs %}

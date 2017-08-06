@@ -1,3 +1,5 @@
+@import '../../scss/lib/mixins';
+
 %center {
   left: 0;
   right: 0;
@@ -18,6 +20,7 @@
   width: 100%;
   height: 100%;
   display: none;
+  z-index: 999;
 }
 
 .container-login { 
@@ -57,6 +60,20 @@
     &:focus {
       outline: none;
     }
+
+    &.focused {
+      + span {
+        transition: all 500ms ease;
+        font-size: 10px;
+        top: 8px;
+      }
+    }
+  }
+
+  
+
+  span {
+    color: #333;
   }
 }
 
@@ -100,12 +117,96 @@
 
 .user-icon {
   @extend %uicon;
-  height: 33px;
+  height: 26px;
   left: 5px;
 }
 
 .pwd-icon {
   @extend %uicon;
-  height: 25px;
+  height: 22px;
   left: 10px;
 }
+
+.mobile-icon {
+  @extend %uicon;
+  height: 32px;
+  left: 15px;
+}
+
+.user-m-icon {
+  @extend %uicon;
+  height: 26px;
+  left: 12px;
+}
+
+.fa-passwd-reset > .fa-lock {
+  font-size: 0.85rem;
+}
+
+.shows-up {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+input[name=showsup]:checked + .shows-up {
+  display: block;
+}
+
+.tabs-login {
+  @include clearfix;
+  border: 1px solid #ea6e32;
+  border-radius: 3px;
+
+  > label {
+    cursor: pointer;
+    float: left;
+    padding: 10px;
+    width: 50%;
+  }
+
+  .active {
+      background: #ea6e32;
+      color: #fff;
+  }
+}
+
+.forgot-head {
+  position: absolute;
+  top: 30px;;
+  padding: 10px;
+  width: 85%;
+  left: 0;
+  margin: 0 30px;
+  background: #ea6e32;
+  color: #fff;
+  border: 1px solid #ea6e32;
+  border-radius: 3px;
+}
+
+.forgot-inlogin {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  font-size: 14px;
+  color: #368;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.fa-onehalfx {
+  font-size: 1.5em!important;
+}
+
+.label-tag {
+  position: absolute;
+  top: 15px;
+  left: 45px;
+  display: block;
+  pointer-events: none;
+  font-size: 16px;
+  transition: all 500ms ease;  
+}
+
