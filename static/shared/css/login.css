@@ -32,7 +32,7 @@
   opacity: 1; }
 
 .login-label {
-  border: 1px solid #ea6e32;
+  border: 1px solid #368;
   border-radius: 3px;
   display: block;
   width: 100%;
@@ -113,8 +113,9 @@ input[name=showsup]:checked + .shows-up {
   display: block; }
 
 .tabs-login {
-  border: 1px solid #ea6e32;
-  border-radius: 3px; }
+  #border: 1px solid #ea6e32;
+  border-radius: 3px;
+  color: grey; }
   .tabs-login::before, .tabs-login::after {
     content: ' ';
     display: table; }
@@ -123,11 +124,12 @@ input[name=showsup]:checked + .shows-up {
   .tabs-login > label {
     cursor: pointer;
     float: left;
-    padding: 10px;
-    width: 50%; }
+    padding: 12px;
+    width: auto; }
   .tabs-login .active {
-    background: #ea6e32;
-    color: #fff; }
+    #background: #ea6e32;
+    color: #368;
+    font-weight: bold; }
 
 .forgot-head {
   position: absolute;
