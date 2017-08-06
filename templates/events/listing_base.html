@@ -27,6 +27,7 @@
 
 <!-- footer -->
 {% include "shared/footer.html" %}
+{% include "login/login.html" %}
 {% endblock body %}
 
 {% block customjs %}
@@ -40,6 +41,38 @@
         EventListing.init({
             user: user,
         });
+
+        $(document).ready(function(){
+            $('.btn-close').on('click', function(){
+                $('.container-login').removeClass('login-show');
+                $(this).parents('.pop-overlay').hide(500);
+                $('.tabs-login label').removeClass('active');
+                $('.tabs-login label').eq(0).addClass('active');
+                $('[name=showsup]').eq(0).prop('checked', true);
+            });
+
+            $('.sign-in').on('click', function(){
+                $('.pop-overlay').show(500);
+                $('.container-login').addClass('login-show');
+            });
+
+            $('.tabs-login label').on('click', function(){
+                var parent = $(this).parent();
+                parent.find('label').removeClass('active');
+                $(this).addClass('active');
+            });
+            
+            $('.login-label input').on('focus', function(){
+                $(this).addClass('focused');
+            }).on('blur', function(){
+                console.log($.trim($(this).val()) != "")
+                if($.trim($(this).val()) == ""){
+                    $(this).removeClass('focused');
+                }
+            });
+
+
+        })
     </script>
 
 {% endblock customjs %}
