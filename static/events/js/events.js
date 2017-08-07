@@ -1,5 +1,4 @@
-;(function($,Common,EventListing) {
-
+;(function($,Common,EventListing) { 
     function init(options){
         // search box functionality
         Common.bind_onkeyup(

@@ -78,6 +78,8 @@ class EventDetail( mygenerics.ListAPIView ):
     """
     serializer_class = EventDetailSerializer
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
+    template_name = 'events/details_base.html'
+    pagination_class = None
 
     def get_queryset(self):
         return Event.objects.filter(slug=self.kwargs.get('event_slug'))

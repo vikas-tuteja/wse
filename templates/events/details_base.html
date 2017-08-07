@@ -1,9 +1,10 @@
 {% include "shared/base.html" %}
+{% load slugify from utils %}
 
 {% block customcss %}
     <link href="{{STATIC_URL}}shared/css/popup.css" rel="stylesheet">
     <link href="{{STATIC_URL}}shared/css/listing.css" rel="stylesheet">
-    
+    <link href="{{STATIC_URL}}profile/css/profile.css" rel="stylesheet">
 {% endblock customcss %}
 
 <!-- canonicals -->
@@ -16,28 +17,21 @@
 <!-- menu bar -->
 {% include "shared/menu.html" %}
 
-<!-- event listing header & search -->
-{% include "events/header.html" %}
-
-<!-- filters -->
-{% include "events/filters.html" %}
-
-<!-- listing -->
-{% include "events/events.html" %}
+<!-- body -->
+{% include "events/details.html" %}
 
 <!-- footer -->
 {% include "shared/footer.html" %}
 {% endblock body %}
-
 {% block customjs %}
-    <script src="{{STATIC_URL}}events/js/events.js"></script>
+    <script src="{{STATIC_URL}}events/js/events_details.js"></script>
 
     <script type="text/javascript">
         var user = "{{user}}";
         if(user == "None" || user == undefined) {
             user = "";
         }
-        EventListing.init({
+        EventDetail.init({
             user: user,
         });
 

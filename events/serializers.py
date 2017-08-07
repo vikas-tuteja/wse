@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from collections import OrderedDict
 
 from models import Event, Requirement, RequirementApplication
 
@@ -39,11 +40,26 @@ class ListRequirementSerializer( serializers.ModelSerializer ):
 
 class EventDetailSerializer( ListEventSerializer ):
     requirement_details = ListRequirementSerializer(many=True, source='requirement_set')
+    schedule = serializers.SerializerMethodField()
+    details = serializers.SerializerMethodField()
 
     class Meta:
         model = Event
         fields = '__all__'
 
+    def get_schedule(self, obj):
+        return obj.schedule()
+
+    def get_details(self, obj):
+        details_dict = OrderedDict([
+            ('Eligibility', obj.eligibility),
+            ('Selection & Screening', obj.selection_n_screening),
+            ('Venue & Timing Details', obj.venue_n_timing),
+            ('Payments', obj.payments),
+            ('T & C', obj.t_n_c)
+        ])
+
+        return details_dict
 
 class ApplyRequirementSerializer( serializers.ModelSerializer ):
     class Meta:

@@ -29,6 +29,13 @@ class Event(models.Model):
     total_payment = models.BigIntegerField( blank=True, null=True )
     created_datetime = models.DateTimeField( auto_now_add=True )
     modify_date = models.DateTimeField( auto_now=True )
+    # extra details
+    eligibility = RichTextField( blank=True, null=True )
+    selection_n_screening = RichTextField( blank=True, null=True )
+    venue_n_timing = RichTextField( blank=True, null=True )
+    payments = RichTextField( blank=True, null=True )
+    t_n_c = RichTextField( blank=True, null=True )
+    
 
     def __unicode__( self ):
        return self.name

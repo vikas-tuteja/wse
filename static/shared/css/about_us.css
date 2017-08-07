@@ -1,18 +1,4 @@
-.divider {
-    width: 100%;
-    height: 1px;
-    background: #ccc;
-    margin-top: 2px;
-    margin-bottom: 8px;
-}
-.divider-vertical {
-    width: 2px;
-    height: 250px;
-    background: #ccc;
-    margin-top: 80px;
-    margin-bottom: 48px;
-    float:left;
-}
+
 .body-center {
     max-width:1140px;
     width:100%;
@@ -42,25 +28,6 @@
     float:left;
 }
 
-.smallsub {
-    font-size: 14px;
-    line-height: 1.5;
-    font-weight: 400;
-    font-style: italic;
-    color: #ea6e32;
-    margin-bottom: 12px;
-}
-
-.sub {
-    font-size: 13px;
-    line-height: 1.5;
-    font-weight: 400;
-    font-style: italic;
-    color: grey;
-    margin-bottom: 12px;
-    margin-left:15px;
-    margin-right:15px;
-}
 .m-t-36 {
     margin-top: 36px;
 }
@@ -97,18 +64,6 @@
         float:none;
     }
 
-    .divider-vertical {
-        width:96%;
-        height:1px;
-        float:none;
-        margin-left:2%;
-        margin-right:2%;
-    }
-    .divider {
-        width:96%;
-        margin-left:2%;
-        margin-right:2%;
-    }
     .circle {
         margin-top:25px;
     }
