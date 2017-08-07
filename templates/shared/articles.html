@@ -12,7 +12,7 @@
     {% for testi in results %}
         <p class="blue m-t-36"><b>{{testi.title}}</b></p>
         <div class="divider"></div>
-        <p class="sub">{{testi.content}}</p>
+        <p class="sub">{{testi.content|safe}}</p>
         <p class="sub" style="float:right;"> - by 
             <span class="blue">
             {% if testi.author.first_name %}

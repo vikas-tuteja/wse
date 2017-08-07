@@ -81,4 +81,9 @@ class BaseMiddleware(MiddlewareMixin):
         ]
         
         [ x.append("selected") if page == x[0] else x.append(None) for x in menu]
+
+        # set events tabs selected, even if event detail and not event listing
+        if page == 'event_detail':
+            menu[0][2] = 'selected'
+
         return menu

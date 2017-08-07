@@ -13,7 +13,7 @@
             <p class="blue m-t-36"><b>&nbsp;&nbsp;{{head}}</b></p>
             <div class="divider"></div>
             {% if not value|islist %}
-                <p class="sub">{{value}}</p>
+                <p class="sub">{{value|safe}}</p>
             {% else %}
                 <div class="clearfix">
                 {% for i in value %}

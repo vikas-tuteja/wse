@@ -12,7 +12,7 @@
     {% for faq in results.0.faq %}
         <p class="blue m-t-36"><b>&nbsp;&nbsp;{{faq.0}}</b></p>
         <div class="divider"></div>
-        <p class="sub">{{faq.1}}</p>
+        <p class="sub">{{faq.1|safe}}</p>
     {% endfor %}
 </div>
 
