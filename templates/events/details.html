@@ -1,93 +1,97 @@
-<div class="container" style="max-height:1000px;height:300%;">
+<div class="container" style="">
 <div class="row">
 <div class="columns">
-    <div class="columns-details" style="max-width:840px;max-height:1000px;height:300%;">
-        <div class="bdr-orange" style="max-height:1000px;height:300%;">
-            <h2 class="event-head"><p class="blue">{{results.0.name}}</p></h2>
-            {% if results.0.client %}<p class="event-head-client">Client - <strong>{{results.0.client}}</strong></p>{% endif %}
-            <p class="event-head-required">Required - 
-            {% for x in results.0.requirement_details%} {{x.candidate_type}}, {% endfor %}
-            </p>
-            {% comment %}
-            <div class="alerts">
-                <ul>
-                    {% for x in results.0.requirement_details %}
-                        {% if user and user == x.candidate %}
-                            {% if x.application_status == "applied" %}
-                                <li class="alert-checked"><i class="checked"></i> You have been selected as an {{x.type|title}} in this event</li>
-                            {% elif x.application_status == "wl" %}
-                                <li class="alert-pending"><i class="pending"></i> Position of {{x.type|title}} is on Hold as we have too many entries</li>
-                            {% endif %}
+    <div class="bdr-orange" style="max-width:840px;padding:15px;">
+        <h2 class="event-head"><p class="blue">{{results.0.name}}</p></h2>
+        {% if results.0.client %}<p class="event-head-client">Client - <strong>{{results.0.client}}</strong></p>{% endif %}
+        <p class="event-head-required">Required - 
+        {% for x in results.0.requirement_details %}
+            {% if forloop.counter == 1 %}
+                {{x.candidate_type}}
+            {% else %}
+                , {{x.candidate_type}}
+            {%endif%}
+        {% endfor %}
+        </p>
+
+        <!--div class="alerts">
+            <ul>
+                {% for x in results.0.requirement_details %}
+                    {% if user and user == x.candidate %}
+                        {% if x.application_status == "applied" %}
+                            <li class="alert-checked"><i class="checked"></i> You have been selected as an {{x.type|title}} in this event</li>
+                        {% elif x.application_status == "wl" %}
+                            <li class="alert-pending"><i class="pending"></i> Position of {{x.type|title}} is on Hold as we have too many entries</li>
                         {% endif %}
-                    {% endfor %}
-                </ul>
-            </div>
-            {% endcomment %}
-
-            <div class="times-badges">
-                <b>Event Date</b> <time>{{results.0.schedule.0}} - {{results.0.schedule.1}}</time>
-            </div>
-            <div class="times-badges">
-                <b>{{results.0.schedule.2}}</b> Day(s)
-            </div>
-            <br>
-            {% if results.0.briefing_datetime %}
-                <div class="times-badges">
-                    Selection/Briefing <time>{{ results.0.briefing_datetime }}</time>
-                </div>
-            {% endif %}
-            <!-- Apply button -->
-            <div style="float:right;">
-            <button id="{{results.0.slug}}~~{{results.0.name}}" class="event_apply btn btn-blue mt-15" >Apply</button>
-
-            </div>
-            {% comment %}
-            <div class="tags-list">
-                <div class="tags">
-                    Per day Pay - Rs.{{each.candidate_info.paisa}}
-                </div>
-                {% if each.candidate_info.paisa %}
-                <div class="tags">
-                    Estimated Earnings - Rs.{% widthratio each.schedule.2 1 each.candidate_info.paisa %}
-                </div>
-                {% endif %}
-                <div class="tags tags-pending">
-                    Event Allocation Status - {% if not each.req.0.payments.0.allocation_status %}{{each.req.0.application_status|title}}{% else %}{{each.req.0.payments.0.allocation_status|title}}{% endif%}
-                </div>
-            </div>
-            {% endcomment %}
-            <br>
-            <br>
-            <!-- details tabs -->
-            <div class="tabs-login event-head-required">
-                {% for k,v in results.0.details.items %}
-                    {% if v %}
-                    <label {% if forloop.counter == 1 %}class="active detail_tabs"{% else %}class="detail_tabs"{% endif %} data-id="{{k|slugify}}" >{{k}}</label>
                     {% endif %}
                 {% endfor %}
-            </div>
-            <div class="divider"></div><br>
+            </ul>
+        </div-->
 
+
+        <div class="times-badges">
+            <b>Event Date</b> <time>{{results.0.schedule.0}} - {{results.0.schedule.1}}</time>
+        </div>
+        <div class="times-badges">
+            <b>{{results.0.schedule.2}}</b> Day(s)
+        </div>
+        <br>
+        {% if results.0.briefing_datetime %}
+            <div class="times-badges">
+                Selection/Briefing <time>{{ results.0.briefing_datetime }}</time>
+            </div>
+        {% endif %}
+        <!-- Apply button -->
+        <div style="float:right;">
+        <button id="{{results.0.slug}}~~{{results.0.name}}" class="event_apply btn btn-blue mt-15" >Apply</button>
+
+        </div>
+
+        <!--div class="tags-list">
+            <div class="tags">
+                Per day Pay - Rs.{{each.candidate_info.paisa}}
+            </div>
+            {% if each.candidate_info.paisa %}
+            <div class="tags">
+                Estimated Earnings - Rs.{% widthratio each.schedule.2 1 each.candidate_info.paisa %}
+            </div>
+            {% endif %}
+            <div class="tags tags-pending">
+                Event Allocation Status - {% if not each.req.0.payments.0.allocation_status %}{{each.req.0.application_status|title}}{% else %}{{each.req.0.payments.0.allocation_status|title}}{% endif%}
+            </div>
+        </div-->
+
+        <br>
+        <br>
+        <!-- details tabs -->
+        <div class="tabs-login event-head-required">
             {% for k,v in results.0.details.items %}
                 {% if v %}
-                    <div class="details-para" id="{{k|slugify}}">
-                        <h5 class="blue">{{k}}</h5>
-                        <div class="divider"></div>
-                        <p class="sub">{{v|safe}}</p>
-                        <br>
-                    </div>
+                <label {% if forloop.counter == 1 %}class="active detail_tabs"{% else %}class="detail_tabs"{% endif %} data-id="{{k|slugify}}" >{{k}}</label>
                 {% endif %}
             {% endfor %}
-            <div class="details-para">
-                <h5 class="blue">Events Details</h5>
-                <div class="divider"></div>
-                <p class="sub">{{results.0.short_description}}</p>
-            </div>
-            <div class="details-para">
-                <!--h5>Client Details</h5>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                  of Lorem Ipsum.</p-->
-            </div>
+        </div>
+        <div class="divider"></div><br>
+
+        {% for k,v in results.0.details.items %}
+            {% if v %}
+                <div class="details-para" id="{{k|slugify}}">
+                    <h5 class="blue">{{k}}</h5>
+                    <div class="divider"></div>
+                    <p class="sub">{{v|safe}}</p>
+                    <br>
+                </div>
+            {% endif %}
+        {% endfor %}
+        <div class="details-para">
+            <h5 class="blue">Events Details</h5>
+            <div class="divider"></div>
+            <p class="sub">{{results.0.short_description}}</p>
+        </div>
+        <div class="details-para">
+            <!--h5>Client Details</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              of Lorem Ipsum.</p-->
         </div>
     </div>
 </div>

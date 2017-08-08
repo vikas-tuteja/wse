@@ -74,7 +74,9 @@ class CreateUser( generics.CreateAPIView ):
                 auth_login(request, user)
 
                 status = True
-                message = 'User created successfully'
+                message = 'User created successfully.'
+                if not kwargs.get('password'):
+                    message = 'User created successfully. <br>Login id is your email and mobile number is your password.'
 
             except IntegrityError:
                 message = 'User with this email or mobile already exists '

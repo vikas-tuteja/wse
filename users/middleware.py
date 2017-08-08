@@ -63,6 +63,7 @@ class BaseMiddleware(MiddlewareMixin):
                 response.data['menu'] = self.getmenu(url_name)
                 response.data['page'] = request.GET.get('page', 1)
                 response.data['user'] = request.user.id
+                response.data['alert_message'] = request.GET.get('alert_message', '')
             except:
                 pass
         return response

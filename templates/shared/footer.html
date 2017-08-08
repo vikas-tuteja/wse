@@ -1,4 +1,4 @@
-
+<div id="alert_message" class="alert_message orange"></div>
 <div class="footer_wrapper">
     <div class="subscribe"><br> Fuck!! We don't have any news letter.<br>Anyways Register with us to find part-time event jobs or to post Events<br><br> 
     <div class="form-inline">
@@ -24,6 +24,7 @@
 
 <script type="text/javascript">
     Footer.init({
+        alert_message: "{{alert_message}}",
     });
 </script>
 
@@ -75,12 +76,8 @@ $(function(){
                 $(this).removeClass('focused');
             }
         });
-
-
     })
 </script>
-
 {% endblock customjs %}
-
 </body>
 </html>

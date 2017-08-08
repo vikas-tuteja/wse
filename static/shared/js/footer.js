@@ -16,10 +16,20 @@
                 }
                 var x = Common.ajaxcall('/create-user/', 'POST', data);
                 x.success(function(resp){
-                    alert(resp.message);
+                    // show alert
+                    Common.show_alert(resp.message);
+                    // TODO change sign in icon to my profile icon
                 });
             }
         });
+
+        // alert message from url GET
+        if(options.alert_message) {
+            Common.show_alert(options.alert_message)
+        }
+
     }
+    
     Footer.init = init;
+
 })($,Common,(window.Footer = window.Footer || {}));

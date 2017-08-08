@@ -142,6 +142,16 @@
         }
         return cookieValue;
     }
+
+    function show_alert(message) {
+        $('html,body').animate({
+            scrollTop: (0)},
+            'slow');
+        $("#alert_message").html(
+            message
+        ).fadeIn().fadeOut(20000, function() {
+        });
+    }
     // list all urls to be used, whether ajax or redirect url
     Common.login_url = "/login/";
     Common.register_url = "/create-user/";
@@ -161,5 +171,6 @@
     Common.is_param_exist = is_param_exist;
     Common.form_unique_params = form_unique_params;
     Common.verify_mandatory = verify_mandatory;
+    Common.show_alert = show_alert;
 
 })($,(window.Common = window.Common || {}));
