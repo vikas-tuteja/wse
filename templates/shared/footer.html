@@ -20,11 +20,16 @@
 {% block customjs %}
 <script type="text/javascript" src="{{STATIC_URL}}shared/js/jquery.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}shared/js/common.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}users/js/my_profile.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}shared/js/footer.js"></script>
 
 <script type="text/javascript">
-    Footer.init({
-        alert_message: "{{alert_message}}",
+    $(document).ready(function(){
+        Footer.init({
+            alert_message: "{{alert_message}}",
+        });
+        MyProfile.init({
+        });
     });
 </script>
 
@@ -71,7 +76,6 @@ $(function(){
         $('.login-label input').on('focus', function(){
             $(this).addClass('focused');
         }).on('blur', function(){
-            console.log($.trim($(this).val()) != "")
             if($.trim($(this).val()) == ""){
                 $(this).removeClass('focused');
             }

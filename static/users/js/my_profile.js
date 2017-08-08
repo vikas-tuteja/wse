@@ -18,7 +18,7 @@
             $('#content-'+$(this).data('num')).css("display","block");
         });
         // js for my profile page events link -- ends
-        
+
         bind_login("#login");
         bind_forgot_password("#forgot_password");
         bind_registration("#register");
