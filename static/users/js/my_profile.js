@@ -87,7 +87,14 @@
                     $("#forgot_password_message").html(resp.message);
                     if(resp.status==true){
                         $(".btn-close").trigger("click");
-                        // TODO change sign in icon to user profile icon 
+                        var url = document.URL
+                        // if last character #, remove it
+                        if(url[url.length-1] == "#") {
+                            url = url.slice(0,-1)
+                        }
+                        url = Common.form_unique_params('alert_message', resp.message, url, false);
+                        window.location.href = url;
+
                     }
                 });
             }
@@ -113,7 +120,13 @@
                 $("#register_message").html(resp.message);
                 if(resp.status==true){
                     $(".btn-close").trigger("click");
-                    // TODO change sign in icon to user profile icon 
+                    var url = document.URL
+                    // if last character #, remove it
+                    if(url[url.length-1] == "#") {
+                        url = url.slice(0,-1)
+                    }
+                    url = Common.form_unique_params('alert_message', resp.message, url, false);
+                    window.location.href = url;
                 }
             });
         });

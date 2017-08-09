@@ -17,13 +17,20 @@
                 var x = Common.ajaxcall('/create-user/', 'POST', data);
                 x.success(function(resp){
                     // show alert
-                    Common.show_alert(resp.message);
+                    // Common.show_alert(resp.message);
                     // TODO change sign in icon to my profile icon
+                    var url = document.URL
+                    // if last character #, remove it
+                    if(url[url.length-1] == "#") {
+                        url = url.slice(0,-1)
+                    }
+                    url = Common.form_unique_params('alert_message', resp.message, url, false);
+                    window.location.href = url;
                 });
             }
         });
 
-        // alert message from url GET
+        // alert message from url GET is displayed here on every page
         if(options.alert_message) {
             Common.show_alert(options.alert_message)
         }

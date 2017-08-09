@@ -1,12 +1,15 @@
 <div id="alert_message" class="alert_message orange"></div>
 <div class="footer_wrapper">
-    <div class="subscribe"><br> Fuck!! We don't have any news letter.<br>Anyways Register with us to find part-time event jobs or to post Events<br><br> 
-    <div class="form-inline">
-        <input type="email" name="email" value="" class="form-control" placeholder="Enter your email-id" id="footer_email">
-        <input type="mobile" name="mobile" value="" class="form-control" placeholder="Enter your mobile" id="footer_mobile">
-        <button class="btn btn-blue mt-15" name="footer_submit" id="footer_submit" >SUBMIT</button>
-        <br><br>
-    </div>
+    <div class="subscribe">
+    {% if not user %}
+        <br> Fuck!! We don't have any news letter.<br>Anyways Register with us to find part-time event jobs or to post Events<br><br> 
+        <div class="form-inline">
+            <input type="email" name="email" value="" class="form-control" placeholder="Enter your email-id" id="footer_email">
+            <input type="mobile" name="mobile" value="" class="form-control" placeholder="Enter your mobile" id="footer_mobile">
+            <button class="btn btn-blue mt-15" name="footer_submit" id="footer_submit" >SUBMIT</button>
+            <br><br>
+        </div>
+    {% endif %}
     </div>
 
     <div class="copyright-block row"><p style="float:right;">COPYRIGHT © 2017 WORKSMART EVENTS PVT. LTD. ALL RIGHTS RESERVED</p>
@@ -26,7 +29,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         Footer.init({
-            alert_message: "{{alert_message}}",
+            alert_message: "{{alert_message|safe}}",
         });
         MyProfile.init({
         });

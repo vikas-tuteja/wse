@@ -71,7 +71,10 @@ class CreateUser( generics.CreateAPIView ):
                 user_detail.save()
             
                 # automatic login after registration
-                user = authenticate( username = kwargs.get('username', kwargs.get('email')), password = kwargs.get('password') )
+                user = authenticate(
+                    username = kwargs.get('username', kwargs.get('email')),
+                    password = kwargs.get('password', kwargs.get('mobile'))
+                )
                 auth_login(request, user)
 
                 status = True
