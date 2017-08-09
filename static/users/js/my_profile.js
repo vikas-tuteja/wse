@@ -58,6 +58,7 @@
             x = Common.ajaxcall(Common.login_url, 'GET', credentials);
             x.done(function(resp) {
                 $("#login_message").html(resp.message);
+                $(".alert_message_error").show(1000);
                 if(resp.status==true){
                     $(".btn-close").trigger("click");
                     var url = document.URL
@@ -85,16 +86,12 @@
                 x = Common.ajaxcall(Common.forgot_password_url, 'PUT', credentials);
                 x.done(function(resp) {
                     $("#forgot_password_message").html(resp.message);
+                    $(".alert_message_error").show(1000);
                     if(resp.status==true){
-                        $(".btn-close").trigger("click");
-                        var url = document.URL
-                        // if last character #, remove it
-                        if(url[url.length-1] == "#") {
-                            url = url.slice(0,-1)
-                        }
-                        url = Common.form_unique_params('alert_message', resp.message, url, false);
-                        window.location.href = url;
-
+                        // on reset password, set new password to mobile and just click on sign-in
+                        $(".tabs-login label").first().trigger('click');
+                        $("#login_message").html(resp.message);
+                        $(".alert_message_error").show(1000);
                     }
                 });
             }
@@ -118,6 +115,7 @@
             x = Common.ajaxcall(Common.register_url, 'POST', credentials);
             x.done(function(resp) {
                 $("#register_message").html(resp.message);
+                $(".alert_message_error").show(1000);
                 if(resp.status==true){
                     $(".btn-close").trigger("click");
                     var url = document.URL

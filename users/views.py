@@ -146,14 +146,17 @@ class ForgotPassword( generics.UpdateAPIView ):
             message = 'Error: Please enter username.'
 
         else:
-            userObj = UserDetail.objects.get(auth_user__email=email)
-            if not userObj:
-                message = 'Error: %s user not found.' % email
-            else:
-                userObj.auth_user.set_password( str(userObj.mobile)[-10:] )
-                userObj.auth_user.save()
-                status = True
-                message = 'Your new password is your 10 digit mobile number.'
+            try:
+                userObj = UserDetail.objects.get(auth_user__email=email)
+                if not userObj:
+                    message = 'Error: %s user not found.' % email
+                else:
+                    userObj.auth_user.set_password( str(userObj.mobile)[-10:] )
+                    userObj.auth_user.save()
+                    status = True
+                    message = 'Your new password is reset to your 10 digit mobile number.'
+            except UserDetail.DoesNotExist:
+                    message = 'User with this email does not exists. Please register first.'
 
         return JsonResponse(data={
             'status':status,

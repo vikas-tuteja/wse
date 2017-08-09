@@ -149,8 +149,13 @@
             scrollTop: (0)},
             'slow');
         $("#alert_message").html(
-            message
+            message + '<button class="btn-close" id="alert-close"><i class="fa fa-times" aria-hidden="true"></i></button>'
         ).fadeIn().fadeOut(20000, function() {
+        });
+        
+        // alert close binding
+        $("#alert-close").on('click', function() {
+            $("#alert_message").hide()
         });
     }
     // list all urls to be used, whether ajax or redirect url
