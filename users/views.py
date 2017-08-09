@@ -5,15 +5,16 @@ import django_filters
 from django.db.models import Q
 from django.shortcuts import render
 from rest_framework import generics
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.db import IntegrityError
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django_redis import get_redis_connection
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, logout as auth_logout
+from django.core.urlresolvers import reverse
 
 from models import UserDetail, UserRole, CandidateAttribute
-from utility.utils import ComputeCompletion
+from utility.utils import ComputeCompletion, form_url
 from serializers import UserSerializer, AuthUserSerializer, UserMeterSerializer
 from events.views import EventListing
 from events.models import AllocationStatus
@@ -91,6 +92,11 @@ class CreateUser( generics.CreateAPIView ):
 class Logout( generics.ListAPIView ):
     serializer_class = AuthUserSerializer
     queryset = User.objects.none()
+    def get(self, request, *args, **kwargs):
+        auth_logout(request)
+        prev = request.META['HTTP_REFERER'] or reverse('home')
+        prev = form_url(prev, request.GET.dict(), 'alert_message', 'Logged out successfully.')
+        return HttpResponseRedirect(prev)
 
 class LoginUser( generics.ListAPIView ):
     """

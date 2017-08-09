@@ -52,7 +52,7 @@ class ComputeCompletion(object):
         percent = "%s%s" %(percent, "%")
         return percent
 
-
+from urllib import urlencode
 def get_prefix(name=None):
     """
     if sort=data, then return None
@@ -63,3 +63,11 @@ def get_prefix(name=None):
         return '-' if name[0] != '-' else ''
     except:
         return ''
+
+
+def form_url(url, getparams, key, val):
+    getparams.update({
+        key:val
+    })
+
+    return "%s?%s" % (url.split("?")[0], urlencode(getparams))
