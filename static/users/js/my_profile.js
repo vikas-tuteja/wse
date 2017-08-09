@@ -1,4 +1,4 @@
-;(function($,MyProfile){
+;(function($, Common, MyProfile){
 
     function init(options){
         // js for my profile page events link -- starts
@@ -22,6 +22,27 @@
         bind_login("#login");
         bind_forgot_password("#forgot_password");
         bind_registration("#register");
+        bind_checkavailibility("#reg_username");
+    }
+    
+    function bind_checkavailibility(elem) {
+        $(elem).on('blur', function() {
+            var username = $(elem).val();
+            if(username){
+                // check redis user exists
+                x = Common.ajaxcall(Common.check_useravailable, 'GET', {'username':username});
+                // if not avialble, change username alert
+                x.done(function(resp) {
+                    if(resp.status==true) {
+                        $("#register_message").html(resp.message);
+                        $(".alert_message_error").show(1000);
+                    }
+                    else {
+                        $(".alert_message_error").hide(1000);
+                    }
+                });
+            }
+        });
     }
     
     function bind_login(elem) {
@@ -39,7 +60,13 @@
                 $("#login_message").html(resp.message);
                 if(resp.status==true){
                     $(".btn-close").trigger("click");
-                    // TODO change sign in icon to user profile icon 
+                    var url = document.URL
+                    // if last character #, remove it
+                    if(url[url.length-1] == "#") {
+                        url = url.slice(0,-1)
+                    }
+                    url = Common.form_unique_params('alert_message', resp.message, url, false);
+                    window.location.href = url;
                 }
             });
         });
@@ -97,4 +124,4 @@
     MyProfile.bind_login = bind_login;
     MyProfile.bind_registration = bind_registration;
 
-})($, window.MyProfile= window.MyProfile || {})
+})($, Common, window.MyProfile= window.MyProfile || {})

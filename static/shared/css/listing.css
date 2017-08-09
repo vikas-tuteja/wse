@@ -190,6 +190,11 @@ body {
   padding: 0 15px;
   width: 100%; }
 
+.logout {
+  width:30px;
+  height:30px;
+  margin-top:2px;
+}
 .logo {
   float: left;
   min-height: 1px;
@@ -197,14 +202,22 @@ body {
   width: 160px; }
 
 .user-signed {
+    border-radius: 50%;
+    border: 1px solid black;
+    margin: 4px;
+    height: 25px;
+    width: 25px;
+    overflow: hidden;
     float: left;
     background: transparent; }
 
 .user-signed img {
     border-radius: 50%;
     border: 0;
-    height: 40px;
-    width: 40px; }
+    height: 100%;
+    width: 100%;
+    max-height: 40px;
+    max-width: 40px; }
 
 .login_drop {
     background-color: #fff;

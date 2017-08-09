@@ -88,9 +88,9 @@ class CreateUser( generics.CreateAPIView ):
             'message':message
         })
         
-class Logout():
-    pass
-    #TODO remove user from session as well as request 
+class Logout( generics.ListAPIView ):
+    serializer_class = AuthUserSerializer
+    queryset = User.objects.none()
 
 class LoginUser( generics.ListAPIView ):
     """
@@ -204,12 +204,12 @@ class CheckUsernameExists( generics.ListAPIView ):
         status, message = False, str()
         username = request.GET.get('username')
         if not username:
-            message = 'Invalid params: Please pass username'
-
+            message = 'Invalid params: Please enter username'
         else:
             con = get_redis_connection('default')
             status = con.sismember("usernames", username)
-            
+            if status:
+                message = "Error: Username already exists."
 
         return JsonResponse(data={
             'status':status,

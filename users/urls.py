@@ -1,10 +1,11 @@
 from django.conf.urls import url
 
-from users.views import CreateUser, LoginUser, ChangePassword, ForgotPassword, CheckUsernameExists, UserProfileCompletionMeter, UserProfile, UpdateUserInfo
+from users.views import CreateUser, LoginUser, ChangePassword, ForgotPassword, CheckUsernameExists, UserProfileCompletionMeter, UserProfile, UpdateUserInfo, Logout
 
 urlpatterns = [
     url(r'^create-user/$', CreateUser.as_view(), name="create_user"),
     url(r'^login/$', LoginUser.as_view(), name="login"),
+    url(r'^logout/$', Logout.as_view(), name="logout"),
     url(r'^forgot-password/$', ForgotPassword.as_view(), name="forgot_password"),
     url(r'^change-password/$', ChangePassword.as_view(), name="change_password"),
     url(r'^user-exists/$', CheckUsernameExists.as_view(), name="user_exists"),

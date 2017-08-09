@@ -98,6 +98,7 @@
             if($.trim(val) == '' ) {
                 error += 1;
                 $(elem).html(error_message);
+                $(".alert_message_error").show();
             }
 
             // if mobile in key then, value should be integer and 10 digit long
@@ -156,6 +157,7 @@
     Common.login_url = "/login/";
     Common.register_url = "/create-user/";
     Common.forgot_password_url = "/forgot-password/";
+    Common.check_useravailable = "/user-exists/";
 
 
     // list of all messages

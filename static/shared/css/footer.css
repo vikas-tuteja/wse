@@ -1,6 +1,14 @@
+.alert_message_error {
+    background:#368;
+    padding:10px;
+    border-radius: 10px;
+    color:#ea6e32; 
+    margin-bottom:10px;
+    display:none;
+}
 .alert_message {
     max-width:350px;
-    width:100%;
+    width:auto;
     bottom:30px;
     position:fixed;
     z-index:9999;
@@ -104,6 +112,7 @@
         left:0px;
         right:0px;
         max-width:300px;
+        width:auto;
     }
 }
 

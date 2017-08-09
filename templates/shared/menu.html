@@ -29,29 +29,17 @@
             <i class="icon-location-main"></i>
             Delhi
         </div>
-            <div class="sign-in">
-                <a href="#">Sign In</a>
-            </div>
-        {% comment %}
         {% if not user %}
             <div class="sign-in">
                 <a href="#">Sign In</a>
             </div>
         {% else %}
-            <a><div class="user-signed">
-                <img src="">
-            </div></a>
+            <div class="user-signed">
+               <a href="{% url 'my_profile' %}"><img src="{{STATIC_URL}}/shared/images/default-user-icon.png" alt="my profile"></a>
+            </div>
+             
+            <a href="{% url 'logout' %}"><img class="logout" src="{{STATIC_URL}}/shared/images/p1.png" alt="Logout"></a>
         {% endif %}
-        {% endcomment %}
     </div>
 </header>
 </div>
-<ul class="login_drop" style="display:none;">
-    <li>
-        <a href="#"><sup class="profile_icon"></sup>Profile</a>
-    </li>
-    <li>
-        <a href="/logout"><sup class="logout_icon"></sup>Logout</a>
-    </li>
-</ul>
-
