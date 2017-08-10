@@ -219,6 +219,14 @@ body {
     max-height: 40px;
     max-width: 40px; }
 
+.male-female-icon {
+    border: 0;
+    height: 100%;
+    width: 100%;
+    max-height: 35px;
+    max-width: 35px; 
+}
+
 .login_drop {
     background-color: #fff;
     border: 1px solid #c9c9c9;

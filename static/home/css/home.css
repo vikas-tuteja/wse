@@ -1,0 +1,20 @@
+.full_height_400 {
+  height:400%;
+}
+
+.first_dark_screen {
+  height:100%;
+  background-color:#f8f8f8;
+}
+.wse_name {
+    position:fixed;
+    color:#368;
+    top: 50%;
+    left: 50%;
+    width:340px;
+    height:60px;
+    margin-left: -170px; /*set to a negative number 1/2 of your width*/
+    margin-top: -30px; /*set to a negative number 1/2 of your height*/
+    text-align:center;
+    font-size:32px;
+}

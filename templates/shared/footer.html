@@ -22,6 +22,9 @@
 {% block body %}
 {% include "login/login.html" %}
 {% endblock %}
+{% block customcss %}
+    <link href="{{STATIC_URL}}shared/css/footer.css" rel="stylesheet">
+{% endblock customcss %}
 {% block customjs %}
 <script type="text/javascript" src="{{STATIC_URL}}shared/js/jquery.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}shared/js/common.js"></script>

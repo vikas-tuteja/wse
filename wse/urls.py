@@ -20,10 +20,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from django.conf.urls import include
+from views import Home
 
 # url patterns here
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='shared/coming_soon2.html'), name="home"), 
+    url(r'^$', Home.as_view(), name="home"), 
     url(r'^admin/', admin.site.urls),
     url(r'^static/(?P<path>.*)$', django.views.static.serve,  {'document_root': settings.STATIC_ROOT }),
     url(r'^uploads/(?P<path>.*)$', django.views.static.serve,  {'document_root': 'uploads' }),

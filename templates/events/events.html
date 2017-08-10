@@ -35,7 +35,8 @@
                                     <li>
                                         <div class="event-girls">
                                             <input type="text" readonly class="dash-input" value="{{e.candidate_info.candidates_required.f}}">
-                                            <i class="icon-girl"></i>
+                                            <!--i class="icon-girl"></i-->
+                                            <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/women.svg">
                                         </div>
                                     </li>
                                     {% endif %}
@@ -43,7 +44,8 @@
                                     <li>
                                         <div class="event-boys">
                                             <input type="text" readonly class="dash-input" value="{{e.candidate_info.candidates_required.m}}">
-                                            <i class="icon-boy"></i>
+                                            <!--i class="icon-boy"></i-->
+                                            <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/men.svg">
                                         </div>
                                     </li>
                                     {% endif %}
