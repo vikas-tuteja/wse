@@ -42,7 +42,12 @@
 {% block customjs %}
     <script src="{{STATIC_URL}}home/js/home.js"></script>
     <script type="text/javascript">
+        var user = "{{user}}";
+        if(user == "None" || user == undefined) {
+            user = "";
+        }
         Home.init({
+            user: user
         });
     </script>
 {% endblock customjs %}

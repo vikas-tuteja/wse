@@ -119,7 +119,15 @@
     /*
     */
     function forceregister(user, action, isajax=true) {
-        // show registration/login form
+        // if login -> call action
+        debugger;
+        if(user) {
+            window.location.href = action;
+        }
+        else {
+            // show registration/login form if not logged in
+            $(".sign-in").trigger('click');
+        }
         // on successful registration/login, call action if isajax=true
         // hide registration form
         // hide requirement application form
@@ -163,6 +171,8 @@
     Common.register_url = "/create-user/";
     Common.forgot_password_url = "/forgot-password/";
     Common.check_useravailable = "/user-exists/";
+    Common.event_listing = "/events/";
+    Common.post_event = "/post-events/"
 
 
     // list of all messages
