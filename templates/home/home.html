@@ -1,21 +1,39 @@
+{% include "shared/base.html" %}
+
 {% block customcss %}
-    <link href="{{STATIC_URL}}home/css/typingeffect.css" rel="stylesheet">
-    <link href="{{STATIC_URL}}home/css/home.css" rel="stylesheet">
     <link href="{{STATIC_URL}}shared/css/listing.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}home/css/home.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}shared/css/about_us.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}home/css/typingeffect.css" rel="stylesheet">
 {% endblock customcss %}
 
 {% block body %}
-<div class="first_dark_screen">
-    <div class="wse_name">
-        
-        <!--p class="orange">Worksmart Events</p-->
-        <p class="blue">ome tstasd asddd</p>
-        <!--span class="cursor">|</span-->
-
-    </div>
+<div class="first_dark_screen"></div>
+<div class="wse_name">
+    <!--p class="blue">Worksmart Events</p-->
+    <p class="blue" style="font-weight:700;">Worksmart Events</p>
+    <!--span class="cursor">|</span-->
 </div>
+{% include "shared/menu.html" %}
 <div class="body_content">
--- something--
+
+    <!-- home 1st scroll -->
+    <div class="home_parts_body">
+        {% include "home/home_common.html" %}
+    </div>
+    <div class="divider"></div>
+
+    <!-- home 2nd scroll -->
+    <div class="home_parts_body">
+    {% include "home/home_client.html" %}
+    </div>
+    <div class="divider"></div>
+
+    <!-- home 3rd scroll -->
+    <div class="home_parts_body">
+    {% include "home/home_candidate.html" %}
+    </div>
+
 </div>
 
 <!-- footer -->

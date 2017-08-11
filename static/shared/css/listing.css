@@ -312,7 +312,7 @@ body {
   float: left;
   margin-top: 5px; }
 
-.location::before, .sign-in::before {
+.location::before, .sign-in-css::before {
   border-right: 1px dashed #787878;
   content: '';
   height: 25px;
@@ -329,12 +329,12 @@ body {
   .location::before {
     top: 0; }
 
-.sign-in {
+.sign-in-css {
   float: left;
   font-size: 14px;
   padding-left: 10px;
   position: relative; }
-  .sign-in a {
+  .sign-in-css a {
     color: #368;
     cursor: pointer;
     display: block;

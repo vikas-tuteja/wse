@@ -6,12 +6,14 @@
     padding: 0;
 }*/
 
-p {
+.wse_name p {
     white-space: nowrap;
     overflow: hidden;
     width: 100%;
     margin: 10px 0;
-    animation: typing 3s steps(60, end);
+    animation: typing 3s steps(80, end);
+    #text-decoration: underline;
+    font-family:roboto;
 }
 
 /*p:nth-child(2) {
