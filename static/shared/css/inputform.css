@@ -122,12 +122,13 @@
 
 @media (max-width:640px) {
     .form-style-10 {
-        max-width: 300px;
         margin: auto;
+        left: 0px;
+        right: 0px;
         text-align: center;
     }
     .form-style-10 h1{
-            padding: 7px 10px 5px 10px;
-            font: normal 20px 'Bitter', serif;
+        padding: 7px 10px 5px 10px;
+        font: normal 20px 'Bitter', serif;
     }
 }
