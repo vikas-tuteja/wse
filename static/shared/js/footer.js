@@ -18,7 +18,6 @@
                 x.success(function(resp){
                     // show alert
                     // Common.show_alert(resp.message);
-                    // TODO change sign in icon to my profile icon
                     var url = document.URL
                     // if last character #, remove it
                     if(url[url.length-1] == "#") {
@@ -33,6 +32,8 @@
         // alert message from url GET is displayed here on every page
         if(options.alert_message) {
             Common.show_alert(options.alert_message)
+            // remove alert message from get
+            Common.remove_alert_message(document.URL);
         }
 
     }

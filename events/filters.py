@@ -33,7 +33,8 @@ class EventFilterBackend(object):
                     #for allocation in app.allocationstatus_set.filter():
                         qs.append(eachqs)
     
-        return qs or queryset
+        return qs
+        #return qs or queryset
 
 class EventFilters(django_filters.FilterSet):
     """

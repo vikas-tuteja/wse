@@ -16,6 +16,7 @@ from rest_framework.response import Response
 from serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer, ApplyRequirementSerializer 
 from master.views import AreaList
 from utility.utils import get_prefix
+from utility.restrictions import AccessToAView
 from events.choices import CANDIDATE_TYPE
 
 # Create your views here.
@@ -42,6 +43,12 @@ class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
     def get(self, request, *args, **kwargs):
         
         response = super(EventListing, self).get(request, *args, **kwargs)
+
+        check = AccessToAView(self.request._request.user, 'event_listing')
+        response.data['accessibility'] = True
+
+        if not check.is_accessible():
+            response.data['accessibility'] = False
 
         # prefix '' or '-' in sort params
         response.data['sort_order'] = get_prefix(request.GET.get('sort'))
@@ -122,3 +129,38 @@ class ApplyForRequirement( generics.CreateAPIView ):
             return 'applied'
         else:
             return 'wl'
+
+
+class PostEvents( generics.ListAPIView ):
+    """
+    get : gives post event form
+    post: creates event with show on site off
+
+    """
+    queryset = Event.objects.none()
+    serializer_class = EventDetailSerializer
+    template_name = "events/post_events_base.html"
+
+    def get(self, *args, **kwargs):
+        check = AccessToAView(self.request._request.user, 'post_events')
+        response = super(PostEvents, self).get(*args, **kwargs)
+        response.data['accessibility'] = True
+
+        if not check.is_accessible():
+            response.data['accessibility'] = False
+
+        else:
+            # TODO create an event form
+            pass
+
+        return response
+
+    
+    def post(self, request, *args, **kwargs):
+        status = True
+        message = "Event created successfully. However, it is still not on site.<br>We will get in touch with you shortly."
+
+        return JsonResponse(data={
+            'status':status,
+            'message':message
+        })

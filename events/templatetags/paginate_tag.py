@@ -25,7 +25,7 @@ class PaginateNode(template.Node):
         prevpage = max(1,currentpage-1)
         urlparts = urlparse.urlsplit(requrl)
         query_dict = dict(urlparse.parse_qs(urlparts.query))
-        query_dict = { k:','.join(v) for k,v in query_dict.iteritems()}
+        query_dict = { k:','.join(v) for k,v in query_dict.iteritems() if k!= 'alert_message'}
         query_dict['page'] = prevpage
         return totalpages, start, end, nextpage, urlparts, query_dict
 

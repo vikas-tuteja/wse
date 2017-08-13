@@ -120,18 +120,14 @@
     */
     function forceregister(user, action, isajax=true) {
         // if login -> call action
-        debugger;
         if(user) {
             window.location.href = action;
         }
         else {
             // show registration/login form if not logged in
             $(".sign-in").trigger('click');
+            $("#action").val(action);
         }
-        // on successful registration/login, call action if isajax=true
-        // hide registration form
-        // hide requirement application form
-        // show message returned by ajaxcall
     }
 
 
@@ -166,6 +162,39 @@
             $("#alert_message").hide()
         });
     }
+
+    function convert_queryparams_to_object(string) {
+        try {
+            return JSON.parse('{"' + decodeURI(string.replace(/&/g, "\",\"").replace(/=/g,"\":\"")) + '"}')
+        } catch(err) {
+            return {}
+        }
+    }
+    /*
+    * remove alert message from get params and return the new url
+    */
+    function remove_alert_message(url) {
+        var link = url.split('?');
+        // if no parameters, return only url
+        if(link.length == 1) {
+            return link;
+        }
+        // if not able to parse the query params, then return only url
+        var query_params = convert_queryparams_to_object(link[1]);
+        if(!query_params) {
+            return link;
+        }
+        // form query_params without alert_message
+        var actual_url = link[0] + "?";
+        $.each(query_params, function(k, v){
+            if(k != "alert_message") {
+                actual_url += k + "=" + v + "&";
+            }
+        });
+        // remove alert_message key from url state, so that it is not showed up again and again
+        history.pushState(null, "", actual_url);
+    }
+
     // list all urls to be used, whether ajax or redirect url
     Common.login_url = "/login/";
     Common.register_url = "/create-user/";
@@ -189,5 +218,6 @@
     Common.form_unique_params = form_unique_params;
     Common.verify_mandatory = verify_mandatory;
     Common.show_alert = show_alert;
+    Common.remove_alert_message = remove_alert_message;
 
 })($,(window.Common = window.Common || {}));

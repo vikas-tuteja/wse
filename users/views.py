@@ -20,6 +20,7 @@ from events.views import EventListing
 from events.models import AllocationStatus
 from events.serializers import ProfileEventSerializer
 from utility import mygenerics
+from utility.fields import UserDetailFields, CandidateAttributeFields, ClientAttributeFields
 
 from filters import UserFilters
 
@@ -309,7 +310,7 @@ class UpdateUserInfo( generics.UpdateAPIView ):
         })
 
 
-class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
+class UserProfileEvents( generics.ListAPIView, mygenerics.RelatedView ):
     """
     /my-profile/ page 
     get users event info
@@ -335,7 +336,87 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
             })
 
         # view starts
-        response = super(UserProfile, self).get(request, *args, **kwargs)
+        response = super(UserProfileEvents, self).get(request, *args, **kwargs)
         response.data['events'] = EventListing.as_data(serializer_class=ProfileEventSerializer)(request, userprofile=request.user.id)
 
         return response
+
+
+class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
+    serializer_class = UserMeterSerializer
+
+    def get_queryset(self, *args, **kwargs):
+        if self.request._request.user:
+            queryset = UserDetail.objects.filter(auth_user=self.request._request.user)
+        else:
+            queryset = UserDetail.objects.filter()
+        return queryset
+
+
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated():
+            return JsonResponse(data={
+                'status': False,
+                'message': 'Unauthorized user, please login'
+            })
+        
+        response = super(UserProfile, self).get(request, *args, **kwargs)
+        return response
+
+    
+    def post(self, request, *args, **kwargs):
+        # shit: i wrote this function twice
+        # from utility.fields import UserDetailFields, CandidateAttributeFields, ClientAttributeFields
+        # update UserDetail
+        # insert / update ClientAttribute / CandidateAttribute as per user type
+        # import pdb; pdb.set_trace()
+        status = True
+        message = "Successfully Updated."
+
+        postdict = request.POST.dict()
+        if postdict:
+
+            userdict, attributedict = {}, {}
+            # prepare userdetail table dictionary from postdata
+            for f in UserDetailFields:
+                if postdict.get(f):
+                    userdict.update({
+                        f: postdict.get(f)
+                    })
+            # update userdetail table 
+            UserDetail.objects.get(auth_user=request.user).update(
+                **userdict
+            )
+            
+            # similarly prepare client/candidate attributedict
+            if request.user.userdetail.type.slug == 'client':
+                whichattribute, whichattributefields = ClientAttribute, CandidateAttributeFields
+            elif request.user.userdetail.type.slug == 'candidate':
+                whichattribute, whichattributefields = CandidateAttribute, ClientAttributeFields
+            else:
+                whichattribute, whichattributefields = None, None
+     
+
+            for f in whichattributefields:
+                if postdict.get(f):
+                    attributedict.update({
+                        f: postdict.get(f)
+                    })
+            # and update "type"attribute table
+            whichattribute.objects.get(userdetail__auth_user=request.user).update(
+                **attributedict
+            )
+
+        else:
+            status = False
+            message = "Nothing to update."
+
+        return JsonResponse(data={
+            'status':status,
+            'message':message
+        })
+
+
+
+class UserProfileStats( generics.ListAPIView ):
+    serializer_class = None

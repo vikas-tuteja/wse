@@ -1,12 +1,15 @@
 from django.conf.urls import url
 
-from views import EventListing, RequirementListing, EventDetail, ApplyForRequirement
+from views import EventListing, RequirementListing, EventDetail, ApplyForRequirement, PostEvents
 
 urlpatterns = [
     # event listing urls
     url(r'^events/$', EventListing.as_view(), name="event_listing"),
     url(r'^events-in-(?P<city_slug>[-\w]+)-city/$', EventListing.as_view(), name="event_listing"),
     url(r'^events-in-(?P<area_slug>[-\w]+)/$', EventListing.as_view(), name="event_listing"),
+    
+    
+    url(r'^post-events/$', PostEvents.as_view(), name="post_events"),
 
     # other
     url(r'^events/requirements/(?P<event_slug>[-\w]+)/$', RequirementListing.as_view(), name="requirement_listing"),

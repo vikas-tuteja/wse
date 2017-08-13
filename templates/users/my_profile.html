@@ -13,8 +13,8 @@
     <div class="columns">
       {% if 'my_profile' == request.resolver_match.url_name %}
         {% include "users/profile.html" %}
-      {% elif 'my_notify' == request.resolver_match.url_name %}
-        {% include "users/notify.html" %}
+      {#% elif 'my_notify' == request.resolver_match.url_name %}
+        {% include "users/notify.html" %#}
       {% elif 'my_stat' == request.resolver_match.url_name %}
         {% include "users/stats.html" %}
       {% else %}
