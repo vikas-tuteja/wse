@@ -208,6 +208,7 @@
     Common.mandatory_params = "Error: Mandatory parameters missing";
     Common.mobile_mandatory = "Error: Mobile number should be 10 digit integer";
     Common.forgot_password_message = "Error: Please enter username";
+    Common.event_apply_disabled = "Unauthorized Access: Please Login as a Candidate to apply & work for events"
 
     Common.init = init;
     Common.forceregister = forceregister;

@@ -73,7 +73,7 @@ class BaseMiddleware(MiddlewareMixin):
         menu = [
             #['home', 'Home'],
             ['event_listing', 'Events'],
-            ['clients', 'Clients'],
+            #['clients', 'Clients'],
             ['testimonials', 'Testimonial'],
             ['articles', 'Articles'],
             ['faqs', 'FAQ'],

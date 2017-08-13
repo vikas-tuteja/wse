@@ -1,0 +1,71 @@
+<div class="body-center">
+    {% if not accessibility %}
+        <p class="sub">You are not authorized to Post an Event.</p>
+        <p class="sub">Please Login / Register with us a Client.</p>
+    {% else %}
+        <!--label>Name</label> : <input type="text" name="name" id="name" value=""><br>
+        <label>Venue</label> : <select name="venue" id="venue" ></select><br>
+        <label>City</label> : <select name="city" id="city" ></select><br-->
+
+<div class="form-style-10">
+<h1>Create an Event<span></span></h1>
+<form>
+    <div class="section"><span>1</span>Name &amp; Address</div>
+    <div class="inner-wrap">
+        <label>Event Name <input type="text" name="name" id="name" /></label>
+        <label>Contact Person Name<input type="text" name="contact_person_name" id="contact_person_name" /></label>
+        <label>Contact Person Number <input type="text" name="contact_person_number" id="contact_person_number" /></label>
+        <label>Venue <input type="text" name="venue" id="venue"></label>
+        <label>Area <select name="area" id="area">
+            <option value=""> </option>
+        </select></label>
+        <label>City <select name="city" id="city">
+            <option value=""> </option>
+        </select></label>
+    </div>
+
+    <div class="section"><span>2</span>Details &amp; Description</div>
+    <div class="inner-wrap">
+        <label>Description <input type="text" name="description" id="description" /></label>
+        <label>Eligibilty <input type="text" name="eligibility" id="eligibility" /></label>
+        <label>Selection &amp; Screening <input type="text" name="selection_n_screening" id="selection_n_screening" /></label>
+        <label>Venue & Timimg <input type="text" name="venue_n_timing" id="venue_n_timing" /></label>
+        <label>Payments <input type="text" name="payments" id="payments" /></label>
+        <label>Terms &amp; Condistions <input type="text" name="t_n_c" id="t_n_c" /></label>
+    </div>
+
+    <div class="section"><span>3</span>Event Schedule</div>
+        <div class="inner-wrap">
+        <label>Briefing Datetime <input type="text" name="briefing_datetime" id="briefing_datetime"/></label>
+        <label>Start Date<input type="text" name="start_date" id="start_date"/></label>
+        <label>End Date<input type="text" name="end_date" id="end_date"/></label>
+        <label>Start Time<input type="text" name="start_time" id="start_time"/></label>
+        <label>End Time<input type="text" name="end_time" id="end_time"/></label>
+    </div>
+
+    <div class="section"><span>4</span>Add Requirements</div>
+        <div class="inner-wrap">
+        <label>Candidate Type <select name="candidate_type" id="candidate_type"/>
+            <option></option>
+        </select></label>
+        <label>Gender <input type="text" name="" id=""/></label>
+        <label>Number of candidates <input type="text" name="" id=""/></label>
+        <label>Number of days <input type="text" name="" id=""/></label>
+        <label>Pay per day <input type="text" name="" id=""/></label>
+        <label>Dress Code <input type="text" name="" id=""/></label>
+        <label>Candidate Class <select name="" id=""/>
+            <option></option>
+        </select></label>
+        <label>Communication Creteria <input type="text" name="" id=""/></label>
+    </div>
+    <div class="button-section">
+     <a class="button" data-user_type="candidate"><span>Post Event</span></a>
+     <span class="privacy-policy">
+     <input type="checkbox" name="field7">You agree to our Terms and Policy. 
+     </span>
+    </div>
+</form>
+</div>
+
+    {% endif %}
+</div>

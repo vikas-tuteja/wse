@@ -18,26 +18,32 @@
         
         // bind popup
         $(".event_apply").on('click', function() {
-            var event_slug = $(this).attr('id').split('~~');
-            var a = Common.ajaxcall("/events/requirements/" + event_slug[0] + "/", 'GET', {'format':'json'})
-            a.done(function(resp){
-                var res= 'Requirement for ' + event_slug[1] ;
-                $.each(resp.results.results, function(idx, elem){
-                    res += '<div class="req_list">' +
-                        elem.id +
-                        elem.event_slug +
-                        elem.candidate_type +
-                        elem.gender +
-                        elem.no_of_candidates +
-                        elem.daily_wage_per_candidate +
-                        elem.dress_code +
-                        elem.candidate_class + 
-                        elem.communication_criteria +
-                        elem.gender + '</div>';
+            // if client, then on apply disabled
+            if(options.accessibility == "False") {
+                Common.show_alert(Common.event_apply_disabled)
+            }
+            else {
+                var event_slug = $(this).attr('id').split('~~');
+                var a = Common.ajaxcall("/events/requirements/" + event_slug[0] + "/", 'GET', {'format':'json'})
+                a.done(function(resp){
+                    var res= 'Requirement for ' + event_slug[1] ;
+                    $.each(resp.results.results, function(idx, elem){
+                        res += '<div class="req_list">' +
+                            elem.id +
+                            elem.event_slug +
+                            elem.candidate_type +
+                            elem.gender +
+                            elem.no_of_candidates +
+                            elem.daily_wage_per_candidate +
+                            elem.dress_code +
+                            elem.candidate_class + 
+                            elem.communication_criteria +
+                            elem.gender + '</div>';
+                    });
+                    $("#requirement_box").html(res);
                 });
-                $("#requirement_box").html(res);
-            });
-            window.location.href = "#openModal"
+                window.location.href = "#openModal"
+            }
         });
 
         // sorting functionality
