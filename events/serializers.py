@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from collections import OrderedDict
 
+from users.models import CandidateType
 from models import Event, Requirement, RequirementApplication
 
 class ListEventSerializer( serializers.ModelSerializer ):
@@ -94,3 +95,11 @@ class ProfileEventSerializer( ListEventSerializer ):
                     r['payments'].append(al)
             req.append(r)
         return req
+
+
+
+class CandidateTypeSerializer( serializers.ModelSerializer ):
+    class Meta:
+        model = CandidateType
+        fields = ('id', 'name', 'slug')
+

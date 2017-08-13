@@ -13,11 +13,12 @@ from models import Event, Requirement, RequirementApplication
 from utility import mygenerics
 from rest_framework import generics
 from rest_framework.response import Response
-from serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer, ApplyRequirementSerializer 
-from master.views import AreaList
+from serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer, ApplyRequirementSerializer, CandidateTypeSerializer 
+from master.views import AreaList, CityList
 from utility.utils import get_prefix
 from utility.restrictions import AccessToAView
-from events.choices import CANDIDATE_TYPE
+from events.choices import CANDIDATE_TYPE, CANDIDATE_CLASS
+from users.models import CandidateType
 
 # Create your views here.
 class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
@@ -131,6 +132,17 @@ class ApplyForRequirement( generics.CreateAPIView ):
             return 'wl'
 
 
+                
+class CandidateTypeList( generics.ListAPIView, mygenerics.RelatedView ):   
+    serializer_class = CandidateTypeSerializer                             
+    queryset = CandidateType.objects.all() 
+    pagination_class = mygenerics.NoPagination                             
+                                                                           
+    def get(self, request, *args, **kwargs):
+        response = super(CandidateTypeList, self).get(request, *args, **kwargs )    
+        return JsonResponse(data=response.data)
+
+
 class PostEvents( generics.ListAPIView ):
     """
     get : gives post event form
@@ -140,6 +152,12 @@ class PostEvents( generics.ListAPIView ):
     queryset = Event.objects.none()
     serializer_class = EventDetailSerializer
     template_name = "events/post_events_base.html"
+    # select box meta data
+    related_views = {
+        'area': (AreaList.as_data(), '*', 1),
+        'city': (CityList.as_data(), '*', 1),
+        'candidate_type': (CandidateTypeList.as_data(), '*', 1),
+    }
 
     def get(self, *args, **kwargs):
         check = AccessToAView(self.request._request.user, 'post_events')
@@ -151,7 +169,7 @@ class PostEvents( generics.ListAPIView ):
 
         else:
             # TODO create an event form
-            pass
+            response.data['candidate_class'] = CANDIDATE_CLASS
 
         return response
 
@@ -164,3 +182,5 @@ class PostEvents( generics.ListAPIView ):
             'status':status,
             'message':message
         })
+
+

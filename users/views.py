@@ -420,3 +420,4 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
 
 class UserProfileStats( generics.ListAPIView ):
     serializer_class = None
+

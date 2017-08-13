@@ -16,11 +16,17 @@
         <label>Contact Person Name<input type="text" name="contact_person_name" id="contact_person_name" /></label>
         <label>Contact Person Number <input type="text" name="contact_person_number" id="contact_person_number" /></label>
         <label>Venue <input type="text" name="venue" id="venue"></label>
-        <label>Area <select name="area" id="area">
-            <option value=""> </option>
-        </select></label>
         <label>City <select name="city" id="city">
             <option value=""> </option>
+            {% for c in city %}
+                <option value="{{c.slug}}">{{c.name}}</option>
+            {% endfor %}
+        </select></label>
+        <label>Area <select name="area" id="area">
+            <option value=""> </option>
+            {% for a in area %}
+                <option value="{{a.slug}}">{{a.name}}</option>
+            {% endfor %}
         </select></label>
     </div>
 
@@ -46,7 +52,10 @@
     <div class="section"><span>4</span>Add Requirements</div>
         <div class="inner-wrap">
         <label>Candidate Type <select name="candidate_type" id="candidate_type"/>
-            <option></option>
+            <option value=""></option>
+            {% for c in candidate_type %}
+                <option value="{{c.slug}}">{{c.name}}</option>
+            {% endfor %}
         </select></label>
         <label>Gender <input type="text" name="" id=""/></label>
         <label>Number of candidates <input type="text" name="" id=""/></label>
@@ -54,7 +63,10 @@
         <label>Pay per day <input type="text" name="" id=""/></label>
         <label>Dress Code <input type="text" name="" id=""/></label>
         <label>Candidate Class <select name="" id=""/>
-            <option></option>
+            <option value=""></option>
+            {% for c in candidate_class %}
+                <option value="{{c.0}}">{{c.1}}</option>
+            {% endfor %}
         </select></label>
         <label>Communication Creteria <input type="text" name="" id=""/></label>
     </div>
