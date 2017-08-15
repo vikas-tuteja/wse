@@ -17,7 +17,7 @@ from serializers import ListEventSerializer, ListRequirementSerializer, EventDet
 from master.views import AreaList, CityList
 from utility.utils import get_prefix
 from utility.restrictions import AccessToAView
-from events.choices import CANDIDATE_TYPE, CANDIDATE_CLASS
+from events.choices import CANDIDATE_TYPE, CANDIDATE_CLASS, GENDER
 from users.models import CandidateType
 
 # Create your views here.
@@ -170,6 +170,7 @@ class PostEvents( generics.ListAPIView ):
         else:
             # TODO create an event form
             response.data['candidate_class'] = CANDIDATE_CLASS
+            response.data['gender'] = GENDER
 
         return response
 

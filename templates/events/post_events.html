@@ -1,5 +1,5 @@
 
-<div class="body-center">
+<div class="">
     {% if not accessibility %}
         <p class="sub">You are not authorized to Post an Event.</p>
         <p class="sub">Please Login / Register with us a Client.</p>
@@ -38,13 +38,17 @@
                 <option value="{{a.slug}}">{{a.name}}</option>
             {% endfor %}
         </select></label>
-        <label>Briefing Datetime (optional)<input type="text" name="briefing_datetime" id="briefing_datetime"/></label>
-    </div>
+        <div class="demo-div mt20px">
+            <label>Briefing Datetime (optional)<input type="text" name="briefing_datetime" id="briefing_datetime" class="mt10px input"/>
+        </div>
 
-<img src="{{STATIC_URL}}shared/images/right_arrow.png" class="next action-button">
+        </label>
+    </div>
+<input type="button" name="next" class="next action-button" value="Save & Proceed" />
 </fieldset>
+
+
 <fieldset>
-<img src="{{STATIC_URL}}shared/images/left_arrow.png" class="previous action-button">
 <h2 class="fs-title">Details &amp; Description</h2>
 <h3 class="fs-subtitle">some description</h3> 
         <div class="inner-wrap">
@@ -56,24 +60,32 @@
             <label>Terms &amp; Condistions (optional) <input type="text" name="t_n_c" id="t_n_c" /></label>
         </div>
 
-<img src="{{STATIC_URL}}shared/images/right_arrow.png" class="next action-button">
+<input type="button" name="next" class="next action-button" value="Save & Proceed" />
+<input type="button" name="previous" class="previous action-button" value="Go Back" />
 </fieldset>
+
+
 <fieldset>
-<img src="{{STATIC_URL}}shared/images/left_arrow.png" class="previous action-button">
 <h2 class="fs-title">Event Schedule</h2> 
 <h3 class="fs-subtitle">som descriotion</h3>
         <div class="inner-wrap">
-                <label>Start Date <b>*</b><input type="text" name="start_date_xxx" id="start_date_xxx"/></label>
-                <label>End Date <b>*</b><input type="text" name="end_date_xxx" id="end_date_xxx"/></label>
-                <label>Start Time <b>*</b><input type="text" name="start_time_xxx" id="start_time_xxx"/></label>
-                <label>End Time <b>*</b><input type="text" name="end_time_xxx" id="end_time_xxx"/></label>
+        <div class="demo-div mt20px">
+            <label>Start Date <b>*</b><input type="text" name="start_date_1" id="start_date_1" class="mt10px input"/></label>
+        </div>
+        <div class="demo-div mt20px">
+            <label>End Date <b>*</b><input type="text" name="end_date_1" id="end_date_1" class="mt10px input"/></label>
+        </div>
+                <label>Start Time <b>*</b><input type="text" name="start_time_1" id="start_time_1"/></label>
+                <label>End Time <b>*</b><input type="text" name="end_time_1" id="end_time_1"/></label>
             </div>
-<img src="{{STATIC_URL}}shared/images/right_arrow.png" class="next action-button">
-
+<input type="button" name="next" class="next action-button" value="Save & Proceed" />
+<input type="button" name="previous" class="previous action-button" value="Go Back" />
 </fieldset>
+
+
 <fieldset>
-<img src="{{STATIC_URL}}shared/images/left_arrow.png" class="previous action-button">
 <h2 class="fs-title">Event Requirements</h2> 
+<h3 class="fs-subtitle">som descriotion</h3>
         <div class="inner-wrap">
             <label>Candidate Type <select name="candidate_type" id="candidate_type"/>
                 <option value=""></option>
@@ -81,7 +93,12 @@
                     <option value="{{c.slug}}">{{c.name}}</option>
                 {% endfor %}
             </select></label>
-            <label>Gender <input type="text" name="" id=""/></label>
+            <label>Gender <select name="gender" id="gender">
+                <option value=""></option>
+                {% for g in gender %}
+                    <option value="{{g.0}}">{{g.1}}</option>
+                {% endfor %}
+            </select></label>
             <label>Number of candidates <input type="text" name="" id=""/></label>
             <label>Number of days <input type="text" name="" id=""/></label>
             <label>Pay per day <input type="text" name="" id=""/></label>
@@ -93,16 +110,19 @@
                 {% endfor %}
             </select></label>
             <label>Communication Creteria <input type="text" name="" id=""/></label>
+            <label><input type="checkbox" name="field7">You agree to our Terms and Policy.</label>
         </div>
-        <div class="button-section">
+
+        <!--div class="button-section">
             <a class="button" data-user_type="candidate"><span>Post Event</span></a>
             <span class="privacy-policy">
             <input type="checkbox" name="field7">You agree to our Terms and Policy. 
             </span>
-        </div>
+        </div-->
+        <input type="button" name="previous" class="previous action-button" value="Post Event" />
+        <input type="button" name="previous" class="previous action-button" value="Go Back" />
 
 
-<h3 class="fs-subtitle">som descriotion</h3>
 </fieldset>
 
 </form>
