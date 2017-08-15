@@ -1,83 +1,109 @@
+
 <div class="body-center">
     {% if not accessibility %}
         <p class="sub">You are not authorized to Post an Event.</p>
         <p class="sub">Please Login / Register with us a Client.</p>
     {% else %}
-        <!--label>Name</label> : <input type="text" name="name" id="name" value=""><br>
-        <label>Venue</label> : <select name="venue" id="venue" ></select><br>
-        <label>City</label> : <select name="city" id="city" ></select><br-->
-
-<div class="form-style-10">
+ 
+    {% endif %}
+</div>
+<div>
+<form id="msform" class="form-style-10">
 <h1>Create an Event<span></span></h1>
-<form>
-    <div class="section"><span>1</span>Name &amp; Address</div>
+<!-- progressbar -->
+<ul id="progressbar">
+<li class="active">Name &amp; Address</li> 
+<li>Details &amp; Description</li>
+<li>Event Schedule</li>
+<li>Event Requirements</li>
+</ul>
+<!-- fieldsets -->
+<fieldset>
+<h2 class="fs-title">Name &amp; Address</h2>
+<h3 class="fs-subtitle">This is step 1</h3>
     <div class="inner-wrap">
-        <label>Event Name <input type="text" name="name" id="name" /></label>
-        <label>Contact Person Name<input type="text" name="contact_person_name" id="contact_person_name" /></label>
-        <label>Contact Person Number <input type="text" name="contact_person_number" id="contact_person_number" /></label>
-        <label>Venue <input type="text" name="venue" id="venue"></label>
-        <label>City <select name="city" id="city">
+        <label>Event Name <b>*</b> <input type="text" name="name" id="name" /></label>
+        <label>Contact Person Name (optional)<input type="text" name="contact_person_name" id="contact_person_name" /></label>
+        <label>Contact Person Number <b>*</b> <input type="text" name="contact_person_number" id="contact_person_number" /></label>
+        <label>Venue <b>*</b> <input type="text" name="venue" id="venue"></label>
+        <label>City <b>*</b> <select name="city" id="city">
             <option value=""> </option>
             {% for c in city %}
                 <option value="{{c.slug}}">{{c.name}}</option>
             {% endfor %}
         </select></label>
-        <label>Area <select name="area" id="area">
+        <label>Area <b>*</b> <select name="area" id="area">
             <option value=""> </option>
             {% for a in area %}
                 <option value="{{a.slug}}">{{a.name}}</option>
             {% endfor %}
         </select></label>
+        <label>Briefing Datetime (optional)<input type="text" name="briefing_datetime" id="briefing_datetime"/></label>
     </div>
 
-    <div class="section"><span>2</span>Details &amp; Description</div>
-    <div class="inner-wrap">
-        <label>Description <input type="text" name="description" id="description" /></label>
-        <label>Eligibilty <input type="text" name="eligibility" id="eligibility" /></label>
-        <label>Selection &amp; Screening <input type="text" name="selection_n_screening" id="selection_n_screening" /></label>
-        <label>Venue & Timimg <input type="text" name="venue_n_timing" id="venue_n_timing" /></label>
-        <label>Payments <input type="text" name="payments" id="payments" /></label>
-        <label>Terms &amp; Condistions <input type="text" name="t_n_c" id="t_n_c" /></label>
-    </div>
-
-    <div class="section"><span>3</span>Event Schedule</div>
+<img src="{{STATIC_URL}}shared/images/right_arrow.png" class="next action-button">
+</fieldset>
+<fieldset>
+<img src="{{STATIC_URL}}shared/images/left_arrow.png" class="previous action-button">
+<h2 class="fs-title">Details &amp; Description</h2>
+<h3 class="fs-subtitle">some description</h3> 
         <div class="inner-wrap">
-        <label>Briefing Datetime <input type="text" name="briefing_datetime" id="briefing_datetime"/></label>
-        <label>Start Date<input type="text" name="start_date" id="start_date"/></label>
-        <label>End Date<input type="text" name="end_date" id="end_date"/></label>
-        <label>Start Time<input type="text" name="start_time" id="start_time"/></label>
-        <label>End Time<input type="text" name="end_time" id="end_time"/></label>
-    </div>
+            <label>Description <b>*</b><input type="text" name="description" id="description" /></label>
+            <label>Eligibilty (optional) <input type="text" name="eligibility" id="eligibility" /></label>
+            <label>Selection &amp; Screening (optional) <input type="text" name="selection_n_screening" id="selection_n_screening" /></label>
+            <label>Venue & Timimg (optional) <input type="text" name="venue_n_timing" id="venue_n_timing" /></label>
+            <label>Payments <b>*</b> <input type="text" name="payments" id="payments" /></label>
+            <label>Terms &amp; Condistions (optional) <input type="text" name="t_n_c" id="t_n_c" /></label>
+        </div>
 
-    <div class="section"><span>4</span>Add Requirements</div>
+<img src="{{STATIC_URL}}shared/images/right_arrow.png" class="next action-button">
+</fieldset>
+<fieldset>
+<img src="{{STATIC_URL}}shared/images/left_arrow.png" class="previous action-button">
+<h2 class="fs-title">Event Schedule</h2> 
+<h3 class="fs-subtitle">som descriotion</h3>
         <div class="inner-wrap">
-        <label>Candidate Type <select name="candidate_type" id="candidate_type"/>
-            <option value=""></option>
-            {% for c in candidate_type %}
-                <option value="{{c.slug}}">{{c.name}}</option>
-            {% endfor %}
-        </select></label>
-        <label>Gender <input type="text" name="" id=""/></label>
-        <label>Number of candidates <input type="text" name="" id=""/></label>
-        <label>Number of days <input type="text" name="" id=""/></label>
-        <label>Pay per day <input type="text" name="" id=""/></label>
-        <label>Dress Code <input type="text" name="" id=""/></label>
-        <label>Candidate Class <select name="" id=""/>
-            <option value=""></option>
-            {% for c in candidate_class %}
-                <option value="{{c.0}}">{{c.1}}</option>
-            {% endfor %}
-        </select></label>
-        <label>Communication Creteria <input type="text" name="" id=""/></label>
-    </div>
-    <div class="button-section">
-     <a class="button" data-user_type="candidate"><span>Post Event</span></a>
-     <span class="privacy-policy">
-     <input type="checkbox" name="field7">You agree to our Terms and Policy. 
-     </span>
-    </div>
+                <label>Start Date <b>*</b><input type="text" name="start_date_xxx" id="start_date_xxx"/></label>
+                <label>End Date <b>*</b><input type="text" name="end_date_xxx" id="end_date_xxx"/></label>
+                <label>Start Time <b>*</b><input type="text" name="start_time_xxx" id="start_time_xxx"/></label>
+                <label>End Time <b>*</b><input type="text" name="end_time_xxx" id="end_time_xxx"/></label>
+            </div>
+<img src="{{STATIC_URL}}shared/images/right_arrow.png" class="next action-button">
+
+</fieldset>
+<fieldset>
+<img src="{{STATIC_URL}}shared/images/left_arrow.png" class="previous action-button">
+<h2 class="fs-title">Event Requirements</h2> 
+        <div class="inner-wrap">
+            <label>Candidate Type <select name="candidate_type" id="candidate_type"/>
+                <option value=""></option>
+                {% for c in candidate_type %}
+                    <option value="{{c.slug}}">{{c.name}}</option>
+                {% endfor %}
+            </select></label>
+            <label>Gender <input type="text" name="" id=""/></label>
+            <label>Number of candidates <input type="text" name="" id=""/></label>
+            <label>Number of days <input type="text" name="" id=""/></label>
+            <label>Pay per day <input type="text" name="" id=""/></label>
+            <label>Dress Code <input type="text" name="" id=""/></label>
+            <label>Candidate Class <select name="" id=""/>
+                <option value=""></option>
+                {% for c in candidate_class %}
+                    <option value="{{c.0}}">{{c.1}}</option>
+                {% endfor %}
+            </select></label>
+            <label>Communication Creteria <input type="text" name="" id=""/></label>
+        </div>
+        <div class="button-section">
+            <a class="button" data-user_type="candidate"><span>Post Event</span></a>
+            <span class="privacy-policy">
+            <input type="checkbox" name="field7">You agree to our Terms and Policy. 
+            </span>
+        </div>
+
+
+<h3 class="fs-subtitle">som descriotion</h3>
+</fieldset>
+
 </form>
-</div>
-
-    {% endif %}
 </div>

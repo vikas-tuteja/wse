@@ -71,7 +71,7 @@ class BaseMiddleware(MiddlewareMixin):
 
     def getmenu(self, page):
         menu = [
-            #['home', 'Home'],
+            ['home', 'Home'],
             ['event_listing', 'Events'],
             #['clients', 'Clients'],
             ['testimonials', 'Testimonial'],
