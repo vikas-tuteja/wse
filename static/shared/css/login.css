@@ -12,6 +12,9 @@
   height: 100%;
   display: none;
   z-index: 999; }
+  @media (max-width: 540px) {
+    .pop-overlay {
+      background: #fff; } }
 
 .container-login {
   background: #fff;
@@ -22,13 +25,29 @@
   margin: 2em auto;
   max-height: 400px;
   position: relative;
+  -webkit-transition: all 1s ease;
   transition: all 1s ease;
-  transform: translateY(-100%);
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
   opacity: 0; }
+  @media (max-width: 540px) {
+    .container-login {
+      width: 100%;
+      margin: auto;
+      max-width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border: 0; } }
 
 .login-show {
+  -webkit-transition: all 1s ease;
   transition: all 1s ease;
-  transform: translateY(0%);
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
   opacity: 1; }
 
 .login-label {
@@ -46,6 +65,7 @@
     .login-label input:focus {
       outline: none; }
     .login-label input.focused + span {
+      -webkit-transition: all 500ms ease;
       transition: all 500ms ease;
       font-size: 10px;
       top: 8px; }
@@ -72,10 +92,22 @@
   top: -10px;
   right: -10px;
   padding: 5px 7px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
   border-radius: 50%; }
   .btn-close:focus, .btn-close:active {
     outline: none; }
+  @media (max-width: 540px) {
+    .btn-close {
+      top: -15%;
+      right: 22px;
+      margin: auto;
+      display: block;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+      border-radius: 0;
+      color: #ccc;
+      font-size: 1.5rem; } }
 
 .user-icon, .pwd-icon, .mobile-icon, .user-m-icon {
   display: block;
@@ -113,7 +145,6 @@ input[name=showsup]:checked + .shows-up {
   display: block; }
 
 .tabs-login {
-  #border: 1px solid #ea6e32;
   border-radius: 3px;
   color: grey; }
   .tabs-login::before, .tabs-login::after {
@@ -127,7 +158,6 @@ input[name=showsup]:checked + .shows-up {
     padding: 12px;
     width: auto; }
   .tabs-login .active {
-    #background: #ea6e32;
     color: #368;
     font-weight: bold; }
 
@@ -162,6 +192,7 @@ input[name=showsup]:checked + .shows-up {
   display: block;
   pointer-events: none;
   font-size: 16px;
+  -webkit-transition: all 500ms ease;
   transition: all 500ms ease; }
 
 /*# sourceMappingURL=login.css.map */
