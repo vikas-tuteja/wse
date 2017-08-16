@@ -87,15 +87,29 @@ input {
   line-height: normal;
   *overflow: visible; }
 
+.suggestions {
+  position: relative;
+}
+
 .suggestions .suggest_item{
-    padding-bottom: 2px;
-    padding-top: 2px;
+    padding: 10px;
     background-color:#EEEEEE;
     border-left:1px solid #CCCCCC;
     border-right:1px solid #CCCCCC;
+    border-bottom:1px solid #CCCCCC;
     display:block;
     z-index:1;
-    /* position: absolute;*/
+    color: #292b2c;
+    position: absolute;
+    width: 100%;
+    text-decoration: none;
+  transition: background-color 100ms ease;
+    
+}
+
+.suggestions .suggest_item:hover {
+  background-color: #ccc;
+  transition: background-color 100ms ease;
 }
 
 button::-moz-focus-inner,
