@@ -20,7 +20,7 @@
 }
 .form-style-10 h1{
     background: #368;
-    padding: 20px 30px 15px 30px;
+    padding: 14px 20px 10px 20px;
     margin: -30px -30px 30px -30px;
     border-radius: 10px 10px 0 0;
     -webkit-border-radius: 10px 10px 0 0;
@@ -265,7 +265,23 @@ content: none;
 background: #368;
 color: white;
 }
-
+.event-label {
+  width: 100%;
+}
+.event-label input:focus, .event-label select:focus {
+  outline: none;
+}
+.event-label span {
+  float:left;
+  width: 30%;
+  padding: 12px 0;
+  margin-left: 10%;
+}
+.event-label input, select {
+  float:left;
+  width: 50% !important;
+  margin-right: 10%;
+}
 @media (max-width:640px) {
     .form-style-10 {
         margin: auto;
@@ -290,5 +306,13 @@ color: white;
     #msform .action-button {
       float: right;
       margin-left: 10px;
+    }
+    .event-label span {
+      width: 100%;
+      margin-left: auto;
+    }
+    .event-label input, select {
+      width: 100% !important;
+      margin-right: auto;
     }
 }
