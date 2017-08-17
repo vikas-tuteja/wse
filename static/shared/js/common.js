@@ -97,15 +97,23 @@
             // if any value blank, return false
             if($.trim(val) == '' ) {
                 error += 1;
-                $(elem).html(error_message);
-                $(".alert_message_error").show();
+                if(elem) {
+                    $(elem).html(error_message);
+                    $(".alert_message_error").show();
+                } else {
+                    Common.show_alert(error_message, false);
+                }
             }
 
             // if mobile in key then, value should be integer and 10 digit long
             if(key.indexOf('mobile') != -1) {
                 if(val.length != 10 || !$.isNumeric(val)) {
                     error += 1;
-                    $(elem).html(Common.mobile_mandatory);
+                    if(elem) {
+                        $(elem).html(Common.mobile_mandatory);
+                    } else {
+                        Common.show_alert(error_message, false);
+                    }
                 }
             }
         });
@@ -148,10 +156,12 @@
         return cookieValue;
     }
 
-    function show_alert(message) {
-        $('html,body').animate({
-            scrollTop: (0)},
-            'slow');
+    function show_alert(message, top=true) {
+        if(top) {
+            $('html,body').animate({
+                scrollTop: (0)},
+                'slow');
+        }
         $("#alert_message").html(
             message + '<button class="btn-close" id="alert-close"><i class="fa fa-times" aria-hidden="true"></i></button>'
         ).fadeIn().fadeOut(20000, function() {
@@ -209,6 +219,13 @@
     Common.mobile_mandatory = "Error: Mobile number should be 10 digit integer";
     Common.forgot_password_message = "Error: Please enter username";
     Common.event_apply_disabled = "Unauthorized Access: Please Login as a Candidate to Apply & Work for events"
+
+    // post events page messages
+    Common.max_schedule_limit_reached = "You can add a maximum of 4 different schedules for an event!!"
+    Common.duplicate_schedule_alert = "Error: All schedules of an event must be unique."
+    Common.add_existing_first = "Error: Please add existing schedule first."
+
+    Common.add_existing_req_first = "Error: Please add existing requirement first."
 
     Common.init = init;
     Common.forceregister = forceregister;
