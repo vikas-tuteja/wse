@@ -1,3 +1,4 @@
+/* global $, Common */
 ;(function($,Common,EventListing) { 
     function init(options){
         // search box functionality
@@ -26,12 +27,12 @@
                 var event_slug = $(this).attr('id').split('~~');
                 var a = Common.ajaxcall("/events/requirements/" + event_slug[0] + "/", 'GET', {'format':'json'})
                 a.done(function(resp){
-                    var res= 'Requirement for ' + event_slug[1] ;
-                    $.each(resp.results.results, function(idx, elem){
+                    var res= '<h4>Requirement for ' + event_slug[1] + '</h4>'
+                    $.each(resp.results.results, function (idx, elem) {
                         res += '<div class="req_list">' +
-                            elem.id +
+                            '<div class="strip-head"><span>' + elem.id +
                             elem.event_slug +
-                            elem.candidate_type +
+                            elem.candidate_type + '</span></div>' +
                             elem.gender +
                             elem.no_of_candidates +
                             elem.daily_wage_per_candidate +
@@ -137,4 +138,3 @@
     EventListing.init = init;
 
 })($, Common, (window.EventListing= window.EventListing || {}))
-
