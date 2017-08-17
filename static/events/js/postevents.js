@@ -155,10 +155,10 @@
         // logic to append div
         var schedule_div = '<div class="demo-div mt20px">' +
                             '<label class="event-label clearfix">' +
-                            '<span>Start Date <b>*</b></span><input type="text" name="start_date_xxx" id="start_date_xxx" class="mt10px input small-input"/>' + 
-                            '<span>End Date <b>*</b></span><input type="text" name="end_date_xxx" id="end_date_xxx" class="mt10px input small-input"/>' +
-                            '<span>Start Time <b>*</b></span><input type="text" name="start_time_xxx" id="start_time_xxx" class="mt10px input timepicker small-input"/>' +
-                            '<span>End Time <b>*</b></span><input type="text" name="end_time_xxx" id="end_time_xxx" class="mt10px input timepicker small-input"/>' +
+                            '<span>Start Date <b>*</b></span><input type="text" name="start_date_xxx" id="start_date_xxx" class="mt10px input small-input"/><img src="/static/shared/images/calendar-icon.png" class="medium-img mt10px">' + 
+                            '<span>End Date <b>*</b></span><input type="text" name="end_date_xxx" id="end_date_xxx" class="mt10px input small-input"/><img src="/static/shared/images/calendar-icon.png" class="medium-img mt10px">' +
+                            '<span>Start Time <b>*</b></span><input type="text" name="start_time_xxx" id="start_time_xxx" class="mt10px input timepicker small-input"/><img src="/static/shared/images/clock1.jpg" class="square-img mt10px">' +
+                            '<span>End Time <b>*</b></span><input type="text" name="end_time_xxx" id="end_time_xxx" class="mt10px input timepicker small-input"/><img src="/static/shared/images/clock1.jpg" class="square-img mt10px">' +
                             '</label></div>';
         
         default_schedule_cnt = append_html(default_schedule_cnt, schedule_div, '.schedules');

@@ -43,8 +43,8 @@
                         <label class="event-label clearfix">
                             <span>Start Date <b>*</b></span><input type="text" name="start_date_1" id="start_date_1" class="mt10px input small-input"/><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img mt10px">
                             <span>End Date <b>*</b></span><input type="text" name="end_date_1" id="end_date_1" class="mt10px input small-input"/><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img mt10px">
-                            <span>Start Time <b>*</b></span><input type="text" name="start_time_1" id="start_time_1" class="mt10px input timepicker small-input"/>
-                            <span>End Time <b>*</b></span><input type="text" name="end_time_1" id="end_time_1" class="mt10px input timepicker small-input"/>
+                            <span>Start Time <b>*</b></span><input type="text" name="start_time_1" id="start_time_1" class="mt10px input timepicker small-input"/><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img mt10px">
+                            <span>End Time <b>*</b></span><input type="text" name="end_time_1" id="end_time_1" class="mt10px input timepicker small-input"/><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img mt10px">
                         </label>
                     </div>
                 <!-- event schedule starts -->
@@ -143,7 +143,10 @@
             <label><span>Do you want to screen candidates for selection ?</span></label>
             <label><input type="radio" name="is_screening" class="is_screening" value="1" > Yes
                    <input type="radio" name="is_screening" class="is_screening" value="0" > No</label>
-                   <label class="event-label clearfix" id="briefing_div" style="display:none;"><span>Briefing Datetime </span><input type="text" name="briefing_datetime" id="briefing_datetime" class="mt10px input big-input"/><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img mt10px"></label>
+                   <label class="event-label clearfix" id="briefing_div" style="display:none;">
+                    <span>Briefing Date </span><input type="text" name="briefing_datetime" id="briefing_datetime" class="mt10px input small-input"/><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img mt10px">
+                    <span>Briefing Time </span><input type="text" name="briefing_time" id="briefing_time" class="mt10px input small-input"/><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img mt10px">
+                    </label>
    
             <br><br><label><span>Worksmart Events TnC</span></label>
             <label><input type="checkbox" name="tnc_1" id="tnc_1" > We have to write basic terms &amp; conditions &amp; make user accept them.</label>
