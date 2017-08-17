@@ -27,19 +27,19 @@
                 var event_slug = $(this).attr('id').split('~~');
                 var a = Common.ajaxcall("/events/requirements/" + event_slug[0] + "/", 'GET', {'format':'json'})
                 a.done(function(resp){
-                    var res= '<h4>Requirement for ' + event_slug[1] + '</h4>'
+                    var res = '<h1 class="blue mt10px">Requirement for ' + event_slug[1] + '</h1>';
                     $.each(resp.results.results, function (idx, elem) {
                         res += '<div class="req_list">' +
-                            '<div class="strip-head"><span>' + elem.id +
-                            elem.event_slug +
-                            elem.candidate_type + '</span></div>' +
-                            elem.gender +
-                            elem.no_of_candidates +
-                            elem.daily_wage_per_candidate +
-                            elem.dress_code +
-                            elem.candidate_class + 
-                            elem.communication_criteria +
-                            elem.gender + '</div>';
+                            '<div class="strip-head"><span>' + 
+                            elem.candidate_type + '</span></div>' + 
+                            '<div>' + 
+                            '<br>Gender : ' + elem.gender +
+                            '<br>Candidates Required :' + elem.no_of_candidates +
+                            '<br>Pay per day :' + elem.daily_wage_per_candidate +
+                            '<br>Dress Code :' + elem.dress_code +
+                            '<br>English Proficiency :' + elem.communication_criteria +
+                            '<br><button id="' + elem.id + '" class="requirement_apply btn btn-blue mt-15">Apply</button>' +
+                            '</div></div>';
                     });
                     $("#requirement_box").html(res);
                 });
