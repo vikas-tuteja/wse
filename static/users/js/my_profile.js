@@ -60,14 +60,7 @@
                 $("#login_message").html(resp.message);
                 $(".alert_message_error").show(1000);
                 if(resp.status==true){
-                    $(".btn-close").trigger("click");
-                    var url = $("#action").val() || document.URL
-                    // if last character #, remove it
-                    if(url[url.length-1] == "#") {
-                        url = url.slice(0,-1)
-                    }
-                    url = Common.form_unique_params('alert_message', resp.message, url, false);
-                    window.location.href = url;
+                    Common.after_login_process(resp);
                 }
             });
         });
@@ -117,14 +110,7 @@
                 $("#register_message").html(resp.message);
                 $(".alert_message_error").show(1000);
                 if(resp.status==true){
-                    $(".btn-close").trigger("click");
-                    var url = $("#action").val() || document.URL
-                    // if last character #, remove it
-                    if(url[url.length-1] == "#") {
-                        url = url.slice(0,-1)
-                    }
-                    url = Common.form_unique_params('alert_message', resp.message, url, false);
-                    window.location.href = url;
+                    Common.after_login_process(resp);
                 }
             });
         });

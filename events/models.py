@@ -15,7 +15,7 @@ class Event(models.Model):
     client = models.ForeignKey( User, limit_choices_to={'userdetail__type__slug' : 'client'}, related_name='client_user' )
     name = models.CharField( max_length=100 )
     slug = models.SlugField( max_length=100 )
-    short_description = models.TextField( blank=True, null=True )
+    short_description = models.TextField( )
     overview = RichTextField( )
     venue = models.CharField( max_length=100 )
     area = models.ForeignKey( Area )

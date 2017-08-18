@@ -11,11 +11,30 @@ class ListEventSerializer( serializers.ModelSerializer ):
     state = serializers.CharField(read_only=True, source='city.state.name')
     posted_by = serializers.CharField(read_only=True, source='event_posted_by.auth_user.username')
     candidate_info = serializers.SerializerMethodField()
+    is_applied = serializers.SerializerMethodField()
 
 
     class Meta:
         model = Event
-        fields = ('id', 'client', 'name', 'slug', 'overview', 'venue', 'area', 'city', 'state', 'posted_by', 'contact_person_name', 'contact_person_number', 'candidate_info', 'schedule', 'briefing_datetime', 'short_description')
+        fields = ('id', 'client', 'name', 'slug', 'overview', 'venue', 'area', 'city', 'state', 'posted_by', 'contact_person_name', 'contact_person_number', 'candidate_info', 'schedule', 'briefing_datetime', 'short_description', 'is_applied')
+    
+    def get_is_applied(self, obj):
+        try:
+            user = self.context['request']._request.user
+            if not user:
+                return False
+            else:
+                appl = RequirementApplication.objects.filter(
+                    candidate = user,
+                    requirement__in = list(obj.requirement_set.all())
+                )
+                if not appl:
+                    return False
+                else:
+                    return appl[0].application_status
+        except:
+            return False
+
 
     def get_candidate_info(self, obj):
         candidates_required, paisa = {}, []

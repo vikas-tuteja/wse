@@ -22,7 +22,10 @@ class AccessToAView(object):
                 return True
 
         elif self.user_type == 'candidate':
-            if self.page in ('event_listing',):
+            if self.page in ('event_listing', 'apply_requirement'):
                 return True
+
+        else:
+            return True
 
         return False

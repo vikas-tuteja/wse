@@ -125,16 +125,25 @@
     }
 
     /*
+    * this fn is called, when a user clicks on requirement apply
+    * 1. directly click on requirement apply
+    * 2. clicks on requirement apply and then apply is called from login/register
     */
     function forceregister(user, action, isajax=true) {
-        // if login -> call action
+        // if login -> ajax call to action & then reload
         if(user) {
-            window.location.href = action;
+            var x = Common.ajaxcall(action, 'GET', {});
+            x.done(function(resp){
+                var url = Common.form_unique_params('alert_message', resp.message, document.URL.replace(/#.*$/, ""), false);
+                window.location.href = url;
+            });
         }
         else {
             // show registration/login form if not logged in
+            $("#close_req")[0].click();
             $(".sign-in").trigger('click');
             $("#action").val(action);
+            $("#isajax").val(isajax);
         }
     }
 
@@ -205,6 +214,26 @@
         history.pushState(null, "", actual_url);
     }
 
+    /*
+    * called after successful login
+    * if action saved in login form, then complete the action using ajax
+    * else just reload the same login
+    */
+    function after_login_process(resp) {
+        var action = $("#action").val();
+        $(".btn-close").trigger("click");
+        var url = document.URL.replace(/#.*$/, "");
+        /*/ if last character #, remove it
+        if(url[url.length-1] == "#") {
+            url = url.slice(0,-1)
+        }*/
+        url = Common.form_unique_params('alert_message', resp.message, url, false);
+        if(action && action!='' && action!=null && action!=undefined) {
+            forceregister(true, action, isajax=true)
+        } else {
+            window.location.href = url;
+        }
+    }
     // list all urls to be used, whether ajax or redirect url
     Common.login_url = "/login/";
     Common.register_url = "/create-user/";
@@ -218,7 +247,7 @@
     Common.mandatory_params = "Error: Mandatory parameters missing";
     Common.mobile_mandatory = "Error: Mobile number should be 10 digit integer";
     Common.forgot_password_message = "Error: Please enter username";
-    Common.event_apply_disabled = "Unauthorized Access: Please Login as a Candidate to Apply & Work for events"
+    Common.event_apply_disabled = "Unauthorized Access: Only candidates can Apply &amp; Work for an event. Please Login as a Candidate"
 
     // post events page messages
     Common.max_schedule_limit_reached = "You can add a maximum of 4 different schedules for an event!!"
@@ -226,6 +255,8 @@
     Common.add_existing_first = "Error: Please add existing schedule first."
 
     Common.add_existing_req_first = "Error: Please add existing requirement first."
+
+    // requirement apply
 
     Common.init = init;
     Common.forceregister = forceregister;
@@ -237,5 +268,6 @@
     Common.verify_mandatory = verify_mandatory;
     Common.show_alert = show_alert;
     Common.remove_alert_message = remove_alert_message;
+    Common.after_login_process = after_login_process;
 
 })($,(window.Common = window.Common || {}));

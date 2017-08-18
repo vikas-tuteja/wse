@@ -671,7 +671,20 @@ body {
     min-width: 120px; }
     .btn.btn-blue:hover {
       background: #23475f; }
-
+.btn-applied {
+  min-width: 120px; 
+  color: #368;
+  font-weight: bold;
+  background: grey;
+}
+.table {
+  color: #666;
+  width: 100%
+}
+.table td {
+  text-align: center;
+  padding: 8px;
+}
 .breadcrumb {
   -webkit-border-radius: .25rem;
      -moz-border-radius: .25rem;

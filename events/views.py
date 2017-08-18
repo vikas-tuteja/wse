@@ -101,19 +101,26 @@ class EventDetail( mygenerics.ListAPIView ):
 class ApplyForRequirement( generics.CreateAPIView ):
     serializer_class = ApplyRequirementSerializer
 
-    def post(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         status = False
-        reqObj = Requirement.objects.get(id=kwargs.get('requirement_id'))
-        try:
-            RequirementApplication.objects.create(
-                requirement = reqObj,
-                candidate = request.user,
-                application_status = self.compute_application_status(reqObj)
-            )
-            status, message = True, 'Applied Successfully'
-    
-        except IntegrityError:
-            message = 'You have already applied for this event'
+        check = AccessToAView(self.request._request.user, 'apply_requirement')
+ 
+        if not check.is_accessible():
+            message = 'Unauthorized Access: Only candidates can Apply and Work for an event. Please Login as a Candidate'
+
+        else:
+            reqObj = Requirement.objects.get(id=kwargs.get('requirement_id'))
+            try:
+                RequirementApplication.objects.create(
+                    requirement = reqObj,
+                    candidate = request.user,
+                    application_status = self.compute_application_status(reqObj)
+                )
+                status, message = True, 'Applied Successfully! We will get in touch with you shortly.'
+        
+            except IntegrityError:
+                message = 'Error: You have already applied for this event.'
+
         return JsonResponse(data={
             'status':status,
             'message':message

@@ -27,19 +27,29 @@
                 var event_slug = $(this).attr('id').split('~~');
                 var a = Common.ajaxcall("/events/requirements/" + event_slug[0] + "/", 'GET', {'format':'json'})
                 a.done(function(resp){
-                    var res = '<h1 class="blue mt10px">Requirement for ' + event_slug[1] + '</h1>';
+                    var res = '<p class="blue mt10px" style="font-weight:200 !important;">Requirement for ' + event_slug[1] + '</p>';
+                    var gender_meta = {'f':'Lady', 'm':'Gentleman', 'fplural': 'Ladies', 'mplural': 'Gents'}
                     $.each(resp.results.results, function (idx, elem) {
+                        if(elem.no_of_candidates>1){
+                            elem.gender = elem.gender + 'plural';
+                        }
+                        var dress_code_img = '<img class="square-img" src = "/static/shared/images/cross.svg">';
+                        if(elem.dress_code && elem.dress_code != null) {
+                            dress_code_img = '<img class="square-img" src = "/static/shared/images/tick.png">';
+                        }
                         res += '<div class="req_list">' +
                             '<div class="strip-head"><span>' + 
                             elem.candidate_type + '</span></div>' + 
-                            '<div>' + 
-                            '<br>Gender : ' + elem.gender +
-                            '<br>Candidates Required :' + elem.no_of_candidates +
-                            '<br>Pay per day :' + elem.daily_wage_per_candidate +
-                            '<br>Dress Code :' + elem.dress_code +
-                            '<br>English Proficiency :' + elem.communication_criteria +
-                            '<br><button id="' + elem.id + '" class="requirement_apply btn btn-blue mt-15">Apply</button>' +
-                            '</div></div>';
+                            '<div><table class="table">' + 
+                            '<tr><td><b>' + elem.no_of_candidates + ' ' + gender_meta[elem.gender] + '</b> Required </td></tr>' +
+                            '<tr><td><b>INR ' + elem.daily_wage_per_candidate + '</b> per day </td></tr>' +
+                            '<tr><td>Dress Code ' + dress_code_img + '</td></tr>';
+
+                        if(elem.communication_criteria && elem.communication_criteria != null ) {
+                            res += '<tr><td>English Proficiency </td><td>' + elem.communication_criteria + '</td></tr>';
+                        } else {
+                        }
+                        res += '<tr><td><button data-id="' + elem.id + '" class="requirement_apply btn btn-blue mt-15">Apply</button></td></tr></table></div></div>';
                     });
                     $("#requirement_box").html(res);
                 });
@@ -111,8 +121,8 @@
         });
 
         // bind requirement apply on click
-        $("#requirement_apply").on('click', function() {
-            var ajaxurl = "/events/apply/" + $(this).id;
+        $(document).on('click', '.requirement_apply', function() {
+            var ajaxurl = '/events/apply/' + $(this).data('id') + '/';
             Common.forceregister(
                 options.user,
                 ajaxurl,

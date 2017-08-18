@@ -214,3 +214,8 @@ body {
 .strip-head:before {
   left: -3px;
 }
+.square-img {
+  height: 20px !important;
+  width: 13px !important;
+  padding-top: 8px;
+}
