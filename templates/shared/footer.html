@@ -3,8 +3,18 @@
 </div>
 <div class="footer_wrapper">
     <div class="subscribe">
+            <br><br>
+            <a href="">Login/Register</a>
+            <a href="">How it Works</a>
+            <a href="{% url 'post_events' %}">Post an Event</a>
+            <a href="{% url 'event_listing' %}">Looking for Work</a>
+            <a href="{% url 'faqs' %}">FAQS</a>
+            <a href="">T&C</a>
+            <a href="{% url 'about_us' %}">About Us</a>
+            <a href="{% url 'contact_us' %}">Contact Us</a>
+            <br><br>
     {% if not user %}
-        <br> Fuck!! We don't have any news letter.<br>Anyways Register with us to find part-time event jobs or to post Events<br><br> 
+        <br> Oh God!! We don't have any news letter.<br>Anyways Register with us to find part-time event jobs or to post Events<br><br> 
         <div class="form-inline">
             <input type="email" name="email" value="" class="form-control" placeholder="Enter your email-id" id="footer_email">
             <input type="mobile" name="mobile" value="" class="form-control" placeholder="Enter your mobile" id="footer_mobile">

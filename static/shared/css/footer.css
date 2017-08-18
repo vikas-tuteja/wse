@@ -125,6 +125,11 @@
         width:auto;
     }
 }
+.subscribe a {
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 @media(min-width:768px) {
     .alert_message {
