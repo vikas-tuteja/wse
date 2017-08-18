@@ -132,15 +132,21 @@
     function forceregister(user, action, isajax=true) {
         // if login -> ajax call to action & then reload
         if(user) {
-            var x = Common.ajaxcall(action, 'GET', {});
-            x.done(function(resp){
-                var url = Common.form_unique_params('alert_message', resp.message, document.URL.replace(/#.*$/, ""), false);
-                window.location.href = url;
-            });
+            if(isajax==true || isajax=="true") {
+                var x = Common.ajaxcall(action, 'GET', {});
+                x.done(function(resp){
+                    var url = Common.form_unique_params('alert_message', resp.message, document.URL.replace(/#.*$/, ""), false);
+                    window.location.href = url;
+                });
+            } else {
+                window.location.href = action;
+            }
         }
         else {
             // show registration/login form if not logged in
-            $("#close_req")[0].click();
+            if($("#close_req") != undefined && $("#close_req").length > 0) {
+                $("#close_req")[0].click();
+            }
             $(".sign-in").trigger('click');
             $("#action").val(action);
             $("#isajax").val(isajax);
@@ -229,7 +235,8 @@
         }*/
         url = Common.form_unique_params('alert_message', resp.message, url, false);
         if(action && action!='' && action!=null && action!=undefined) {
-            forceregister(true, action, isajax=true)
+            var isajax=true;
+            forceregister(true, action, $("#isajax").val())
         } else {
             window.location.href = url;
         }

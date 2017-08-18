@@ -40,7 +40,7 @@ class BaseMiddleware(MiddlewareMixin):
                 if obj:
                     obj = obj[0]
                     meta = {
-                        'title':obj.title,
+                        'title':eval(obj.title),
                         'keywords':obj.keywords,
                         'description':obj.description,
                     }

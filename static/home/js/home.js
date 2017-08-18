@@ -24,7 +24,7 @@
             } else {
                 var action = Common.event_listing;
             }
-            Common.forceregister(user_logged_in, action);
+            Common.forceregister(user_logged_in, action, false);
         });
     }
     
