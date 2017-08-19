@@ -71,20 +71,16 @@ class BaseMiddleware(MiddlewareMixin):
 
     def getmenu(self, page):
         menu = [
-            ['home', 'Home'],
-            ['event_listing', 'Events'],
+            [('home',), 'Home'],
+            [('event_listing', 'event_detail', 'post_events'), 'Events'],
             #['clients', 'Clients'],
-            ['testimonials', 'Testimonial'],
-            ['articles', 'Articles'],
-            ['faqs', 'FAQ'],
-            ['contact_us', 'Contact us'],
-            ['about_us', 'About us'],
+            #['testimonials', 'Testimonial'],
+            [('articles',), 'Articles'],
+            [('faqs',), 'FAQ'],
+            [('contact_us',), 'Contact us'],
+            [('about_us',), 'About us'],
         ]
         
-        [ x.append("selected") if page == x[0] else x.append(None) for x in menu]
-
-        # set events tabs selected, even if event detail and not event listing
-        if page == 'event_detail':
-            menu[0][2] = 'selected'
+        [ x.append("selected") if page in x[0] else x.append(None) for x in menu]
 
         return menu

@@ -95,6 +95,13 @@ class EventDetail( mygenerics.ListAPIView ):
     
     def list(self, request, *args, **kwargs):
         response = super(EventDetail, self).list(request, *args, **kwargs)
+
+        check = AccessToAView(self.request._request.user, 'event_detail')
+        response.data[0]['accessibility'] = True
+
+        if not check.is_accessible():
+            response.data[0]['accessibility'] = False
+
         return response
 
 
@@ -183,8 +190,12 @@ class PostEvents( generics.ListAPIView ):
 
     
     def post(self, request, *args, **kwargs):
+        #import pdb; pdb.set_trace()
+        # <QueryDict: {u'post_events_1[area]': [u'chembur'], u'post_events_2[selection_n_screening]': [u'ghjhgfcvbn'], u'post_events_1[city]': [u'mumbai'], u'post_events_3[gender_1]': [u'm'], u'post_events_3[candidate_type_1]': [u'promotor'], u'post_events[tnc_1]': [u'on'], u'post_events_1[contact_person_number]': [u'9876543211'], u'post_events_2[venue_n_timing]': [u'bvbn'], u'post_events_2[payments]': [u'bvbnm'], u'post_events[tnc_2]': [u'on'], u'post_events_1[name]': [u'testing event 1'], u'post_events_1[venue]': [u'k-star'], u'post_events_2[description]': [u'some random description'], u'post_events_2[eligibility]': [u'chjhgfcf']}>
+
         status = True
         message = "Event created successfully. However, it is still not on site.<br>We will get in touch with you shortly."
+        message = "Event created successfully." 
 
         return JsonResponse(data={
             'status':status,

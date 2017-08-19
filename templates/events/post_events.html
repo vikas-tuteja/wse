@@ -53,7 +53,7 @@
                 <a class="add_more_schedule"><img class="small-img" src="{{STATIC_URL}}shared/images/calendar-add-128.png">Add More Schedules</a></span>
 
             </div>
-        <input type="button" name="next" class="next action-button" value="Save & Proceed" />
+        <input type="button" name="next" class="next action-button" value="Save & Proceed" id="post_events_1"/>
         </fieldset>
 
 
@@ -66,10 +66,10 @@
                     <label class="event-label clearfix"><span>Selection &amp; Screening (optional)</span> <input type="text" name="selection_n_screening" id="selection_n_screening" class="big-input" /></label>
                     <label class="event-label clearfix"><span>Venue & Timimg (optional)</span> <input type="text" name="venue_n_timing" id="venue_n_timing" class="big-input" /></label>
                     <label class="event-label clearfix"><span>Payments <b>*</b></span> <input type="text" name="payments" id="payments" class="big-input" /></label>
-                    <label class="event-label clearfix"><span>Terms &amp; Condistions (optional)</span> <input type="text" name="t_n_c" id="t_n_c" class="big-input" /></label>
+                    <!--label class="event-label clearfix"><span>Terms &amp; Condistions (optional)</span> <input type="text" name="t_n_c" id="t_n_c" class="big-input" /></label-->
                 </div>
 
-        <input type="button" name="next" class="next action-button" value="Save & Proceed" />
+        <input type="button" name="next" class="next action-button" value="Save & Proceed" id="post_events_2" />
         <input type="button" name="previous" class="previous action-button" value="Go Back" />
         </fieldset>
 
@@ -127,7 +127,7 @@
               <span class="big-input" style="font: 13px Arial, Helvetica, sans-serif;color: #888;"><br><br>
               <a class="add_more_requirements"><img class="small-img" src="{{STATIC_URL}}shared/images/add1.png">Add More Requirements</a></span>
 
-        <input type="button" name="next" class="next action-button" value="Save & Proceed" />
+        <input type="button" name="next" class="next action-button" value="Save & Proceed" id="post_events_3" />
         <input type="button" name="previous" class="previous action-button" value="Go Back" />
         </fieldset>
 
@@ -152,7 +152,7 @@
             <label><input type="checkbox" name="tnc_1" id="tnc_1" > We have to write basic terms &amp; conditions &amp; make user accept them.</label>
             <label><input type="checkbox" name="tnc_2" id="tnc_2" > Mention about payments terms &amp; conditions.</label>
             <label><input type="checkbox" name="field7">&nbsp;You agree to our Terms and Policy.</label><br><br>
-            <input type="button" name="previous" class="previous action-button" value="Post Event" />
+            <input type="button" name="previous" class="next action-button" value="Post Event" id="post_events" />
             <input type="button" name="previous" class="previous action-button" value="Go Back" />
         </fieldset>
 

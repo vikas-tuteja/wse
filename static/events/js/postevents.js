@@ -29,6 +29,7 @@
         var animating; //flag to prevent quick multi-click glitches
 
         $(".next").click(function(){
+            if(!validate($(this)[0].id)) return false;
             if(animating) return false;
             animating = true;
             
@@ -206,6 +207,55 @@
         $(elem).append(html);
         return counter;
     }
+
+    function validate(elem_id) {
+            debugger;
+       var id_param_map = {
+            'post_events_1' : {
+                'name': $('#name').val(),
+                'venue': $('#venue').val(),
+                'city': $('#city').val(),
+                'area': $('#area').val(),
+                //'contact_person_name': $('#contact_person_name').val(),
+                'contact_person_number': $('#contact_person_number').val()
+            },
+            'post_events_2' : {
+                'description': $('#description').val(),
+                'eligibility': $('#eligibility').val(),
+                'selection_n_screening': $('#selection_n_screening').val(),
+                'venue_n_timing': $('#venue_n_timing').val(),
+                'payments': $('#payments').val(),
+                //'t_n_c': $('#t_n_c').val()
+            },
+            'post_events_3' : {
+                'candidate_type_1': $('#candidate_type_1').val(),
+                'gender_1': $('#gender_1').val()
+            },
+            'post_events' : {
+                //'is_screening':$('#is_screening').val(),
+                //'briefing_datetime':$('#briefing_datetime').val(),
+                //'briefing_time':$('#briefing_time').val(),
+                'tnc_1':$('#tnc_1').val(),
+                'tnc_2':$('#tnc_2').val(),
+            }
+        }
+        var verify = Common.verify_mandatory(id_param_map[elem_id], false, Common.mandatory_params);
+        if(!verify) return false;
+        else {
+            if(elem_id!='post_events') return true;
+            else {
+                var x = Common.ajaxcall(Common.post_event, 'POST', id_param_map)
+                x.done(function(resp){
+                    if(resp.status==true) {
+                        //$('#msform').attr('action', '/events/' + resp.slug + '/')
+                        //$('#msform').submit();
+                        window.location.href = '/events/' + resp.slug + '/?alert_message=' + resp.message
+                    }
+                });
+            }
+        }
+    }
+
     PostEvent.init = init;
 
 })($,Common, (window.PostEvent = window.PostEvent || {}));

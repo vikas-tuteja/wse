@@ -24,6 +24,7 @@
 {% include "shared/footer.html" %}
 {% endblock body %}
 {% block customjs %}
+    <script src="{{STATIC_URL}}events/js/events.js"></script>
     <script src="{{STATIC_URL}}events/js/events_details.js"></script>
 
     <script type="text/javascript">
@@ -33,6 +34,7 @@
         }
         EventDetail.init({
             user: user,
+            accessibility: "{{results.0.accessibility}}"
         });
 
     </script>

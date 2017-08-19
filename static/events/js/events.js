@@ -1,22 +1,6 @@
 /* global $, Common */
 ;(function($,Common,EventListing) { 
-    function init(options){
-        // search box functionality
-        Common.bind_onkeyup(
-            '#search', 
-            '#search_results',
-            '/events/',
-            'name'
-        )
-        
-        // go button redirect
-        Common.redirect(
-            '#go',
-            '/events/',
-            'name',
-            '#search'
-        )
-        
+    function bind_apply_popup(options) {
         // bind popup
         $(".event_apply").on('click', function() {
             // if client, then on apply disabled
@@ -56,6 +40,38 @@
                 window.location.href = "#openModal"
             }
         });
+
+    }
+
+    function bind_requirement_popup(options) {
+        // bind requirement apply on click
+        $(document).on('click', '.requirement_apply', function() {
+            var ajaxurl = '/events/apply/' + $(this).data('id') + '/';
+            Common.forceregister(
+                options.user,
+                ajaxurl,
+                true
+             )
+        });
+    }
+
+    function init(options){
+        // search box functionality
+        Common.bind_onkeyup(
+            '#search', 
+            '#search_results',
+            '/events/',
+            'name'
+        )
+        
+        // go button redirect
+        Common.redirect(
+            '#go',
+            '/events/',
+            'name',
+            '#search'
+        )
+        bind_apply_popup(options);
 
         // sorting functionality
         params = Common.is_param_exist();
@@ -120,21 +136,7 @@
             
         });
 
-        // bind requirement apply on click
-        $(document).on('click', '.requirement_apply', function() {
-            var ajaxurl = '/events/apply/' + $(this).data('id') + '/';
-            Common.forceregister(
-                options.user,
-                ajaxurl,
-                true
-             )
-        });
-        /*$("#requirement_apply").on('click', function() {
-            var x = Common.ajaxcall(, 'POST', {})
-            x.done(function(resp) {
-                alert(resp.status + ' -- ' + resp.message);
-            });
-        });*/
+        bind_requirement_popup();
     }
     
 
@@ -146,5 +148,7 @@
     }
 
     EventListing.init = init;
+    EventListing.bind_apply_popup = bind_apply_popup;
+    EventListing.bind_requirement_popup = bind_requirement_popup;
 
 })($, Common, (window.EventListing= window.EventListing || {}))

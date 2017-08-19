@@ -1,4 +1,4 @@
-;(function($,Common,EventDetail){
+;(function($,Common,EventListing,EventDetail){
 
     function init(options) {
         $(".detail_tabs").on('click', function() {
@@ -7,8 +7,10 @@
             scrollTop: $("#"+elem).offset().top},
             'slow');
         });
+        EventListing.bind_apply_popup(options);
+        EventListing.bind_requirement_popup(options);
     }
 
     EventDetail.init = init;
 
-})($, Common, (window.EventDetail = window.EventDetail || {}))
+})($, Common, EventListing, (window.EventDetail = window.EventDetail || {}))
