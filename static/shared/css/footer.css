@@ -24,6 +24,7 @@
     background: #ccc;
     margin-top: 2px;
     margin-bottom: 8px;
+    display: inline-block;
 }
 .divider-vertical {
     width: 2px;
