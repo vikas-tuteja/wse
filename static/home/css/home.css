@@ -20,8 +20,9 @@
   font-size:32px;
 }
 .home_parts_body {
-  height: 100%;
+  /* height: 100%; */
   background-color:#f8f8f8;
+  display: inline-block;
 }
 
 .square {
@@ -127,4 +128,13 @@
 
 .text-center {
   text-align: center;
+}
+
+.dib {
+  display: inline-block;
+}
+
+.px-15 {
+  padding-left: 15px;
+  padding-right: 15px;
 }
