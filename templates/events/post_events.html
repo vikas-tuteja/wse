@@ -61,7 +61,7 @@
         <h2 class="fs-title">Details &amp; Description</h2>
         <h3 class="fs-subtitle">some description</h3> 
                 <div class="inner-wrap">
-                    <label class="event-label clearfix"><span>Description <b>*</b></span><input type="text" name="description" id="description" class="big-input" /></label>
+                    <label class="event-label clearfix"><span>Description <b>*</b></span><input type="text" name="short_description" id="short_description" class="big-input" /></label>
                     <label class="event-label clearfix"><span>Eligibilty (optional)</span> <input type="text" name="eligibility" id="eligibility" class="big-input" /></label>
                     <label class="event-label clearfix"><span>Selection &amp; Screening (optional)</span> <input type="text" name="selection_n_screening" id="selection_n_screening" class="big-input" /></label>
                     <label class="event-label clearfix"><span>Venue & Timimg (optional)</span> <input type="text" name="venue_n_timing" id="venue_n_timing" class="big-input" /></label>
@@ -95,9 +95,9 @@
                         <option value="{{g.0}}">{{g.1}}</option>
                     {% endfor %}
                 </select>
-                <span>Count </span> <input type="text" name="count_{{i}}" id="count_{{i}}" class="v-small-input"/>
+                <span>Count </span> <input type="text" name="no_of_candidates_{{i}}" id="no_of_candidates_{{i}}" class="v-small-input"/>
                 <span>No. of days</span> <input type="text" name="no_of_days_{{i}}" id="no_of_days_{{i}}" class="v-small-input"/>
-                <span>Pay per day</span> <input type="text" name="pay_per_day_{{i}}" id="pay_per_day_{{i}}" class="v-small-input"/>
+                <span>Pay per day</span> <input type="text" name="daily_wage_per_candidate_{{i}}" id="daily_wage_per_candidate_{{i}}" class="v-small-input"/>
                 </label>
                 <label class="event-label clearfix">
                     <span>Education </span> <select name="education_{{i}}" id="education_{{i}}" class="small-input"/>
@@ -113,7 +113,7 @@
                     {% endfor %}
                 </select></label-->
                 <!--label class="event-label clearfix"-->
-                    <span>English Language Proficiency </span><select name="language_{{i}}" id="language_{{i}}" class="small-input"/>
+                    <span>English Language Proficiency </span><select name="communication_criteria{{i}}" id="communication_criteria_{{i}}" class="small-input"/>
                     <option value=""></option>
                     {% for g in gender %}
                         <option value="{{g.0}}">{{g.1}}</option>
@@ -146,6 +146,7 @@
                    <label class="event-label clearfix" id="briefing_div" style="display:none;">
                     <span>Briefing Date </span><input type="text" name="briefing_datetime" id="briefing_datetime" class="mt10px input small-input"/><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img mt10px">
                     <span>Briefing Time </span><input type="text" name="briefing_time" id="briefing_time" class="mt10px input small-input"/><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img mt10px">
+                    <span>Briefing Venue </span><input type="text" name="briefing_venue" id="briefing_venue" class="mt10px input small-input"/>
                     </label>
    
             <br><br><label><span>Worksmart Events TnC</span></label>

@@ -52,3 +52,9 @@ ALLOCATION_STATUS = (
     ('backed-out', 'Backed out'),
     ('completed', 'Completed'),
 )
+
+EDUCATION = (
+    ('10th', '10th'),
+    ('12th', '12th'),
+    ('graduate', 'Graduate')
+)

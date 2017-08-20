@@ -14,7 +14,7 @@ from choices import *
 class Event(models.Model):
     client = models.ForeignKey( User, limit_choices_to={'userdetail__type__slug' : 'client'}, related_name='client_user' )
     name = models.CharField( max_length=100 )
-    slug = models.SlugField( max_length=100 )
+    slug = models.SlugField( max_length=100, unique = True )
     short_description = models.TextField( )
     overview = RichTextField( )
     venue = models.CharField( max_length=100 )
@@ -76,6 +76,7 @@ class Requirement(models.Model):
     no_of_candidates = models.IntegerField()
     no_of_days = models.IntegerField()
     daily_wage_per_candidate = models.IntegerField()
+    education = models.CharField( choices=EDUCATION, max_length=100, blank=True, null=True )
     dress_code = models.CharField( max_length=100, blank=True, null=True )
     candidate_class = models.CharField( choices=CANDIDATE_CLASS, max_length=10, blank=True, null=True, verbose_name="class")
     communication_criteria = models.CharField( max_length=100, blank=True, null=True )

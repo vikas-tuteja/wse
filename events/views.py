@@ -9,13 +9,14 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 
 from filters import EventFilters, EventFilterBackend
-from models import Event, Requirement, RequirementApplication
+from models import Event, Requirement, RequirementApplication, Schedule
 from utility import mygenerics
 from rest_framework import generics
 from rest_framework.response import Response
 from serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer, ApplyRequirementSerializer, CandidateTypeSerializer 
 from master.views import AreaList, CityList
-from utility.utils import get_prefix
+from master.models import Area, City
+from utility.utils import get_prefix, getobj, slugify
 from utility.restrictions import AccessToAView
 from events.choices import CANDIDATE_TYPE, CANDIDATE_CLASS, GENDER
 from users.models import CandidateType
@@ -157,6 +158,7 @@ class CandidateTypeList( generics.ListAPIView, mygenerics.RelatedView ):
         return JsonResponse(data=response.data)
 
 
+from django.contrib.auth.models import User
 class PostEvents( generics.ListAPIView ):
     """
     get : gives post event form
@@ -190,8 +192,84 @@ class PostEvents( generics.ListAPIView ):
 
     
     def post(self, request, *args, **kwargs):
-        #import pdb; pdb.set_trace()
-        # <QueryDict: {u'post_events_1[area]': [u'chembur'], u'post_events_2[selection_n_screening]': [u'ghjhgfcvbn'], u'post_events_1[city]': [u'mumbai'], u'post_events_3[gender_1]': [u'm'], u'post_events_3[candidate_type_1]': [u'promotor'], u'post_events[tnc_1]': [u'on'], u'post_events_1[contact_person_number]': [u'9876543211'], u'post_events_2[venue_n_timing]': [u'bvbn'], u'post_events_2[payments]': [u'bvbnm'], u'post_events[tnc_2]': [u'on'], u'post_events_1[name]': [u'testing event 1'], u'post_events_1[venue]': [u'k-star'], u'post_events_2[description]': [u'some random description'], u'post_events_2[eligibility]': [u'chjhgfcf']}>
+        """
+        input: post data of create event form
+        Three step process i.e 3 tables in which data needs to be stored
+        1 : events
+        2 : schedules
+        3 : requirements
+        returns slug of the vent created
+
+        """
+        postdata = request.POST.dict()
+        postdata = {u'no_of_candidates_6': u'', u'no_of_candidates_5': u'', u'end_time_1': u'17:00', u'no_of_candidates_3': u'', u'contact_person_name': u'', u'communication_criteria1': u'm', u'communication_criteria6': u'', u'dress_code_2': u'', u'communication_criteria5': u'', u'dress_code_3': u'', u'start_date_1': u'2017-09-02', u'communication_criteria4': u'', u'daily_wage_per_candidate_1': u'500', u'venue': u'Inorbit Mall', u'briefing_datetime': u'', u'communication_criteria3': u'', u'briefing_venue': u'', u'dress_code_1': u'', u'no_of_candidates_2': u'', u'start_time_1': u'11:00', u'city': u'mumbai', u'daily_wage_per_candidate_4': u'', u'no_of_candidates_1': u'5', u'area': u'chembur', u'no_of_candidates_4': u'', u'field7': u'on', u'dress_code_4': u'', u'eligibility': u'', u'candidate_type_2': u'', u'venue_n_timing': u'', u'short_description': u'jhgfdfgh', u'contact_person_number': u'9876543211', u'payments': u'hgfdfghjk', u'education_1': u'', u'education_2': u'', u'education_3': u'', u'education_4': u'', u'education_5': u'', u'education_6': u'', u'gender_6': u'', u'briefing_time': u'', u'gender_4': u'', u'gender_5': u'', u'gender_2': u'', u'gender_3': u'', u'gender_1': u'm', u'communication_criteria2': u'', u'no_of_days_1': u'5', u'daily_wage_per_candidate_2': u'', u'selection_n_screening': u'', u'end_date_1': u'2017-09-09', u'name': u'third event from ui', u'no_of_days_2': u'', u'candidate_type_3': u'', u'daily_wage_per_candidate_6': u'', u'daily_wage_per_candidate_5': u'', u'dress_code_5': u'', u'daily_wage_per_candidate_3': u'', u'candidate_type_6': u'', u'candidate_type_5': u'', u'candidate_type_4': u'', u'no_of_days_6': u'', u'dress_code_6': u'', u'no_of_days_4': u'', u'no_of_days_5': u'', u'tnc_1': u'on', u'no_of_days_3': u'', u'tnc_2': u'on', u'candidate_type_1': u'promotor'}
+
+        # step 1 : Event
+        event_data = {}
+        for k,v in postdata.items():
+            if k in ('name', 'venue', 'briefing_venue', 'contact_person_name', 'contact_person_number', 'eligibility', 'selection_n_screening', 'venue_n_timing', 'short_description'):
+                if v:
+                    event_data[k] = v
+
+        slug = slugify(postdata['name'])
+        event_data.update({
+            #'client' : request.user,
+            'client' : User.objects.get(id=3),
+            'slug' : slug,
+            'area' : getobj(Area, postdata['area']),
+            'city' : getobj(City, postdata['city']),
+            #'posted_by' : request.user,
+            'posted_by' : User.objects.get(id=3),
+        })
+        if postdata['briefing_datetime']:
+            event_data.update({
+                'briefing_datetime' : postdata['briefing_datetime'] + postdata['briefing_time']
+            })
+        eventObj = Event.objects.create(**event_data)
+        # TODO dump this data in logger
+
+        # step 2 : Schedule
+        contin = True
+        for i in range(1,5):
+            schedule_data = {}
+            if contin:
+                for k in ('start_date_', 'end_date_', 'start_time_', 'end_time_'):
+                    key = "%s%s" % (k,i)
+                    if key not in postdata:
+                        contin = False
+                        break
+                    else:
+                        schedule_data[key[:-2]] = postdata[key]
+
+                # TODO dump this data in logger
+                print schedule_data
+                import pdb; pdb.set_trace()
+                if bool(schedule_data):
+                    schedule_data.update({   
+                        'event' : eventObj
+                    })
+                Schedule.objects.create(**schedule_data)
+                schedule_data = None
+
+
+        # step 3 : Requirement
+        contin = True
+        for i in range(1,7):
+            req_data = {
+                'event' : eventObj
+            }
+            if contin:
+                for k in ('candidate_type_', 'gender_', 'no_of_candidates_', 'no_of_days_', 'daily_wage_per_candidate_', 'education_'):
+                    key = "%s%s" % (k,i)
+                    if key not in postdata:
+                        contin = False
+                        break
+                    else:
+                        req_data[key[:-2]] = postdata[key]
+
+                # TODO dump this data in logger
+                Requirement.objects.create(**req_data)
+
 
         status = True
         message = "Event created successfully. However, it is still not on site.<br>We will get in touch with you shortly."

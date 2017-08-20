@@ -91,3 +91,12 @@ def getattrd(obj, name, default=NoDefaultProvided):
     except Exception:
         return None
 
+
+def getobj(model, value):
+    x = model.objects.filter(name=value)
+    if x:
+        return x[0]
+    return False
+
+def slugify(string):
+    return string.lower().replace(" ","-")

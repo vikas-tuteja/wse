@@ -209,32 +209,27 @@
     }
 
     function validate(elem_id) {
-            debugger;
        var id_param_map = {
             'post_events_1' : {
                 'name': $('#name').val(),
                 'venue': $('#venue').val(),
                 'city': $('#city').val(),
                 'area': $('#area').val(),
-                //'contact_person_name': $('#contact_person_name').val(),
-                'contact_person_number': $('#contact_person_number').val()
+                'contact_person_number': $('#contact_person_number').val(),
+                'start_date_1': $('#start_date_1').val(),
+                'end_date_1': $('#end_date_1').val(),
+                'start_time_1': $('#start_time_1').val(),
+                'end_time_1': $('#end_time_1').val(),
             },
             'post_events_2' : {
-                'description': $('#description').val(),
-                'eligibility': $('#eligibility').val(),
-                'selection_n_screening': $('#selection_n_screening').val(),
-                'venue_n_timing': $('#venue_n_timing').val(),
+                'short_description': $('#short_description').val(),
                 'payments': $('#payments').val(),
-                //'t_n_c': $('#t_n_c').val()
             },
             'post_events_3' : {
                 'candidate_type_1': $('#candidate_type_1').val(),
                 'gender_1': $('#gender_1').val()
             },
             'post_events' : {
-                //'is_screening':$('#is_screening').val(),
-                //'briefing_datetime':$('#briefing_datetime').val(),
-                //'briefing_time':$('#briefing_time').val(),
                 'tnc_1':$('#tnc_1').val(),
                 'tnc_2':$('#tnc_2').val(),
             }
@@ -244,11 +239,14 @@
         else {
             if(elem_id!='post_events') return true;
             else {
-                var x = Common.ajaxcall(Common.post_event, 'POST', id_param_map)
+                var values = {};
+                $.each($('#msform').serializeArray(), function(i, field) {
+                    values[field.name] = field.value;
+                });
+
+                var x = Common.ajaxcall(Common.post_event, 'POST', values)
                 x.done(function(resp){
                     if(resp.status==true) {
-                        //$('#msform').attr('action', '/events/' + resp.slug + '/')
-                        //$('#msform').submit();
                         window.location.href = '/events/' + resp.slug + '/?alert_message=' + resp.message
                     }
                 });
