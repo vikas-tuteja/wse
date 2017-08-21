@@ -202,24 +202,23 @@ class PostEvents( generics.ListAPIView ):
 
         """
         postdata = request.POST.dict()
-        postdata = {u'no_of_candidates_6': u'', u'no_of_candidates_5': u'', u'end_time_1': u'17:00', u'no_of_candidates_3': u'', u'contact_person_name': u'', u'communication_criteria1': u'm', u'communication_criteria6': u'', u'dress_code_2': u'', u'communication_criteria5': u'', u'dress_code_3': u'', u'start_date_1': u'2017-09-02', u'communication_criteria4': u'', u'daily_wage_per_candidate_1': u'500', u'venue': u'Inorbit Mall', u'briefing_datetime': u'', u'communication_criteria3': u'', u'briefing_venue': u'', u'dress_code_1': u'', u'no_of_candidates_2': u'', u'start_time_1': u'11:00', u'city': u'mumbai', u'daily_wage_per_candidate_4': u'', u'no_of_candidates_1': u'5', u'area': u'chembur', u'no_of_candidates_4': u'', u'field7': u'on', u'dress_code_4': u'', u'eligibility': u'', u'candidate_type_2': u'', u'venue_n_timing': u'', u'short_description': u'jhgfdfgh', u'contact_person_number': u'9876543211', u'payments': u'hgfdfghjk', u'education_1': u'', u'education_2': u'', u'education_3': u'', u'education_4': u'', u'education_5': u'', u'education_6': u'', u'gender_6': u'', u'briefing_time': u'', u'gender_4': u'', u'gender_5': u'', u'gender_2': u'', u'gender_3': u'', u'gender_1': u'm', u'communication_criteria2': u'', u'no_of_days_1': u'5', u'daily_wage_per_candidate_2': u'', u'selection_n_screening': u'', u'end_date_1': u'2017-09-09', u'name': u'third event from ui', u'no_of_days_2': u'', u'candidate_type_3': u'', u'daily_wage_per_candidate_6': u'', u'daily_wage_per_candidate_5': u'', u'dress_code_5': u'', u'daily_wage_per_candidate_3': u'', u'candidate_type_6': u'', u'candidate_type_5': u'', u'candidate_type_4': u'', u'no_of_days_6': u'', u'dress_code_6': u'', u'no_of_days_4': u'', u'no_of_days_5': u'', u'tnc_1': u'on', u'no_of_days_3': u'', u'tnc_2': u'on', u'candidate_type_1': u'promotor'}
 
         # step 1 : Event
         event_data = {}
         for k,v in postdata.items():
-            if k in ('name', 'venue', 'briefing_venue', 'contact_person_name', 'contact_person_number', 'eligibility', 'selection_n_screening', 'venue_n_timing', 'short_description'):
+            if k in ('name', 'venue', 'briefing_venue', 'contact_person_name', 'contact_person_number', 'eligibility', 'selection_n_screening', 'venue_n_timing', 'short_description', 'payments'):
                 if v:
                     event_data[k] = v
 
         slug = slugify(postdata['name'])
         event_data.update({
-            #'client' : request.user,
-            'client' : User.objects.get(id=3),
+            'client' : request.user,
+            'posted_by' : request.user,
+            #'client' : User.objects.get(id=3),
+            #'posted_by' : User.objects.get(id=3),
             'slug' : slug,
             'area' : getobj(Area, postdata['area']),
             'city' : getobj(City, postdata['city']),
-            #'posted_by' : request.user,
-            'posted_by' : User.objects.get(id=3),
         })
         if postdata['briefing_datetime']:
             event_data.update({
@@ -242,22 +241,18 @@ class PostEvents( generics.ListAPIView ):
                         schedule_data[key[:-2]] = postdata[key]
 
                 # TODO dump this data in logger
-                #print schedule_data
-                #import pdb; pdb.set_trace()
-                if bool(schedule_data):
+                if schedule_data:
                     schedule_data.update({   
                         'event' : eventObj
                     })
-                Schedule.objects.create(**schedule_data)
-                schedule_data = None
+                    Schedule.objects.create(**schedule_data)
+                    schedule_data = None
 
 
         # step 3 : Requirement
         contin = True
         for i in range(1,7):
-            req_data = {
-                'event' : eventObj
-            }
+            req_data = {}
             if contin:
                 for k in ('candidate_type_', 'gender_', 'no_of_candidates_', 'no_of_days_', 'daily_wage_per_candidate_', 'education_'):
                     key = "%s%s" % (k,i)
@@ -267,8 +262,17 @@ class PostEvents( generics.ListAPIView ):
                     else:
                         req_data[key[:-2]] = postdata[key]
 
-                # TODO dump this data in logger
-                Requirement.objects.create(**req_data)
+                if req_data:
+                    req_data.update({
+                        'event' : eventObj
+                    })
+
+                    candidate_type = CandidateType.objects.get(slug=postdata['candidate_type_%s' % i])
+                    req_data.update({
+                        'candidate_type': candidate_type
+                    })
+                    # TODO dump this data in logger
+                    Requirement.objects.create(**req_data)
 
 
         status = True

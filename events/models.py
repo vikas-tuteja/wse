@@ -35,6 +35,7 @@ class Event(models.Model):
     venue_n_timing = RichTextField( blank=True, null=True )
     payments = RichTextField( blank=True, null=True )
     t_n_c = RichTextField( blank=True, null=True )
+    show_on_site = models.BooleanField( default=False )
     
 
     def __unicode__( self ):
