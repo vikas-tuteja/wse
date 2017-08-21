@@ -242,8 +242,8 @@ class PostEvents( generics.ListAPIView ):
                         schedule_data[key[:-2]] = postdata[key]
 
                 # TODO dump this data in logger
-                print schedule_data
-                import pdb; pdb.set_trace()
+                #print schedule_data
+                #import pdb; pdb.set_trace()
                 if bool(schedule_data):
                     schedule_data.update({   
                         'event' : eventObj
