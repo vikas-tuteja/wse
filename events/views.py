@@ -39,8 +39,8 @@ class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
     def get_queryset(self):
         # get events starting from tomorrow order by datetime
         # since cannot apply on same date of event.
-        return Event.objects.filter(schedule__start_date__gt=datetime.now().\
-            date()).prefetch_related('requirement_set').distinct().order_by('id')
+        return Event.objects.filter(schedule__start_date__gt=datetime.now().date(),show_on_site=1).\
+            prefetch_related('requirement_set','schedule_set').distinct().order_by('schedule__start_date')
 
     def get(self, request, *args, **kwargs):
         
@@ -222,7 +222,7 @@ class PostEvents( generics.ListAPIView ):
         })
         if postdata['briefing_datetime']:
             event_data.update({
-                'briefing_datetime' : postdata['briefing_datetime'] + postdata['briefing_time']
+                'briefing_datetime' : "%s %s" % (postdata['briefing_datetime'], postdata['briefing_time'])
             })
         eventObj = Event.objects.create(**event_data)
         # TODO dump this data in logger
@@ -256,7 +256,7 @@ class PostEvents( generics.ListAPIView ):
             if contin:
                 for k in ('candidate_type_', 'gender_', 'no_of_candidates_', 'no_of_days_', 'daily_wage_per_candidate_', 'education_'):
                     key = "%s%s" % (k,i)
-                    if key not in postdata:
+                    if not postdata[key]:
                         contin = False
                         break
                     else:
@@ -273,6 +273,7 @@ class PostEvents( generics.ListAPIView ):
                     })
                     # TODO dump this data in logger
                     Requirement.objects.create(**req_data)
+                    req_data = None
 
 
         status = True

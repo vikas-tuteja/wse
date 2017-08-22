@@ -93,10 +93,10 @@ def getattrd(obj, name, default=NoDefaultProvided):
 
 
 def getobj(model, value):
-    x = model.objects.filter(name=value)
-    if x:
-        return x[0]
-    return False
+    x = model.objects.filter(slug=value)
+    if not x:
+        return model.objects.filter(id=99999)
+    return x[0]
 
 def slugify(string):
     return string.lower().replace(" ","-")

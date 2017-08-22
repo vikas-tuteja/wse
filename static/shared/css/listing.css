@@ -100,7 +100,7 @@ input {
     display:block;
     z-index:1;
     color: #292b2c;
-    position: absolute;
+    #position: absolute;
     width: 100%;
     text-decoration: none;
   transition: background-color 100ms ease;

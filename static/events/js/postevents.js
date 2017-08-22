@@ -234,6 +234,7 @@
                 'tnc_2':$('#tnc_2').val(),
             }
         }
+        // TODO tnc 1 last page validation not working
         var verify = Common.verify_mandatory(id_param_map[elem_id], false, Common.mandatory_params);
         if(!verify) return false;
         else {
