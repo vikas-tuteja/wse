@@ -230,8 +230,6 @@
                 'gender_1': $('#gender_1').val()
             },
             'post_events' : {
-                'tnc_1':$('#tnc_1').val(),
-                'tnc_2':$('#tnc_2').val(),
             }
         }
         // TODO tnc 1 last page validation not working
@@ -240,6 +238,17 @@
         else {
             if(elem_id!='post_events') return true;
             else {
+                // do final post events page validation first
+                var final_valid = true;
+                $.each(["1", "2", "3"], function(k, n) {
+                    if($("#tnc_" + n).is(":checked")==false && final_valid==true) {
+                        Common.show_alert(Common.mandatory_params, false);
+                        final_valid = false;
+                    }
+                });
+                if(!final_valid) return false;
+
+                // form all input values dict and save it using ajax
                 var values = {};
                 $.each($('#msform').serializeArray(), function(i, field) {
                     values[field.name] = field.value;

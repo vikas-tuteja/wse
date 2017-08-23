@@ -241,6 +241,22 @@
             window.location.href = url;
         }
     }
+
+    function bind_key_escape() {
+        $(document).keyup(function(e) {
+            if (e.keyCode == 27) { // escape key maps to keycode `27`
+                var close = $(".escape");
+                if(close.length > 0 && close.css("display","block")) {
+                    $.each(close, function(k, v) {
+                        try { v.click(); }
+                        catch(err) {}
+                    });
+                }
+            }
+        });
+
+    }
+
     // list all urls to be used, whether ajax or redirect url
     Common.login_url = "/login/";
     Common.register_url = "/create-user/";
@@ -276,5 +292,6 @@
     Common.show_alert = show_alert;
     Common.remove_alert_message = remove_alert_message;
     Common.after_login_process = after_login_process;
+    Common.bind_key_escape = bind_key_escape;
 
 })($,(window.Common = window.Common || {}));

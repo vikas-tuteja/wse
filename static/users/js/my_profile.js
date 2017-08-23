@@ -1,6 +1,7 @@
 ;(function($, Common, MyProfile){
 
     function init(options){
+        Common.bind_key_escape();
         // js for my profile page events link -- starts
         // default show only first div content and thus bg -select only first label
         $('div[id^="content-"]').css("display","none");
@@ -115,7 +116,6 @@
             });
         });
     }
-
 
     MyProfile.init = init;
     MyProfile.bind_login = bind_login;

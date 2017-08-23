@@ -56,6 +56,9 @@
     }
 
     function init(options){
+        //escape key close event
+        Common.bind_key_escape();
+
         // search box functionality
         Common.bind_onkeyup(
             '#search', 
