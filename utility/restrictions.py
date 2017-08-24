@@ -17,6 +17,7 @@ class AccessToAView(object):
         returns true if a page is accessible to a view
 
         """
+        # check for logged in user
         if self.user_type == 'client':
             if self.page in ('post_events',):
                 return True
@@ -25,7 +26,8 @@ class AccessToAView(object):
             if self.page in ('event_listing', 'apply_requirement', 'event_detail'):
                 return True
 
+        # check for non logged in user
+        elif self.page in ('post_events'):
+            return False
         else:
             return True
-
-        return False

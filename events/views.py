@@ -15,11 +15,11 @@ from rest_framework import generics
 from rest_framework.response import Response
 from serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer, ApplyRequirementSerializer, CandidateTypeSerializer 
 from master.views import AreaList, CityList
-from master.models import Area, City
+from master.models import Area, City, HighestQualification
 from utility.utils import get_prefix, getobj, slugify
 from utility.restrictions import AccessToAView
 from events.choices import CANDIDATE_TYPE, CANDIDATE_CLASS, GENDER
-from users.models import CandidateType
+from users.models import CandidateType, LANGUAGE_PROFICIENCY
 
 # Create your views here.
 class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
@@ -184,9 +184,10 @@ class PostEvents( generics.ListAPIView ):
             response.data['accessibility'] = False
 
         else:
-            # TODO create an event form
             response.data['candidate_class'] = CANDIDATE_CLASS
             response.data['gender'] = GENDER
+            response.data['proficiency'] = LANGUAGE_PROFICIENCY
+            response.data['education'] = HighestQualification.objects.all().values_list('slug', 'name')
 
         return response
 

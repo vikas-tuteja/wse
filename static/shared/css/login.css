@@ -72,6 +72,14 @@
   .login-label span {
     color: #333; }
 
+.login-label select {
+    float: right;
+    border: 0;
+    width: 60%;
+    padding: 20px 15px 10px 45px;
+    border-radius: 3px; 
+  
+}
 .btn-login {
   border: 1px solid #95441d;
   background: #ea6e32;

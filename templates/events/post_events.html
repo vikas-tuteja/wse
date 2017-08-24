@@ -15,7 +15,6 @@
         <li>Event Schedule</li>
         <li>Event Requirements</li>
         </ul>
-        <!-- fieldsets -->
         <fieldset>
         <h2 class="fs-title">Name &amp; Address</h2>
         <h3 class="fs-subtitle">This is step 1</h3>
@@ -102,8 +101,8 @@
                 <label class="event-label clearfix">
                     <span>Education </span> <select name="education_{{i}}" id="education_{{i}}" class="small-input"/>
                     <option value=""></option>
-                    {% for g in gender %}
-                        <option value="{{g.0}}">{{g.1}}</option>
+                    {% for e in education %}
+                        <option value="{{e.0}}">{{e.1}}</option>
                     {% endfor %}
                 </select><!--/label-->
                 <!--label class="event-label clearfix"><span>Candidate Class</span> <select name="" id="" class="big-input"/>
@@ -115,8 +114,8 @@
                 <!--label class="event-label clearfix"-->
                     <span>English Language Proficiency </span><select name="communication_criteria{{i}}" id="communication_criteria_{{i}}" class="small-input"/>
                     <option value=""></option>
-                    {% for g in gender %}
-                        <option value="{{g.0}}">{{g.1}}</option>
+                    {% for p in proficiency %}
+                        <option value="{{p.0}}">{{p.1}}</option>
                     {% endfor %}
                 </select></label>
                 <label class="event-label clearfix"><span>Dress Code </span> <input type="text" name="dress_code_{{i}}" id="dress_code_{{i}}" class="small-input"/></label>
@@ -144,7 +143,7 @@
                    <input type="radio" name="is_screening" class="is_screening" value="0" > No</label>
                    <label class="event-label clearfix" id="briefing_div" style="display:none;">
                     <span>Briefing Date </span><input type="text" name="briefing_datetime" id="briefing_datetime" class="mt10px input small-input"/><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img mt10px">
-                    <span>Briefing Time </span><input type="text" name="briefing_time" id="briefing_time" class="mt10px input small-input"/><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img mt10px">
+                    <span>Briefing Time </span><input type="text" name="briefing_time" id="briefing_time" class="mt10px input small-input timepicker"/><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img mt10px">
                     <span>Briefing Venue </span><input type="text" name="briefing_venue" id="briefing_venue" class="mt10px input small-input"/>
                     </label>
    

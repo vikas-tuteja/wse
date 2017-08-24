@@ -7,8 +7,9 @@ from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 
 from users.models import UserDetail, CandidateType 
-from master.models import City, Area
+from master.models import City, Area, HighestQualification
 from choices import *
+from users.choices import LANGUAGE_PROFICIENCY
 
 # Create your models here.
 class Event(models.Model):
@@ -77,10 +78,10 @@ class Requirement(models.Model):
     no_of_candidates = models.IntegerField()
     no_of_days = models.IntegerField()
     daily_wage_per_candidate = models.IntegerField()
-    education = models.CharField( choices=EDUCATION, max_length=100, blank=True, null=True )
+    education = models.ForeignKey( HighestQualification, max_length=100, blank=True, null=True )
     dress_code = models.CharField( max_length=100, blank=True, null=True )
     candidate_class = models.CharField( choices=CANDIDATE_CLASS, max_length=10, blank=True, null=True, verbose_name="class")
-    communication_criteria = models.CharField( max_length=100, blank=True, null=True )
+    communication_criteria = models.CharField( choices=LANGUAGE_PROFICIENCY, max_length=100, blank=True, null=True )
 
     def __unicode__( self ):
        return "%s-%s-%s-%s" % (self.event.name, self.candidate_type, self.gender, self.no_of_candidates)

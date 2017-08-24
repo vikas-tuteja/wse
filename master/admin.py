@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from models import State, City, Area
+from models import State, City, Area, HighestQualification
 
 
 # Register your models here.
@@ -17,3 +17,4 @@ class AreaAdmin(admin.ModelAdmin):
 admin.site.register( State )
 admin.site.register( City, CityAdmin )
 admin.site.register( Area, AreaAdmin )
+admin.site.register( HighestQualification )
