@@ -74,6 +74,7 @@ body {
   box-shadow: 0 0 10px #000;
   -moz-box-shadow: 0 0 10px #000;
   -webkit-box-shadow: 0 0 10px #000;
+
 }
 .modalbg .dialog .ie7 {
   filter: progid:DXImageTransform.Microsoft.Shadow(color='#000', Direction=135, Strength=3);
@@ -142,6 +143,8 @@ body {
 
 #requirement_box {
   text-align: center;
+  white-space: nowrap;
+  overflow-y: auto;
 }
 
 .req_list {
@@ -157,6 +160,7 @@ body {
     display: inline-block;
     margin: 15px 10px;
     position: relative;
+    display: inline-block;
 }
 
 .req_list::after, .req_list::before {
@@ -218,4 +222,10 @@ body {
   height: 20px !important;
   width: 13px !important;
   padding-top: 8px;
+}
+
+@media (max-width: 800px) {
+  .modalbg:target .dialog {
+    top:0;
+  }
 }
