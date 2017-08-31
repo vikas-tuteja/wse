@@ -255,7 +255,7 @@ class PostEvents( generics.ListAPIView ):
         for i in range(1,7):
             req_data = {}
             if contin:
-                for k in ('candidate_type_', 'gender_', 'no_of_candidates_', 'no_of_days_', 'daily_wage_per_candidate_', 'education_'):
+                for k in ('candidate_type_', 'gender_', 'no_of_candidates_', 'no_of_days_', 'daily_wage_per_candidate_', 'education_', 'communication_criteria_', 'dress_code_'):
                     key = "%s%s" % (k,i)
                     if not postdata[key]:
                         contin = False
@@ -272,18 +272,25 @@ class PostEvents( generics.ListAPIView ):
                     req_data.update({
                         'candidate_type': candidate_type
                     })
+
+                    education = HighestQualification.objects.get(slug=postdata['education_%s' % i])
+                    req_data.update({
+                        'education': education
+                    })
+
                     # TODO dump this data in logger
                     Requirement.objects.create(**req_data)
                     req_data = None
 
 
         status = True
-        message = "Event created successfully. However, it is still not on site.<br>We will get in touch with you shortly."
-        message = "Event created successfully." 
+        message = "Event created successfully. You can view it, however, it is still not on site search.<br>We will get in touch with you shortly."
+        #message = "Event created successfully." 
 
         return JsonResponse(data={
             'status':status,
-            'message':message
+            'message':message,
+            'slug':eventObj.slug
         })
 
 
