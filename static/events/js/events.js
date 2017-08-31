@@ -45,7 +45,8 @@
 
     function bind_requirement_popup(options) {
         // bind requirement apply on click
-        $(document).on('click', '.requirement_apply', function() {
+        $(document).on('click', '.requirement_apply', function(e) {
+            e.preventDefault();
             var ajaxurl = '/events/apply/' + $(this).data('id') + '/';
             Common.forceregister(
                 options.user,
@@ -139,7 +140,7 @@
             
         });
 
-        bind_requirement_popup();
+        bind_requirement_popup(options);
     }
     
 

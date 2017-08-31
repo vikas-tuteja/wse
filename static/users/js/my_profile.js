@@ -2,6 +2,7 @@
 
     function init(options){
         Common.bind_key_escape();
+        MyProfile.bind_key_enter();
         // js for my profile page events link -- starts
         // default show only first div content and thus bg -select only first label
         $('div[id^="content-"]').css("display","none");
@@ -117,8 +118,28 @@
         });
     }
 
+
+    function bind_key_enter() {
+        $(document).keyup(function(e) {
+            if (e.keyCode == 13) { // Enter key maps to keycode `13`
+                var action_buttons = $(".btn-login");
+                if(action_buttons.length > 0) {
+                    $.each(action_buttons, function(k, v) {
+                        // TODO Submit login/register/reset whichever is displayed
+                        /*if(v.css("display", "block")) {
+                            try { v.click(); }
+                            catch(err) {}
+                        }*/
+                    });
+                }
+            }
+        });
+    }
+
+
     MyProfile.init = init;
     MyProfile.bind_login = bind_login;
     MyProfile.bind_registration = bind_registration;
+    MyProfile.bind_key_enter = bind_key_enter;
 
 })($, Common, window.MyProfile= window.MyProfile || {})

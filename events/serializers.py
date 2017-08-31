@@ -45,7 +45,7 @@ class ListEventSerializer( serializers.ModelSerializer ):
             
         return {
             'candidates_required' : candidates_required,
-            'paisa': max(paisa)
+            'paisa': max(paisa or [0,])
         }
 
 
