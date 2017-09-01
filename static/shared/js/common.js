@@ -144,9 +144,10 @@
         }
         else {
             // show registration/login form if not logged in
-            if($("#close_req") != undefined && $("#close_req").length > 0) {
-                $("#close_req")[0].click();
-            }
+            // if($("#close_req").length > 0) {
+            //     $("#close_req")[0].click();
+            // }
+            window.location.href = "#closeModal"
             $(".sign-in").trigger('click');
             $("#action").val(action);
             $("#isajax").val(isajax);
