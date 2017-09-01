@@ -31,6 +31,7 @@ class UserSerializer( serializers.ModelSerializer ):
 
 
 class UserMeterSerializer( serializers.ModelSerializer ):
+    auth_user = serializers.SerializerMethodField()
     candidate = serializers.SerializerMethodField()
     client = serializers.SerializerMethodField()
     type = serializers.CharField(read_only=True, source='type.slug')
@@ -39,6 +40,11 @@ class UserMeterSerializer( serializers.ModelSerializer ):
         model = UserDetail
         fields = UserDetailFields
 
+    def get_auth_user(self, obj):
+        return {
+            'first_name': obj.auth_user.first_name,
+            'last_name': obj.auth_user.last_name,
+        }
 
     def get_candidate(self, obj):
         candidate_data = {}
@@ -50,7 +56,7 @@ class UserMeterSerializer( serializers.ModelSerializer ):
                 for field in candidate_fields:
                     candidate_data[field] = eval("candidate_attribute[0].%s" % field)
             else:
-                [ candidate_data.update({field:None}) for field in candidate_fields ]
+                [ candidate_data.update({field:""}) for field in candidate_fields ]
 
         return candidate_data
 
@@ -65,6 +71,6 @@ class UserMeterSerializer( serializers.ModelSerializer ):
                 for field in client_fields:
                     client_data[field] = eval("client_attribute[0].%s" % field)
             else:
-                [ client_data.update({field:None}) for field in client_fields ]
+                [ client_data.update({field:""}) for field in client_fields ]
 
         return client_data

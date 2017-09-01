@@ -316,6 +316,10 @@ color: white;
   float:left;
   margin-right: 4%;
 }
+
+.wid-25 input, select {
+  width:25% !important;
+}
 @media (max-width:640px) {
     .form-style-10 {
         margin: auto;

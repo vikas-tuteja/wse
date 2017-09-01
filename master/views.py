@@ -7,8 +7,8 @@ from rest_framework import generics
 from utility import mygenerics
 from django.http import JsonResponse
 
-from serializers import AreaSerializer, CitySerializer
-from models import Area, City
+from serializers import AreaSerializer, CitySerializer, StateSerializer
+from models import Area, City, State
 from filters import AreaFilters
 
 # Create your views here.
@@ -29,4 +29,13 @@ class CityList( generics.ListAPIView, mygenerics.RelatedView ):
 
     def get(self, request, *args, **kwargs ):
         response = super(CityList, self).get(request, *args, **kwargs )
+        return JsonResponse(data=response.data)
+
+class StateList( generics.ListAPIView, mygenerics.RelatedView ):
+    serializer_class = StateSerializer
+    queryset = State.objects.all()
+    pagination_class = mygenerics.NoPagination
+
+    def get(self, request, *args, **kwargs ):
+        response = super(StateList, self).get(request, *args, **kwargs )
         return JsonResponse(data=response.data)

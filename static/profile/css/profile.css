@@ -843,16 +843,23 @@ body {
 
 .custom-input {
   position: relative; }
-  .custom-input input {
+.custom-input input, .custom-input select {
     padding: 5px; }
-    .custom-input input:focus {
-      outline: none; }
-      .custom-input input:focus + span {
-        font-size: 12px;
-        line-height: 14px;
-        top: -14px;
-        transition: all 0.5ms ease; }
-  .custom-input span {
+.custom-input input:focus {
+    outline: none; }
+.custom-input input:focus + span {
+    font-size: 12px;
+    line-height: 14px;
+    top: -14px;
+    transition: all 0.5ms ease; }
+
+.custom-input select:focus + span {
+    font-size: 12px;
+    line-height: 14px;
+    top: -14px;
+    transition: all 0.5ms ease; }
+
+.custom-input span {
     font-size: 14px;
     position: absolute;
     top: 0;

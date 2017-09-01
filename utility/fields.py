@@ -1,3 +1,8 @@
+AuthUserFields = (
+    'first_name',
+    'last_name',
+)
+
 UserDetailFields = (
     'type',
     'area',
@@ -11,6 +16,7 @@ UserDetailFields = (
     'candidate',
     'blacklist_flag',
     'whatsapp_number',
+    'highest_qualification',
 )
 
 CandidateAttributeFields = (

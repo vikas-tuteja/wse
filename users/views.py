@@ -20,7 +20,11 @@ from events.views import EventListing
 from events.models import AllocationStatus
 from events.serializers import ProfileEventSerializer
 from utility import mygenerics
-from utility.fields import UserDetailFields, CandidateAttributeFields, ClientAttributeFields
+from utility.fields import AuthUserFields, UserDetailFields, CandidateAttributeFields, ClientAttributeFields
+from master.views import AreaList, CityList, StateList
+from master.models import HighestQualification
+from users.choices import LOOKS
+from users.models import LANGUAGE_PROFICIENCY
 
 from filters import UserFilters
 
@@ -344,12 +348,18 @@ class UserProfileEvents( generics.ListAPIView, mygenerics.RelatedView ):
 
 class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
     serializer_class = UserMeterSerializer
+    template_name = 'users/my_profile_base.html'
+    related_views = {
+        'state': (StateList.as_data(), '*', 1),
+        'area': (AreaList.as_data(), '*', 1),
+        'city': (CityList.as_data(), '*', 1),
+    }
 
     def get_queryset(self, *args, **kwargs):
         if self.request._request.user:
             queryset = UserDetail.objects.filter(auth_user=self.request._request.user)
         else:
-            queryset = UserDetail.objects.filter()
+            queryset = UserDetail.objects.none()
         return queryset
 
 
@@ -361,6 +371,11 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
             })
         
         response = super(UserProfile, self).get(request, *args, **kwargs)
+
+        response.data['highest_qualification'] = HighestQualification.objects.all().values_list('slug', 'name')
+        response.data['looks'] = LOOKS 
+        response.data['language_proficiency'] = LANGUAGE_PROFICIENCY
+
         return response
 
     
@@ -376,7 +391,14 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
         postdict = request.POST.dict()
         if postdict:
 
-            userdict, attributedict = {}, {}
+            authdict, userdict, attributedict = {}, {}, {}
+            # prepare authuser table dictionary from postdata
+            for f in AuthUserFields:
+                if postdict.get(f):
+                    authdict.update({
+                        f: postdict.get(f)
+                    })
+
             # prepare userdetail table dictionary from postdata
             for f in UserDetailFields:
                 if postdict.get(f):
@@ -419,5 +441,7 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
 
 
 class UserProfileStats( generics.ListAPIView ):
-    serializer_class = None
+    serializer_class = UserMeterSerializer
+    template_name = 'users/my_profile_base.html'
+    queryset = UserDetail.objects.none()
 

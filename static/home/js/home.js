@@ -6,6 +6,9 @@
             $("html,body").scrollTop(0);
             setTimeout(function() {
                 $(".first_dark_screen").slideUp(1500);
+                setTimeout(function(){
+                    $(".actual_home").show();
+                }, 700);
                 $(".wse_name").css({
                     position:'absolute'
                     }).slideUp(1000);/*.animate({

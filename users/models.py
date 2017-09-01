@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django_redis import get_redis_connection
 
-from master.models import Area, State, City
+from master.models import Area, State, City, HighestQualification
 from choices import *
 
 def uploadpath(instance, filename):
@@ -44,6 +44,7 @@ class UserDetail(models.Model):
     area = models.ForeignKey( Area, blank=True, null=True )
     city = models.ForeignKey( City, blank=True, null=True )
     state = models.ForeignKey( State, blank=True, null=True )
+    highest_qualification = models.ForeignKey( HighestQualification, blank=True, null=True ) 
     blacklist_flag = models.IntegerField( default=0 )
 
     def __unicode__( self ):

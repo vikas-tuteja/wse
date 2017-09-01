@@ -10,27 +10,143 @@
     </div>
     <div class="tabs-profile-container">
         <div class="container-head">
-            <h2 class="container-left">Your Personal Information</h2>
+            <h2 class="container-left blue">Your Personal Information</h2>
             <div class="container-right">
                 right
             </div>
         </div>
-        <div class="">
-            <h4>Name as on any ID card</h4>
+        <div id="msform" class="form-style-10 wid-25">
+            <!--h4>Name as on any ID card</h4-->
             <div>
                 <label class="custom-input">
-                    <input type="text">
+                    <input type="text" name="first_name" id="first_name" value="{{results.0.auth_user.first_name}}">
                     <span>First Name</span>
                 </label>
                 <label class="custom-input">
-                    <input type="text">
-                    <span>Middle Name</span>
-                </label>
-                <label class="custom-input">
-                    <input type="text">
+                    <input type="text" name="last_name" id="last_name" value="{{results.0.auth_user.last_name}}">
                     <span>Last Name</span>
                 </label>
             </div>
+            <div>
+                <label class="custom-input">
+                    <select name="state" id="state">
+                        <option value="">Select State</option>
+                        {% for s in state %}
+                            <option value="{{s.slug}}">{{s.name}}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label class="custom-input">
+                    <select name="city" id="city">
+                        <option value="">Select City</option>
+                        {% for c in city %}
+                            <option value="{{c.slug}}">{{c.name}}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label class="custom-input">
+                    <select name="area" id="area">
+                        <option value="">Select Area</option>
+                        {% for a in area %}
+                            <option value="{{a.slug}}">{{a.name}}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+            </div>
+            <div>
+                <label class="custom-input">
+                    <input type="text" name="whatsapp_number" id="whatsapp_number" value="{{results.0.whatsapp_number}}">
+                    <span>Whatsapp Number</span>
+                </label>
+                <label class="custom-input">
+                    <input type="text" name="mobile" id="mobile" value="{{results.0.mobile}}">
+                    <span>Mobile</span>
+                </label>
+                <label class="custom-input">
+                    <input type="text" name="address" id="address" value="{{results.0.address}}">
+                    <span>Address</span>
+                </label>
+            </div>
+            <div>
+                Upload Image
+                <label class="custom-input">
+                    <input type="file" name="image" id="image">
+                </label>
+            </div>
+        {% if results.0.type == 'candidate' %}
+            <div>
+                <label class="custom-input">
+                    <select name="highest_qualification" id="highest_qualification">
+                        <option value="">Highest Qualification</option>
+                        {% for h in highest_qualification %}
+                            <option value="{{h.0}}">{{h.1}}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label class="custom-input">
+                    <select name="looks" id="looks">
+                        <option value="">Looks</option>
+                        {% for l in looks %}
+                            <option value="{{l.0}}">{{l.1}}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label class="custom-input">
+                    <input type="text" name="pay_scale" id="pay_scale" value="{{results.0.candidate.pay_scale}}">
+                    <span>Pay Scale</span>
+                </label>
+                <label class="custom-input">
+                    <select name="language_proficiency" id="language_proficiency">
+                        <option value="">Language Proficiency</option>
+                        {% for l in language_proficiency %}
+                            <option value="{{l.0}}">{{l.1}}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label class="custom-input">
+                    <input type="text" name="open_to_which_kind_of_job" id="open_to_which_kind_of_job" value="{{results.0.candidate.open_to_which_kind_of_job}}">
+                    <span>Open to which kind of job</span>
+                </label>
+            </div>
+            <div>
+                <label class="custom-input">
+                    Comfortable travelling outdoor<input type="radio" name="comfortable_travelling_outdoor" id="comfortable_travelling_outdoor" value="true">Yes
+                    <input type="radio" name="comfortable_travelling_outdoor" id="comfortable_travelling_outdoor" value="false">No
+                </label>
+                <label class="custom-input">
+                    Comfortable for liquor promotion<input type="radio" name="comfortable_for_liquor_promotion" id="comfortable_for_liquor_promotion" value="true">Yes
+                    <input type="radio" name="comfortable_for_liquor_promotion" id="comfortable_for_liquor_promotion" value="false">No
+                </label>
+            </div>
+            <div>
+                <label class="custom-input">
+                    Comfortable working at odd timings<input type="radio" name="comfortable_working_at_odd_timings" id="comfortable_working_at_odd_timings" value="true">Yes
+                    <input type="radio" name="comfortable_working_at_odd_timings" id="comfortable_working_at_odd_timings" value="false">No
+                </label>
+            </div>
+
+        {% elif results.0.type == 'client' %}
+            <div>
+                <label class="custom-input">
+                    <input type="text" name="designation" id="designation" value="{{results.0.client.designation}}">
+                    <span>Designation</span>
+                </label>
+                <label class="custom-input">
+                    <input type="text" name="company_name" id="company_name" value="{{results.0.client.company_name}}">
+                    <span>Company Name</span>
+                </label>
+                <label class="custom-input">
+                    <input type="text" name="company_address" id="company_address" value="{{results.0.client.company_address}}">
+                    <span>Company Address</span>
+                </label>
+                <label class="custom-input">
+                    <input type="text" name="establishment_year" id="establishment_year" value="{{results.0.client.establishment_year}}">
+                    <span>Establishment Year</span>
+                </label>
+            </div>
+        {% endif %}
+        <input type="button" name="save" class="next action-button" value="Save" id="save" />
+
         </div>
     </div>
 </div>

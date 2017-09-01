@@ -14,30 +14,32 @@
     <p class="blue" style="font-weight:700;">Worksmart Events</p>
     <!--span class="cursor">|</span-->
 </div>
-{% include "shared/menu.html" %}
-<div class="body_content">
+<div class="actual_home">
+    {% include "shared/menu.html" %}
+    <div class="body_content">
 
-    <!-- home 1st scroll -->
-    <div class="home_parts_body">
-        {% include "home/home_common.html" %}
+        <!-- home 1st scroll -->
+        <div class="home_parts_body">
+            {% include "home/home_common.html" %}
+        </div>
+        <div class="divider"></div>
+
+        <!-- home 2nd scroll -->
+        <div class="home_parts_body">
+        {% include "home/home_client.html" %}
+        </div>
+        <div class="divider"></div>
+
+        <!-- home 3rd scroll -->
+        <div class="home_parts_body">
+        {% include "home/home_candidate.html" %}
+        </div>
+
     </div>
-    <div class="divider"></div>
 
-    <!-- home 2nd scroll -->
-    <div class="home_parts_body">
-    {% include "home/home_client.html" %}
-    </div>
-    <div class="divider"></div>
-
-    <!-- home 3rd scroll -->
-    <div class="home_parts_body">
-    {% include "home/home_candidate.html" %}
-    </div>
-
+    <!-- footer -->
+    {% include "shared/footer.html" %}
 </div>
-
-<!-- footer -->
-{% include "shared/footer.html" %}
 {% endblock body %}
 {% block customjs %}
     <script src="{{STATIC_URL}}home/js/home.js"></script>
