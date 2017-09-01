@@ -154,15 +154,19 @@ input[name=showsup]:checked + .shows-up {
 
 .tabs-login {
   border-radius: 3px;
-  color: grey; }
+  color: grey; 
+white-space: nowrap;
+overflow-y: auto;
+padding-bottom: 30px;
+}
   .tabs-login::before, .tabs-login::after {
     content: ' ';
     display: table; }
   .tabs-login::after {
     clear: both; }
   .tabs-login > label {
+    display: inline-block;
     cursor: pointer;
-    float: left;
     padding: 12px;
     width: auto; }
   .tabs-login .active {
@@ -203,4 +207,7 @@ input[name=showsup]:checked + .shows-up {
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease; }
 
-/*# sourceMappingURL=login.css.map */
+.scroll-container {
+  height: 60px;
+  overflow: hidden;
+}
