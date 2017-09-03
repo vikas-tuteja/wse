@@ -161,3 +161,11 @@ class EventDetailsSitemap( SuperSitemap ):
             )
 
         return event_detail_urls
+
+
+class ListingTypeSitemap(SuperSitemap):
+    @classmethod
+    def items(self):
+        listing_url = ['/events/', '/faqs/', '/contact_us/', '/about_us/', '/post-events/']
+        return listing_url
+    

@@ -8,11 +8,12 @@ from django.core.urlresolvers import reverse
 from django.core.management.base import BaseCommand
 
 from wse.settings import BASE_DIR, ROOT_BASE_URL
-from master.sitemap import SuperSitemap, EventDetailsSitemap
+from master.sitemap import SuperSitemap, EventDetailsSitemap, ListingTypeSitemap 
 parent_xml_path = os.path.join(BASE_DIR, 'sitemap_xml/').replace('\\', '/')
 
 sitemaps = {
     "event_details": EventDetailsSitemap,
+    "listing": ListingTypeSitemap 
 }
 
 class Command(BaseCommand):
@@ -55,7 +56,6 @@ class Command(BaseCommand):
                 fd_parent.close()
 
             success_count = 0;
-            import pdb; pdb.set_trace()
             SuperSitemap.write_file = open(BASE_DIR+'/uploads/sitemap_log.txt','w')
             for each_site in sites:
                 url_name = each_site.split('/')[1]

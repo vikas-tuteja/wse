@@ -1,5 +1,6 @@
 *.pyc
 node_module/
+sitemap_xml/
 .vscode/
 .sass-cache/
 .vscode/tags
