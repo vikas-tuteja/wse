@@ -8,11 +8,12 @@ from django.core.urlresolvers import reverse
 from django.core.management.base import BaseCommand
 
 from wse.settings import BASE_DIR, ROOT_BASE_URL
-from master.sitemap import SuperSitemap, EventDetailsSitemap, ListingTypeSitemap 
+from master.sitemap import SuperSitemap, EventDetailsSitemap, EventListingSitemap, ListingTypeSitemap 
 parent_xml_path = os.path.join(BASE_DIR, 'sitemap_xml/').replace('\\', '/')
 
 sitemaps = {
     "event_details": EventDetailsSitemap,
+    "events_listing": EventListingSitemap,
     "listing": ListingTypeSitemap 
 }
 

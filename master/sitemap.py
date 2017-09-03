@@ -163,9 +163,16 @@ class EventDetailsSitemap( SuperSitemap ):
         return event_detail_urls
 
 
+class EventListingSitemap(SuperSitemap):
+    @classmethod
+    def items(self):
+        listing_url = ['/events/', '/events-in-mumbai/', '/events-in-navi-mumbai/']
+        return listing_url
+    
+
 class ListingTypeSitemap(SuperSitemap):
     @classmethod
     def items(self):
-        listing_url = ['/events/', '/faqs/', '/contact_us/', '/about_us/', '/post-events/']
+        listing_url = ['/faqs/', '/contact_us/', '/about_us/', '/post-events/']
         return listing_url
     
