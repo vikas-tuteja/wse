@@ -38,6 +38,9 @@ class UserMeterSerializer( serializers.ModelSerializer ):
     auth_user = serializers.SerializerMethodField()
     candidate = serializers.SerializerMethodField()
     client = serializers.SerializerMethodField()
+    area = serializers.CharField(read_only=True, source='area.slug')
+    city = serializers.CharField(read_only=True, source='city.slug')
+    highest_qualification = serializers.CharField(read_only=True, source='highest_qualification.slug')
     type = serializers.CharField(read_only=True, source='type.slug')
     
     class Meta:

@@ -93,9 +93,9 @@ class CandidateAttribute(models.Model):
     looks = models.CharField( choices=LOOKS, max_length=50, blank=True, null=True ) 
     open_to_which_kind_of_job = models.CharField( max_length=100, blank=True, null=True, verbose_name="Open to which kind of jobs / workprofiles" )
     pay_scale = models.CharField( max_length=100, blank=True, null=True )
-    comfortable_travelling_outdoor = models.BooleanField( default= False )
-    comfortable_for_liquor_promotion = models.BooleanField( default= False )
-    comfortable_working_at_odd_timings = models.BooleanField( default= False )
+    comfortable_travelling_outdoor = models.IntegerField( default= False )
+    comfortable_for_liquor_promotion = models.IntegerField( default= False )
+    comfortable_working_at_odd_timings = models.IntegerField( default= False )
     candidate_profile = models.ManyToManyField( CandidateType )
 
     def __unicode__( self ):

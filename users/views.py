@@ -14,7 +14,7 @@ from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.core.urlresolvers import reverse
 
 from models import UserDetail, UserRole, CandidateAttribute
-from utility.utils import ComputeCompletion, form_url
+from utility.utils import ComputeCompletion, form_url, getobj
 from serializers import UserSerializer, AuthUserSerializer, UserMeterSerializer
 from events.views import EventListing
 from events.models import AllocationStatus
@@ -22,9 +22,8 @@ from events.serializers import ProfileEventSerializer
 from utility import mygenerics
 from utility.fields import AuthUserFields, UserDetailFields, CandidateAttributeFields, ClientAttributeFields
 from master.views import AreaList, CityList, StateList
-from master.models import HighestQualification
-from users.choices import LOOKS
-from users.models import LANGUAGE_PROFICIENCY
+from master.models import HighestQualification, Area, City
+from users.choices import LOOKS, LANGUAGE_PROFICIENCY
 
 from filters import UserFilters
 
@@ -384,9 +383,9 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
         # from utility.fields import UserDetailFields, CandidateAttributeFields, ClientAttributeFields
         # update UserDetail
         # insert / update ClientAttribute / CandidateAttribute as per user type
-        # import pdb; pdb.set_trace()
         status = True
         message = "Successfully Updated."
+        # TODO : image save pending
 
         postdict = request.POST.dict()
         if postdict:
@@ -398,6 +397,9 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
                     authdict.update({
                         f: postdict.get(f)
                     })
+            User.objects.filter(id=request.user.id).update(
+                **authdict
+            )
 
             # prepare userdetail table dictionary from postdata
             for f in UserDetailFields:
@@ -405,16 +407,22 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
                     userdict.update({
                         f: postdict.get(f)
                     })
+
+            userdict.update({
+                'area' : getobj(Area, userdict['area']),
+                'city' : getobj(City, userdict['city']),
+                'highest_qualification' : getobj(HighestQualification, userdict['highest_qualification'])
+            })
             # update userdetail table 
-            UserDetail.objects.get(auth_user=request.user).update(
+            UserDetail.objects.filter(auth_user=request.user).update(
                 **userdict
             )
             
             # similarly prepare client/candidate attributedict
             if request.user.userdetail.type.slug == 'client':
-                whichattribute, whichattributefields = ClientAttribute, CandidateAttributeFields
+                whichattribute, whichattributefields = ClientAttribute, ClientAttributeFields
             elif request.user.userdetail.type.slug == 'candidate':
-                whichattribute, whichattributefields = CandidateAttribute, ClientAttributeFields
+                whichattribute, whichattributefields = CandidateAttribute, CandidateAttributeFields
             else:
                 whichattribute, whichattributefields = None, None
      
@@ -424,10 +432,18 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
                     attributedict.update({
                         f: postdict.get(f)
                     })
-            # and update "type"attribute table
-            whichattribute.objects.get(userdetail__auth_user=request.user).update(
-                **attributedict
-            )
+
+            # and update "type"attribute table if exists, else create it
+            attr_obj = whichattribute.objects.filter(user__auth_user=request.user)
+            if attr_obj:
+                attr_obj.update(
+                    **attributedict
+                )
+            else:
+                attributedict.update({
+                    'user': request.user.userdetail
+                })
+                whichattribute.objects.create(**attributedict)
 
         else:
             status = False

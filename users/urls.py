@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^change-password/$', ChangePassword.as_view(), name="change_password"),
     url(r'^user-exists/$', CheckUsernameExists.as_view(), name="user_exists"),
     url(r'^user-meter/$', UserProfileCompletionMeter.as_view(), name="user_meter"),
-    url(r'^update-info/$', UpdateUserInfo.as_view(), name="update_info"),
+    url(r'^update-info/$', UserProfile.as_view(), name="update_info"),
 
 
     # my profile page

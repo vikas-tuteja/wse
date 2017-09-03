@@ -16,6 +16,7 @@
             </div>
         </div>
         <div>
+            <form id="profileform" name="profileform">
             <!--h4>Name as on any ID card</h4-->
             <div>
                 <label class="custom-input">
@@ -28,19 +29,23 @@
                 </label>
             </div>
             <div>
-                <label class="custom-input">
+                <!--label class="custom-input">
                     <select name="state" id="state">
                         <option value="">Select State</option>
                         {% for s in state %}
                             <option value="{{s.slug}}">{{s.name}}</option>
                         {% endfor %}
                     </select>
-                </label>
+                </label-->
                 <label class="custom-input">
                     <select name="city" id="city">
                         <option value="">Select City</option>
                         {% for c in city %}
-                            <option value="{{c.slug}}">{{c.name}}</option>
+                            {% if c.slug == results.0.city %}
+                                <option value="{{c.slug}}" selected="selected">{{c.name}}</option>
+                            {% else %}
+                                <option value="{{c.slug}}">{{c.name}}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                 </label>
@@ -48,18 +53,22 @@
                     <select name="area" id="area">
                         <option value="">Select Area</option>
                         {% for a in area %}
-                            <option value="{{a.slug}}">{{a.name}}</option>
+                            {% if a.slug == results.0.area %}
+                                <option value="{{a.slug}}" selected="selected">{{a.name}}</option>
+                            {% else %}
+                                <option value="{{a.slug}}">{{a.name}}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                 </label>
             </div>
             <div>
                 <label class="custom-input">
-                    <input type="text" name="whatsapp_number" id="whatsapp_number" value="{{results.0.whatsapp_number}}">
+                    <input type="text" name="whatsapp_number" id="whatsapp_number" value="{{results.0.whatsapp_number}}" maxlength=10>
                     <span>Whatsapp Number</span>
                 </label>
                 <label class="custom-input">
-                    <input type="text" name="mobile" id="mobile" value="{{results.0.mobile}}">
+                    <input type="text" name="mobile" id="mobile" value="{{results.0.mobile}}" maxlength=10>
                     <span>Mobile</span>
                 </label>
                 <label class="custom-input">
@@ -77,17 +86,25 @@
             <div>
                 <label class="custom-input">
                     <select name="highest_qualification" id="highest_qualification">
-                        <option value="">Highest Qualification</option>
+                        <option value="">Select Highest Qualification</option>
                         {% for h in highest_qualification %}
-                            <option value="{{h.0}}">{{h.1}}</option>
+                            {% if h.0 == results.0.highest_qualification %}
+                                <option value="{{h.0}}" selected="selected">{{h.1}}</option>
+                            {% else %}
+                                <option value="{{h.0}}">{{h.1}}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                 </label>
                 <label class="custom-input">
                     <select name="looks" id="looks">
-                        <option value="">Looks</option>
+                        <option value="">Choose Looks</option>
                         {% for l in looks %}
-                            <option value="{{l.0}}">{{l.1}}</option>
+                            {% if l.0 == results.0.looks %}
+                                <option value="{{l.0}}" selected="selected">{{l.1}}</option>
+                            {% else %}
+                                <option value="{{l.0}}">{{l.1}}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                 </label>
@@ -97,9 +114,13 @@
                 </label>
                 <label class="custom-input">
                     <select name="language_proficiency" id="language_proficiency">
-                        <option value="">Language Proficiency</option>
+                        <option value="">Select Language Proficiency</option>
                         {% for l in language_proficiency %}
-                            <option value="{{l.0}}">{{l.1}}</option>
+                            {% if l.0 == results.0.candidate.language_proficiency|add:"0" %}
+                                <option value="{{l.0}}" selected="selected">{{l.1}}</option>
+                            {% else %}
+                                <option value="{{l.0}}">{{l.1}}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                 </label>
@@ -110,18 +131,45 @@
             </div>
             <div>
                 <label class="custom-input">
-                    Comfortable travelling outdoor<input type="radio" name="comfortable_travelling_outdoor" id="comfortable_travelling_outdoor" value="true">Yes
-                    <input type="radio" name="comfortable_travelling_outdoor" id="comfortable_travelling_outdoor" value="false">No
+                    Comfortable travelling outdoor
+                    <input type="radio" name="comfortable_travelling_outdoor" id="comfortable_travelling_outdoor" value=1
+                    {% if results.0.candidate.comfortable_travelling_outdoor == 1 %}
+                        checked
+                    {% endif %}
+                    >Yes
+                    <input type="radio" name="comfortable_travelling_outdoor" id="comfortable_travelling_outdoor" value=-1
+                    {% if results.0.candidate.comfortable_travelling_outdoor == -1 %}
+                        checked
+                    {% endif %}
+                    >No
                 </label>
                 <label class="custom-input">
-                    Comfortable for liquor promotion<input type="radio" name="comfortable_for_liquor_promotion" id="comfortable_for_liquor_promotion" value="true">Yes
-                    <input type="radio" name="comfortable_for_liquor_promotion" id="comfortable_for_liquor_promotion" value="false">No
+                    Comfortable for liquor promotion
+                    <input type="radio" name="comfortable_for_liquor_promotion" id="comfortable_for_liquor_promotion" value=1
+                    {% if results.0.candidate.comfortable_for_liquor_promotion == 1 %}
+                        checked
+                    {% endif %}
+                    >Yes
+                    <input type="radio" name="comfortable_for_liquor_promotion" id="comfortable_for_liquor_promotion" value=-1
+                    {% if results.0.candidate.comfortable_for_liquor_promotion == -1 %}
+                        checked
+                    {% endif %}
+                    >No
                 </label>
             </div>
             <div>
                 <label class="custom-input">
-                    Comfortable working at odd timings<input type="radio" name="comfortable_working_at_odd_timings" id="comfortable_working_at_odd_timings" value="true">Yes
-                    <input type="radio" name="comfortable_working_at_odd_timings" id="comfortable_working_at_odd_timings" value="false">No
+                    Comfortable working at odd timings
+                    <input type="radio" name="comfortable_working_at_odd_timings" id="comfortable_working_at_odd_timings" value=1
+                    {% if results.0.candidate.comfortable_working_at_odd_timings == 1 %}
+                        checked
+                    {% endif %}
+                    >Yes
+                    <input type="radio" name="comfortable_working_at_odd_timings" id="comfortable_working_at_odd_timings" value=-1
+                    {% if results.0.candidate.comfortable_working_at_odd_timings == -1 %}
+                        checked
+                    {% endif %}
+                    >No
                 </label>
             </div>
 
@@ -145,7 +193,8 @@
                 </label>
             </div>
         {% endif %}
-        <input type="button" name="save" class="next action-button" value="Save" id="save" />
+        <input type="button" name="save" class="next action-button" value="Save" id="basic_info_save" />
+        </form>
 
         </div>
     </div>

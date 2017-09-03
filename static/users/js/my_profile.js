@@ -25,6 +25,7 @@
         bind_forgot_password("#forgot_password");
         bind_registration("#register");
         bind_checkavailibility("#reg_username");
+        bind_save_basic_info()
     }
     
     function bind_checkavailibility(elem) {
@@ -136,10 +137,29 @@
         });
     }
 
+    function bind_save_basic_info() {
+        $('#basic_info_save').on('click', function() {
+            // form all input values dict and save it using ajax
+            var values = {};
+            $.each($('#profileform').serializeArray(), function(i, field) {
+                values[field.name] = field.value;
+            });
+            x = Common.ajaxcall(Common.update_profile, 'POST', values);
+            x.done(function(resp) {
+                if(resp.status==true) {
+                    Common.show_alert(resp.message)
+                }
+                else {
+                    Common.show_alert(resp.message)
+                }
+            });
+        });
+    }
 
     MyProfile.init = init;
     MyProfile.bind_login = bind_login;
     MyProfile.bind_registration = bind_registration;
     MyProfile.bind_key_enter = bind_key_enter;
+    MyProfile.bind_save_basic_info = bind_save_basic_info;
 
 })($, Common, window.MyProfile= window.MyProfile || {})

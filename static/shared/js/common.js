@@ -265,6 +265,7 @@
     Common.check_useravailable = "/user-exists/";
     Common.event_listing = "/events/";
     Common.post_event = "/post-events/"
+    Common.update_profile = "/update-info/"
 
 
     // list of all messages
