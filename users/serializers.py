@@ -3,6 +3,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from models import UserDetail, CandidateAttribute
 from utility.fields import UserDetailFields, ClientAttributeFields, CandidateAttributeFields
+from utility.utils import null_to_empty
 
 class AuthUserSerializer( serializers.ModelSerializer ):
     class Meta:
@@ -31,6 +32,9 @@ class UserSerializer( serializers.ModelSerializer ):
 
 
 class UserMeterSerializer( serializers.ModelSerializer ):
+    whatsapp_number = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField()
+    address = serializers.SerializerMethodField()
     auth_user = serializers.SerializerMethodField()
     candidate = serializers.SerializerMethodField()
     client = serializers.SerializerMethodField()
@@ -39,6 +43,18 @@ class UserMeterSerializer( serializers.ModelSerializer ):
     class Meta:
         model = UserDetail
         fields = UserDetailFields
+
+    @null_to_empty
+    def get_image(self, obj):
+        return obj.image
+
+    @null_to_empty
+    def get_address(self, obj):
+        return obj.address
+
+    @null_to_empty
+    def get_whatsapp_number(self, obj):
+        return obj.whatsapp_number
 
     def get_auth_user(self, obj):
         return {
@@ -54,7 +70,7 @@ class UserMeterSerializer( serializers.ModelSerializer ):
 
             if candidate_attribute:
                 for field in candidate_fields:
-                    candidate_data[field] = eval("candidate_attribute[0].%s" % field)
+                    candidate_data[field] = eval("candidate_attribute[0].%s" % field) or ""
             else:
                 [ candidate_data.update({field:""}) for field in candidate_fields ]
 
@@ -69,7 +85,7 @@ class UserMeterSerializer( serializers.ModelSerializer ):
 
             if client_attribute:
                 for field in client_fields:
-                    client_data[field] = eval("client_attribute[0].%s" % field)
+                    client_data[field] = eval("client_attribute[0].%s" % field) or ""
             else:
                 [ client_data.update({field:""}) for field in client_fields ]
 

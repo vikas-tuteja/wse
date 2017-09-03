@@ -100,3 +100,14 @@ def getobj(model, value):
 
 def slugify(string):
     return string.lower().replace(" ","-")
+
+
+def null_to_empty(func):
+    def inner(*args, **kwargs):
+        value = func(*args, **kwargs)
+        if value and value not in ("null",):
+            return value
+        else:
+            return ""
+
+    return inner
