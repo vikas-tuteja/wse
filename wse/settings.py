@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     # custom apps
     'monkey_patch',
     'master',
@@ -61,6 +62,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'wse.urls'
+ROOT_BASE_URL = 'www.worksmartevents.com'
+XML_ROOT = os.path.join(BASE_DIR, 'sitemap_xml/').replace('\\', '/')
 
 TEMPLATES = [
     {

@@ -19,8 +19,11 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from master.management.commands.create_sitemap import sitemaps
+from django.contrib.sitemaps.views import sitemap as dsitemap
 from django.conf.urls import include
 from views import Home
+from master.sitemap import sitemap, sitemap_redirect
 
 # url patterns here
 urlpatterns = [
@@ -28,6 +31,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^static/(?P<path>.*)$', django.views.static.serve,  {'document_root': settings.STATIC_ROOT }),
     url(r'^uploads/(?P<path>.*)$', django.views.static.serve,  {'document_root': 'uploads' }),
+    url(r'^sitemap.xml$', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    url(r'^sitemap-(?P<section>.+)\.xml$', dsitemap, {'sitemaps': sitemaps}, name="section_sitemap"),
+    url(r'^sitemap_(?P<section>.+)$', sitemap_redirect, name="redirect_section"),
     url(r'^master/', include('master.urls')),
     url(r'^', include( 'events.urls' )),
     url(r'^', include('seo.urls')),
