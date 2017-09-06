@@ -80,6 +80,10 @@ $(function(){
         });
 
         $('.sign-in').on('click', function(){
+            // reset action and isajax
+            $('#action').val("");
+            $('#isajax').val("");
+            $("#register-as").show()
             $('.pop-overlay').show(500);
             $('.container-login').addClass('login-show');
         });

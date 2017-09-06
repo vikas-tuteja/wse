@@ -151,6 +151,9 @@
             $(".sign-in").trigger('click');
             $("#action").val(action);
             $("#isajax").val(isajax);
+            if(action) {
+                $("#register-as").hide();
+            }
         }
     }
 

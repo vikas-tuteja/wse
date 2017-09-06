@@ -263,12 +263,10 @@ class UserProfileCompletionMeter( generics.ListAPIView ):
             'profile_completed':meter.compute_percent(),
         })
 
-class UpdateUserInfo( generics.UpdateAPIView ):
-    """
-    update user profile basic information in UserDetail Table
-    can update 3 table Auth_user, UserDetail or CandidateAttribute, not applicaable for clients, co-ordinators
+"""class UpdateUserInfo( generics.UpdateAPIView ):
+    # update user profile basic information in UserDetail Table
+    # can update 3 table Auth_user, UserDetail or CandidateAttribute, not applicaable for clients, co-ordinators
 
-    """
     serializer_class = UserMeterSerializer
     queryset = UserDetail.objects.none()
     user_dict = {
@@ -278,11 +276,10 @@ class UpdateUserInfo( generics.UpdateAPIView ):
     }
 
     def put(self, request, *args, **kwargs):
-        """ 
-            TABLE auth_user : first_name, last_name
-            TABLE USERDETAIL : mobile, whatsapp_number, address, image, area, city, state
-            TABLE CandidateAttribute : language_proficiency, looks, open_to_which_kind_of_job, pay_scale, comfortable_travelling_outdoor, comfortable_for_liquor_promotion, comfortable_working_at_odd_timings, candidate_profile
-            """
+        #    TABLE auth_user : first_name, last_name
+        #    TABLE USERDETAIL : mobile, whatsapp_number, address, image, area, city, state
+        #    TABLE CandidateAttribute : language_proficiency, looks, open_to_which_kind_of_job, pay_scale, comfortable_travelling_outdoor, comfortable_for_liquor_promotion, comfortable_working_at_odd_timings, candidate_profile
+
         user, userdetail, candidateattribute = {}, {}, {}
         # TODO change this to POST after integration
         kwargs.update(request.GET.dict())
@@ -311,7 +308,7 @@ class UpdateUserInfo( generics.UpdateAPIView ):
             'status': True,
             'message': 'Profile Info Updated Successfully'
         })
-
+"""
 
 class UserProfileEvents( generics.ListAPIView, mygenerics.RelatedView ):
     """

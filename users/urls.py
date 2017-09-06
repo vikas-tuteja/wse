@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from users.views import CreateUser, LoginUser, ChangePassword, ForgotPassword, CheckUsernameExists, UserProfileCompletionMeter, UserProfileEvents, UpdateUserInfo, Logout, UserProfile, UserProfileStats
+from users.views import CreateUser, LoginUser, ChangePassword, ForgotPassword, CheckUsernameExists, UserProfileCompletionMeter, UserProfileEvents, Logout, UserProfile, UserProfileStats
 
 urlpatterns = [
     url(r'^create-user/$', CreateUser.as_view(), name="create_user"),
