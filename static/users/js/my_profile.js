@@ -144,7 +144,10 @@
             $.each($('#profileform').serializeArray(), function(i, field) {
                 values[field.name] = field.value;
             });
-            x = Common.ajaxcall(Common.update_profile, 'POST', values);
+
+            $("#profileform").attr("action", "?alert_message=Profile updates successfully.");
+            $("#profileform").submit();
+            /*x = Common.ajaxcall(Common.update_profile, 'POST', values);
             x.done(function(resp) {
                 if(resp.status==true) {
                     Common.show_alert(resp.message)
@@ -152,7 +155,7 @@
                 else {
                     Common.show_alert(resp.message)
                 }
-            });
+            });*/
         });
     }
 

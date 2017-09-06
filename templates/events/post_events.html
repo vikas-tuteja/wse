@@ -19,7 +19,13 @@
         <h2 class="fs-title">Name &amp; Address</h2>
         <h3 class="fs-subtitle">This is step 1</h3>
             <div class="inner-wrap">
-                <label class="event-label clearfix"><span>Event Name <b>*</b></span> <input type="text" name="name" id="name" class="big-input" /></label>
+                <label class="event-label clearfix">
+                    <span>Event Name <b>*</b></span>
+                    <input type="text" name="name" id="name" class="big-input" />
+                    <div id="check_event_exists_result" class="check_event_exists_result">
+                    </div>
+                </label>
+                <label class="event-label clearfix"><span>Event Url <b>*</b></span><p id ="event_url"> http://www.worksmartevents.com/events/{eventnamehere}/</p> </label><input type="hidden" name="slug" id="slug" />
                 <label class="event-label clearfix"><span>Venue <b>*</b></span> <input type="text" name="venue" id="venue" class="big-input"></label>
                 <label class="event-label clearfix"><span>City <b>*</b></span> <select name="city" id="city" class="big-input">
                     <option value=""> </option>

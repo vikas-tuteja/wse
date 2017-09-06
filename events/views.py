@@ -6,20 +6,21 @@ from datetime import datetime
 from django.shortcuts import render
 from django.db import IntegrityError
 from django.http import JsonResponse
+from django_redis import get_redis_connection
 from django.contrib.auth.decorators import login_required
 
-from filters import EventFilters, EventFilterBackend
-from models import Event, Requirement, RequirementApplication, Schedule
 from utility import mygenerics
 from rest_framework import generics
-from rest_framework.response import Response
-from serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer, ApplyRequirementSerializer, CandidateTypeSerializer 
 from master.views import AreaList, CityList
+from rest_framework.response import Response
+from filters import EventFilters, EventFilterBackend
+from models import Event, Requirement, RequirementApplication, Schedule
 from master.models import Area, City, HighestQualification
 from utility.utils import get_prefix, getobj, slugify
 from utility.restrictions import AccessToAView
 from events.choices import CANDIDATE_TYPE, CANDIDATE_CLASS, GENDER
 from users.models import CandidateType, LANGUAGE_PROFICIENCY
+from serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer, ApplyRequirementSerializer, CandidateTypeSerializer 
 
 # Create your views here.
 class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
@@ -207,17 +208,17 @@ class PostEvents( generics.ListAPIView ):
         # step 1 : Event
         event_data = {}
         for k,v in postdata.items():
-            if k in ('name', 'venue', 'briefing_venue', 'contact_person_name', 'contact_person_number', 'eligibility', 'selection_n_screening', 'venue_n_timing', 'short_description', 'payments'):
+            if k in ('name', 'slug', 'venue', 'briefing_venue', 'contact_person_name', 'contact_person_number', 'eligibility', 'selection_n_screening', 'venue_n_timing', 'short_description', 'payments'):
                 if v:
                     event_data[k] = v
 
-        slug = slugify(postdata['name'])
+        #slug = slugify(postdata['name'])
         event_data.update({
             'client' : request.user,
             'posted_by' : request.user,
             #'client' : User.objects.get(id=3),
             #'posted_by' : User.objects.get(id=3),
-            'slug' : slug,
+            #'slug' : slug,
             'area' : getobj(Area, postdata['area']),
             'city' : getobj(City, postdata['city']),
         })
@@ -291,6 +292,36 @@ class PostEvents( generics.ListAPIView ):
             'status':status,
             'message':message,
             'slug':eventObj.slug
+        })
+
+
+class CheckEventsExists( generics.ListAPIView ):
+    """
+    check in redis "key : events" if the event already exists with us
+    return True if the event slug already exists, else False
+    GET params : event_slug
+    
+    """
+    serializer_class = EventDetailSerializer
+    queryset = Event.objects.none()
+
+    def get(self, request, *args, **kwargs ):
+
+        status, message = False, str()
+        event = request.GET.get('event')
+        if not event:
+            message = 'Invalid params: Please enter Event name'
+        else:
+            event_slug = slugify(event)
+            con = get_redis_connection('default')
+            status = con.sismember("events", event_slug)
+            if status:
+                message = "Error: Event by this name already exists."
+
+        return JsonResponse(data={
+            'status':status,
+            'message':message,
+            'slug': event_slug
         })
 
 

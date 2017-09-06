@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from views import EventListing, RequirementListing, EventDetail, ApplyForRequirement, PostEvents
+from views import EventListing, RequirementListing, EventDetail, ApplyForRequirement, PostEvents, CheckEventsExists
 
 urlpatterns = [
     # event listing urls
@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^events/requirements/(?P<event_slug>[-\w]+)/$', RequirementListing.as_view(), name="requirement_listing"),
     url(r'^events/(?P<event_slug>[-\w]+)/$', EventDetail.as_view(), name="event_detail"),
     url(r'^events/apply/(?P<requirement_id>[-\d]+)/$', ApplyForRequirement.as_view(), name="event_apply"),
+    url(r'^event-exists/$', CheckEventsExists.as_view(), name="event_exists"),
 ]

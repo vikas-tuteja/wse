@@ -21,8 +21,31 @@
         });
 
     }
+
+    function bind_event_exists() {
+        $("#name").on("blur", function() {
+            debugger;
+            var event = $.trim($(this).val());
+            if(event!="") {
+                var x = Common.ajaxcall(Common.check_eventexists, 'GET', {'event':event})
+                x.done(function(resp){
+                    if(resp.status==true) {
+                        $('#check_event_exists_result').html('<img class="square-img" src="/static/shared/images/cross.svg"> &nbsp; Event name already exists.')
+                        $("#event_url").text('http://www.worksmartevents.com/events/{eventnamehere}/');
+                        
+                    } else {
+                        $("#slug").val(resp.slug)
+                        $("#event_url").text('http://www.worksmartevents.com/events/' + resp.slug + '/');
+                        $('#check_event_exists_result').html('<img class="square-img"src="/static/shared/images/tick.png"> &nbsp; Event name Available.')
+                    }
+                });
+            }
+        });
+    }
+
     function init(options){
         bind_datetime();
+        bind_event_exists();
         //jQuery time
         var current_fs, next_fs, previous_fs; //fieldsets
         var left, opacity, scale; //fieldset properties which we will animate
@@ -212,6 +235,7 @@
        var id_param_map = {
             'post_events_1' : {
                 'name': $('#name').val(),
+                'slug': $('#slug').val(),
                 'venue': $('#venue').val(),
                 'city': $('#city').val(),
                 'area': $('#area').val(),

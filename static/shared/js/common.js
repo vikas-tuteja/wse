@@ -264,8 +264,9 @@
     Common.forgot_password_url = "/forgot-password/";
     Common.check_useravailable = "/user-exists/";
     Common.event_listing = "/events/";
-    Common.post_event = "/post-events/"
-    Common.update_profile = "/update-info/"
+    Common.post_event = "/post-events/";
+    Common.update_profile = "/update-info/";
+    Common.check_eventexists = "/event-exists/";
 
 
     // list of all messages

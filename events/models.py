@@ -6,10 +6,11 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 
+from choices import *
+from django_redis import get_redis_connection
+from users.choices import LANGUAGE_PROFICIENCY
 from users.models import UserDetail, CandidateType 
 from master.models import City, Area, HighestQualification
-from choices import *
-from users.choices import LANGUAGE_PROFICIENCY
 
 # Create your models here.
 class Event(models.Model):
@@ -57,6 +58,13 @@ class Event(models.Model):
             sum([ x.no_of_candidates for x in self.requirement_set.all()])
         )
     
+    def save(self, *args, **kwargs):
+        # Add new event slug to redis set of events
+        if not self.id:
+            con = get_redis_connection('default')
+            con.sadd("events", self.slug)
+        return super(Event, self).save(*args, **kwargs)
+
 
 
 class Schedule(models.Model):
