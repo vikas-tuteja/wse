@@ -88,7 +88,12 @@ input {
   *overflow: visible; }
 
 .suggestions {
-  position: relative;
+  position: absolute;
+  width: 100%;
+  max-width: 456px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 999;
 }
 
 .suggestions .suggest_item{

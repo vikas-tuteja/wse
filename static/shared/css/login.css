@@ -23,7 +23,7 @@
   padding: 30px;
   width: 100%;
   margin: 2em auto;
-  max-height: 400px;
+  // max-height: 400px;
   position: relative;
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
@@ -79,6 +79,15 @@
     padding: 20px 15px 10px 45px;
     border-radius: 3px; 
   
+}
+.login-label .login-select {
+  width: 100%;
+  padding: 15px;
+  background-color: #fff;
+}
+.login-name {
+  display: block;
+  padding-bottom: 10px;
 }
 .btn-login {
   border: 1px solid #95441d;
