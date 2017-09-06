@@ -40,6 +40,11 @@
                         $('#check_event_exists_result').html('<img class="square-img"src="/static/shared/images/tick.png"> &nbsp; Event name Available.')
                     }
                 });
+            } else {
+                $('#check_event_exists_result').html('<img class="square-img" src="/static/shared/images/cross.svg"> &nbsp; Event name cannot be blank.')
+                $("#slug").val("");
+                $("#event_url").text('http://www.worksmartevents.com/events/{eventnamehere}/');
+                
             }
         });
     }
