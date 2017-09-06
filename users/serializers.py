@@ -28,7 +28,10 @@ class UserSerializer( serializers.ModelSerializer ):
         fields = ('auth_id', 'username','email','mobile', 'image', 'name')
 
     def get_image(self, obj):
-        return "/%s"% getattr(obj.image, 'url', None)
+        try:
+            return "/%s"% getattr(obj.image, 'url', None)
+        except:
+            return None
 
 
 class UserMeterSerializer( serializers.ModelSerializer ):
@@ -49,7 +52,10 @@ class UserMeterSerializer( serializers.ModelSerializer ):
 
     @null_to_empty
     def get_image(self, obj):
-        return "/%s"% getattr(obj.image, 'url', None)
+        try:
+            return "/%s"% getattr(obj.image, 'url', None)
+        except:
+            None
 
     @null_to_empty
     def get_address(self, obj):
