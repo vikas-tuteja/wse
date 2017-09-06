@@ -16,7 +16,7 @@
             </div>
         </div>
         <div>
-            <form id="profileform" name="profileform" enctype="multipart/form-data" method="POST">
+            <form id="profileform" name="profileform" enctype="multipart/form-data" method="POST">{% csrf_token %}
             <!--h4>Name as on any ID card</h4-->
             <div>
                 <label class="custom-input">
@@ -77,9 +77,12 @@
                 </label>
             </div>
             <div>
-                Upload Image
+                {% if results.0.image %}
+                    <a href="{{results.0.image|safe}}">Profile Image</a>
+                {% endif %}
+                Upload a New Image
                 <label class="custom-input">
-                    <input type="file" name="profile_image" id="profile_image">
+                    <input type="file" name="profile_image" id="profile_image" >
                 </label>
             </div>
         {% if results.0.type == 'candidate' %}

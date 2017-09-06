@@ -342,6 +342,10 @@ class UserProfileEvents( generics.ListAPIView, mygenerics.RelatedView ):
         return response
 
 
+from users.models import uploadpath
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+@method_decorator(csrf_exempt, name='post')
 class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
     serializer_class = UserMeterSerializer
     template_name = 'users/my_profile_base.html'
@@ -382,7 +386,6 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
         # insert / update ClientAttribute / CandidateAttribute as per user type
         status = True
         message = "Successfully Updated."
-        # TODO : image save pending
 
         postdict = request.POST.dict()
         if postdict:
@@ -410,8 +413,20 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
                 'city' : getobj(City, userdict['city']),
                 'highest_qualification' : getobj(HighestQualification, userdict['highest_qualification'])
             })
+
+            userdetail_instance = UserDetail.objects.filter(auth_user=request.user)
+
+            profile_image = request.FILES.get('profile_image')
+            if profile_image:
+                
+                handle_uploaded_file(profile_image, uploadpath(userdetail_instance[0], profile_image.name))
+                userdict.update({
+                    'image': uploadpath(userdetail_instance[0], profile_image.name)
+                })
+
+
             # update userdetail table 
-            UserDetail.objects.filter(auth_user=request.user).update(
+            userdetail_instance.update(
                 **userdict
             )
             
@@ -446,10 +461,7 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
             status = False
             message = "Nothing to update."
 
-        return JsonResponse(data={
-            'status':status,
-            'message':message
-        })
+        return self.get(request, *args, **kwargs)
 
 
 
@@ -458,3 +470,7 @@ class UserProfileStats( generics.ListAPIView ):
     template_name = 'users/my_profile_base.html'
     queryset = UserDetail.objects.none()
 
+def handle_uploaded_file(f, d):
+    with open(d, 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)

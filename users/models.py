@@ -88,7 +88,6 @@ class CordinatorAttribute(models.Model):
 
 class CandidateAttribute(models.Model):
     user = models.ForeignKey( UserDetail )
-    # TODO Not able to save below field
     language_proficiency = models.CharField( choices=LANGUAGE_PROFICIENCY, max_length=50, blank=True, null=True ) 
     looks = models.CharField( choices=LOOKS, max_length=50, blank=True, null=True ) 
     open_to_which_kind_of_job = models.CharField( max_length=100, blank=True, null=True, verbose_name="Open to which kind of jobs / workprofiles" )
