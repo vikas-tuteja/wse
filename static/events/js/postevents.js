@@ -31,6 +31,7 @@
                 x.done(function(resp){
                     if(resp.status==true) {
                         $('#check_event_exists_result').html('<img class="square-img" src="/static/shared/images/cross.svg"> &nbsp; Event name already exists.')
+                        $("#slug").val("");
                         $("#event_url").text('http://www.worksmartevents.com/events/{eventnamehere}/');
                         
                     } else {
