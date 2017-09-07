@@ -18,7 +18,7 @@ class Event(models.Model):
     name = models.CharField( max_length=100 )
     slug = models.SlugField( max_length=100, unique = True )
     short_description = models.TextField( )
-    overview = RichTextField( )
+    overview = RichTextField( blank=True, null=True )
     venue = models.CharField( max_length=100 )
     area = models.ForeignKey( Area )
     city = models.ForeignKey( City )

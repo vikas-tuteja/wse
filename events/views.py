@@ -236,7 +236,7 @@ class PostEvents( generics.ListAPIView ):
             if contin:
                 for k in ('start_date_', 'end_date_', 'start_time_', 'end_time_'):
                     key = "%s%s" % (k,i)
-                    if key not in postdata:
+                    if key not in postdata or postdata.get(key) in (None, ''):
                         contin = False
                         break
                     else:
