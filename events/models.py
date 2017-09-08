@@ -16,7 +16,7 @@ from master.models import City, Area, HighestQualification
 class Event(models.Model):
     client = models.ForeignKey( User, limit_choices_to={'userdetail__type__slug' : 'client'}, related_name='client_user' )
     name = models.CharField( max_length=100 )
-    slug = models.SlugField( max_length=100, unique = True )
+    slug = models.SlugField( max_length=100 )
     short_description = models.TextField( )
     overview = RichTextField( blank=True, null=True )
     venue = models.CharField( max_length=100 )

@@ -73,7 +73,7 @@ class RequirementListing( mygenerics.ListAPIView ):
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
 
     def get_queryset(self):
-        return Requirement.objects.filter(event__slug=self.kwargs.get('event_slug')).order_by('-id')
+        return Requirement.objects.filter(event__id=self.kwargs.get('event_id')).order_by('-id')
 
     
     def list(self, request, *args, **kwargs):
@@ -92,7 +92,7 @@ class EventDetail( mygenerics.ListAPIView ):
     pagination_class = None
 
     def get_queryset(self):
-        return Event.objects.filter(slug=self.kwargs.get('event_slug'))
+        return Event.objects.filter(slug=self.kwargs.get('event_slug'),id=self.kwargs.get('event_id'))
 
     
     def list(self, request, *args, **kwargs):
@@ -208,17 +208,17 @@ class PostEvents( generics.ListAPIView ):
         # step 1 : Event
         event_data = {}
         for k,v in postdata.items():
-            if k in ('name', 'slug', 'venue', 'briefing_venue', 'contact_person_name', 'contact_person_number', 'eligibility', 'selection_n_screening', 'venue_n_timing', 'short_description', 'payments'):
+            if k in ('name', 'venue', 'briefing_venue', 'contact_person_name', 'contact_person_number', 'eligibility', 'selection_n_screening', 'venue_n_timing', 'short_description', 'payments'):
                 if v:
                     event_data[k] = v
 
-        #slug = slugify(postdata['name'])
+        slug = slugify(postdata['name'])
         event_data.update({
             'client' : request.user,
             'posted_by' : request.user,
             #'client' : User.objects.get(id=3),
             #'posted_by' : User.objects.get(id=3),
-            #'slug' : slug,
+            'slug' : slug,
             'area' : getobj(Area, postdata['area']),
             'city' : getobj(City, postdata['city']),
         })
@@ -291,10 +291,12 @@ class PostEvents( generics.ListAPIView ):
         return JsonResponse(data={
             'status':status,
             'message':message,
-            'slug':eventObj.slug
+            'slug':eventObj.slug,
+            'id':eventObj.id
         })
 
 
+# NOT NEEDED NOW, SINCE EVENT SLUG IS NO MORE UNIQUE IN THE SYSTEM
 class CheckEventsExists( generics.ListAPIView ):
     """
     check in redis "key : events" if the event already exists with us

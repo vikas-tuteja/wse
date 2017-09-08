@@ -9,7 +9,7 @@
             }
             else {
                 var event_slug = $(this).attr('id').split('~~');
-                var a = Common.ajaxcall("/events/requirements/" + event_slug[0] + "/", 'GET', {'format':'json'})
+                var a = Common.ajaxcall("/events/requirements/" + event_slug[2] + "/", 'GET', {'format':'json'})
                 a.done(function(resp){
                     var res = '<p class="blue mt10px" style="font-weight:200 !important;">Requirement for ' + event_slug[1] + '</p>';
                     var gender_meta = {'f':'Lady', 'm':'Gentleman', 'fplural': 'Ladies', 'mplural': 'Gents'}

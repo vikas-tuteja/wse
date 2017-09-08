@@ -51,7 +51,7 @@
 
     function init(options){
         bind_datetime();
-        bind_event_exists();
+        //bind_event_exists();
         //jQuery time
         var current_fs, next_fs, previous_fs; //fieldsets
         var left, opacity, scale; //fieldset properties which we will animate
@@ -287,7 +287,7 @@
                 var x = Common.ajaxcall(Common.post_event, 'POST', values)
                 x.done(function(resp){
                     if(resp.status==true) {
-                        window.location.href = '/events/' + resp.slug + '/?alert_message=' + resp.message
+                        window.location.href = '/events/' + resp.slug + '/' + resp.id +  '/?alert_message=' + resp.message
                     }
                 });
             }
