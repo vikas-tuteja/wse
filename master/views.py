@@ -15,7 +15,7 @@ from filters import AreaFilters
 class AreaList( generics.ListAPIView, mygenerics.RelatedView ):
     serializer_class = AreaSerializer
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend, AreaFilters)
-    queryset = Area.objects.all()
+    queryset = Area.objects.all().order_by('name')
     pagination_class = mygenerics.NoPagination
 
     def get(self, request, *args, **kwargs ):

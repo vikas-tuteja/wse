@@ -13,7 +13,7 @@ urlpatterns = [
 
     # other
     url(r'^events/requirements/(?P<event_id>[-\w]+)/$', RequirementListing.as_view(), name="requirement_listing"),
-    url(r'^events/(?P<event_slug>[-\w]+)/(?P<event_id>[-\w]+)/$', EventDetail.as_view(), name="event_detail"),
     url(r'^events/apply/(?P<requirement_id>[-\d]+)/$', ApplyForRequirement.as_view(), name="event_apply"),
+    url(r'^events/(?P<event_slug>[-\w]+)/(?P<event_id>[-\w]+)/$', EventDetail.as_view(), name="event_detail"),
     url(r'^event-exists/$', CheckEventsExists.as_view(), name="event_exists"),
 ]

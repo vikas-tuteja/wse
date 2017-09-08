@@ -241,7 +241,6 @@
        var id_param_map = {
             'post_events_1' : {
                 'name': $('#name').val(),
-                'slug': $('#slug').val(),
                 'venue': $('#venue').val(),
                 'city': $('#city').val(),
                 'area': $('#area').val(),
