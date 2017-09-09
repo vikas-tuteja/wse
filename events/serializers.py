@@ -1,3 +1,4 @@
+import datetime
 from rest_framework import serializers
 from collections import OrderedDict
 
@@ -62,13 +63,38 @@ class EventDetailSerializer( ListEventSerializer ):
     requirement_details = ListRequirementSerializer(many=True, source='requirement_set')
     schedule = serializers.SerializerMethodField()
     details = serializers.SerializerMethodField()
+    is_valid = serializers.SerializerMethodField()
+    candidate_info = serializers.SerializerMethodField()
 
     class Meta:
         model = Event
         fields = '__all__'
 
+
+    def get_candidate_info(self, obj):
+        candidates_required, paisa = {}, []
+            
+        for req in obj.requirement_set.all():
+            candidates_required[req.gender] = candidates_required.get(req.gender, 0) + req.no_of_candidates
+            paisa.append(req.daily_wage_per_candidate)
+            
+        return {
+            'candidates_required' : candidates_required,
+            'paisa': max(paisa or [0,])
+        }
+
+
+
+    def get_is_valid(self, obj):
+        sch  = obj.schedule()
+        if sch and sch[0] > datetime.datetime.now().date():
+            return True
+        return False
+            
+
     def get_schedule(self, obj):
         return obj.schedule()
+
 
     def get_details(self, obj):
         details_dict = OrderedDict([
@@ -80,6 +106,7 @@ class EventDetailSerializer( ListEventSerializer ):
         ])
 
         return details_dict
+
 
 class ApplyRequirementSerializer( serializers.ModelSerializer ):
     class Meta:
