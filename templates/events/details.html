@@ -44,7 +44,13 @@
         <!-- Apply button -->
         <div class="clearfix">
             <div style="float:right;">
-        <button id="{{results.0.slug}}~~{{results.0.name}}~~{{results.0.id}}" {% if not results.0.is_applied %}class="event_apply btn btn-blue mt-15">Apply {%else%} class="event_apply btn btn-applied mt-15" disabled="true"> {{results.0.is_applied|title}} <img class="square-img" src = "{{STATIC_URL}}shared/images/tick.png">{%endif%}</button><p class="sub" style="font-size:11px;color:red;">
+        {% if not results.0.is_valid %}
+            <p style="padding: 15px; float: left; font-size: xx-large; color: red;text-align: center;">This event is completed!!</p>
+            <button id="{{results.0.slug}}~~{{results.0.name}}~~{{results.0.id}}" class="event_apply btn btn-blue mt-15" disabled="true"> Cannot Apply </button><p class="sub" style="font-size:11px;color:red;">
+            
+        {% else %}
+            <button id="{{results.0.slug}}~~{{results.0.name}}~~{{results.0.id}}" {% if not results.0.is_applied %}class="event_apply btn btn-blue mt-15">Apply {%else%} class="event_apply btn btn-applied mt-15" disabled="true"> {{results.0.is_applied|title}} <img class="square-img" src = "{{STATIC_URL}}shared/images/tick.png">{%endif%}</button><p class="sub" style="font-size:11px;color:red;">
+        {% endif %}
 
         </div>
         </div>
