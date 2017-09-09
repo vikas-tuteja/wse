@@ -254,6 +254,7 @@ font-size: 9px;
 width: 25%;
 float: left;
 position: relative;
+z-index: 1;
 }
 #progressbar li:before {
 content: counter(step);
@@ -266,6 +267,7 @@ color: #333;
 background: white;
 border-radius: 3px;
 margin: 0 auto 5px auto;
+z-index: 0;
 }
 /*progressbar connectors*/
 #progressbar li:after {
@@ -276,7 +278,7 @@ background: grey;
 position: absolute;
 left: -50%;
 top: 9px;
-//z-index: -1; /*put it behind the numbers*/
+z-index: -1; /*put it behind the numbers*/
 }
 #progressbar li:first-child:after {
 /*connector not needed before the first step*/

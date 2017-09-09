@@ -139,6 +139,16 @@
             
         });
 
+        $(window).resize(function(){
+            if($('#search_results').is(':visible')){
+                $('#search_results').css('max-width', $('#search').parent('div').width())
+            }
+        });
+
+        $('#search').focus(function(){
+            $('#search_results').css('max-width', $(this).parent('div').width());
+        });
+
         bind_requirement_popup(options);
     }
     
