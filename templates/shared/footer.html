@@ -14,10 +14,10 @@
             <a href="{% url 'contact_us' %}">Contact Us</a>
             <br><br>
     {% if not user %}
-        <br> Oh God!! We don't have any news letter.<br>Anyways Register with us to find part-time event jobs or to post Events<br><br> 
+        <br> Oh God!! We don't have any news letter.<br>Anyways Register with us to find part-time event jobs or to post Events<br><br>
         <div class="form-inline">
             <input type="email" name="email" value="" class="form-control" placeholder="Enter your email-id" id="footer_email">
-            <input type="mobile" name="mobile" value="" class="form-control" placeholder="Enter your mobile" id="footer_mobile">
+            <input type="tel" name="mobile" value="" class="form-control" placeholder="Enter your mobile" id="footer_mobile">
             <button class="btn btn-blue form-btn" name="footer_submit" id="footer_submit" >SUBMIT</button>
         </div>
     {% endif %}

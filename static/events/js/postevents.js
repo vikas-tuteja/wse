@@ -184,12 +184,11 @@
 
         // logic to append div
         var schedule_div = '<div class="demo-div mt20px">' +
-                            '<label class="event-label clearfix">' +
-                            '<span>Start Date <b>*</b></span><input type="text" name="start_date_xxx" id="start_date_xxx" class="mt10px input small-input"/><img src="/static/shared/images/calendar-icon.png" class="medium-img mt10px">' + 
-                            '<span>End Date <b>*</b></span><input type="text" name="end_date_xxx" id="end_date_xxx" class="mt10px input small-input"/><img src="/static/shared/images/calendar-icon.png" class="medium-img mt10px">' +
-                            '<span>Start Time <b>*</b></span><input type="text" name="start_time_xxx" id="start_time_xxx" class="mt10px input timepicker small-input"/><img src="/static/shared/images/clock1.jpg" class="square-img mt10px">' +
-                            '<span>End Time <b>*</b></span><input type="text" name="end_time_xxx" id="end_time_xxx" class="mt10px input timepicker small-input"/><img src="/static/shared/images/clock1.jpg" class="square-img mt10px">' +
-                            '</label></div>';
+                            '<label class="js-date"><span>Start Date <b>*</b></span><input type="text" name="start_date_xxx" id="start_date_xxx" class=" input "/><span><img src="/static/shared/images/calendar-icon.png" class="medium-img "><span></label>' + 
+                            '<label class="js-date"><span>End Date <b>*</b></span><input type="text" name="end_date_xxx" id="end_date_xxx" class=" input "/><span><img src="/static/shared/images/calendar-icon.png" class="medium-img "><span></label>' +
+                            '<label class="js-time"><span>Start Time <b>*</b></span><input type="text" name="start_time_xxx" id="start_time_xxx" class=" input timepicker "/><span><img src="/static/shared/images/clock1.jpg" class="square-img "><span></label>' +
+                            '<label class="js-time"><span>End Time <b>*</b></span><input type="text" name="end_time_xxx" id="end_time_xxx" class=" input timepicker "/><span><img src="/static/shared/images/clock1.jpg" class="square-img "><span></label>' +
+                            '</div>';
         
         default_schedule_cnt = append_html(default_schedule_cnt, schedule_div, '.schedules');
         bind_datetime(default_schedule_cnt);
