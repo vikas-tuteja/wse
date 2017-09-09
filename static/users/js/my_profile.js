@@ -102,7 +102,7 @@
                 'password':$("#reg_password").val(),
                 'confirm_password':$("#reg_confirm_password").val(),
                 // default user role is candidate
-                'user_role':'candidate'
+                'user_role':$("#user_role").val()
             }
             var verify = Common.verify_mandatory(credentials, '#register_message', Common.mandatory_params);
             if(!verify) {

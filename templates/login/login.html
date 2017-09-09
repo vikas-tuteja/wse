@@ -47,7 +47,7 @@
             </label>
             <label class="login-label">
                 <span class="mobile-icon"><i class="fa fa-mobile fa-2x" aria-hidden="true"></i></span>
-                <input type="text" id="reg_mobile" autocomplete="off">
+                <input type="text" id="reg_mobile" autocomplete="off" maxlength=10>
                 <span class="label-tag">Mobile Number</span>
             </label>
 
@@ -65,9 +65,9 @@
             <div id="register-as"> 
             <p class="login-name"> Register as :</p>
             <label class="login-label clearfix">
-            <select class="login-select">
-                <option value="client">Client</option>
+            <select class="login-select" name="user_role" id="user_role">
                 <option value="candidate">Candidate</option>
+                <option value="client">Client</option>
             </select>
             </label>
             </div>

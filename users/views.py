@@ -39,6 +39,7 @@ class CreateUser( generics.CreateAPIView ):
                : password
                : user_role
                : mobile
+               : type
     
     PS: if not password, then mobile = password
     """

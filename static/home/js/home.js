@@ -22,6 +22,8 @@
         $(".force-register").on('click', function() {
             // get user type to decide next action url
             var user_type = $(this).data('user_type');
+            $('#user_role option[value="' + user_type + '"]').attr("selected","selected");
+
             if(user_type=='client') {
                 var action = Common.post_event;
             } else {
