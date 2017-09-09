@@ -44,11 +44,17 @@
                 </div>
                 <!-- event schedule starts -->
                     <div class="demo-div mt20px">
-                        <label class="event-label clearfix">
-                            <span>Start Date <b>*</b></span><input type="text" name="start_date_1" id="start_date_1" class="mt10px input small-input"/><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img mt10px">
-                            <span>End Date <b>*</b></span><input type="text" name="end_date_1" id="end_date_1" class="mt10px input small-input"/><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img mt10px">
-                            <span>Start Time <b>*</b></span><input type="text" name="start_time_1" id="start_time_1" class="mt10px input timepicker small-input"/><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img mt10px">
-                            <span>End Time <b>*</b></span><input type="text" name="end_time_1" id="end_time_1" class="mt10px input timepicker small-input"/><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img mt10px">
+                        <label class="js-date">
+                            <span>Start Date <b>*</b></span><input type="text" name="start_date_1" id="start_date_1" class=" input"/><span><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img"></span>
+                        </label>
+                        <label class="js-date">
+                            <span>End Date <b>*</b></span><input type="text" name="end_date_1" id="end_date_1" class=" input"/><span><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img"></span>
+                        </label>
+                        <label class=" js-time"> 
+                            <span>Start Time <b>*</b></span><input type="text" name="start_time_1" id="start_time_1" class=" input timepicker"/><span><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img "></span>
+                        </label>
+                        <label class=" js-time">
+                            <span>End Time <b>*</b></span><input type="text" name="end_time_1" id="end_time_1" class=" input timepicker"/><span><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img "></span>
                         </label>
                     </div>
                 <!-- event schedule starts -->
@@ -144,14 +150,27 @@
                     </span>
                 </div-->
             <label><span>Do you want to screen candidates for selection ?</span></label>
-            <label><input type="radio" name="is_screening" class="is_screening" value="1" > Yes
+            <label class="inline-block mr-10"><input type="radio" name="is_screening" class="is_screening" value="1" > Yes
+            </label>
+            <label class="inline-block mr-10">
                    <input type="radio" name="is_screening" class="is_screening" value="0" > No</label>
-                   <label class="event-label clearfix" id="briefing_div" style="display:none;">
-                    <span>Briefing Date </span><input type="text" name="briefing_datetime" id="briefing_datetime" class="mt10px input small-input"/><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img mt10px">
-                    <span>Briefing Time </span><input type="text" name="briefing_time" id="briefing_time" class="mt10px input small-input timepicker"/><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img mt10px">
-                    <span>Briefing Venue </span><input type="text" name="briefing_venue" id="briefing_venue" class="mt10px input small-input"/>
-                    </label>
-   
+            <div class="clearfix">
+                <label class="event-inline w-33" id="briefing_div" style="display:none;">
+                    <span class="title">Briefing Date </span><input type="text" name="briefing_datetime" id="briefing_datetime" class=" input"/>
+                    <span>
+                    <img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img ">
+                    </span>
+                </label>
+                <label class="event-inline w-33">
+                    <span class="title">Briefing Time </span><input type="text" name="briefing_time" id="briefing_time" class=" input timepicker"/>
+                    <span>
+                    <img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img ">
+                    </span>
+                </label>
+                <label class="event-inline w-33"> 
+                    <span class="title">Briefing Venue </span><input type="text" name="briefing_venue" id="briefing_venue" class=" input"/>
+                </label>
+            </div>
             <br><br><label><span>Worksmart Events TnC</span></label>
             <label><input type="checkbox" name="tnc_1" id="tnc_1" > We have to write basic terms &amp; conditions &amp; make user accept them.</label>
             <label><input type="checkbox" name="tnc_2" id="tnc_2" > Mention about payments terms &amp; conditions.</label>
