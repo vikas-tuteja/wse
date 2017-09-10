@@ -220,3 +220,8 @@ padding-bottom: 30px;
   height: 60px;
   overflow: hidden;
 }
+
+.scroll-fixed {
+  height: 50px;
+  overflow: hidden;
+}
