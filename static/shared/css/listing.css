@@ -323,9 +323,12 @@ body {
       padding: 15px;
       width: 100%;
       text-align: center; }
-      .right-menu > div {
-        display: inline-block;
-        float: none; } }
+      .right-menu.none-login > div {
+         width: 50%;}
+         .location::before { display: none }
+         .right-menu.login > div { float: left; }
+         .right-menu.login > a { float: right; }
+          }
 
 .alert, .location {
   float: left;
