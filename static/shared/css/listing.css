@@ -274,7 +274,7 @@ body {
   @media (max-width: 991px) {
     .main-nav ul {
       position: absolute;
-      top: 20px;
+      top: 42px;
       left: 0;
       right: 0;
       bottom: 0;
