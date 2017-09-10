@@ -9,7 +9,7 @@
         </ul>
     </div>
     <div class="tabs-profile-container">
-        <div class="container-head">
+        <div class="container-head sperator-row">
             <h2 class="container-left blue">Your Personal Information</h2>
             <div class="container-right">
                 right
@@ -18,17 +18,18 @@
         <div>
             <form id="profileform" name="profileform" enctype="multipart/form-data" method="POST">{% csrf_token %}
             <!--h4>Name as on any ID card</h4-->
-            <div>
-                <label class="custom-input">
+            <div class="sperator-row">
+                <label class="custom-input {% if results.0.auth_user.first_name %}active{% endif %}">
                     <input type="text" name="first_name" id="first_name" value="{{results.0.auth_user.first_name}}">
                     <span>First Name</span>
                 </label>
-                <label class="custom-input">
+                <label class="custom-input {% if results.0.auth_user.last_name %}active{% endif %}">
                     <input type="text" name="last_name" id="last_name" value="{{results.0.auth_user.last_name}}">
                     <span>Last Name</span>
                 </label>
             </div>
-            <div>
+            <div class="sperator-row">
+                {% comment %}
                 <!--label class="custom-input">
                     <select name="state" id="state">
                         <option value="">Select State</option>
@@ -37,6 +38,7 @@
                         {% endfor %}
                     </select>
                 </label-->
+                {% endcomment %}
                 <label class="custom-input">
                     <select name="city" id="city">
                         <option value="">Select City</option>
@@ -62,31 +64,31 @@
                     </select>
                 </label>
             </div>
-            <div>
-                <label class="custom-input">
+            <div class="sperator-row">
+                <label class="custom-input {% if results.0.whatsapp_number %}active{% endif %}">
                     <input type="text" name="whatsapp_number" id="whatsapp_number" value="{{results.0.whatsapp_number}}" maxlength=10>
                     <span>Whatsapp Number</span>
                 </label>
-                <label class="custom-input">
+                <label class="custom-input {% if results.0.mobile %}active{% endif %}">
                     <input type="text" name="mobile" id="mobile" value="{{results.0.mobile}}" maxlength=10>
                     <span>Mobile</span>
                 </label>
-                <label class="custom-input">
+                <label class="custom-input {% if results.0.address %}active{% endif %}">
                     <input type="text" name="address" id="address" value="{{results.0.address}}">
                     <span>Address</span>
                 </label>
             </div>
-            <div>
+            <div  class="sperator-row">
                 {% if results.0.image %}
                     <a href="{{results.0.image|safe}}">Profile Image</a>
                 {% endif %}
-                Upload a New Image
-                <label class="custom-input">
+                <label class="custom-input upload-input">
+                    Upload a New Image
                     <input type="file" name="profile_image" id="profile_image" >
                 </label>
             </div>
         {% if results.0.type == 'candidate' %}
-            <div>
+            <div  class="sperator-row">
                 <label class="custom-input">
                     <select name="highest_qualification" id="highest_qualification">
                         <option value="">Select Highest Qualification</option>
@@ -111,7 +113,7 @@
                         {% endfor %}
                     </select>
                 </label>
-                <label class="custom-input">
+                <label class="custom-input {% if results.0.candidate.pay_scale %}active{% endif %}">
                     <input type="text" name="pay_scale" id="pay_scale" value="{{results.0.candidate.pay_scale}}">
                     <span>Pay Scale</span>
                 </label>
@@ -127,12 +129,12 @@
                         {% endfor %}
                     </select>
                 </label>
-                <label class="custom-input">
+                <label class="custom-input {% if results.0.candidate.open_to_which_kind_of_job %}active{% endif %}">
                     <input type="text" name="open_to_which_kind_of_job" id="open_to_which_kind_of_job" value="{{results.0.candidate.open_to_which_kind_of_job}}">
                     <span>Open to which kind of job</span>
                 </label>
             </div>
-            <div>
+            <div  class="sperator-row">
                 <label class="custom-input">
                     Comfortable travelling outdoor
                     <input type="radio" name="comfortable_travelling_outdoor" id="comfortable_travelling_outdoor" value=1
@@ -160,7 +162,7 @@
                     >No
                 </label>
             </div>
-            <div>
+            <div class="sperator-row">
                 <label class="custom-input">
                     Comfortable working at odd timings
                     <input type="radio" name="comfortable_working_at_odd_timings" id="comfortable_working_at_odd_timings" value=1
@@ -177,26 +179,26 @@
             </div>
 
         {% elif results.0.type == 'client' %}
-            <div>
-                <label class="custom-input">
+            <div class="sperator-row">
+                <label class="custom-input {% if results.0.client.designation %}active{% endif %}">
                     <input type="text" name="designation" id="designation" value="{{results.0.client.designation}}">
                     <span>Designation</span>
                 </label>
-                <label class="custom-input">
+                <label class="custom-input {% if results.0.client.company_name %}active{% endif %}">
                     <input type="text" name="company_name" id="company_name" value="{{results.0.client.company_name}}">
                     <span>Company Name</span>
                 </label>
-                <label class="custom-input">
+                <label class="custom-input {% if results.0.client.company_address %}active{% endif %}">
                     <input type="text" name="company_address" id="company_address" value="{{results.0.client.company_address}}">
                     <span>Company Address</span>
                 </label>
-                <label class="custom-input">
+                <label class="custom-input {% if results.0.client.establishment_year %}active{% endif %}">
                     <input type="text" name="establishment_year" id="establishment_year" value="{{results.0.client.establishment_year}}">
                     <span>Establishment Year</span>
                 </label>
             </div>
         {% endif %}
-        <input type="button" name="save" class="next action-button" value="Save" id="basic_info_save" />
+        <input type="button" name="save" class="next action-button btn orange" value="Save" id="basic_info_save" />
         </form>
 
         </div>

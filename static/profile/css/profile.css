@@ -847,11 +847,13 @@ body {
     padding: 5px; }
 .custom-input input:focus {
     outline: none; }
-.custom-input input:focus + span {
+.custom-input input:focus + span,
+.custom-input.active input + span {
     font-size: 12px;
     line-height: 14px;
     top: -14px;
-    transition: all 0.5ms ease; }
+    transition: all 0.5ms ease; bottom: auto;
+     padding-right: 5px; }
 
 .custom-input select:focus + span {
     font-size: 12px;
@@ -869,6 +871,28 @@ body {
     display: block;
     line-height: 18px;
     pointer-events: none;
-    transition: all 0.5ms ease; }
+    transition: all 0.5ms ease; background: #fff; }
+.sperator-row {
+  margin-bottom: 15px;
+}
 
-/*# sourceMappingURL=profile.css.map */
+.btn.orange {
+  border: 1px solid #ea6e32;
+  background: #fff;
+  padding: 8px 30px;
+  border-radius: 0;
+}
+
+.btn.orange:focus,
+.btn.orange:hover {
+  background: #ea6e32;
+  color: #fff;
+  outline: none;
+}
+
+.upload-input {
+  border: 1px solid gray;
+  display: inline-block;
+  padding-left: 5px;
+  font-size: 14px;
+}
