@@ -274,7 +274,7 @@ body {
   @media (max-width: 991px) {
     .main-nav ul {
       position: absolute;
-      top: 20px;
+      top: 42px;
       left: 0;
       right: 0;
       bottom: 0;
@@ -323,9 +323,12 @@ body {
       padding: 15px;
       width: 100%;
       text-align: center; }
-      .right-menu > div {
-        display: inline-block;
-        float: none; } }
+      .right-menu.none-login > div {
+         width: 50%;}
+         .location::before { display: none }
+         .right-menu.login > div { float: left; }
+         .right-menu.login > a { float: right; }
+          }
 
 .alert, .location {
   float: left;
@@ -1075,4 +1078,29 @@ body {
 
 .a-clean:hover, .a-clean:visited, .a-clean:focus {
   text-decoration: none;
+}
+
+.align-txtimg {
+  display: table;
+}
+
+.align-txtimg span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.align-txtimg span img {
+  margin-top: -5px;
+}
+
+.dash-tag {
+  background-color: #ccc;
+  border: 1px dashed #787878;
+  font-size: 14px;
+  margin: 0 5px;
+  padding: 6px 5px;
+}
+
+.dash-tag strong {
+  font-weight: 700;
 }
