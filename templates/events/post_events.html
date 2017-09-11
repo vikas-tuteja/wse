@@ -2,7 +2,7 @@
 <div class="">
     {% if not accessibility %}
         <p class="sub">You are not authorized to Post an Event.</p>
-        <p class="sub">Please Login / Register with us a Client.</p>
+        <p class="sub">Please <a class="sign-in" href="#">Login / Register</a> with us a Client.</p>
     {% else %}
         </div>
         <div>
@@ -83,8 +83,9 @@
         <input type="button" name="previous" class="previous action-button" value="Go Back" />
         </fieldset>
         <fieldset>
-        <h2 class="fs-title">Event Requirements</h2>
-        <h3 class="fs-subtitle">some description</h3>
+        <h2 class="fs-title">Event Requirements</h2> 
+        <!--h3 class="fs-subtitle">some description</h3-->
+
             {% for i in "123456"  %}
             <div class="inner-wrap clearfix" {% if i != "1" %} style="display:none;" {% endif %} id="req_div_{{i}}">
                 <label class="event-label clearfix">
