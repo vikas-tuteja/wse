@@ -77,8 +77,8 @@
     border: 0;
     width: 60%;
     padding: 20px 15px 10px 45px;
-    border-radius: 3px; 
-  
+    border-radius: 3px;
+
 }
 .login-label .login-select {
   width: 100%;
@@ -116,8 +116,8 @@
     outline: none; }
   @media (max-width: 540px) {
     .btn-close {
-      top: -15%;
-      right: 22px;
+      top: 0;
+      right: 0;
       margin: auto;
       display: block;
       -webkit-box-shadow: none;
@@ -163,7 +163,7 @@ input[name=showsup]:checked + .shows-up {
 
 .tabs-login {
   border-radius: 3px;
-  color: grey; 
+  color: grey;
 white-space: nowrap;
 overflow-y: auto;
 padding-bottom: 30px;

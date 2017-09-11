@@ -82,40 +82,54 @@
         <input type="button" name="next" class="next action-button" value="Save & Proceed" id="post_events_2" />
         <input type="button" name="previous" class="previous action-button" value="Go Back" />
         </fieldset>
-
-
         <fieldset>
-        <h2 class="fs-title">Event Requirements</h2> 
+        <h2 class="fs-title">Event Requirements</h2>
         <h3 class="fs-subtitle">some description</h3>
             {% for i in "123456"  %}
-            <div class="inner-wrap" {% if i != "1" %} style="display:none;" {% endif %} id="req_div_{{i}}">
-                <label class="event-label clearfix">
+            <div class="inner-wrap clearfix" {% if i != "1" %} style="display:none;" {% endif %} id="req_div_{{i}}">
                 <label class="event-label clearfix">
                     <span class="blue"> Requirement #{{i}}:</span>
                 </label>
-                <span>Candidate Type</span> <select name="candidate_type_{{i}}" id="candidate_type_{{i}}"/ class="small-input">
-                    <option value=""></option>
-                    {% for c in candidate_type %}
-                        <option value="{{c.slug}}">{{c.name}}</option>
-                    {% endfor %}
-                </select>
-                <span>Gender </span><select name="gender_{{i}}" id="gender_{{i}}" class="v-small-input">
-                    <option value=""></option>
-                    {% for g in gender %}
-                        <option value="{{g.0}}">{{g.1}}</option>
-                    {% endfor %}
-                </select>
-                <span>Count </span> <input type="text" name="no_of_candidates_{{i}}" id="no_of_candidates_{{i}}" class="v-small-input"/>
-                <span>No. of days</span> <input type="text" name="no_of_days_{{i}}" id="no_of_days_{{i}}" class="v-small-input"/>
-                <span>Pay per day</span> <input type="text" name="daily_wage_per_candidate_{{i}}" id="daily_wage_per_candidate_{{i}}" class="v-small-input"/>
+                <label class="form-label w25 wm50 ws100 clearfix">
+                    <span>Candidate Type</span>
+                    <select name="candidate_type_{{i}}" id="candidate_type_{{i}}" >
+                        <option value=""></option>
+                        {% for c in candidate_type %}
+                            <option value="{{c.slug}}">{{c.name}}</option>
+                        {% endfor %}
+                    </select>
                 </label>
-                <label class="event-label clearfix">
-                    <span>Education </span> <select name="education_{{i}}" id="education_{{i}}" class="small-input"/>
-                    <option value=""></option>
-                    {% for e in education %}
-                        <option value="{{e.0}}">{{e.1}}</option>
-                    {% endfor %}
-                </select><!--/label-->
+                <label class="form-label w25 wm50 ws100">
+                    <span>Gender </span>
+                    <select name="gender_{{i}}" id="gender_{{i}}">
+                        <option value=""></option>
+                        {% for g in gender %}
+                            <option value="{{g.0}}">{{g.1}}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label  class="form-label w25 wm50 ws100">
+                    <span>Count </span> <input type="text" name="no_of_candidates_{{i}}" id="no_of_candidates_{{i}}"/>
+                </label>
+
+                <label class="form-label w25 wm50 ws100">
+                    <span>No. of days</span> <input type="text" name="no_of_days_{{i}}" id="no_of_days_{{i}}"/>
+                </label>
+
+                <label class="form-label w25 wm50 ws100">
+                    <span>Pay per day</span>
+                    <input type="text" name="daily_wage_per_candidate_{{i}}" id="daily_wage_per_candidate_{{i}}" />
+                </label>
+                <label class="form-label w25 wm50 ws100">
+                    <span>Education </span>
+                    <select name="education_{{i}}" id="education_{{i}}" >
+                        <option value=""></option>
+                        {% for e in education %}
+                            <option value="{{e.0}}">{{e.1}}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <!--/label-->
                 <!--label class="event-label clearfix"><span>Candidate Class</span> <select name="" id="" class="big-input"/>
                     <option value=""></option>
                     {% for c in candidate_class %}
@@ -123,30 +137,41 @@
                     {% endfor %}
                 </select></label-->
                 <!--label class="event-label clearfix"-->
-                    <span>English Language Proficiency </span><select name="communication_criteria_{{i}}" id="communication_criteria_{{i}}" class="small-input"/>
-                    <option value=""></option>
-                    {% for p in proficiency %}
-                        <option value="{{p.0}}">{{p.1}}</option>
-                    {% endfor %}
-                </select></label>
-                <label class="event-label clearfix"><span>Dress Code </span> <input type="text" name="dress_code_{{i}}" id="dress_code_{{i}}" class="small-input"/></label>
+                <label class="form-label w25 wm50 ws100">
+                    <span>English Language Proficiency </span>
+                    <select name="communication_criteria_{{i}}" id="communication_criteria_{{i}}" >
+                        <option value=""></option>
+                        {% for p in proficiency %}
+                            <option value="{{p.0}}">{{p.1}}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label class="form-label w25 wm50 ws100">
+                    <span>Dress Code </span>
+                    <input type="text" name="dress_code_{{i}}" id="dress_code_{{i}}"/>
+                </label>
 
                 <!-- event requirements starts -->
               </div>
               {% endfor %}
-              <span class="big-input" style="font: 13px Arial, Helvetica, sans-serif;color: #888;"><br><br>
-              <a class="add_more_requirements"><img class="small-img" src="{{STATIC_URL}}shared/images/add1.png">Add More Requirements</a></span>
+              <span class="big-input" style="font: 13px Arial, Helvetica, sans-serif;color: #888;">
+                  <a class="add_more_requirements">
+                      <img class="small-img" src="{{STATIC_URL}}shared/images/add1.png">
+                      Add More Requirements
+                  </a>
+              </span>
 
         <input type="button" name="next" class="next action-button" value="Save & Proceed" id="post_events_3" />
         <input type="button" name="previous" class="previous action-button" value="Go Back" />
         </fieldset>
+
         <fieldset>
-        <h2 class="fs-title">Screening & TnC</h2> 
+        <h2 class="fs-title">Screening & TnC</h2>
         <h3 class="fs-subtitle">some description</h3>
                      <!--div class="button-section">
                     <a class="button" data-user_type="candidate"><span>Post Event</span></a>
                     <span class="privacy-policy">
-                    <input type="checkbox" name="field7">You agree to our Terms and Policy. 
+                    <input type="checkbox" name="field7">You agree to our Terms and Policy.
                     </span>
                 </div-->
             <label><span>Do you want to screen candidates for selection ?</span></label>
@@ -155,26 +180,26 @@
             <label class="inline-block mr-10">
                    <input type="radio" name="is_screening" class="is_screening" value="0" > No</label>
             <div class="clearfix">
-                <label class="event-inline w-33" id="briefing_div" style="display:none;">
-                    <span class="title">Briefing Date </span><input type="text" name="briefing_datetime" id="briefing_datetime" class=" input"/>
+                <label class="event-inline w-33 wm-50 ws-100" id="briefing_div" style="display:none;">
+                    <span class="title  wmin-100">Briefing Date </span><input type="text" name="briefing_datetime" id="briefing_datetime" class=" input"/>
                     <span>
                     <img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img ">
                     </span>
                 </label>
-                <label class="event-inline w-33">
-                    <span class="title">Briefing Time </span><input type="text" name="briefing_time" id="briefing_time" class=" input timepicker"/>
+                <label class="event-inline w-33 wm-50 ws-100">
+                    <span class="title wmin-100">Briefing Time </span><input type="text" name="briefing_time" id="briefing_time" class=" input timepicker"/>
                     <span>
                     <img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img ">
                     </span>
                 </label>
-                <label class="event-inline w-33"> 
+                <label class="event-inline w-33 wm-50 ws-100">
                     <span class="title">Briefing Venue </span><input type="text" name="briefing_venue" id="briefing_venue" class=" input"/>
                 </label>
             </div>
             <br><br><label><span>Worksmart Events TnC</span></label>
-            <label><input type="checkbox" name="tnc_1" id="tnc_1" > We have to write basic terms &amp; conditions &amp; make user accept them.</label>
-            <label><input type="checkbox" name="tnc_2" id="tnc_2" > Mention about payments terms &amp; conditions.</label>
-            <label><input type="checkbox" name="tnc_3" id="tnc_3">&nbsp;You agree to our Terms and Policy.</label><br><br>
+            <label class="mark-input"><input type="checkbox" name="tnc_1" id="tnc_1" > We have to write basic terms &amp; conditions &amp; make user accept them.</label>
+            <label class="mark-input"><input type="checkbox" name="tnc_2" id="tnc_2" > Mention about payments terms &amp; conditions.</label>
+            <label class="mark-input"><input type="checkbox" name="tnc_3" id="tnc_3">&nbsp;You agree to our Terms and Policy.</label><br><br>
             <input type="button" name="previous" class="next action-button" value="Post Event" id="post_events" />
             <input type="button" name="previous" class="previous action-button" value="Go Back" />
         </fieldset>

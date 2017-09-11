@@ -108,7 +108,7 @@
 .form-style-10 .active span{
     background: #368;
 }
-.form-style-10 input[type="button"], 
+.form-style-10 input[type="button"],
 .form-style-10 input[type="submit"]{
     background: #368;
     padding: 8px 20px 8px 20px;
@@ -124,7 +124,7 @@
     border: 1px solid #257C9E;
     font-size: 15px;
 }
-.form-style-10 input[type="button"]:hover, 
+.form-style-10 input[type="button"]:hover,
 .form-style-10 input[type="submit"]:hover{
     background: #2A6881;
     -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
@@ -323,9 +323,44 @@ color: white;
   margin-right: 4%;
 }
 
-.wid-25 input, select {
+.wid-25 input, .wid-25 select {
   width:25% !important;
 }
+
+
+.form-label {
+    display: inline-block !important;
+    padding: 5px;
+}
+
+.form-label.w25 {
+    width: 24.5%;
+}
+
+.form-label > span {
+    display: block;
+    width: 100%;
+}
+
+.form-label > input,
+.form-label > select {
+        width: 100%;
+        display: block;
+}
+
+.form-label > input:focus,
+.form-label > input:hover,
+.form-label > select:focus,
+.form-label > select:hover {
+    outline: none;
+}
+
+@media (max-width: 800px){
+    .form-label.wm50 {
+        width: 49.5%;
+    }
+}
+
 @media (max-width:640px) {
     .form-style-10 {
         margin: auto;
@@ -356,7 +391,7 @@ color: white;
       margin-left: auto;
     }
     .event-label input, .event-label select {
-      width: 90% !important;
+      width: 90%;
       margin-right: auto;
       margin-left: auto;
     }
@@ -369,5 +404,7 @@ color: white;
     .add_more_requirements {
       float: left;
     }
-
+    .form-label.ws100 {
+        width: 100%;
+    }
 }
