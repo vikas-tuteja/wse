@@ -274,10 +274,11 @@ class PostEvents( generics.ListAPIView ):
                         'candidate_type': candidate_type
                     })
 
-                    education = HighestQualification.objects.get(slug=postdata['education_%s' % i])
-                    req_data.update({
-                        'education': education
-                    })
+                    education = HighestQualification.objects.filter(slug=postdata['education_%s' % i])
+                    if education:
+                        req_data.update({
+                            'education': education[0]
+                        })
 
                     # TODO dump this data in logger
                     Requirement.objects.create(**req_data)
