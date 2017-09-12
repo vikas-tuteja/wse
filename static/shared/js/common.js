@@ -19,7 +19,7 @@
                 x.done(function(resp){
                     var response = resp.results;
                     $.each(response, function(i, e){
-                        lis += '<a class="suggest_item" href="' + url + e.slug + '/">' + e.name + '</a>';
+                        lis += '<a class="suggest_item" href="' + url + e.slug + '/' + e.id + '/">' + e.name + '</a>';
                     });
                     $(resultelem).html(lis);
                 });
