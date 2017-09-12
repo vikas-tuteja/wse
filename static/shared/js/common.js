@@ -157,6 +157,21 @@
         }
     }
 
+    function bind_force_registration( is_logged_in ) {
+        // force register
+        $(".force-register").on('click', function() {
+            // get user type to decide next action url
+            var user_type = $(this).data('user_type');
+            $('#user_role option[value="' + user_type + '"]').attr("selected","selected");
+
+            if(user_type=='client') {
+                var action = Common.post_event;
+            } else {
+                var action = Common.event_listing;
+            }
+            Common.forceregister(is_logged_in, action, false);
+        });
+    }
 
     // using jQuery
     function getCookie(name) {
@@ -299,5 +314,6 @@
     Common.remove_alert_message = remove_alert_message;
     Common.after_login_process = after_login_process;
     Common.bind_key_escape = bind_key_escape;
+    Common.bind_force_registration = bind_force_registration;
 
 })($,(window.Common = window.Common || {}));

@@ -18,8 +18,9 @@
             }, 3000);
         });
 
+        Common.bind_force_registration(user_logged_in);
         // force register
-        $(".force-register").on('click', function() {
+        /*$(".force-register").on('click', function() {
             // get user type to decide next action url
             var user_type = $(this).data('user_type');
             $('#user_role option[value="' + user_type + '"]').attr("selected","selected");
@@ -30,7 +31,7 @@
                 var action = Common.event_listing;
             }
             Common.forceregister(user_logged_in, action, false);
-        });
+        });*/
     }
     
     Home.init = init;

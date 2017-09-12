@@ -50,6 +50,7 @@
     }
 
     function init(options){
+        Common.bind_force_registration(options.user);
         bind_datetime();
         //bind_event_exists();
         //jQuery time
