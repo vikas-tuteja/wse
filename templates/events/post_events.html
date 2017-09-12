@@ -1,8 +1,12 @@
 
-<div class="">
+<div class="unauthorized smallsub">
     {% if not accessibility %}
-        <p class="sub">You are not authorized to Post an Event.</p>
-        <p class="sub">Please <a class="button force-register" data-user_type="client" style="color:blue;" href="#">Login / Register</a> with us a Client.</p>
+        <p>You are not authorized to Post an Event.</p>
+        {% if not user %}
+            <p>Please <a class="force-register" data-user_type="client" style="color:blue;" href="#">Login / Register</a> with us a Client.</p>
+        {% else %}
+            <p>Please <a style="color:blue;" href="/logout/">Logout</a> first and then Login / Register as a Client.</p>
+        {% endif %}
         
     {% else %}
         </div>

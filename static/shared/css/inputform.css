@@ -1,3 +1,9 @@
+.unauthorized {
+    width: 100%;
+    text-align: center;
+    padding-top: 40px;
+}
+
 .check_event_exists_result {
   padding: 8px;
 }

@@ -4,7 +4,9 @@
 <div class="footer_wrapper">
     <div class="subscribe">
             <br><br>
-            <a href="">Login/Register</a>
+            {% if not user %}
+                <a href="#" class="sign-in">Login/Register</a>
+            {% endif %}
             <a href="">How it Works</a>
             <a href="{% url 'post_events' %}">Post an Event</a>
             <a href="{% url 'event_listing' %}">Looking for Work</a>

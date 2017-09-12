@@ -11,7 +11,7 @@
                 var event_slug = $(this).attr('id').split('~~');
                 var a = Common.ajaxcall("/events/requirements/" + event_slug[2] + "/", 'GET', {'format':'json'})
                 a.done(function(resp){
-                    var res = '<p class="blue mt10px" style="font-weight:200 !important;">Requirement for ' + event_slug[1] + '</p>';
+                    var res = '<p class="blue mt10px" style="font-weight:200 !important;padding-top:20px;">Requirement for ' + event_slug[1] + '</p>';
                     var gender_meta = {'f':'Lady', 'm':'Gentleman', 'fplural': 'Ladies', 'mplural': 'Gents'}
                     $.each(resp.results.results, function (idx, elem) {
                         if(elem.no_of_candidates>1){
