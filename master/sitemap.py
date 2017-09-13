@@ -67,7 +67,7 @@ class SuperSitemap(Sitemap):
                 url_info = {
                     'location':   loc,
                     'lastmod':    self.__get('lastmod', item, None),
-                    'changefreq': self.__get('changefreq', item, None),
+                    #'changefreq': self.__get('changefreq', item, None),
                     'priority':   str(priority is not None and priority or '')
                 }
                 if (inc_count < count and random.random() < 0.3) or count == -1:
@@ -85,8 +85,8 @@ class SuperSitemap(Sitemap):
     def lastmod(self, obj):
         return datetime.datetime.today()
 
-    def changefreq(self, obj):
-        return random.choice(["hourly", "always"])
+    #def changefreq(self, obj):
+    #    return random.choice(["hourly", "always"])
 
     def priority(self, obj):
         return random.choice([0.9, 1.0])
@@ -105,7 +105,7 @@ def sitemap(request, sitemaps, section=None, template_name='custom_sitemap.xml')
             url_info = {
                 'location':   'http://' + current_site + '/' + files,
                 'lastmod':    datetime.datetime.today(),
-                'changefreq': random.choice(["hourly", "always"]),
+                #'changefreq': random.choice(["hourly", "always"]),
                 }
             urls.append(url_info)
     xml = smart_str(loader.render_to_string(template_name, {'urlset': urls}))
