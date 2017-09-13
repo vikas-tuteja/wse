@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 import django
+from django.http import HttpResponse
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
@@ -27,6 +28,7 @@ from master.sitemap import sitemap, sitemap_redirect
 
 # url patterns here
 urlpatterns = [
+    url(r'^google7016c5c21c248bea.html', lambda r: HttpResponse("google-site-verification: google7016c5c21c248bea.html", content_type="text/plain")),
     url(r'^$', Home.as_view(), name="home"), 
     url(r'^admin/', admin.site.urls),
     url(r'^static/(?P<path>.*)$', django.views.static.serve,  {'document_root': settings.STATIC_ROOT }),
