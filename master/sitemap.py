@@ -148,7 +148,7 @@ class EventDetailsSitemap( SuperSitemap ):
     @classmethod
     def items(self):
         # fetch even slugs where show on site = 1 and start date > now
-        event_details = Event.objects.filter(show_on_site=1, schedule__start_date__gte=datetime.datetime.now()).values_list('slug', flat=True)
+        event_details = Event.objects.filter(show_on_site=1, schedule__start_date__gte=datetime.datetime.now()).values_list('id', 'slug')
 
         # for each event
         event_detail_urls = []
@@ -156,7 +156,8 @@ class EventDetailsSitemap( SuperSitemap ):
             # create detail url and append it to the event detail list
             event_detail_urls.append(
                 reverse("event_detail", kwargs={
-                    'event_slug': event
+                    'event_slug': event[1],
+                    'event_id': event[0]
                 })
             )
 
@@ -166,8 +167,26 @@ class EventDetailsSitemap( SuperSitemap ):
 class EventListingSitemap(SuperSitemap):
     @classmethod
     def items(self):
-        listing_url = ['/events/', '/events-in-mumbai/', '/events-in-navi-mumbai/']
-        return listing_url
+        listing_url = set(['/events/',])
+        existing_events = Event.objects.filter(show_on_site=1,schedule__start_date__gte=datetime.datetime.now()).prefetch_related('area', 'city').values_list('area__slug', 'city__slug').distinct()
+
+        for area, city in existing_events:
+            # add area url
+            listing_url.add(
+                reverse("event_listing_area", kwargs={
+                    'area_slug': area
+                })
+            )
+
+            # add city url
+            listing_url.add(
+                reverse("event_listing_city", kwargs={
+                    'city_slug': city
+                })
+            )
+
+        import pdb; pdb.set_trace()
+        return list(listing_url)
     
 
 class ListingTypeSitemap(SuperSitemap):
