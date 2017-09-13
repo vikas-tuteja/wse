@@ -203,11 +203,11 @@
         var params = {
             'candidate_type': $('#candidate_type_'+default_req_cnt).val(),
             'gender': $('#gender_'+default_req_cnt).val(),
-            'count': $('#count_'+default_req_cnt).val(),
+            'count': $('#no_of_candidates_'+default_req_cnt).val(),
             'no_of_days': $('#no_of_days_'+default_req_cnt).val(),
-            'pay_per_day': $('#pay_per_day_'+default_req_cnt).val(),
-            'education': $('#education_'+default_req_cnt).val(),
-            'language': $('#language_'+default_req_cnt).val(),
+            'pay_per_day': $('#daily_wage_per_candidate_'+default_req_cnt).val(),
+            //'education': $('#education_'+default_req_cnt).val(),
+            'language': $('#communication_criteria_'+default_req_cnt).val(),
             'dress_code': $('#dress_code_'+default_req_cnt).val(),
         }
         var verify = Common.verify_mandatory(params, false, Common.add_existing_req_first);
