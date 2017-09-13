@@ -185,7 +185,6 @@ class EventListingSitemap(SuperSitemap):
                 })
             )
 
-        import pdb; pdb.set_trace()
         return list(listing_url)
     
 
