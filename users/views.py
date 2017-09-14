@@ -110,15 +110,15 @@ class Logout( generics.ListAPIView ):
 
 class LoginUser( generics.ListAPIView ):
     """
-    METHOD : GET
+    METHOD : POST
     POST PARAMS: email
                : password
     """
     serializer_class = AuthUserSerializer
     queryset = User.objects.none()
     
-    def get(self, request, *args, **kwargs):
-        kwargs.update(request.GET.dict())
+    def post(self, request, *args, **kwargs):
+        kwargs.update(request.POST.dict())
         status = False
         user = authenticate( username = kwargs.get('username', kwargs.get('email')), password = kwargs.get('password') )
 

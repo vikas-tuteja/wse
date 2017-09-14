@@ -1,0 +1,23 @@
+{% include "shared/base.html" %}
+{% load islist from tag %}
+{% block customcss %}
+    <link href="{{STATIC_URL}}shared/css/listing.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}shared/css/about_us.css" rel="stylesheet">
+{% endblock customcss %}
+{% block body %}
+<!-- menu bar -->
+{% include "shared/menu.html" %}
+<div class="body-center">
+    
+    <p class="blue m-t-36"><b>{{results.0.privacypolicy.0}}</b></p>
+    <div class="divider"></div>
+    <p class="sub">{{results.0.privacypolicy.1|safe}}</p>
+    
+</div>
+
+<!-- footer -->
+{% include "shared/footer.html" %}
+{% endblock body %}
+
+{% block customjs %}
+{% endblock customjs %}

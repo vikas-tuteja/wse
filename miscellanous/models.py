@@ -11,6 +11,7 @@ class Miscellaneous( models.Model ):
     aboutus_content = RichTextField() 
     contactus_content = RichTextField() 
     tnc = RichTextField()
+    privacypolicy = RichTextField()
 
 
 class CommonPublish( models.Model ):

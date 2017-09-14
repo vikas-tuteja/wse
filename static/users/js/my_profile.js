@@ -58,7 +58,7 @@
             if(!verify) {
                 return false;
             }
-            x = Common.ajaxcall(Common.login_url, 'GET', credentials);
+            x = Common.ajaxcall(Common.login_url, 'POST', credentials);
             x.done(function(resp) {
                 $("#login_message").html(resp.message);
                 $(".alert_message_error").show(1000);

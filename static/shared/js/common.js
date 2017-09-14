@@ -79,11 +79,11 @@
         if(sort) {
             var uniq = key + "=" + $(data_elem).data('order') + $(data_elem).data('key');
         } else {
-            var uniq = key + "=" + data_elem;
+            var uniq = key + "=" + encodeURIComponent(data_elem);
         }
         if(args.length > 1) {
             $.each(args[1].split('&'), function(i, each) {
-                if(each.indexOf(key) == -1) {
+                if(each.indexOf(key) == -1 && each != '') {
                     final_args += each + '&';
                 }
             });
@@ -191,6 +191,8 @@
     }
 
     function show_alert(message, top=true) {
+        // hide div if already open
+        $("#alert_message").hide(); 
         if(top) {
             $('html,body').animate({
                 scrollTop: (0)},
@@ -198,8 +200,11 @@
         }
         $("#alert_message").html(
             message + '<button class="btn-close" id="alert-close"><i class="fa fa-times" aria-hidden="true"></i></button>'
-        ).fadeIn().fadeOut(20000, function() {
-        });
+        //).fadeIn().fadeOut(20000, function() {});
+        ).fadeIn();
+        setTimeout(function() {     
+           $("#alert_message").hide(); 
+        },3000);
         
         // alert close binding
         $("#alert-close").on('click', function() {

@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^about_us/$', AboutUs.as_view(), name="about_us"),
 
     url(r'^termsandconditions/$', TNC.as_view(), name="tnc"),
+    url(r'^privacypolicy/$', PrivacyPolicy.as_view(), name="privacypolicy"),
     url(r'^articles/$', Articles.as_view(), name="articles"),
     url(r'^testimonials/$', Testimonials.as_view(), name="testimonials"),
 ]
