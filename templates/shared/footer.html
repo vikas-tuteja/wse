@@ -74,6 +74,8 @@ $(function(){
 <script type="text/javascript">
     $(document).ready(function(){
         $('.btn-close').on('click', function(){
+	    $('.container-login :input[type=text], .container-login :input[type=password]').css('border', '0');
+	    $('.alert_message_error').hide();
             $('.container-login').removeClass('login-show');
             $(this).parents('.pop-overlay').hide(500);
             $('.tabs-login label').removeClass('active');

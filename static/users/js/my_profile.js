@@ -34,10 +34,10 @@
         $(document).on("click", ".login_heading", function() {
             $(".alert_message_error").hide();
         });
+        // remove red border on focus
         $(".container-login input").on("focus", function() {
             $(this).css("border", "0")
         });
-        
     }
     
     function bind_checkavailibility(elem) {
