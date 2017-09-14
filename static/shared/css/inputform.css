@@ -1,3 +1,7 @@
+
+.briefing_div {
+    display: none;
+}
 .unauthorized {
     width: 100%;
     text-align: center;

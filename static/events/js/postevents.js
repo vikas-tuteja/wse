@@ -224,10 +224,10 @@
     $(".is_screening").on('click', function() {
         var val = $(this).val();
         if(val == "1") {
-            $("#briefing_div").slideDown();
+            $(".briefing_div").slideDown();
         }
         else {
-            $("#briefing_div").slideUp();
+            $(".briefing_div").slideUp();
         }
     });
     function append_html(counter, html, elem) {
