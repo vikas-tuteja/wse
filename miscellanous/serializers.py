@@ -43,3 +43,12 @@ class ArticleSerializer( serializers.ModelSerializer ):
     class Meta:
         model = Article
         fields = ('author', 'title', 'content')
+
+class TNCSerializer( serializers.ModelSerializer ):
+    tnc = serializers.SerializerMethodField()
+    class Meta:
+        model = Miscellaneous
+        fields = ('tnc',)
+
+    def get_tnc(self,obj):
+        return json.loads(obj.tnc)

@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from views import EventListing, RequirementListing, EventDetail, ApplyForRequirement, PostEvents, CheckEventsExists
+from .views import EventListing, RequirementListing, EventDetail, ApplyForRequirement, PostEvents, CheckEventsExists
 
 urlpatterns = [
     # event listing urls

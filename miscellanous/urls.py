@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from views import *
+from .views import *
 
 urlpatterns = [
     url(r'^faqs/$', Faqs.as_view(), name="faqs"),
@@ -7,7 +7,7 @@ urlpatterns = [
     url(r'^contact_us/$', ContactUs.as_view(), name="contact_us"),
     url(r'^about_us/$', AboutUs.as_view(), name="about_us"),
 
-
+    url(r'^termsandconditions/$', TNC.as_view(), name="tnc"),
     url(r'^articles/$', Articles.as_view(), name="articles"),
     url(r'^testimonials/$', Testimonials.as_view(), name="testimonials"),
 ]

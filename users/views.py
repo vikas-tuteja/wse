@@ -102,7 +102,9 @@ class Logout( generics.ListAPIView ):
     queryset = User.objects.none()
     def get(self, request, *args, **kwargs):
         auth_logout(request)
-        prev = request.META.get('HTTP_REFERER') or reverse('home')
+        prev = request.META.get('HTTP_REFERER')
+        if not prev or '/my-profile/' in prev:
+            prev = reverse('home')
         prev = form_url(prev, request.GET.dict(), 'alert_message', 'Logged out successfully.')
         return HttpResponseRedirect(prev)
 

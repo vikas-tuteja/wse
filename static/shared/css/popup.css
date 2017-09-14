@@ -148,6 +148,8 @@ body {
 }
 
 .req_list {
+    min-width: 210px;
+    max-width: 210px;
     border-width: 1px;
     border-style: solid;
     margin-top: 20px;

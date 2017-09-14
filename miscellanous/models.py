@@ -10,6 +10,7 @@ class Miscellaneous( models.Model ):
     faq_content = RichTextField() 
     aboutus_content = RichTextField() 
     contactus_content = RichTextField() 
+    tnc = RichTextField()
 
 
 class CommonPublish( models.Model ):

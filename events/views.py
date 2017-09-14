@@ -20,7 +20,7 @@ from utility.utils import get_prefix, getobj, slugify
 from utility.restrictions import AccessToAView
 from events.choices import CANDIDATE_TYPE, CANDIDATE_CLASS, GENDER
 from users.models import CandidateType, LANGUAGE_PROFICIENCY
-from serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer, ApplyRequirementSerializer, CandidateTypeSerializer 
+from .serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer, ApplyRequirementSerializer, CandidateTypeSerializer 
 
 # Create your views here.
 class EventListing( generics.ListAPIView, mygenerics.RelatedView ):

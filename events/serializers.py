@@ -3,6 +3,7 @@ from rest_framework import serializers
 from collections import OrderedDict
 
 from users.models import CandidateType
+from users.choices import LANGUAGE_PROFICIENCY
 from models import Event, Requirement, RequirementApplication
 
 class ListEventSerializer( serializers.ModelSerializer ):
@@ -53,10 +54,14 @@ class ListEventSerializer( serializers.ModelSerializer ):
 class ListRequirementSerializer( serializers.ModelSerializer ):
     candidate_type = serializers.CharField(read_only=True, source='candidate_type.name')
     event_slug = serializers.CharField(read_only=True, source='event.slug')
+    communication_criteria = serializers.SerializerMethodField()
 
     class Meta:
         model = Requirement
         fields = ('id', 'event_slug', 'candidate_type', 'gender', 'no_of_candidates', 'no_of_days', 'daily_wage_per_candidate', 'dress_code', 'candidate_class', 'communication_criteria' )
+
+    def get_communication_criteria(self, obj):
+        return dict(LANGUAGE_PROFICIENCY).get(obj.communication_criteria)
 
 
 class EventDetailSerializer( ListEventSerializer ):

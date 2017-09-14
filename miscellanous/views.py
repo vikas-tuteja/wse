@@ -5,7 +5,7 @@ from django.shortcuts import render
 from rest_framework import generics
 
 from miscellanous.models import Miscellaneous, Testimonial, Article
-from miscellanous.serializers import FaqSerializer, AboutUsSerializer, ContactUsSerializer, TestimonialsSerializer, ArticleSerializer
+from miscellanous.serializers import FaqSerializer, AboutUsSerializer, ContactUsSerializer, TestimonialsSerializer, ArticleSerializer, TNCSerializer
 
 # Create your views here.
 class Common( generics.ListAPIView):
@@ -37,3 +37,7 @@ class Articles( generics.ListAPIView ):
     serializer_class = ArticleSerializer
     queryset = Article.objects.filter(show_on_site=1)
     template_name = "shared/articles.html"
+
+class TNC( Common ):
+    serializer_class = TNCSerializer
+    template_name = "shared/tnc.html"

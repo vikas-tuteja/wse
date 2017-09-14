@@ -27,13 +27,15 @@
                             '<div><table class="table">' + 
                             '<tr><td><b>' + elem.no_of_candidates + ' ' + gender_meta[elem.gender] + '</b> Required </td></tr>' +
                             '<tr><td><b>INR ' + elem.daily_wage_per_candidate + '</b> per day </td></tr>' +
-                            '<tr><td>Dress Code ' + dress_code_img + '</td></tr>';
+                            '<tr><td>Dress Code ' + dress_code_img + '</td></tr>' +
+                            '<tr><td>';
 
                         if(elem.communication_criteria && elem.communication_criteria != null ) {
-                            res += '<tr><td>English Proficiency </td><td>' + elem.communication_criteria + '</td></tr>';
+                            res += elem.communication_criteria;
                         } else {
+                            res += '&nbsp;';
                         }
-                        res += '<tr><td><button data-id="' + elem.id + '" class="requirement_apply btn btn-blue mt-15">Apply</button></td></tr></table></div></div>';
+                        res += '</td></tr><tr><td colspan=2><button data-id="' + elem.id + '" class="requirement_apply btn btn-blue mt-15">Apply</button></td></tr></table></div></div>';
                     });
                     $("#requirement_box").html(res);
                 });
@@ -82,7 +84,7 @@
         sort('#sort_date', params);
 
         // apply filters
-        $("#apply").on('click', function() {
+        $(".apply").on('click', function() {
             // TODO ask pawan about area filters
             var url = '';
             var type = '';

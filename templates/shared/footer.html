@@ -3,17 +3,16 @@
 </div>
 <div class="footer_wrapper">
     <div class="subscribe">
-            <br><br>
             {% if not user %}
                 <a href="#" class="sign-in">Login/Register</a>
             {% endif %}
-            <a href="">How it Works</a>
+            <!--a href="">How it Works</a-->
             <a href="{% url 'post_events' %}">Post an Event</a>
             <a href="{% url 'event_listing' %}">Looking for Work</a>
             <a href="{% url 'faqs' %}">FAQS</a>
-            <a href="">T&C</a>
             <a href="{% url 'about_us' %}">About Us</a>
             <a href="{% url 'contact_us' %}">Contact Us</a>
+            <a href="{% url 'tnc' %}">Terms &amp; Conditions</a>
             <br><br>
     {% if not user %}
         <br> Oh God!! We don't have any news letter.<br>Anyways Register with us to find part-time event jobs or to post Events<br><br>
