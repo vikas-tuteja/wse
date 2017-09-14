@@ -3,10 +3,8 @@
 
         var user_logged_in = options.user
 
-        debugger;
         // if this is NOT the first visit
         if (sessionStorage.getItem('firstVisit') === "1") {
-            $(".first_dark_screen").hide();
             $(".wse_name").hide();
             $(".actual_home").show();
 
@@ -14,6 +12,7 @@
             // first page  first visit farzi js for scroller
             $(window).load(function() {
                 $("html,body").scrollTop(0);
+                $(".first_dark_screen").show();
                 setTimeout(function() {
                     $(".first_dark_screen").slideUp(1500);
                     setTimeout(function(){

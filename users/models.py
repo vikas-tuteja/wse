@@ -10,11 +10,11 @@ from choices import *
 
 def uploadpath(instance, filename):
     """ Computes the user image upload path """
-    try:
+    """try:
         data_model = "%s" % instance.auth_user.username
     except:
-        data_model = "%s" % str(instance.id)
-    return "uploads/profile/%s/%s" % (data_model, filename.replace(' ', '-'))
+        data_model = "%s" % str(instance.id)"""
+    return "uploads/profile/%s" % (filename.replace(' ', '-'))
 
 
 # Create your models here.
