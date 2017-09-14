@@ -36,7 +36,7 @@
             Common.remove_alert_message(document.URL);
         }
         
-        // get / set city name in menubar
+        // get and set city name in menubar
         $.get("https://ipinfo.io", function(response) {
             $("#current_city").html(response.city);
         }, "jsonp");

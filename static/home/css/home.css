@@ -26,6 +26,7 @@
   /*set to a negative number 1/2 of your height*/
   text-align: center;
   font-size: 32px;
+  display: none;
 }
 
 .home_parts_body {

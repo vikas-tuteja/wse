@@ -12,6 +12,7 @@
             // first page  first visit farzi js for scroller
             $(window).load(function() {
                 $("html,body").scrollTop(0);
+                $(".wse_name").show();
                 $(".first_dark_screen").show();
                 setTimeout(function() {
                     $(".first_dark_screen").slideUp(1500);
