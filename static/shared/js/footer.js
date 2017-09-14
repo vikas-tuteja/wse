@@ -38,7 +38,7 @@
         
         // get and set city name in menubar
         $.get("https://ipinfo.io", function(response) {
-            $("#current_city").html(response.city);
+            $(".current_city").html(response.city || 'Mumbai');
         }, "jsonp");
 
     }

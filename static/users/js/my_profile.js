@@ -25,7 +25,19 @@
         bind_forgot_password("#forgot_password");
         bind_registration("#register");
         bind_checkavailibility("#reg_username");
-        bind_save_basic_info()
+        bind_save_basic_info();
+        bind_heading();
+    }
+
+    function bind_heading() {
+        // remove err while transition
+        $(document).on("click", ".login_heading", function() {
+            $(".alert_message_error").hide();
+        });
+        $(".container-login input").on("focus", function() {
+            $(this).css("border", "0")
+        });
+        
     }
     
     function bind_checkavailibility(elem) {
@@ -97,16 +109,25 @@
     function bind_registration(elem) {
         $(elem).on('click', function() {
             var credentials = {
+                'reg_username':$("#reg_username").val(),
+                'reg_mobile':$("#reg_mobile").val(),
+                'reg_password':$("#reg_password").val(),
+                'reg_confirm_password':$("#reg_confirm_password").val(),
+                // default user role is candidate
+                'reg_user_role':$("#user_role").val()
+            }
+            var verify = Common.verify_mandatory(credentials, '#register_message', Common.mandatory_params);
+            if(!verify) {
+                return false;
+            }
+            // making credentials again because key names for post needs to be different
+            var credentials = {
                 'username':$("#reg_username").val(),
                 'mobile':$("#reg_mobile").val(),
                 'password':$("#reg_password").val(),
                 'confirm_password':$("#reg_confirm_password").val(),
                 // default user role is candidate
                 'user_role':$("#user_role").val()
-            }
-            var verify = Common.verify_mandatory(credentials, '#register_message', Common.mandatory_params);
-            if(!verify) {
-                return false;
             }
             x = Common.ajaxcall(Common.register_url, 'POST', credentials);
             x.done(function(resp) {

@@ -99,6 +99,9 @@
                 error += 1;
                 if(elem) {
                     $(elem).html(error_message);
+                    if($("#" + key).length) {
+                        $("#" + key).css("border", "1px solid red");
+                    }
                     $(".alert_message_error").show();
                 } else {
                     Common.show_alert(error_message, false);
