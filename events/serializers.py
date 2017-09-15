@@ -14,12 +14,16 @@ class ListEventSerializer( serializers.ModelSerializer ):
     posted_by = serializers.CharField(read_only=True, source='event_posted_by.auth_user.username')
     candidate_info = serializers.SerializerMethodField()
     is_applied = serializers.SerializerMethodField()
+    contact_person_name = serializers.SerializerMethodField()
 
 
     class Meta:
         model = Event
         fields = ('id', 'client', 'name', 'slug', 'overview', 'venue', 'area', 'city', 'state', 'posted_by', 'contact_person_name', 'contact_person_number', 'candidate_info', 'schedule', 'briefing_datetime', 'short_description', 'is_applied')
     
+    def get_contact_person_name(self, obj):
+        return obj.contact_person_number or ""
+
     def get_is_applied(self, obj):
         try:
             user = self.context['request']._request.user
@@ -92,7 +96,7 @@ class EventDetailSerializer( ListEventSerializer ):
 
     def get_is_valid(self, obj):
         sch  = obj.schedule()
-        if sch and sch[0] > datetime.datetime.now().date():
+        if sch and sch[1] > datetime.datetime.now().date():
             return True
         return False
             

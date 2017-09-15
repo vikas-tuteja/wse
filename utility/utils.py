@@ -66,17 +66,19 @@ def get_prefix(name=None):
 
 
 def form_url(url, getparams, key, val):
-    for qp in url.split("?")[1].split("&"):
-        if qp:
-            x = qp.split("=")
-            getparams.update({
-                x[0]:x[1]
-            })
+    surl = url.split("?")
+    if len(surl) > 1:
+        for qp in surl[1].split("&"):
+            if qp:
+                x = qp.split("=")
+                getparams.update({
+                    x[0]:x[1]
+                })
     getparams.update({
         key:val
     })
 
-    return "%s?%s" % (url.split("?")[0], urlencode(getparams))
+    return "%s?%s" % (surl[0], urlencode(getparams))
 
 
 class NoDefaultProvided(object):
