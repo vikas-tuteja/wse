@@ -51,7 +51,7 @@ class TNCSerializer( serializers.ModelSerializer ):
         fields = ('tnc',)
 
     def get_tnc(self,obj):
-        return json.loads(obj.tnc)
+        return obj.tnc
 
 class PPSerializer( serializers.ModelSerializer ):
     privacypolicy = serializers.SerializerMethodField()
@@ -60,4 +60,4 @@ class PPSerializer( serializers.ModelSerializer ):
         fields = ('privacypolicy',)
 
     def get_privacypolicy(self,obj):
-        return json.loads(obj.privacypolicy)
+        return obj.privacypolicy
