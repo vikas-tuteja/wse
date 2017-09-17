@@ -3,12 +3,12 @@
 <div class="columns-form bdr-orange">
     <div class="tab-line">
         <ul class="tabs-profile">
-            <li class="active"><a href="#">Basic Information</a></li>
+            <li class="active tab" id="tab0" data-rel=0><a href="#">Basic Information</a></li>
             <!--li><a href="#">Events Preferences</a></li-->
-            <li><a href="#">Change Password</a></li>
+            <li class="tab" id="tab1" data-rel=1><a href="#">Change Password</a></li>
         </ul>
     </div>
-    <div class="tabs-profile-container">
+    <div class="tabs-profile-container" id="tab_0_contents" >
         <div class="container-head sperator-row">
             <h2 class="container-left blue">Your Personal Information</h2>
             <div class="container-right">
@@ -128,6 +128,8 @@
                         {% endfor %}
                     </select>
                 </label>
+            </div>
+            <div  class="sperator-row">
                 <label class="custom-input {% if results.0.candidate.open_to_which_kind_of_job %}active{% endif %}">
                     <input type="text" name="open_to_which_kind_of_job" id="open_to_which_kind_of_job" value="{{results.0.candidate.open_to_which_kind_of_job}}">
                     <span>Open to which kind of job</span>
@@ -197,10 +199,37 @@
                 </label>
             </div>
         {% endif %}
-        <input type="button" name="save" class="next action-button btn orange" value="Save" id="basic_info_save" />
+        <input type="button" name="save" class="next action-button btn orange" style="float:right;" value="Save" id="basic_info_save" />
         </form>
 
         </div>
+    </div>
+    <div class="tabs-profile-container" id="tab_1_contents" style="display:none;">
+        <div class="sperator-row">
+            <label class="custom-input">
+                <input type="text" name="username" id="username" value="{{request.user.username}}">
+                <span>Email</span>
+            </label>
+        </div>
+        <div class="sperator-row">
+            <label class="custom-input">
+                <input type="password" name="password" id="password" value="">
+                <span>Password</span>
+            </label>
+        </div>
+        <div class="sperator-row">
+            <label class="custom-input">
+                <input type="password" name="new_password" id="new_password" value="">
+                <span>New Password</span>
+            </label>
+        </div>
+        <div class="sperator-row">
+            <label class="custom-input">
+                <input type="password" name="confirm_new_password" id="confirm_new_password" value="">
+                <span>Confirm New Password</span>
+            </label>
+        </div>
+        <input type="button" name="submit" class="next action-button btn orange" style="float:right;" value="Submit" id="change_password" />
     </div>
 </div>
 {# end----  #}

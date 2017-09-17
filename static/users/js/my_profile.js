@@ -3,6 +3,7 @@
     function init(options){
         Common.bind_key_escape();
         MyProfile.bind_key_enter();
+        map_tabify_feature();
         // js for my profile page events link -- starts
         // default show only first div content and thus bg -select only first label
         $('div[id^="content-"]').css("display","none");
@@ -27,6 +28,20 @@
         bind_checkavailibility("#reg_username");
         bind_save_basic_info();
         bind_heading();
+    }
+    function map_tabify_feature() {
+        $('.tab').click(function() {
+            var target = '#tab_' + $(this).data('rel') + '_contents';
+            var toggle = $(this).data('rel');
+            toggle = +!toggle;
+
+            var other = '#tab_' + toggle + '_contents';
+
+            $(other).css('display', 'none');
+            $(target).css('display', 'block');
+            $(this).addClass('active');
+        });
+
     }
 
     function bind_heading() {
