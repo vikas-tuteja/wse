@@ -12,7 +12,8 @@
                 {% for e in results  %}
                     <div class="boxes mb-15">
                         <div class="left-box">
-                            <h3><a class="head blue a-clean" href='{% url "event_detail" event_slug=e.slug event_id=e.id %}'>{{e.name}}</a></h3>
+                            <a class="a-clean" href='{% url "event_detail" event_slug=e.slug event_id=e.id %}'>
+                            <h3><p class="head blue a-clean">{{e.name}}</p></h3>
                             <address><span class="icon-address"></span>{{e.venue}}, {{e.area}}, {{e.city}}</address>
                             <div class="events-details">
                                 <ol>
@@ -59,6 +60,7 @@
                                     {% endif %}
                                 </ol>
                             </div>
+                            </a>
                         </div>
                         <div class="right-box">
                             <div>

@@ -9,6 +9,7 @@
         });
         EventListing.bind_apply_popup(options);
         EventListing.bind_requirement_popup(options);
+        Common.empty_reqlist_hack();
     }
 
     EventDetail.init = init;

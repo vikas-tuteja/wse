@@ -1,4 +1,6 @@
-
+.error {
+    border: 1px solid red;
+}
 .briefing_div {
     display: none;
 }
@@ -328,7 +330,7 @@ color: white;
   margin-left: 3%;
 }
 .event-label input, .event-label select {
-  text-align: right;
+  text-align: left;
   float:left;
   margin-right: 4%;
 }

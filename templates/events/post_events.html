@@ -97,7 +97,7 @@
                     <span class="blue"> Requirement #{{i}}:</span>
                 </label>
                 <label class="form-label w25 wm50 ws100 clearfix">
-                    <span>Candidate Type</span>
+                    <span>Candidate Type <b>*</b></span>
                     <select name="candidate_type_{{i}}" id="candidate_type_{{i}}" >
                         <option value=""></option>
                         {% for c in candidate_type %}
@@ -106,7 +106,7 @@
                     </select>
                 </label>
                 <label class="form-label w25 wm50 ws100">
-                    <span>Gender </span>
+                    <span>Gender <b>*</b> </span>
                     <select name="gender_{{i}}" id="gender_{{i}}">
                         <option value=""></option>
                         {% for g in gender %}
@@ -115,15 +115,15 @@
                     </select>
                 </label>
                 <label  class="form-label w25 wm50 ws100">
-                    <span>Count </span> <input type="text" name="no_of_candidates_{{i}}" id="no_of_candidates_{{i}}"/>
+                    <span>Count <b>*</b> </span> <input type="text" name="no_of_candidates_{{i}}" id="no_of_candidates_{{i}}"/>
                 </label>
 
                 <label class="form-label w25 wm50 ws100">
-                    <span>No. of days</span> <input type="text" name="no_of_days_{{i}}" id="no_of_days_{{i}}"/>
+                    <span>No. of days <b>*</b></span> <input type="text" name="no_of_days_{{i}}" id="no_of_days_{{i}}"/>
                 </label>
 
                 <label class="form-label w25 wm50 ws100">
-                    <span>Pay per day</span>
+                    <span>Pay per day <b>*</b></span>
                     <input type="text" name="daily_wage_per_candidate_{{i}}" id="daily_wage_per_candidate_{{i}}" />
                 </label>
                 <label class="form-label w25 wm50 ws100">
@@ -153,7 +153,7 @@
                     </select>
                 </label>
                 <label class="form-label w25 wm50 ws100">
-                    <span>Dress Code </span>
+                    <span>Dress Code <b>*</b> </span>
                     <input type="text" name="dress_code_{{i}}" id="dress_code_{{i}}"/>
                 </label>
 

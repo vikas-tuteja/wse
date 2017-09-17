@@ -24,7 +24,6 @@
 
     function bind_event_exists() {
         $("#name").on("blur", function() {
-            debugger;
             var event = $.trim($(this).val());
             if(event!="") {
                 var x = Common.ajaxcall(Common.check_eventexists, 'GET', {'event':event})
@@ -52,6 +51,7 @@
     function init(options){
         Common.bind_force_registration(options.user);
         bind_datetime();
+        Common.remove_error_class("msform", "input");
         //bind_event_exists();
         //jQuery time
         var current_fs, next_fs, previous_fs; //fieldsets
@@ -207,7 +207,7 @@
             'no_of_days': $('#no_of_days_'+default_req_cnt).val(),
             'pay_per_day': $('#daily_wage_per_candidate_'+default_req_cnt).val(),
             //'education': $('#education_'+default_req_cnt).val(),
-            'language': $('#communication_criteria_'+default_req_cnt).val(),
+            //'language': $('#communication_criteria_'+default_req_cnt).val(),
             'dress_code': $('#dress_code_'+default_req_cnt).val(),
         }
         var verify = Common.verify_mandatory(params, false, Common.add_existing_req_first);
@@ -256,13 +256,16 @@
             },
             'post_events_3' : {
                 'candidate_type_1': $('#candidate_type_1').val(),
-                'gender_1': $('#gender_1').val()
+                'gender_1': $('#gender_1').val(),
+                'no_of_candidates_1': $('#no_of_candidates_1').val(),
+                'no_of_days_1': $('#no_of_days_1').val(),
+                'dress_code_1': $('#dress_code_1').val(),
+                'daily_wage_per_candidate_1': $('#daily_wage_per_candidate_1').val()
             },
             'post_events' : {
             }
         }
-        // TODO tnc 1 last page validation not working
-        var verify = Common.verify_mandatory(id_param_map[elem_id], false, Common.mandatory_params);
+        var verify = Common.verify_mandatory(id_param_map[elem_id], true, Common.mandatory_params);
         if(!verify) return false;
         else {
             if(elem_id!='post_events') return true;

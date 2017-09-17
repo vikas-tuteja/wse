@@ -12,7 +12,7 @@
                 var a = Common.ajaxcall("/events/requirements/" + event_slug[2] + "/", 'GET', {'format':'json'})
                 a.done(function(resp){
                     var res = '<p class="blue mt10px" style="font-weight:200 !important;padding-top:20px;">Requirement for ' + event_slug[1] + '</p>';
-                    var gender_meta = {'f':'Lady', 'm':'Gentleman', 'fplural': 'Ladies', 'mplural': 'Gents'}
+                    var gender_meta = {'f':'Lady', 'm':'Gentleman', 'fplural': 'Ladies', 'mplural': 'Gents', 'a': 'Person', 'aplural': 'People'}
                     $.each(resp.results.results, function (idx, elem) {
                         if(elem.no_of_candidates>1){
                             elem.gender = elem.gender + 'plural';
@@ -59,6 +59,7 @@
 
     function init(options){
         //escape key close event
+        Common.empty_reqlist_hack();
         Common.bind_key_escape();
 
         // search box functionality
@@ -162,8 +163,10 @@
         });
     }
 
+
     EventListing.init = init;
     EventListing.bind_apply_popup = bind_apply_popup;
     EventListing.bind_requirement_popup = bind_requirement_popup;
+    
 
 })($, Common, (window.EventListing= window.EventListing || {}))

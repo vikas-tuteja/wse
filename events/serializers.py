@@ -22,7 +22,7 @@ class ListEventSerializer( serializers.ModelSerializer ):
         fields = ('id', 'client', 'name', 'slug', 'overview', 'venue', 'area', 'city', 'state', 'posted_by', 'contact_person_name', 'contact_person_number', 'candidate_info', 'schedule', 'briefing_datetime', 'short_description', 'is_applied')
     
     def get_contact_person_name(self, obj):
-        return obj.contact_person_number or ""
+        return obj.contact_person_name or "-"
 
     def get_is_applied(self, obj):
         try:

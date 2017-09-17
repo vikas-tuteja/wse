@@ -107,7 +107,7 @@ def getobj(model, value):
     return x[0]
 
 def slugify(string):
-    return string.lower().replace(" ","-")
+    return string.lower().replace(" ","-").replace("(", "").replace(")", "")
 
 
 def null_to_empty(func):

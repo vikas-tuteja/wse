@@ -93,30 +93,43 @@
 
     function verify_mandatory(obj, elem, error_message) {
         var error = 0;
-        $.each(obj, function(key, val){
-            // if any value blank, return false
-            if($.trim(val) == '' ) {
-                error += 1;
-                if(elem) {
-                    $(elem).html(error_message);
-                    if($("#" + key).length) {
-                        $("#" + key).css("border", "1px solid red");
-                    }
-                    $(".alert_message_error").show();
-                } else {
-                    Common.show_alert(error_message, false);
-                }
-            }
-
-            // if mobile in key then, value should be integer and 10 digit long
-            if(key.indexOf('mobile') != -1) {
-                if(val.length != 10 || !$.isNumeric(val)) {
+        $.each(obj, function(key, val) {
+            if(true) {
+                // if any value blank, return false
+                if($.trim(val) == '' ) {
                     error += 1;
-                    if(elem) {
-                        $(elem).html(Common.mobile_mandatory);
+                    if(elem===true) {
+                        $('#' + key).css('border', '1px solid red');
+                        Common.show_alert(error_message);
+                    } else if(elem) { 
+                        $(elem).html(error_message);
+                        if($("#" + key).length) {
+                            $('#' + key).css('border', '1px solid red');
+                        }
+                        $(".alert_message_error").show();
                     } else {
                         Common.show_alert(error_message, false);
                     }
+                }
+
+                // if mobile in key then, value should be integer and 10 digit long
+                if(error==0) {
+                    var integers = ['mobile', 'no_of_candidates', 'no_of_days', 'daily_wage_per_candidate'];
+                    $.each(integers, function(idx, each) {
+                        if(key.indexOf(each) != -1) {
+                            if(!$.isNumeric(val) || (key.indexOf('mobile')!=-1 && val.length != 10)) {
+                                error += 1;
+                                if(elem===true) {
+                                    $('#' + key).css('border', '1px solid red');
+                                    Common.show_alert(Common.count_no_pay);
+                                } else if(elem){
+                                    $(elem).html(Common.mobile_mandatory);
+                                } else {
+                                    Common.show_alert(error_message, false);
+                                }
+                            }
+                        }
+                    });
                 }
             }
         });
@@ -284,6 +297,18 @@
 
     }
 
+    function empty_reqlist_hack() {
+        if(document.URL.indexOf('#openModal') != -1 && $('#requirement_box').length >=1 && $('#requirement_box').val() == '') {
+            window.location.href = '#closeModal';
+        }
+    }
+    
+    function remove_error_class(parentdiv, elem) {
+        $('#'+ parentdiv + ' :' + elem).on('focus', function() {
+            $(this).css('border', '0');
+        });
+    }
+
     // list all urls to be used, whether ajax or redirect url
     Common.login_url = "/login/";
     Common.register_url = "/create-user/";
@@ -307,6 +332,7 @@
     Common.add_existing_first = "Error: Please add existing schedule first."
 
     Common.add_existing_req_first = "Error: Please add existing requirement first."
+    Common.count_no_pay = "Error: Count, No of days and pay per day accepts only numbers"
 
     // requirement apply
 
@@ -323,5 +349,7 @@
     Common.after_login_process = after_login_process;
     Common.bind_key_escape = bind_key_escape;
     Common.bind_force_registration = bind_force_registration;
+    Common.empty_reqlist_hack = empty_reqlist_hack;
+    Common.remove_error_class = remove_error_class;
 
 })($,(window.Common = window.Common || {}));
