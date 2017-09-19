@@ -47,6 +47,9 @@ class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
         
         response = super(EventListing, self).get(request, *args, **kwargs)
 
+        if request.is_ajax():
+            return JsonResponse( response.data )
+
         check = AccessToAView(self.request._request.user, 'event_listing')
         response.data['accessibility'] = True
 
@@ -57,9 +60,6 @@ class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
         response.data['sort_order'] = get_prefix(request.GET.get('sort'))
         response.data['filters'] = request.GET.dict()
         response.data['type'] = CANDIDATE_TYPE
-
-        if request.is_ajax():
-            return JsonResponse( response.data )
 
         return response
 

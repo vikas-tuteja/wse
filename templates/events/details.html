@@ -1,7 +1,7 @@
 <div class="container" style="">
 <div class="row">
 <div class="columns">
-    <div class="bdr-orange" style="max-width:840px;padding:15px;">
+    <div class="col bdr-orange" style="max-width:840px;padding:15px;width:100%">
         <h2 class="event-head"><p class="blue">{{results.0.name}}</p></h2>
         {% if results.0.client %}<p class="event-head-client">Client - <strong>{{results.0.client}}</strong></p>{% endif %}
         <p class="event-head-required">Required - 
@@ -97,7 +97,12 @@
             {% endfor %}
         </div>
         </div>
-        <div class="divider"></div><br>
+        <div class="details-para">
+            <h5 class="blue">Events Details</h5>
+            <div class="divider"></div>
+            <p class="sub">{{results.0.short_description|safe}}</p>
+        </div>
+        <br>
 
         {% for k,v in results.0.details.items %}
             {% if v %}
@@ -110,15 +115,13 @@
             {% endif %}
         {% endfor %}
         <div class="details-para">
-            <h5 class="blue">Events Details</h5>
-            <div class="divider"></div>
-            <p class="sub">{{results.0.short_description|safe}}</p>
-        </div>
-        <div class="details-para">
             <!--h5>Client Details</h5>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
               of Lorem Ipsum.</p-->
         </div>
+    </div>
+    <div class="col ad-box-big">
+            {% include "shared/adbox.html"%}
     </div>
 </div>
 </div>

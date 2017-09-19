@@ -260,6 +260,8 @@ body {
 .main-nav {
   float: left; }
   @media (max-width: 991px) {
+
+
     .main-nav {
       background: #e4e4e4;
       position: fixed;
@@ -613,18 +615,32 @@ body {
 
 .col {
   float: left;
-  padding-left: 15px;
+  padding-left: 5px;
   padding-right: 15px; }
 
 .left-fixed {
-  width: 250px; }
+  width: 210px; }
 
 .right-col {
   width: 100%; }
 
 .ad-box {
-  width: 200px; }
+  width: 250px;
+  margin-top: 39px;
+}
+.ad-box-big {
+  width: 300px;
+}
 
+.very-small-image {
+  width: 15px;
+  height: 15px;
+  margin: 0 10px 0 0;
+}
+
+.whitebg {
+  background: white !important;
+}
 .overhide {
   overflow: hidden;
   height: 80%;
@@ -632,9 +648,9 @@ body {
 
 @media (min-width: 992px) {
   .right-col {
-    width: -webkit-calc(100% - 450px);
-    width: -moz-calc(100% - 450px);
-    width: calc(100% - 450px); } }
+    width: -webkit-calc(100% - 460px);
+    width: -moz-calc(100% - 460px);
+    width: calc(100% - 460px); } }
 
 @media (min-width: 576px) {
   .container {
@@ -1103,4 +1119,18 @@ body {
 
 .dash-tag strong {
   font-weight: 700;
+}
+
+@media (max-width:640px) {
+
+.ad-box {
+  max-width: 840px;
+  width: 100%;
+  margin: 20px auto;
+}
+.ad-box-big {
+  max-width: 840px;
+  width: 100%;
+  margin: 20px auto;
+}
 }
