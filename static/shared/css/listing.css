@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, cite, cod
   font-style: normal;
   font-size: 100%;
   line-height: 1;
-  font-family: inherit; }
+  font-family: 'Roboto'; }
 
 table {
   border-collapse: collapse;
@@ -168,7 +168,7 @@ table {
 }
 body {
   background-color: #f8f8f8;
-  font-family: 'Roboto', Verdana, Geneva, sans-serif;
+  font-family: 'Roboto';
   font-size: 16px; }
 
 .mb-15 {
@@ -392,7 +392,7 @@ body {
 .close-nav {
   display: none; }
   .close-nav button {
-    font-family: sans-serif;
+    font-family: 'Roboto';
     padding: 0;
     cursor: pointer;
     background: 0 0;
