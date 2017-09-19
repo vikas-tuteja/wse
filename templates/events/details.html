@@ -36,16 +36,20 @@
             <b>{{results.0.schedule.2}}</b> Day(s)
         </div>
         <!--- male female required -->
-        <div class="event-girls">
+        <div class="event-girls align-txtimg mt-15">
         {% if results.0.candidate_info.candidates_required.f %}
                     <input type="text" readonly class="dash-input" value="{{results.0.candidate_info.candidates_required.f}}">
                     <!--i class="icon-girl"></i-->
-                    <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/women.svg">
+                    <span>
+                        <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/women.svg">
+                    </span>
             {% endif %}
             {% if results.0.candidate_info.candidates_required.m %}
                     <input type="text" readonly class="dash-input" value="{{results.0.candidate_info.candidates_required.m}}">
                     <!--i class="icon-boy"></i-->
-                    <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/men.svg">
+                    <span>
+                        <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/men.svg">
+                    </span>
         {% endif %}
         </div>
         <div style="padding-top:20px;">
