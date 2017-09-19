@@ -130,7 +130,7 @@ table {
   clear: both; }
 
 body {
-  background-color: #f8f8f8;
+  /*background-color: #f8f8f8;*/
   font-family: 'Roboto';
   font-size: 16px; }
 
@@ -740,7 +740,7 @@ body {
     height: 10px;
     left: 10px;
     border-radius: 10px;
-    background: #f8f8f8; }
+    /*background: #f8f8f8;*/ }
   .tags::after {
     background: transparent;
     border-bottom: 18px solid transparent;
@@ -785,12 +785,14 @@ body {
   margin: 5px 0;
   padding: 5px 10px;
   font-size: 16px;
-  background: #f0f0f0;
+  /*background: #f0f0f0;*/
   display: inline-block;
-  border: 1px dashed #368; }
+  color: #368;
+  border: 1px solid black; }
 
 .event-head {
   color: rgba(0, 0, 0, 0.87);
+  text-align: center;
   font-size: 28px; }
   .event-head-client {
     padding: 10px;
@@ -799,7 +801,6 @@ body {
     border-radius: 3px 3px 0 0; }
   .event-head-required {
     padding: 10px;
-    background: #ddd;
     margin-bottom: 10px;
     border-radius: 0 0 3px 3px; }
 

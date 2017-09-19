@@ -1,10 +1,11 @@
 <div class="container" style="">
 <div class="row">
 <div class="columns">
-    <div class="col bdr-orange" style="max-width:840px;padding:15px;width:100%">
-        <h2 class="event-head"><p class="blue">{{results.0.name}}</p></h2>
+    <div class="col boxes" style="max-width:840px;padding:15px;width:100%">
+        <h2 class="event-head"><p class="blue">{{results.0.name}}</p></h2><br>
+        <div class="divider"></div>
         {% if results.0.client %}<p class="event-head-client">Client - <strong>{{results.0.client}}</strong></p>{% endif %}
-        <p class="event-head-required">Required - 
+        <p class="event-head-required"><span class="blue">Required :</span><span class="sub">
         {% for x in results.0.requirement_details %}
             {% if forloop.counter == 1 %}
                 {{x.candidate_type}}
@@ -12,6 +13,7 @@
                 , {{x.candidate_type}}
             {%endif%}
         {% endfor %}
+        </span>
         </p>
 
         <!--div class="alerts">
@@ -34,6 +36,10 @@
         </div>
         <div class="times-badges">
             <b>{{results.0.schedule.2}}</b> Day(s)
+        </div>
+        <div style="float:right;">
+            <i class="icon-rupees"></i>
+            <p class="event-price"><span style="color:#ea6e32;font-size:24px;">1000</span>/Day</p>
         </div>
         <!--- male female required -->
         <div class="event-girls">
@@ -89,7 +95,7 @@
         </div-->
         <!-- details tabs -->
         <div class="scroll-container">
-        <div class="tabs-login event-head-required">
+        <div class="tabs-login event-head-required" style="background: #ddd;">
             {% for k,v in results.0.details.items %}
                 {% if v %}
                 <label {% if forloop.counter == 1 %}class="active detail_tabs"{% else %}class="detail_tabs"{% endif %} data-id="{{k|slugify}}" >{{k}}</label>
