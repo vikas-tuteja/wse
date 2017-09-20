@@ -191,6 +191,6 @@ class EventListingSitemap(SuperSitemap):
 class ListingTypeSitemap(SuperSitemap):
     @classmethod
     def items(self):
-        listing_url = ['/faqs/', '/contact_us/', '/about_us/', '/post-events/']
+        listing_url = ['/faqs/', '/contact_us/', '/about_us/', '/post-events/', '/article/tips-for-impeccable-events-staff-hiring/']
         return listing_url
     
