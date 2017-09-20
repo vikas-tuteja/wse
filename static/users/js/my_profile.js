@@ -30,7 +30,8 @@
         bind_heading();
     }
     function map_tabify_feature() {
-        $('.tab').click(function() {
+        $('.tab').click(function(e) {
+            e.preventDefault();
             var target = '#tab_' + $(this).data('rel') + '_contents';
             var toggle = $(this).data('rel');
             toggle = +!toggle;
@@ -39,6 +40,7 @@
 
             $(other).css('display', 'none');
             $(target).css('display', 'block');
+            $('.tab').removeClass('active');
             $(this).addClass('active');
         });
 
