@@ -831,6 +831,9 @@ body {
     font-size: 15px;
     margin: 10px 0 15px; }
 
+.social {
+  margin: 5px 5px -15px 5px ;
+}
 .events-details ol {
   margin-left: -4px;
   margin-right: -4px;
