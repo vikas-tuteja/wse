@@ -148,7 +148,7 @@ class EventDetailsSitemap( SuperSitemap ):
     @classmethod
     def items(self):
         # fetch even slugs where show on site = 1 and start date > now
-        event_details = Event.objects.filter(show_on_site=1, schedule__start_date__gte=datetime.datetime.now()).values_list('id', 'slug')
+        event_details = Event.objects.filter(show_on_site=1, schedule__start_date__gte=datetime.datetime.now()).values_list('id', 'slug').distinct()
 
         # for each event
         event_detail_urls = []
