@@ -611,7 +611,8 @@ body {
   width: 150px; }
 
 .user-pic img {
-  width:100% }
+  height: 100%;
+  width: 100%; }
 .user-events-tabs {
   margin-left: -15px;
   margin-right: -15px; }
