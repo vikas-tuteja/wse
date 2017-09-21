@@ -206,7 +206,7 @@
     </div>
     <div class="tabs-profile-container" id="tab_1_contents" style="display:none;">
         <div class="sperator-row">
-            <label class="custom-input">
+            <label class="custom-input {% if request.user.username %}active{% endif %}">
                 <input type="text" name="username" id="username" value="{{request.user.username}}">
                 <span>Email</span>
             </label>
@@ -229,7 +229,9 @@
                 <span>Confirm New Password</span>
             </label>
         </div>
-        <input type="button" name="submit" class="next action-button btn orange" style="float:right;" value="Submit" id="change_password" />
+        <div class="text-center">
+            <input type="button" name="submit" class="next action-button btn orange" value="Submit" id="change_password" />
+        </div>
     </div>
 </div>
 {# end----  #}
