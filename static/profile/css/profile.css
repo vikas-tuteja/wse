@@ -827,6 +827,9 @@ body {
 .container-head .container-right {
   float: right; }
 
+.w-150 {
+  width:250px !important;
+}
 .custom-input {
   position: relative; }
 .custom-input input, .custom-input select {

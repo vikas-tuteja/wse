@@ -28,6 +28,16 @@
         bind_checkavailibility("#reg_username");
         bind_save_basic_info();
         bind_heading();
+        bind_change_password();
+        
+        /* active n focus user input */
+        $('.custom-input input').on('focus', function(){
+            $(this).parent().addClass('active');
+        }).on('blur', function(){
+            if($.trim($(this).val()) == ""){
+                $(this).parent().removeClass('active');
+            }
+        });
     }
     function map_tabify_feature() {
         $('.tab').click(function(e) {
@@ -197,10 +207,59 @@
         });
     }
 
+    function bind_change_password() {
+        var error = false;
+        $('#change_password').on('click', function() {
+            var params = {
+                'username': $('#username').val(),
+                'password': $('#password').val(),
+                'new_password': $('#new_password').val(),
+                'confirm_new_password': $('#confirm_new_password').val()
+            }
+            var verify = Common.verify_mandatory(params, false, Common.mandatory_params);
+            if(!verify) {
+                return false;
+            }
+            if(error) {
+                Common.show_alert(Common.password)
+                return false;
+            }
+
+            var x = Common.ajaxcall(Common.change_password, 'PUT', params);
+            x.done(function(resp){
+                Common.show_alert(resp.message)
+            });
+        });
+        
+        // check min 8 characters
+        $('.check-min-8').on('blur', function() {
+            if($(this).val().length<8) {
+                Common.show_alert(Common.password_length)
+                error = true;
+            }
+            else {
+                error = false;
+            }
+        });
+
+        // check new password and confirm new password are same
+        $('.check-passwords').on('blur', function() {
+            if( $('#new_password').val() !== $('#confirm_new_password').val() ){
+                Common.show_alert(Common.passwords_mismatch);
+                error = true;
+            }
+            else {
+                error = false;
+            }
+        });
+
+    }
+
     MyProfile.init = init;
     MyProfile.bind_login = bind_login;
     MyProfile.bind_registration = bind_registration;
     MyProfile.bind_key_enter = bind_key_enter;
     MyProfile.bind_save_basic_info = bind_save_basic_info;
+    MyProfile.bind_change_password = bind_change_password;
 
 })($, Common, window.MyProfile= window.MyProfile || {})

@@ -318,6 +318,7 @@
     Common.post_event = "/post-events/";
     Common.update_profile = "/update-info/";
     Common.check_eventexists = "/event-exists/";
+    Common.change_password = "/change-password/";
 
 
     // list of all messages
@@ -333,6 +334,10 @@
 
     Common.add_existing_req_first = "Error: Please add existing requirement first."
     Common.count_no_pay = "Error: Count, No of days and pay per day accepts only numbers"
+
+    Common.password_length = "Error: New Password must be atleast 8 characters long."
+    Common.passwords_mismatch = "Error: Password and confirm password must be same"
+    Common.password = "Validation Error: Password & Confirm Passord must be same & must be 8 caharacters"
 
     // requirement apply
 

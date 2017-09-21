@@ -607,7 +607,7 @@ body {
 .container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1140px;
+  max-width: 1200px;
   padding-left: 15px;
   padding-right: 15px;
   position: relative;
@@ -625,7 +625,7 @@ body {
   width: 100%; }
 
 .ad-box {
-  width: 250px;
+  width: 300px;
   margin-top: 39px;
 }
 .ad-box-big {
@@ -648,9 +648,9 @@ body {
 
 @media (min-width: 992px) {
   .right-col {
-    width: -webkit-calc(100% - 460px);
-    width: -moz-calc(100% - 460px);
-    width: calc(100% - 460px); } }
+    width: -webkit-calc(100% - 520px);
+    width: -moz-calc(100% - 520px);
+    width: calc(100% - 520px); } }
 
 @media (min-width: 576px) {
   .container {
@@ -1130,6 +1130,10 @@ body {
 }
 
 @media (max-width:640px) {
+
+.mt-56 {
+  margin-top: 28px;
+}
 
 .ad-box {
   max-width: 840px;

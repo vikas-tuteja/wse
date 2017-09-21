@@ -189,18 +189,25 @@ class ChangePassword( generics.UpdateAPIView ):
         status = False
         kwargs.update(request.POST.dict())
         auth_user = authenticate( 
-            username = kwargs.get('email'),
+            username = kwargs.get('username'),
             password = kwargs.get('password')
         )
-        auth_login(request, auth_user)
+        #auth_login(request, auth_user)
 
-        if not getattr(request.user, 'email', None):
+        if not getattr(auth_user, 'email', None):
             message = 'Error: Old Password is incorrect'
 
         else:
             auth_user.set_password(kwargs.get('new_password'))
             auth_user.save()
             status, message = True, 'Password changed Successfully'
+
+            # make user login again with new credentials
+            auth_user = authenticate( 
+                username = kwargs.get('username'),
+                password = kwargs.get('new_password')
+            )
+            auth_login(request, auth_user)
 
         return JsonResponse(data={
             'status':status,

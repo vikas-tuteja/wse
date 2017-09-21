@@ -11,6 +11,7 @@
     <div class="tabs-profile-container" id="tab_0_contents" >
         <div class="container-head sperator-row">
             <h2 class="container-left blue">Your Personal Information</h2>
+            <br>
             <div class="container-right">
             </div>
         </div>
@@ -205,27 +206,29 @@
         </div>
     </div>
     <div class="tabs-profile-container" id="tab_1_contents" style="display:none;">
+        <h2 class="container-left blue">Change Password</h2>
+        <br>
         <div class="sperator-row">
             <label class="custom-input {% if request.user.username %}active{% endif %}">
-                <input type="text" name="username" id="username" value="{{request.user.username}}">
+                <input type="text" name="username" id="username" value="{{request.user.username}}" class="w-150">
                 <span>Email</span>
             </label>
         </div>
         <div class="sperator-row">
             <label class="custom-input">
-                <input type="password" name="password" id="password" value="">
+                <input type="password" name="password" id="password" value="" class="w-150">
                 <span>Password</span>
             </label>
         </div>
         <div class="sperator-row">
             <label class="custom-input">
-                <input type="password" name="new_password" id="new_password" value="">
+                <input type="password" name="new_password" id="new_password" value="" class="w-150 check-min-8">
                 <span>New Password</span>
             </label>
         </div>
         <div class="sperator-row">
             <label class="custom-input">
-                <input type="password" name="confirm_new_password" id="confirm_new_password" value="">
+                <input type="password" name="confirm_new_password" id="confirm_new_password" value="" class="w-150 check-min-8 check-passwords">
                 <span>Confirm New Password</span>
             </label>
         </div>
