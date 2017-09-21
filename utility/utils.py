@@ -119,3 +119,8 @@ def null_to_empty(func):
             return ""
 
     return inner
+
+
+def substring(string, start):
+    i = string.index(start)
+    return string[i:]

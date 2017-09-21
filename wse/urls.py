@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'^$', Home.as_view(), name="home"), 
     url(r'^admin/', admin.site.urls),
     url(r'^static/(?P<path>.*)$', django.views.static.serve,  {'document_root': settings.STATIC_ROOT }),
-    url(r'^uploads/(?P<path>.*)$', django.views.static.serve,  {'document_root': 'uploads' }),
+    url(r'^uploads/profile/(?P<path>.*)$', django.views.static.serve,  {'document_root': '%s/uploads/profile' % settings.BASE_DIR }),
     url(r'^sitemap.xml$', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     url(r'^sitemap-(?P<section>.+)\.xml$', dsitemap, {'sitemaps': sitemaps}, name="section_sitemap"),
     url(r'^sitemap_(?P<section>.+)$', sitemap_redirect, name="redirect_section"),

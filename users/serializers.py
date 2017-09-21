@@ -3,7 +3,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from models import UserDetail, CandidateAttribute
 from utility.fields import UserDetailFields, ClientAttributeFields, CandidateAttributeFields
-from utility.utils import null_to_empty
+from utility.utils import null_to_empty, substring
 
 class AuthUserSerializer( serializers.ModelSerializer ):
     class Meta:
@@ -29,7 +29,7 @@ class UserSerializer( serializers.ModelSerializer ):
 
     def get_image(self, obj):
         try:
-            return "/%s"% getattr(obj.image, 'url', None)
+            return substring("/%s"% getattr(obj.image, 'url', None), '/uploads')
         except:
             return None
 
@@ -53,7 +53,7 @@ class UserMeterSerializer( serializers.ModelSerializer ):
     @null_to_empty
     def get_image(self, obj):
         try:
-            return "/%s"% getattr(obj.image, 'url', None)
+            return substring("/%s"% getattr(obj.image, 'url', None), '/uploads')
         except:
             None
 
