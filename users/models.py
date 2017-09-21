@@ -7,6 +7,7 @@ from django_redis import get_redis_connection
 
 from master.models import Area, State, City, HighestQualification
 from choices import *
+from django.conf import settings
 
 def uploadpath(instance, filename):
     """ Computes the user image upload path """
@@ -14,7 +15,7 @@ def uploadpath(instance, filename):
         data_model = "%s" % instance.auth_user.username
     except:
         data_model = "%s" % str(instance.id)"""
-    return "uploads/profile/%s" % (filename.replace(' ', '-'))
+    return "%s/uploads/profile/%s" % (settings.BASE_DIR, filename.replace(' ', '-'))
 
 
 # Create your models here.
