@@ -114,14 +114,18 @@
 
                 // if mobile in key then, value should be integer and 10 digit long
                 if(error==0) {
-                    var integers = ['mobile', 'no_of_candidates', 'no_of_days', 'daily_wage_per_candidate'];
+                    var integers = ['mobile', 'no_of_candidates', 'no_of_days', 'daily_wage_per_candidate', 'contact_person_number'];
                     $.each(integers, function(idx, each) {
                         if(key.indexOf(each) != -1) {
                             if(!$.isNumeric(val) || (key.indexOf('mobile')!=-1 && val.length != 10)) {
                                 error += 1;
                                 if(elem===true) {
                                     $('#' + key).css('border', '1px solid red');
-                                    Common.show_alert(Common.count_no_pay);
+                                    if(each=='contact_person_number') {
+                                        Common.show_alert(Common.post_number);
+                                    } else {
+                                        Common.show_alert(Common.count_no_pay);
+                                    }
                                 } else if(elem){
                                     $(elem).html(Common.mobile_mandatory);
                                 } else {
@@ -334,6 +338,7 @@
 
     Common.add_existing_req_first = "Error: Please add existing requirement first."
     Common.count_no_pay = "Error: Count, No of days and pay per day accepts only numbers"
+    Common.post_number = "Error: Contact number should be numberic."
 
     Common.password_length = "Error: New Password must be atleast 8 characters long."
     Common.passwords_mismatch = "Error: Password and confirm password must be same"

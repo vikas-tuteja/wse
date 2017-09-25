@@ -238,6 +238,7 @@ class PostEvents( generics.ListAPIView ):
                     key = "%s%s" % (k,i)
                     if key not in postdata or postdata.get(key) in (None, ''):
                         contin = False
+                        schedule_data = None
                         break
                     else:
                         schedule_data[key[:-2]] = postdata[key]
