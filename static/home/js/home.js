@@ -4,7 +4,7 @@
         var user_logged_in = options.user
 
         // if this is NOT the first visit
-        if (sessionStorage.getItem('firstVisit') === "1") {
+        /*if (sessionStorage.getItem('firstVisit') === "1") {
             $(".wse_name").hide();
             $(".actual_home").show();
 
@@ -25,10 +25,10 @@
                             top:'50'},
                             1500
                         );*/
-                }, 3000);
+                /*}, 3000);
             });
             sessionStorage.setItem('firstVisit', '1');
-        }
+        }*/
 
         Common.bind_force_registration(user_logged_in);
     }
