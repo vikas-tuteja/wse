@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+import django_filters
 from django.shortcuts import render
 from rest_framework import generics
 
 from miscellanous.models import Miscellaneous, Testimonial, Article
 from miscellanous.serializers import FaqSerializer, AboutUsSerializer, ContactUsSerializer, TestimonialsSerializer, ArticleSerializer, TNCSerializer, PPSerializer
+from .filters import ArticleFilters
 
 # Create your views here.
 class Common( generics.ListAPIView):
@@ -37,6 +38,14 @@ class Articles( generics.ListAPIView ):
     serializer_class = ArticleSerializer
     queryset = Article.objects.filter(show_on_site=1)
     template_name = "shared/articles.html"
+
+class ArticleDetail( generics.ListAPIView ):
+    serializer_class = ArticleSerializer
+    queryset = Article.objects.filter(show_on_site=1)
+    filter_class = None #ArticleFilters
+    filter_backends = (django_filters.rest_framework.DjangoFilterBackend, ArticleFilters)
+    template_name = "shared/article_detail.html"
+
 
 class TNC( Common ):
     serializer_class = TNCSerializer

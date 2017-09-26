@@ -9,6 +9,7 @@ urlpatterns = [
 
     url(r'^termsandconditions/$', TNC.as_view(), name="tnc"),
     url(r'^privacypolicy/$', PrivacyPolicy.as_view(), name="privacypolicy"),
-    url(r'^article/tips-for-impeccable-events-staff-hiring/$', Articles.as_view(), name="articles"),
+    url(r'^articles/$', Articles.as_view(), name="articles"),
+    url(r'^article/(?P<slug>[-\w]+)/$', ArticleDetail.as_view(), name="article_detail"),
     url(r'^testimonials/$', Testimonials.as_view(), name="testimonials"),
 ]

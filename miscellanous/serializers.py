@@ -40,9 +40,13 @@ class TestimonialsSerializer( serializers.ModelSerializer ):
 
 class ArticleSerializer( serializers.ModelSerializer ):
     author = AuthUserSer(source='user')
+
     class Meta:
         model = Article
-        fields = ('author', 'title', 'content')
+        fields = ('author', 'title', 'content', 'slug')
+
+    def get_slug(self, obj):
+        return slugify(obj.title)
 
 class TNCSerializer( serializers.ModelSerializer ):
     tnc = serializers.SerializerMethodField()

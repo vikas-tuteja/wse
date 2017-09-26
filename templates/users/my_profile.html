@@ -2,9 +2,11 @@
 
 <div class="container">
   <div class="row">
-    <h2 class="mt-15 welcome blue">Welcome
+    <h2 class="mt-15 welcome blue" style="margin-top:34px !important;">Welcome
     {% if results.0.name %} 
         {{ results.0.name }}
+    {% elif results.0.auth_user.first_name %}
+        {{ results.0.auth_user.first_name }}
     {% else %}
         {{ results.0.email }}
     {% endif %}
@@ -14,9 +16,9 @@
       {% if 'my_profile' == request.resolver_match.url_name %}
         {% include "users/profile.html" %}
       {% comment %}{% elif 'my_notify' == request.resolver_match.url_name %}
-        {% include "users/notify.html" %}{%endcomment%}
+        {% include "users/notify.html" %}
       {% elif 'my_stat' == request.resolver_match.url_name %}
-        {% include "users/stats.html" %}
+        {% include "users/stats.html" %}{%endcomment%}
       {% else %}
         {% include "users/overview.html" %}
       {% endif %}

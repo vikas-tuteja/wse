@@ -10,6 +10,7 @@
 <!-- body -->
 <div class="body-center">
     {% for testi in results %}
+      <div class="read-more">
         <p class="blue m-t-36"><b>{{testi.title}}</b></p>
         <div class="divider"></div>
         <p class="sub">{{testi.content|safe}}</p>
@@ -22,6 +23,8 @@
             {% endif %}
             </span>
         </p>
+      </div>
+      <div class="sub" style="margin-top:5px;">... <a class="blue" href='{% url "article_detail" slug=testi.slug %}'>read more<a></div>
     {% endfor %}
 </div>
 

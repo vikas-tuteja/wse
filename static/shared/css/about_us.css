@@ -1,4 +1,7 @@
-
+.read-more {
+    height: 225px;
+    overflow: hidden;
+}
 .body-center {
     max-width:1140px;
     width:100%;

@@ -75,7 +75,7 @@ class BaseMiddleware(MiddlewareMixin):
             [('event_listing', 'event_detail', 'post_events'), 'Events'],
             #['clients', 'Clients'],
             #['testimonials', 'Testimonial'],
-            [('articles',), 'Articles'],
+            [('articles', 'article_detail'), 'Articles'],
             [('faqs',), 'FAQ'],
             [('contact_us',), 'Contact us'],
             [('about_us',), 'About us'],

@@ -27,4 +27,4 @@ class Testimonial( CommonPublish ):
     pass
 
 class Article( CommonPublish ):
-    pass
+    slug = models.CharField( max_length= 200)
