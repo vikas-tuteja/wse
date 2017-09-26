@@ -1,0 +1,33 @@
+{% include "shared/base.html" %}
+{% block customcss %}
+    <link href="{{STATIC_URL}}shared/css/listing.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}shared/css/about_us.css" rel="stylesheet">
+{% endblock customcss %}
+{% block body %}
+<!-- menu bar -->
+{% include "shared/menu.html" %}
+
+<!-- body -->
+<div class="body-center">
+    {#% for testi in results %#}
+        <p class="blue m-t-36"><b>{{results.0.title}}</b></p>
+        <div class="divider"></div>
+        <p class="sub">{{results.0.content|safe}}</p>
+        <p class="sub" style="float:right;"> - by 
+            <span class="blue">
+            {% if results.0.author.first_name %}
+                {{results.0.author.first_name}} {{test.author.last_name}}
+            {% else %}
+                {{results.0.author.username}}
+            {% endif %}
+            </span>
+        </p>
+    {#% endfor %#}
+</div>
+
+<!-- footer -->
+{% include "shared/footer.html" %}
+{% endblock body %}
+
+{% block customjs %}
+{% endblock customjs %}
