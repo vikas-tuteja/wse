@@ -200,7 +200,7 @@ body {
   -webkit-box-shadow: 1px 2px 6px #ddd;
      -moz-box-shadow: 1px 2px 6px #ddd;
           box-shadow: 1px 2px 6px #ddd;
-  margin-top: 5px;
+  margin-top: 34px;
   width: 100%; }
 
 .nav-strip {
@@ -220,6 +220,10 @@ body {
   position: relative;
   width: 160px; }
 
+.logo img {
+  position: absolute;
+  top: -34px;
+}
 .user-signed {
     border-radius: 50%;
     border: 1px solid black;
@@ -1132,10 +1136,18 @@ body {
 
 @media (max-width:640px) {
 
+.logo {
+  top: 5px;
+}
 .mt-56 {
   margin-top: 28px;
 }
 
+.logo img {
+  left: -16%;
+  height: 90px;
+  width: 150px;
+}
 .ad-box {
   max-width: 840px;
   width: 100%;
