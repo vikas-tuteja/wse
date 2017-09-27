@@ -81,7 +81,9 @@ class EventDetailSerializer( ListEventSerializer ):
         fields = '__all__'
 
     def get_briefing_datetime(self, obj):
-        return obj.briefing_datetime.strftime('%b %d, %Y')
+        if obj.briefing_datetime:
+            return obj.briefing_datetime.strftime('%b %d, %Y')
+        return None
 
     def get_candidate_info(self, obj):
         candidates_required, paisa = {}, []
