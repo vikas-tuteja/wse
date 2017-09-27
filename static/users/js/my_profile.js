@@ -147,6 +147,11 @@
             if(!verify) {
                 return false;
             }
+            if($("#register_tnc").is(":checked")===false) {
+                Common.show_alert(Common.tnc, false);
+                return false;
+            }
+
             // making credentials again because key names for post needs to be different
             var credentials = {
                 'username':$("#reg_username").val(),
