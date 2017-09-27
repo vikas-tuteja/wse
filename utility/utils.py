@@ -1,3 +1,5 @@
+import re
+
 class Mask(object):
     """
     This class accepts 2 params:
@@ -107,7 +109,8 @@ def getobj(model, value):
     return x[0]
 
 def slugify(string):
-    return string.lower().replace(" ","-").replace("(", "").replace(")", "")
+    newstr = string.lower().replace(" ","-")
+    return re.sub('[^a-zA-Z0-9-]', '', newstr)
 
 
 def null_to_empty(func):

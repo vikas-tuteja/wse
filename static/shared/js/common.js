@@ -337,12 +337,13 @@
     Common.add_existing_first = "Error: Please add existing schedule first."
 
     Common.add_existing_req_first = "Error: Please add existing requirement first."
-    Common.count_no_pay = "Error: Count, No of days and pay per day accepts only numbers"
+    Common.count_no_pay = "Error: Count and pay per day should be numeric."
     Common.post_number = "Error: Contact number should be numberic."
 
     Common.password_length = "Error: New Password must be atleast 8 characters long."
     Common.passwords_mismatch = "Error: Password and confirm password must be same"
     Common.password = "Validation Error: Password & Confirm Passord must be same & must be 8 caharacters"
+    Common.tnc = "Error: Please accept all Terms & Conditions."
 
     // requirement apply
 

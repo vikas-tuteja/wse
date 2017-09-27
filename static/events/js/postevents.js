@@ -204,7 +204,7 @@
             'candidate_type': $('#candidate_type_'+default_req_cnt).val(),
             'gender': $('#gender_'+default_req_cnt).val(),
             'count': $('#no_of_candidates_'+default_req_cnt).val(),
-            'no_of_days': $('#no_of_days_'+default_req_cnt).val(),
+            //'no_of_days': $('#no_of_days_'+default_req_cnt).val(),
             'pay_per_day': $('#daily_wage_per_candidate_'+default_req_cnt).val(),
             //'education': $('#education_'+default_req_cnt).val(),
             //'language': $('#communication_criteria_'+default_req_cnt).val(),
@@ -251,18 +251,20 @@
                 'end_time_1': $('#end_time_1').val(),
             },
             'post_events_2' : {
-                'short_description': $('#short_description').val(),
-                'payments': $('#payments').val(),
+                //'short_description': $('#short_description').val(),
+                //'payments': $('#payments').val(),
             },
             'post_events_3' : {
                 'candidate_type_1': $('#candidate_type_1').val(),
                 'gender_1': $('#gender_1').val(),
                 'no_of_candidates_1': $('#no_of_candidates_1').val(),
-                'no_of_days_1': $('#no_of_days_1').val(),
+                //'no_of_days_1': $('#no_of_days_1').val(),
                 'dress_code_1': $('#dress_code_1').val(),
                 'daily_wage_per_candidate_1': $('#daily_wage_per_candidate_1').val()
             },
             'post_events' : {
+                'short_description': $('#short_description').val(),
+                'payments': $('#payments').val(),
             }
         }
         var verify = Common.verify_mandatory(id_param_map[elem_id], true, Common.mandatory_params);
@@ -274,7 +276,7 @@
                 var final_valid = true;
                 $.each(["1", "2", "3"], function(k, n) {
                     if($("#tnc_" + n).is(":checked")==false && final_valid==true) {
-                        Common.show_alert(Common.mandatory_params, false);
+                        Common.show_alert(Common.tnc, false);
                         final_valid = false;
                     }
                 });

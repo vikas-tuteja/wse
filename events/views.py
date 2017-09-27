@@ -208,7 +208,7 @@ class PostEvents( generics.ListAPIView ):
         # step 1 : Event
         event_data = {}
         for k,v in postdata.items():
-            if k in ('name', 'venue', 'briefing_venue', 'contact_person_name', 'contact_person_number', 'eligibility', 'selection_n_screening', 'venue_n_timing', 'short_description', 'payments'):
+            if k in ('name', 'venue', 'briefing_venue', 'contact_person_name', 'contact_person_number', 'eligibility', 'short_description', 'payments'):
                 if v:
                     event_data[k] = v
 
@@ -257,7 +257,7 @@ class PostEvents( generics.ListAPIView ):
         for i in range(1,7):
             req_data = {}
             if contin:
-                for k in ('candidate_type_', 'gender_', 'no_of_candidates_', 'no_of_days_', 'daily_wage_per_candidate_', 'education_', 'communication_criteria_', 'dress_code_'):
+                for k in ('candidate_type_', 'gender_', 'no_of_candidates_', 'daily_wage_per_candidate_', 'communication_criteria_', 'dress_code_'):
                     key = "%s%s" % (k,i)
                     if not postdata[key]:
                         contin = False
@@ -275,11 +275,12 @@ class PostEvents( generics.ListAPIView ):
                         'candidate_type': candidate_type
                     })
 
-                    education = HighestQualification.objects.filter(slug=postdata['education_%s' % i])
-                    if education:
-                        req_data.update({
-                            'education': education[0]
-                        })
+                    if postdata.get('education_%s' % i):
+                        education = HighestQualification.objects.filter(slug=postdata['education_%s' % i])
+                        if education:
+                            req_data.update({
+                                'education': education[0]
+                            })
 
                     # TODO dump this data in logger
                     Requirement.objects.create(**req_data)

@@ -18,11 +18,10 @@
         <li class="active">Name &amp; Address</li> 
         <li>Details &amp; Description</li>
         <li>Event Schedule</li>
-        <li>Event Requirements</li>
         </ul>
         <fieldset>
-        <h2 class="fs-title">Name &amp; Address</h2>
-        <h3 class="fs-subtitle">This is step 1</h3>
+        <h2 class="fs-title"><p class="blue">Step 1:</p>Name &amp; Address</h2>
+        <!--h3 class="fs-subtitle">This is step 1</h3-->
             <div class="inner-wrap">
                 <label class="event-label clearfix">
                     <span>Event Name <b>*</b></span>
@@ -72,7 +71,7 @@
         </fieldset>
 
 
-        <fieldset>
+        <!--fieldset>
         <h2 class="fs-title">Details &amp; Description</h2>
         <h3 class="fs-subtitle">some description</h3> 
                 <div class="inner-wrap">
@@ -81,14 +80,14 @@
                     <label class="event-label clearfix"><span>Selection &amp; Screening (optional)</span> <input type="text" name="selection_n_screening" id="selection_n_screening" class="big-input" /></label>
                     <label class="event-label clearfix"><span>Venue & Timing (optional)</span> <input type="text" name="venue_n_timing" id="venue_n_timing" class="big-input" /></label>
                     <label class="event-label clearfix"><span>Payments <b>*</b></span> <input type="text" name="payments" id="payments" class="big-input" /></label>
-                    <!--label class="event-label clearfix"><span>Terms &amp; Condistions (optional)</span> <input type="text" name="t_n_c" id="t_n_c" class="big-input" /></label-->
+                    <label class="event-label clearfix"><span>Terms &amp; Condistions (optional)</span> <input type="text" name="t_n_c" id="t_n_c" class="big-input" /></label>
                 </div>
 
         <input type="button" name="next" class="next action-button" value="Save & Proceed" id="post_events_2" />
         <input type="button" name="previous" class="previous action-button" value="Go Back" />
-        </fieldset>
+        </fieldset-->
         <fieldset>
-        <h2 class="fs-title">Event Requirements</h2> 
+        <h2 class="fs-title"><p class="blue">Step 2:</p>Event Requirements</h2> 
         <!--h3 class="fs-subtitle">some description</h3-->
 
             {% for i in "123456"  %}
@@ -118,15 +117,15 @@
                     <span>Count <b>*</b> </span> <input type="text" name="no_of_candidates_{{i}}" id="no_of_candidates_{{i}}"/>
                 </label>
 
-                <label class="form-label w25 wm50 ws100">
+                <!--label class="form-label w25 wm50 ws100">
                     <span>No. of days <b>*</b></span> <input type="text" name="no_of_days_{{i}}" id="no_of_days_{{i}}"/>
-                </label>
+                </label-->
 
                 <label class="form-label w25 wm50 ws100">
                     <span>Pay per day <b>*</b></span>
                     <input type="text" name="daily_wage_per_candidate_{{i}}" id="daily_wage_per_candidate_{{i}}" />
                 </label>
-                <label class="form-label w25 wm50 ws100">
+                <!--label class="form-label w25 wm50 ws100">
                     <span>Education </span>
                     <select name="education_{{i}}" id="education_{{i}}" >
                         <option value=""></option>
@@ -134,7 +133,7 @@
                             <option value="{{e.0}}">{{e.1}}</option>
                         {% endfor %}
                     </select>
-                </label>
+                </label-->
                 <!--/label-->
                 <!--label class="event-label clearfix"><span>Candidate Class</span> <select name="" id="" class="big-input"/>
                     <option value=""></option>
@@ -172,14 +171,14 @@
         </fieldset>
 
         <fieldset>
-        <h2 class="fs-title">Screening & TnC</h2>
-        <h3 class="fs-subtitle">some description</h3>
-                     <!--div class="button-section">
-                    <a class="button" data-user_type="candidate"><span>Post Event</span></a>
-                    <span class="privacy-policy">
-                    <input type="checkbox" name="field7">You agree to our Terms and Policy.
-                    </span>
-                </div-->
+        <h2 class="fs-title"><p class="blue">Step 3:</p>Screening & TnC</h2>
+            <div class="inner-wrap">
+                <label class="event-label clearfix"><span>Description <b>*</b></span><input type="text" name="short_description" id="short_description" class="big-input" /></label>
+                <label class="event-label clearfix"><span>Eligibilty (optional)</span> <input type="text" name="eligibility" id="eligibility" class="big-input" /></label>
+                <label class="event-label clearfix"><span>Payments <b>*</b></span> <input type="text" name="payments" id="payments" class="big-input" /></label>
+            </div>
+
+
             <label><span>Do you want to screen candidates for selection ?</span></label>
             <label class="inline-block mr-10"><input type="radio" name="is_screening" class="is_screening" value="1" > Yes
             </label>

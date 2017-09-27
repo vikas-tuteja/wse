@@ -60,9 +60,9 @@ class Event(models.Model):
     
     def save(self, *args, **kwargs):
         # Add new event slug to redis set of events
-        if not self.id:
-            con = get_redis_connection('default')
-            con.sadd("events", self.slug)
+        #if not self.id:
+        #    con = get_redis_connection('default')
+        #    con.sadd("events", self.slug)
         return super(Event, self).save(*args, **kwargs)
 
 
@@ -84,7 +84,7 @@ class Requirement(models.Model):
     #work_profile = models.CharField( choices = WORK_PROFILE, max_length=255, blank=True, null=True )
     gender = models.CharField( choices = GENDER, max_length=20 )
     no_of_candidates = models.IntegerField()
-    no_of_days = models.IntegerField()
+    no_of_days = models.IntegerField(blank=True, null=True)
     daily_wage_per_candidate = models.IntegerField()
     education = models.ForeignKey( HighestQualification, max_length=100, blank=True, null=True )
     dress_code = models.CharField( max_length=100, blank=True, null=True )
