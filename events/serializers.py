@@ -74,11 +74,14 @@ class EventDetailSerializer( ListEventSerializer ):
     details = serializers.SerializerMethodField()
     is_valid = serializers.SerializerMethodField()
     candidate_info = serializers.SerializerMethodField()
+    briefing_datetime = serializers.SerializerMethodField()
 
     class Meta:
         model = Event
         fields = '__all__'
 
+    def get_briefing_datetime(self, obj):
+        return obj.briefing_datetime.strftime('%b %d, %Y')
 
     def get_candidate_info(self, obj):
         candidates_required, paisa = {}, []
