@@ -24,7 +24,7 @@ email_data = {
             'bcc_address': '',
             'plain_text': ''
         }
-    }
+    },
 
     'candidate': {
         'welcome': {
@@ -38,14 +38,14 @@ email_data = {
                     Password - %(password)s<br>\
                     <br>\
                     WorkSmart Events is a platform that bridges the gap between event organizers and resources required for the events.<br>\
-                    As an esteemed candidate you have an opportunity to engage and work with big brands for short/long durations and get handsomely paid for your contribution. (<a href="http://www.worksmartevents.com/termsandconditions">T&C Apply</a>)
+                    As an esteemed candidate you have an opportunity to engage and work with big brands for short/long durations and get handsomely paid for your contribution. (<a href="http://www.worksmartevents.com/termsandconditions">T&C Apply</a>)<br>\
                     Someone from our team would get back to you in the next 24 hours to verify your details <br>\
                     You may start applying for events by visiting - http://www.worksmartevents.com/events/<br>\
                     You may update your profile from - http://www.worksmartevents.com/my-profile/overview/<br>\
                     In case of any queries please get in touch with us +91-702-111-5997 (8AM - 9PM) or email us at worksmartevent@gmail.com<br>\
                     <br>\
                     Regards, <br>\
-                    WorkSmart Events Team<br>\,
+                    WorkSmart Events Team<br>\
                     </div>',
             'subject': 'Welcome to Worksmart Events',
             'bcc_address': '',
