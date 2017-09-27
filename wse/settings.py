@@ -177,6 +177,44 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ),
 }
+
+# LOGGER CONFIGURATION
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'standard_tracing': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt' : "%Y-%m-%d %H:%M:%S",
+        },
+        'regeneration_log': {
+            'format' : "%(asctime)s %(message)s",
+            'datefmt' : "%Y-%m-%d %H:%M:%S",
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail' : {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/var/log/django/email-logs.txt',
+            'formatter': 'standard_tracing',
+        },
+
+    },
+    'loggers': {
+        'email_logs' : {
+            'handlers': ['mail'],
+            'level': 'DEBUG',
+        },
+    },
+}
+
+DEFAULT_EMAIL_FROM = 'worksmartevent@gmail.com'
 try:
     from devsettings import *
 except:

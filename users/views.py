@@ -14,18 +14,20 @@ from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.core.urlresolvers import reverse
 
 from models import UserDetail, UserRole, CandidateAttribute
-from utility.utils import ComputeCompletion, form_url, getobj
+from utility.utils import ComputeCompletion, form_url, getobj, SendMail
 from serializers import UserSerializer, AuthUserSerializer, UserMeterSerializer
 from events.views import EventListing
 from events.models import AllocationStatus
 from events.serializers import ProfileEventSerializer
 from utility import mygenerics
 from utility.fields import AuthUserFields, UserDetailFields, CandidateAttributeFields, ClientAttributeFields
+from utility.email_config import email_data as econf
 from master.views import AreaList, CityList, StateList
 from master.models import HighestQualification, Area, City
 from users.choices import LOOKS, LANGUAGE_PROFICIENCY
 
 from filters import UserFilters
+from django.conf import settings
 
 # Create your views here.
 
@@ -68,17 +70,20 @@ class CreateUser( generics.CreateAPIView ):
                 auth_user.save()
                 
                 # then create userdetails
+                user_role = kwargs.get('user_role', 'candidate')
                 user_detail = UserDetail.objects.create(
                     auth_user = auth_user,
-                    type = UserRole.objects.get(slug=kwargs.get('user_role', 'candidate')),
+                    type = UserRole.objects.get(slug=user_role),
                     mobile = mobile,
                 )
                 user_detail.save()
             
                 # automatic login after registration
+                username = kwargs.get('username', kwargs.get('email'))
+                password = kwargs.get('password', kwargs.get('mobile'))
                 user = authenticate(
-                    username = kwargs.get('username', kwargs.get('email')),
-                    password = kwargs.get('password', kwargs.get('mobile'))
+                    username = username,
+                    password = password
                 )
                 auth_login(request, user)
 
@@ -86,6 +91,23 @@ class CreateUser( generics.CreateAPIView ):
                 message = 'User created successfully.'
                 if not kwargs.get('password'):
                     message = 'User created successfully. <br>Login id is your email and mobile number is your password.'
+
+                # welcome email
+                email_data = econf.get(user_role)['welcome']
+                html_content = email_data['html'] % {'username': username, 'password': password}
+
+                emailobj = SendMail()
+                emailobj.set_params(
+                        recipient_list=username, 
+                        subject=email_data['subject'],
+                        text_content=email_data['plain_text'],
+                        html_content=html_content,
+                        attachments=[],
+                        bcc_address=email_data['bcc_address'],
+                        show_recipients=False,
+                        set_daemon=False,
+                )
+                emailobj.send_mail()
 
             except IntegrityError:
                 message = 'User with this email or mobile already exists '
