@@ -16,11 +16,12 @@ from rest_framework.response import Response
 from filters import EventFilters, EventFilterBackend
 from models import Event, Requirement, RequirementApplication, Schedule
 from master.models import Area, City, HighestQualification
-from utility.utils import get_prefix, getobj, slugify
+from utility.utils import get_prefix, getobj, slugify, SendMail
 from utility.restrictions import AccessToAView
 from events.choices import CANDIDATE_TYPE, CANDIDATE_CLASS, GENDER
 from users.models import CandidateType, LANGUAGE_PROFICIENCY
 from .serializers import ListEventSerializer, ListRequirementSerializer, EventDetailSerializer, ApplyRequirementSerializer, CandidateTypeSerializer 
+from utility.email_config import email_data as econf
 
 # Create your views here.
 class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
@@ -126,6 +127,26 @@ class ApplyForRequirement( generics.CreateAPIView ):
                     application_status = self.compute_application_status(reqObj)
                 )
                 status, message = True, 'Applied Successfully! We will get in touch with you shortly.'
+
+
+                # apply event email 
+                email_data = econf.get('candidate')['apply_event']
+                html_content = email_data['html'] % {'username': request.user.username, 'eventurl': 'http://www.worksmartevents.com/events/%s/%s/' % (reqObj.event.slug, reqObj.event.id) }
+
+                emailobj = SendMail()
+                emailobj.set_params(
+                        recipient_list=request.user.username, 
+                        subject=email_data['subject'],
+                        text_content=email_data['plain_text'],
+                        html_content=html_content,
+                        attachments=[],
+                        bcc_address=email_data['bcc_address'],
+                        show_recipients=False,
+                        set_daemon=False,
+                )
+                emailobj.send_mail()
+
+ 
         
             except IntegrityError:
                 message = 'Error: You have already applied for this event.'
@@ -289,7 +310,25 @@ class PostEvents( generics.ListAPIView ):
 
         status = True
         message = "Event created successfully. You can view it, however, it is still not on site search.<br>We will get in touch with you shortly."
-        #message = "Event created successfully." 
+
+        # post event email 
+        email_data = econf.get('client')['post_event']
+        html_content = email_data['html'] % {'username': username, 'eventurl': 'http://www.worksmartevents.com/events/%s/%s/' % (eventObj.slug, eventObj.id) }
+
+        emailobj = SendMail()
+        emailobj.set_params(
+                recipient_list=username, 
+                subject=email_data['subject'],
+                text_content=email_data['plain_text'],
+                html_content=html_content,
+                attachments=[],
+                bcc_address=email_data['bcc_address'],
+                show_recipients=False,
+                set_daemon=False,
+        )
+        emailobj.send_mail()
+
+        
 
         return JsonResponse(data={
             'status':status,

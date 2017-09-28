@@ -23,6 +23,21 @@ email_data = {
             'subject': 'Welcome to Worksmart Events',
             'bcc_address': '',
             'plain_text': ''
+        },
+        'post_event': {
+            'html': '<div style="font-family:Roboto;">\
+                    Dear %(username)s,><br><br>\
+                    Thank You for posting an event on WorkSmart Events, your event has been posted successfully.<br>\
+                    You may view / promote the same using the following url - %(eventurl)s<br>\
+                    However, it is still under verification. Our team would get back to you in the next 24 hours to understand your requirements better<br>\
+                    <br>\
+                    Discalimer: We may disallow to publish an event on our website on the basis of any negative content.<br>\
+                    Regards, <br>\
+                    WorkSmart Events Team<br>\
+                    </div>',
+            'subject': 'Event posted successfully .',
+            'bcc_address': '',
+            'plain_text': ''
         }
     },
 
@@ -48,6 +63,20 @@ email_data = {
                     WorkSmart Events Team<br>\
                     </div>',
             'subject': 'Welcome to Worksmart Events',
+            'bcc_address': '',
+            'plain_text': ''
+        },
+        'apply_event': {
+            'html': '<div style="font-family:Roboto"><br>\
+                    Dear %(username)s,<br><br>\
+                    Thank You for applying for an event on WorkSmart Events <br>\
+                    Link to the event detail - %(eventurl)s <br>\
+                    We will get back in touch with you at your mobile number, if you are shortlisted.<br>\
+                    We will keep you posted on any changes in the event schedule<br><br>\
+                    Regards, <br>\
+                    WorkSmart Events Team<br>\
+                    </div>',
+            'subject': 'Applied Successfully',
             'bcc_address': '',
             'plain_text': ''
         }

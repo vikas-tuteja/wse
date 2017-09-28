@@ -193,7 +193,7 @@ class SendMail(object):
         except Exception, e:
             error_message = "Mail delivery failed for recipients %s, reason: %s" % (', '.join(self.recipient_list), str(e))
             logger.debug(error_message)
-            print error_message
+            #print error_message
 
 
 def send_queued_mails():
@@ -217,6 +217,7 @@ def send_queued_mails():
             connection.close()
         success_message = "Mail sucessfully sent to recipients %s" % (', '.join(list(flatten(data['recipient_list']))))
         #print response, success_message
+        logger.info(response)
         logger.info(success_message)
 
     except SMTPException as e:
