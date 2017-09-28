@@ -1,7 +1,12 @@
 {% include "users/picandtabs.html" with active='overview' %}
 {# end here  #}
 <div class="columns-listing bdr-orange">
-    <h3 class="mt-15"><p class="blue">Your Events History</p></h3>
+    {% if results.0.userrole == 'candidate' %}
+    <h3 class="mt-15"><p class="blue">History: Events you've applied for</p></h3>
+    {% else %}
+    <h3 class="mt-15"><p class="blue">History: Events created by you</p></h3>
+    {% endif %}
+
     <ul class="event-lisitng">
         <li class="active"><a href="#">All</a></li>
         <!--li><a href="#">Upcoming</a></li>
@@ -10,6 +15,7 @@
     <div class="event-lisitng-container">
         <div class="" id="js-all">
         <ul>
+        {% if events.results %}
             {% for each in events.results %}
             <li>
             <div class="history-listing" style="cursor:pointer;" id="label-{{forloop.counter}}" data-num="{{forloop.counter}}">
@@ -21,6 +27,9 @@
             </div>
             </li>
             {% endfor %}
+        {% else %}
+            <p class="blue"> No Records found</p>
+        {% endif %}
         </ul>
         </div>
         <!--div class="" id="js-upcoming">
@@ -34,6 +43,7 @@
 {# end----  #}
 <div class="columns-details">
     <div class="bdr-orange">
+        {% if events.results %}
         {% for each in events.results %}
           <div id="content-{{forloop.counter}}" data-num="{{forloop.counter}}">
             <h2 class="event-head"><p class="blue">{{each.name}}</p></h2>
@@ -86,6 +96,9 @@
             </div>
         </div>
       {% endfor %}
+        {% else %}
+            <p class="blue"> No Records found</p>
+        {% endif %}
     </div>
 </div>
 {# end----  #}

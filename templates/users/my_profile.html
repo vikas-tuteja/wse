@@ -7,8 +7,10 @@
         {{ results.0.name }}
     {% elif results.0.auth_user.first_name %}
         {{ results.0.auth_user.first_name }}
-    {% else %}
+    {% elif results.0.email %}
         {{ results.0.email }}
+    {% else %}
+        {{ results.0.username }}
     {% endif %}
     </h2>
 

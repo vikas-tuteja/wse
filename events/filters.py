@@ -9,32 +9,28 @@ class EventFilterBackend(object):
 
     """
     def filter_queryset(self, request, queryset, view):
-        """fltr = {}
-        for dbk, k in (('area','area_slug'), ('city','city_slug')):
-            slug = view.kwargs.get(k)
-            if slug:
-                fltr.update({
-                    "%s__slug" % dbk : slug,
-                })
-        queryset = queryset.filter(**fltr)
-        return queryset.all()"""
-        try:
-            value = request.query_params.get('userprofile')
-            if not value:
-                value = view.kwargs.get('userprofile')
-            int(value)
-        except:
-            return queryset
-  
-        qs = []
-        for eachqs in queryset:
-            for req in eachqs.requirement_set.all():
-                for app in req.requirementapplication_set.filter(candidate__id=value):
-                    #for allocation in app.allocationstatus_set.filter():
-                        qs.append(eachqs)
-    
-        return qs
-        #return qs or queryset
+        userrole = view.kwargs.get('userrole', 'candidate')
+        if userrole == 'candidate':
+            try:
+                value = request.query_params.get('userprofile')
+                if not value:
+                    value = view.kwargs.get('userprofile')
+                int(value)
+            except:
+                return queryset
+      
+            qs = []
+            for eachqs in queryset:
+                for req in eachqs.requirement_set.all():
+                    for app in req.requirementapplication_set.filter(candidate__id=value):
+                        #for allocation in app.allocationstatus_set.filter():
+                            qs.append(eachqs)
+        
+            return qs
+
+        elif userrole == 'client':
+            return queryset.filter(client=request.user)
+
 
 class EventFilters(django_filters.FilterSet):
     """

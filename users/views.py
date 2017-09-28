@@ -369,8 +369,9 @@ class UserProfileEvents( generics.ListAPIView, mygenerics.RelatedView ):
 
         # view starts
         response = super(UserProfileEvents, self).get(request, *args, **kwargs)
-        response.data['events'] = EventListing.as_data(serializer_class=ProfileEventSerializer)(request, userprofile=request.user.id)
-
+        user_role = request.user.userdetail.type.slug 
+        response.data['events'] = EventListing.as_data(serializer_class=ProfileEventSerializer)(request, userprofile=request.user.id, userrole=user_role)
+            
         return response
 
 

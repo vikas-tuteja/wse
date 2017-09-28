@@ -22,10 +22,11 @@ class UserSerializer( serializers.ModelSerializer ):
     email = serializers.CharField(read_only=True, source='auth_user.email')
     name = serializers.CharField(read_only=True, source='auth_user.first_name')
     image = serializers.SerializerMethodField()
+    userrole = serializers.CharField(read_only=True, source='type.slug')
 
     class Meta:
         model = UserDetail
-        fields = ('auth_id', 'username','email','mobile', 'image', 'name')
+        fields = ('auth_id', 'username','email','mobile', 'image', 'name', 'userrole')
 
     def get_image(self, obj):
         try:
