@@ -704,7 +704,8 @@ body {
   min-width: 120px; 
   color: #368;
   font-weight: bold;
-  background: grey;
+  background: rgba(217, 217, 217, 0.23);
+  border: 1px solid #368 !important;
 }
 .table {
   color: #666;

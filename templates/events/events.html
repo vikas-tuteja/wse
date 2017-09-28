@@ -67,7 +67,7 @@
                                 <i class="icon-rupees"></i>
                                 <p class="event-price"><span style="color:#ea6e32;font-size:24px;">{{e.candidate_info.paisa}}</span>/Day</p>
                             </div>
-                            <button id="{{e.slug}}~~{{e.name}}~~{{e.id}}" {% if not e.is_applied %}class="event_apply btn btn-blue mt-15">Apply {%else%} class="event_apply btn btn-applied mt-15" disabled="true"> {{e.is_applied|title}} <img class="square-img" src = "{{STATIC_URL}}shared/images/tick.png">{%endif%}</button><p class="sub" style="font-size:11px;color:red;">
+                            <button id="{{e.slug}}~~{{e.name}}~~{{e.id}}" {% if not e.is_applied %}class="event_apply btn btn-blue mt-15">Apply {%else%} class="event_apply btn btn-applied mt-15" disabled="true"> <img class="square-img" src = "{{STATIC_URL}}shared/images/tick.png"> {{e.is_applied|title}}{%endif%}</button><p class="sub" style="font-size:11px;color:red;">
                         </div>
                     </div>
                 {% endfor %}
