@@ -160,7 +160,7 @@ class SendMail(object):
         self.text_content = kwargs.get('text_content','')
         self.html_content = kwargs.get('html_content','')
         self.show_recipients = kwargs.get('show_recipients', True)
-        self.from_mail = kwargs.get('from_mail',settings.DEFAULT_FROM_EMAIL)
+        self.from_mail = kwargs.get('from_mail',settings.DEFAULT_EMAIL_FROM)
         self.attachments = kwargs.get('attachments',[])
         self.bcc_address = kwargs.get('bcc_address',[])
         self.recipient_list = kwargs.get('recipient_list',[])
