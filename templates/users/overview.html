@@ -47,6 +47,7 @@
         {% for each in events.results %}
           <div id="content-{{forloop.counter}}" data-num="{{forloop.counter}}">
             <h2 class="event-head"><p class="blue">{{each.name}}</p></h2>
+            <div class="divider"></div>
             {% if each.client %}<p class="event-head-client">Client - <strong>{{each.client}}</strong></p>{% endif %}
             <p class="event-head-required sub">Required - 
             {% for x in each.req%} {{x.type}}, {% endfor %}

@@ -102,10 +102,6 @@ class CreateUser( generics.CreateAPIView ):
                         subject=email_data['subject'],
                         text_content=email_data['plain_text'],
                         html_content=html_content,
-                        attachments=[],
-                        bcc_address=email_data['bcc_address'],
-                        show_recipients=False,
-                        set_daemon=False,
                 )
                 emailobj.send_mail()
 

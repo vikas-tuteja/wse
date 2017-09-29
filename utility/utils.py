@@ -2,12 +2,8 @@ import re
 import Queue
 import logging
 import threading
-from django.core import mail
 from django.conf import settings
-from compiler.ast import flatten
-from smtplib import SMTPException
-#from leadinfo.models import LeadDetail, CallHistory
-from django.core.mail import EmailMultiAlternatives
+from django.core.mail import send_mail
 
 
 email_queue = Queue.Queue()
@@ -184,75 +180,17 @@ class SendMail(object):
 
     def send_mail(self):
         try:
-            email_data = self.__dict__
-            email_queue.put(email_data)
-            email_thread = threading.Thread(target=send_queued_mails,)
-            if self.set_daemon:
-                email_thread.setDaemon(True)
-            email_thread.start()
-        except Exception, e:
-            error_message = "Mail delivery failed for recipients %s, reason: %s" % (', '.join(self.recipient_list), str(e))
-            logger.debug(error_message)
-            #print error_message
-
-
-def send_queued_mails():
-    data = email_queue.get()
-    try:
-        if data['show_recipients']:
-            msg = create_email(data)
-        else:
-            connection = mail.get_connection()
-            connection.open()
-            messages = list()
-            for recipient in data['recipient_list']:
-                msg = create_email(data,recipient)
-                if msg:
-                    messages.append(msg)
-
-        if data['show_recipients']:
-            response = msg.send(fail_silently=False)
-        else:
-            response = connection.send_messages(messages)
-            connection.close()
-        success_message = "Mail sucessfully sent to recipients %s" % (', '.join(list(flatten(data['recipient_list']))))
-        #print response, success_message
-        logger.info(response)
-        logger.info(success_message)
-
-    except SMTPException as e:
-        error_message = "Mail delivery failed for recipients %s, reason: " % (', '.join(list(flatten(data['recipient_list'])))) + str(e)
-        logger.error(error_message)
-
-    except Exception as e:
-        error_message = "Mail delivery failed for recipients %s, reason: %s" % (', '.join(list(flatten(data['recipient_list']))), str(e))
-        logger.error(error_message)
-
-
-
-def create_email(data,recipient=''):
-    if recipient:
-        receiver_mail = recipient[0] if recipient.__class__.__name__ == 'tuple' else recipient
-        # Code for sending personalized messages to each user and Code for sending same message to each user
-        msg_body = data['text_content'] % (recipient[1:]) if recipient.__class__.__name__ == 'tuple' else data['text_content']
-        msg = EmailMultiAlternatives(data['subject'], msg_body, data['from_mail'], [receiver_mail], bcc=data['bcc_address'])
-    else:
-        msg = EmailMultiAlternatives(data['subject'], data['text_content'], data['from_mail'], data['recipient_list'], bcc=data['bcc_address'])
-    if data['html_content']:
-        msg.attach_alternative(data['html_content'], "text/html")
-
-    try:
-        if len(data['attachments']) > 0:
-            for file_name in data['attachments']:
-                attachment = os.path.join(settings.ATTACHMENT_PATH, '%s' % file_name).replace('\\', '/')
-                msg.attach_file(attachment)
-    except Exception as e:
-        if recipient:
-            error_message = "Mail creation failed for recipient %s, reason: %s" % (recipient, str(e))
-        else:
-            error_message = "Mail creation failed for recipients %s, reason: %s" % (', '.join(list(flatten(data['recipient_list']))), str(e))
-        logger.error(error_message)
-
-    else:
-        return msg
-    return None
+            send_mail(
+                self.subject, 
+                self.text_content,
+                settings.EMAIL_HOST_USER, 
+                self.recipient_list,
+                fail_silently=False,
+                html_message=self.html_content, 
+            )
+            success_message = "Mail sucessfully sent to recipients %s" % (', '.join(self.recipient_list))
+            logger.info(success_message)
+            
+        except Exception as e:
+            error_message = "Mail delivery failed for recipients %s, reason: " % (', '.join(self.recipient_list)) + str(e)
+            logger.error(error_message)
