@@ -130,11 +130,17 @@ class ApplyRequirementSerializer( serializers.ModelSerializer ):
 
 class ProfileEventSerializer( ListEventSerializer ):
     req = serializers.SerializerMethodField()
+    briefing_datetime = serializers.SerializerMethodField()
 
     class Meta:
         model = Event
         fields = ('id', 'client', 'name', 'slug', 'overview', 'venue', 'area', 'city', 'state', 'posted_by', 'contact_person_name', 'contact_person_number', 'candidate_info', 'schedule', 'briefing_datetime', 'short_description', 'req')
 
+
+    def get_briefing_datetime(self, obj):
+        if obj.briefing_datetime:
+            return obj.briefing_datetime.strftime('%b %d, %Y')
+        return None
 
     def get_req(self, obj):
         req = []

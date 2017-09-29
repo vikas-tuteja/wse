@@ -116,10 +116,9 @@ class RequirementApplication(models.Model):
         unique_together = ('requirement', 'candidate')
 
     def allocation_status(self):
-        #import pdb; pdb.set_trace()
-        #allocation_status_obj = self.allocationstatus_set.all()
-        #if allocation_status_obj:
-        #    return allocation_status_obj[0]
+        allocation_status_obj = self.allocationstatus_set.all()
+        if allocation_status_obj:
+            return allocation_status_obj[0]
         return None
 
     def mobile(self):

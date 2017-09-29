@@ -51,12 +51,13 @@
             <p class="event-head-required sub">Required - 
             {% for x in each.req%} {{x.type}}, {% endfor %}
             </p>
+            {% if each.userrole == 'candidate' %}
             <div class="alerts">
                 <ul>
                     {% for x in each.req %}
                         {% if user and user == x.candidate %}
                             {% if x.application_status == "applied" %}
-                                <li class="alert-checked"><i class="checked"></i> You have been selected as an {{x.type|title}} in this event</li>
+                                <li class="alert-checked"><i class="checked"></i> You have applied as a {{x.type|title}} in this event</li>
                             {% elif x.application_status == "wl" %}
                                 <li class="alert-pending"><i class="pending"></i> Position of {{x.type|title}} is on Hold as we have too many entries</li>
                             {% endif %}
@@ -64,10 +65,33 @@
                     {% endfor %}
                 </ul>
             </div>
+            <div class="alerts">
+                <ul>
+                    {% for x in each.req %}
+                            {% if x.payments.0.allocation_status == "shortlisted" %}
+                                <li class="alert-checked"><i class="checked"></i> Congratulations!! You are/were shortlisted as a {{x.type|title}} in this event</li>
+                            {% elif x.payments.0.allocation_status == "positions-full" %}
+                                <li class="alert-pending"><i class="pending"></i> Sorry!! The position is/was already full.</li>
+                            {% elif x.payments.0.allocation_status == "rejected" %}
+                                <li class="alert-pending"><i class="pending"></i> Sorry!! Your skillsets did not meet our requirement.</li>
+                            {% elif x.payments.0.allocation_status == "backup" %}
+                                <li class="alert-checked"><i class="checked"></i> You are/were selected as a backup for this event.</li>
+                            {% elif x.payments.0.allocation_status == "backed-out" %}
+                                <li class="alert-pending"><i class="pending"></i> That's bad!! You were shortlisted, but you have backed out of this event.</li>
+                            {% elif x.payments.0.allocation_status == "completed" %}
+                                <li class="alert-checked"><i class="checked"></i> Congratulations!! You have successfully completed this event.</li>
+                            {% elif x.payments.0.allocation_status == "working" %}
+                                <li class="alert-checked"><i class="checked"></i> Congratulations!! You are/were working for this event.</li>
+                            {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
             {% if each.briefing_datetime %}
                 <div class="times-badges">
                     Selection/Briefing <time>{{ each.briefing_datetime }}</time>
                 </div>
+                <br>
             {% endif %}
             <div class="times-badges">
                 Event Date <time>{{each.schedule.0}} - {{each.schedule.1}}</time>
@@ -81,9 +105,15 @@
                     Estimated Earnings - Rs.{% widthratio each.schedule.2 1 each.candidate_info.paisa %}
                 </div>
                 {% endif %}
-                <div class="tags tags-pending">
-                    Event Allocation Status - {% if not each.req.0.payments.0.allocation_status %}{{each.req.0.application_status|title}}{% else %}{{each.req.0.payments.0.allocation_status|title}}{% endif%}
-                </div>
+                {% if each.userrole == 'candidate' %}
+                    <div class="tags tags-pending">
+                        Event Allocation Status - {% if not each.req.0.payments.0.allocation_status %}{{each.req.0.application_status|title}}{% else %}{{each.req.0.payments.0.allocation_status|title}}{% endif%}
+                    </div>
+                {% else %}
+                    <br><br>
+                    <p class="sub"> To edit any details of your event - Please write to us at worksmartevent@gmail.com </p>
+                    <p class="sub"> Event stats - Coming soon </p>
+                {% endif %}
             </div>
             <div class="details-para">
                 <h5>Events Details</h5>

@@ -13,7 +13,7 @@ from django_redis import get_redis_connection
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.core.urlresolvers import reverse
 
-from models import UserDetail, UserRole, CandidateAttribute
+from models import UserDetail, UserRole, ClientAttribute, CandidateAttribute
 from utility.utils import ComputeCompletion, form_url, getobj, SendMail
 from serializers import UserSerializer, AuthUserSerializer, UserMeterSerializer
 from events.views import EventListing
@@ -441,11 +441,18 @@ class UserProfile( generics.ListAPIView, mygenerics.RelatedView ):
                         f: postdict.get(f)
                     })
 
-            userdict.update({
-                'area' : getobj(Area, userdict['area']),
-                'city' : getobj(City, userdict['city']),
-                'highest_qualification' : getobj(HighestQualification, userdict['highest_qualification'])
-            })
+            if userdict.get('area'):
+                userdict.update({
+                    'area' : getobj(Area, userdict['area']),
+                })
+            if userdict.get('city'):
+                userdict.update({
+                    'city' : getobj(City, userdict['city']),
+                })
+            if userdict.get('highest_qualification'):
+                userdict.update({
+                    'highest_qualification' : getobj(HighestQualification, userdict['highest_qualification'])
+                })
 
             userdetail_instance = UserDetail.objects.filter(auth_user=request.user)
 

@@ -23,14 +23,14 @@ class EventFilterBackend(object):
             except:
                 return queryset
       
-            qs = []
+            qs = set()
             for eachqs in queryset:
                 for req in eachqs.requirement_set.all():
                     for app in req.requirementapplication_set.filter(candidate__id=value):
                         #for allocation in app.allocationstatus_set.filter():
-                            qs.append(eachqs)
+                        qs.add(eachqs)
         
-            return qs
+            return list(qs)
 
         elif userrole == 'client':
             return queryset.filter(client=request.user)
