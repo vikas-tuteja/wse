@@ -35,7 +35,7 @@ email_data = {
                     Regards, <br>\
                     WorkSmart Events Team<br>\
                     </div>',
-            'subject': 'Event posted successfully .',
+            'subject': 'Congratulations! Event Posted Successfully.',
             'bcc_address': '',
             'plain_text': ''
         }
@@ -76,7 +76,7 @@ email_data = {
                     Regards, <br>\
                     WorkSmart Events Team<br>\
                     </div>',
-            'subject': 'Applied Successfully',
+            'subject': 'Congratulations! Applied for event successfully',
             'bcc_address': '',
             'plain_text': ''
         }
