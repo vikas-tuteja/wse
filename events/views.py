@@ -313,11 +313,11 @@ class PostEvents( generics.ListAPIView ):
 
         # post event email 
         email_data = econf.get('client')['post_event']
-        html_content = email_data['html'] % {'username': username, 'eventurl': 'http://www.worksmartevents.com/events/%s/%s/' % (eventObj.slug, eventObj.id) }
+        html_content = email_data['html'] % {'username': request.user.username, 'eventurl': 'http://www.worksmartevents.com/events/%s/%s/' % (eventObj.slug, eventObj.id) }
 
         emailobj = SendMail()
         emailobj.set_params(
-                recipient_list=username, 
+                recipient_list=request.user.username, 
                 subject=email_data['subject'],
                 text_content=email_data['plain_text'],
                 html_content=html_content,
