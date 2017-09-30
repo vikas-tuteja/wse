@@ -101,9 +101,18 @@
             var type = '';
             var area_url = '';
             var area = [];
+            var city_url = '';
+            var city = [];
 
             var gender = $("#gender:checked").val();
             var duration = $("#duration:checked").val();
+            $("#city:checked").each(function (idx, val){
+                if(idx==0) {
+                    city_url = $(this).val();
+                }
+                city.push($(this).val());
+            });
+
             $("#area:checked").each(function (idx, val){
                 if(idx==0) {
                     area_url = $(this).val();
@@ -114,7 +123,14 @@
                 type += $(this).val() + ",";
             });
 
-            // area comes in url not queryparams + TODO check from PAWAN
+            if(city_url) {
+                url = '/events-in-' + city_url + '-city/';
+                if(city.length > 0 ) {
+                    url = Common.form_unique_params('city', city, url, false);
+                }
+            }
+
+            // area comes in url not queryparams
             if(area_url) {
                 url = '/events-in-' + area_url + '/';
                 if(area.length > 0 ) {

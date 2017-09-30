@@ -17,6 +17,22 @@
                     </div>
                 </div>
                 <div class="boxes no-shadow">
+                    <h4 class="bar-head">City<span class="apply clear-btn blue" style="float:right;"><b>Apply</b></span></h4>
+                    <div class="filter-content">
+                        {% for c in city %}
+                            <label><input type="radio" name="city" id="city" value="{{c.slug}}"
+                            {% if c.slug in filters.city %}
+                                checked>
+                                {{c.name}}
+                            {% else %}>
+                                <a href="{% url 'event_listing_city' city_slug=c.slug %}?city={{c.slug}}">
+                                {{c.name}}
+                                </a>
+                            {% endif %}
+                            </label>
+                        {% endfor %}
+                    </div>
+
                     <h4 class="bar-head">Area<span class="apply clear-btn blue" style="float:right;"><b>Apply</b></span></h4>
                     <div class="filter-content">
                         {% for a in area %}

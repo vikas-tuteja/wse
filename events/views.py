@@ -36,6 +36,7 @@ class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
     template_name = 'events/listing_base.html'
     related_views = {
         'area': (AreaList.as_data(), '*', 1),
+        'city': (CityList.as_data(), '*', 1),
     }
 
     def get_queryset(self):
