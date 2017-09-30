@@ -54,13 +54,17 @@
                 <label class="custom-input">
                     <select name="area" id="area" class="area">
                         <option value="">Select Area</option>
-                        {% for a in area %}
-                            {% if a.slug == results.0.area %}
-                                <option value="{{a.slug}}" selected="selected">{{a.name}}</option>
-                            {% else %}
-                                <option value="{{a.slug}}">{{a.name}}</option>
-                            {% endif %}
-                        {% endfor %}
+                        {% if area %}
+                            {% for a in area %}
+                                {% if a.slug == results.0.area %}
+                                    <option value="{{a.slug}}" selected="selected">{{a.name}}</option>
+                                {% else %}
+                                    <option value="{{a.slug}}">{{a.name}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <option value="{{results.0.area}}" selected="selected">{{results.0.area}}</option>
+                        {% endif %}
                     </select>
                 </label>
             </div>
