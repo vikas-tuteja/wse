@@ -2,6 +2,7 @@
 
     function init(options){
         Common.bind_key_escape();
+        Common.bind_city_area_filter('city', 'area');
         MyProfile.bind_key_enter();
         map_tabify_feature();
         // js for my profile page events link -- starts

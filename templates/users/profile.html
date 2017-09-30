@@ -40,7 +40,7 @@
                 </label-->
                 {% endcomment %}
                 <label class="custom-input">
-                    <select name="city" id="city">
+                    <select name="city" id="city" class="city">
                         <option value="">Select City</option>
                         {% for c in city %}
                             {% if c.slug == results.0.city %}
@@ -52,7 +52,7 @@
                     </select>
                 </label>
                 <label class="custom-input">
-                    <select name="area" id="area">
+                    <select name="area" id="area" class="area">
                         <option value="">Select Area</option>
                         {% for a in area %}
                             {% if a.slug == results.0.area %}

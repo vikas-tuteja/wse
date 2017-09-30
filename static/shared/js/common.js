@@ -151,8 +151,8 @@
                 $("."+ch).find('option').remove()
                 $.each(resp['results'], function (i, item) {
                     $('.'+ch).append($('<option>', { 
-                        value: item.name,
-                        text : item.slug 
+                        value: item.slug,
+                        text : item.name
                     }));
                 });
             });
