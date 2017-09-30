@@ -9,12 +9,13 @@ from django.http import JsonResponse
 
 from serializers import AreaSerializer, CitySerializer, StateSerializer
 from models import Area, City, State
-from filters import AreaFilters
+from .filters import AreaFilters, AreaqpFilter
 
 # Create your views here.
 class AreaList( generics.ListAPIView, mygenerics.RelatedView ):
     serializer_class = AreaSerializer
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend, AreaFilters)
+    filter_class = AreaqpFilter
     queryset = Area.objects.all().order_by('name')
     pagination_class = mygenerics.NoPagination
 

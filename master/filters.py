@@ -16,3 +16,11 @@ class AreaFilters(object):
             return qs
         else:
             return queryset
+
+
+class AreaqpFilter(django_filters.FilterSet):
+    city = django_filters.CharFilter(name="city__slug")
+
+    class Meta:
+        model = Area
+        fields = ('city',)

@@ -30,13 +30,13 @@
                     </div>
                 </label>
                 <label class="event-label clearfix"><span>Venue <b>*</b></span> <input type="text" name="venue" id="venue" class="big-input"></label>
-                <label class="event-label clearfix"><span>City <b>*</b></span> <select name="city" id="city" class="big-input">
+                <label class="event-label clearfix"><span>City <b>*</b></span> <select name="city" id="city" class="big-input city">
                     <option value=""> </option>
                     {% for c in city %}
                         <option value="{{c.slug}}">{{c.name}}</option>
                     {% endfor %}
                 </select></label>
-                <label class="event-label clearfix"><span>Area <b>*</b></span> <select name="area" id="area" class="big-input">
+                <label class="event-label clearfix"><span>Area <b>*</b></span> <select name="area" id="area" class="big-input area">
                     <option value=""> </option>
                     {% for a in area %}
                         <option value="{{a.slug}}">{{a.name}}</option>

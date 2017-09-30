@@ -52,6 +52,7 @@
         Common.bind_force_registration(options.user);
         bind_datetime();
         Common.remove_error_class("msform", "input");
+        Common.bind_city_area_filter("city", "area");
         //bind_event_exists();
         //jQuery time
         var current_fs, next_fs, previous_fs; //fieldsets

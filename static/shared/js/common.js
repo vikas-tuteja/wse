@@ -144,6 +144,21 @@
         }
     }
 
+    function bind_city_area_filter(pr, ch) {
+        $("."+pr).on('change', function () {
+            var x = Common.ajaxcall('/master/arealisting/', 'GET', {'city': $("."+pr+" option:selected").val() });
+            x.done(function(resp){
+                $("."+ch).find('option').remove()
+                $.each(resp['results'], function (i, item) {
+                    $('.'+ch).append($('<option>', { 
+                        value: item.name,
+                        text : item.slug 
+                    }));
+                });
+            });
+        });    
+    }
+
     /*
     * this fn is called, when a user clicks on requirement apply
     * 1. directly click on requirement apply
@@ -362,5 +377,6 @@
     Common.bind_force_registration = bind_force_registration;
     Common.empty_reqlist_hack = empty_reqlist_hack;
     Common.remove_error_class = remove_error_class;
+    Common.bind_city_area_filter = bind_city_area_filter;
 
 })($,(window.Common = window.Common || {}));
