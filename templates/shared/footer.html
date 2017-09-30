@@ -3,80 +3,72 @@
 </div>
 <div class="footer_wrapper">
     <div class="subscribe">
-            {% if not user %}
-                <a href="#" class="sign-in">Login/Register</a>
-            {% endif %}
-            <!--a href="">How it Works</a-->
-            <a href="{% url 'post_events' %}">Post an Event</a>
-            <a href="{% url 'event_listing' %}">Looking for Work</a>
-            <a href="{% url 'faqs' %}">FAQS</a>
-            <a href="{% url 'about_us' %}">About Us</a>
-            <a href="{% url 'contact_us' %}">Contact Us</a>
-            <a href="{% url 'tnc' %}">Terms &amp; Conditions</a>
-            <a href="{% url 'privacypolicy' %}">Privacy Policy</a>
-            <a target="_blank" href="https://blog.junkjam.in" rel="nofollow">JunkJam</a>
-            <br><br>
-    {% if not user %}
+        {% if not user %}
+        <a href="#" class="sign-in">Login/Register</a> {% endif %}
+        <!--a href="">How it Works</a-->
+        <a href="{% url 'post_events' %}">Post an Event</a>
+        <a href="{% url 'event_listing' %}">Looking for Work</a>
+        <a href="{% url 'faqs' %}">FAQS</a>
+        <a href="{% url 'about_us' %}">About Us</a>
+        <a href="{% url 'contact_us' %}">Contact Us</a>
+        <a href="{% url 'tnc' %}">Terms &amp; Conditions</a>
+        <a href="{% url 'privacypolicy' %}">Privacy Policy</a>
+        <a target="_blank" href="https://blog.junkjam.in" rel="nofollow">JunkJam</a>
+        <br><br> {% if not user %}
         <br> Oh God!! We don't have any news letter.<br>Anyways Register with us to find part-time event jobs or to post Events<br><br>
-        <div class="form-inline">
+        <div class="form-inline text-center">
             <input type="email" name="email" value="" class="form-control" placeholder="Enter your email-id" id="footer_email">
             <input type="tel" name="mobile" value="" class="form-control" placeholder="Enter your mobile" id="footer_mobile">
-            <button class="btn btn-blue form-btn" name="footer_submit" id="footer_submit" >SUBMIT</button>
+            <button class="btn btn-blue form-btn" name="footer_submit" id="footer_submit">SUBMIT</button>
         </div>
-    {% endif %}
+        {% endif %}
     </div>
 
-    <div class="copyright-block row"><p style="float:right;">COPYRIGHT © 2017 WORKSMART EVENTS PVT. LTD. ALL RIGHTS RESERVED</p>
+    <div class="copyright-block row">
+        <p style="float:right;">COPYRIGHT © 2017 WORKSMART EVENTS PVT. LTD. ALL RIGHTS RESERVED</p>
     </div>
 
 </div>
 
-{% block body %}
-{% include "login/login.html" %}
-{% endblock %}
-{% block customcss %}
-    <link href="{{STATIC_URL}}shared/css/footer.css" rel="stylesheet">
-{% endblock customcss %}
-{% block customjs %}
+{% block body %} {% include "login/login.html" %} {% endblock %} {% block customcss %}
+<link href="{{STATIC_URL}}shared/css/footer.css" rel="stylesheet"> {% endblock customcss %} {% block customjs %}
 <script type="text/javascript" src="{{STATIC_URL}}shared/js/jquery.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}shared/js/common.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}users/js/my_profile.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}shared/js/footer.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function() {
         Footer.init({
             alert_message: "{{alert_message|safe}}",
         });
-        MyProfile.init({
+        MyProfile.init({});
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(function() {
+
+        $('.mobile-menu').on('click', function() {
+            $('.main-nav').css('display', 'block');
+            $('.right-menu').css('display', 'block');
+            $('body').addClass('overhide');
+        });
+
+        $('.close-nav').on('click', function() {
+            $('body').removeClass('overhide');
+            $('.main-nav').css('display', '');
+            $('.right-menu').css('display', '');
         });
     });
 </script>
 
-
 <script type="text/javascript">
-$(function(){
-
-    $('.mobile-menu').on('click', function() {
-        $('.main-nav').css('display', 'block');
-        $('.right-menu').css('display', 'block');
-        $('body').addClass('overhide');
-    });
-
-    $('.close-nav').on('click', function() {
-        $('body').removeClass('overhide');
-        $('.main-nav').css('display', '');
-        $('.right-menu').css('display', '');
-    });
-});
-
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('.btn-close').on('click', function(){
-	    $('.container-login :input[type=text], .container-login :input[type=password]').css('border', '0');
-	    $('.alert_message_error').hide();
+    $(document).ready(function() {
+        $('.btn-close').on('click', function() {
+            $('.container-login :input[type=text], .container-login :input[type=password]').css('border', '0');
+            $('.alert_message_error').hide();
             $('.container-login').removeClass('login-show');
             $(this).parents('.pop-overlay').hide(500);
             $('.tabs-login label').removeClass('active');
@@ -84,7 +76,7 @@ $(function(){
             $('[name=showsup]').eq(0).prop('checked', true);
         });
 
-        $('.sign-in').on('click', function(){
+        $('.sign-in').on('click', function() {
             // reset action and isajax
             $('#action').val("");
             $('#isajax').val("");
@@ -93,15 +85,15 @@ $(function(){
             $('.container-login').addClass('login-show');
         });
 
-        $('.tabs-login label').on('click', function(){
+        $('.tabs-login label').on('click', function() {
             var parent = $(this).parent();
             parent.find('label').removeClass('active');
             $(this).addClass('active');
         });
-        $('.login-label input').on('focus', function(){
+        $('.login-label input').on('focus', function() {
             $(this).addClass('focused');
-        }).on('blur', function(){
-            if($.trim($(this).val()) == ""){
+        }).on('blur', function() {
+            if ($.trim($(this).val()) == "") {
                 $(this).removeClass('focused');
             }
         });
@@ -109,4 +101,5 @@ $(function(){
 </script>
 {% endblock customjs %}
 </body>
+
 </html>
