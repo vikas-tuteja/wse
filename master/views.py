@@ -9,7 +9,7 @@ from django.http import JsonResponse
 
 from serializers import AreaSerializer, CitySerializer, StateSerializer
 from models import Area, City, State
-from .filters import AreaFilters, AreaqpFilter
+from .filters import AreaFilters, CityFilters
 
 # Create your views here.
 class AreaList( generics.ListAPIView, mygenerics.RelatedView ):
@@ -26,6 +26,7 @@ class CityList( generics.ListAPIView, mygenerics.RelatedView ):
     serializer_class = CitySerializer
     queryset = City.objects.all()
     pagination_class = mygenerics.NoPagination
+    filter_backends = (django_filters.rest_framework.DjangoFilterBackend, CityFilters)
 
     def get(self, request, *args, **kwargs ):
         response = super(CityList, self).get(request, *args, **kwargs )

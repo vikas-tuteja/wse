@@ -23,9 +23,17 @@ class AreaFilters(object):
             return qs
 
 
-class AreaqpFilter(django_filters.FilterSet):
-    city = django_filters.CharFilter(name="city__slug")
+class CityFilters(object):
+    """
+    filters from url patterns, not used as of now
 
-    class Meta:
-        model = Area
-        fields = ('city',)
+    """
+    def filter_queryset(self, request, queryset, view):
+        qs = queryset
+
+        if '/events/' in request.path or '/events-in-' in request.path:
+            existing_events_city = Event.objects.filter(schedule__start_date__gte=datetime.now(), show_on_site=1).prefetch_related('city').values_list('city__slug', flat=True).distinct()
+            qs = qs.filter(slug__in=existing_events_city)
+            return qs
+        else:
+            return qs
