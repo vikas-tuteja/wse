@@ -32,7 +32,11 @@
 
 
         <div class="times-badges">
-            <b>Event Date</b> <time>{{results.0.schedule.0}} - {{results.0.schedule.1}}</time>
+            {% if not results.0.detailed_schedule %}
+                <b>Event Date</b> <time>{{results.0.schedule.0}} - {{results.0.schedule.1}}</time>  
+            {% else %}
+                <b>Event Date</b> <time>{{results.0.detailed_schedule}}</time>
+            {% endif %}
         </div>
         <div class="times-badges">
             <b>{{results.0.schedule.2}}</b> Day(s)

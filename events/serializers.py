@@ -75,6 +75,7 @@ class EventDetailSerializer( ListEventSerializer ):
     is_valid = serializers.SerializerMethodField()
     candidate_info = serializers.SerializerMethodField()
     briefing_datetime = serializers.SerializerMethodField()
+    detailed_schedule = serializers.SerializerMethodField()
 
     class Meta:
         model = Event
@@ -108,6 +109,20 @@ class EventDetailSerializer( ListEventSerializer ):
 
     def get_schedule(self, obj):
         return obj.schedule()
+
+
+    def get_detailed_schedule(self, obj):
+        date_list = set()
+        for each in obj.schedule_set.all():
+            date_list.add(each.start_date)
+            date_list.add(each.end_date)
+
+        final_dates = [x.strftime('%b %d') for x in sorted(list(date_list))]
+        if len(final_dates) > 2:
+            return ', '.join(final_dates)
+        else:
+            return None
+        
 
 
     def get_details(self, obj):
