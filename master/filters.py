@@ -10,12 +10,17 @@ class AreaFilters(object):
 
     """
     def filter_queryset(self, request, queryset, view):
+        qs = queryset
+        city_filter = request.GET.get('city')
+        if city_filter:
+            qs = qs.filter(city__slug=city_filter)
+
         if '/events/' in request.path or '/events-in-' in request.path:
             existing_events_area = Event.objects.filter(schedule__start_date__gte=datetime.now(), show_on_site=1).prefetch_related('area').values_list('area__slug', flat=True).distinct()
-            qs = queryset.filter(slug__in=existing_events_area)
+            qs = qs.filter(slug__in=existing_events_area)
             return qs
         else:
-            return queryset
+            return qs
 
 
 class AreaqpFilter(django_filters.FilterSet):

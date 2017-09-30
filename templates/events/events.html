@@ -2,11 +2,12 @@
             <div class="col right-col">
                 <div class="page-result">
                     <div class="left-result">
-                        <h2><span>{{count}}</span> Events Found in <b>{{results.0.city}}</b></h2>
+                        <h2><span>{{count}}</span> Events Found <b></b></h2>
                     </div>
                     <div class="right-result">
                         <a id="sort_name" data-key="name" data-order="{{sort_order}}"><i class="icon-short-by-name" title="sort by name"></i></a>
                         <a id="sort_date" data-key="date" data-order="{{sort_order}}"><i class="icon-short-by-type" title="sort by date"></i></a>
+                        <div class="filters"><img class="small-image" src="{{STATIC_URL}}shared/images/filters.png"></div>
                     </div>
                 </div>
                 {% for e in results  %}

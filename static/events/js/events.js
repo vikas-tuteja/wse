@@ -45,6 +45,15 @@
 
     }
 
+    function show_filters_for_mobile() {
+        $(".filters").on('click', function() {
+            $("html,body").scrollTop(0);
+            $('.left-fixed').css('left', '0');
+            $('.left-fixed').css('position', 'relative');
+            $('.left-fixed').css('width', '100%');
+        });
+    }
+
     function bind_requirement_popup(options) {
         // bind requirement apply on click
         $(document).on('click', '.requirement_apply', function(e) {
@@ -61,6 +70,7 @@
         //escape key close event
         Common.empty_reqlist_hack();
         Common.bind_key_escape();
+        show_filters_for_mobile();
 
         // search box functionality
         Common.bind_onkeyup(

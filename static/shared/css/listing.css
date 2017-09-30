@@ -643,6 +643,17 @@ body {
   margin: 0 10px 0 0;
 }
 
+.small-image {
+  width: 35px;
+  height: 35px;
+  margin: 0 10px 0 0;
+}
+
+.filters {
+  display: none;
+  float: right;
+}
+
 .whitebg {
   background: white !important;
 }
@@ -1159,5 +1170,10 @@ body {
   max-width: 840px;
   width: 100%;
   margin: 20px auto;
+}
+
+.filters {
+  display: block;
+  float: right;
 }
 }
