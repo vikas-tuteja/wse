@@ -42,7 +42,7 @@ class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
     def get_queryset(self):
         # get events starting from tomorrow order by datetime
         # since cannot apply on same date of event.
-        return Event.objects.filter(schedule__start_date__gt=datetime.now().date(),show_on_site=1).\
+        return Event.objects.filter(schedule__start_date__gte=datetime.now().date(),show_on_site=1).\
             prefetch_related('requirement_set','schedule_set').distinct().order_by('schedule__start_date')
 
     def get(self, request, *args, **kwargs):
