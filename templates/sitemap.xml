@@ -27,12 +27,12 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/contact_us/</loc>
+  <loc>http://www.worksmartevents.com/contact-us/</loc>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/about_us/</loc>
+  <loc>http://www.worksmartevents.com/about-us/</loc>
   <changefreq>daily</changefreq>
   <priority>0.80</priority>
 </url>
@@ -52,92 +52,92 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-mumbai-city/?city=mumbai</loc>
+  <loc>http://www.worksmartevents.com/events-in-mumbai-city/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-pune-city/?city=pune</loc>
+  <loc>http://www.worksmartevents.com/events-in-pune-city/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-andheri/?area=andheri</loc>
+  <loc>http://www.worksmartevents.com/events-in-andheri/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-andheri-east/?area=andheri-east</loc>
+  <loc>http://www.worksmartevents.com/events-in-andheri-east/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-andheri-west/?area=andheri-west</loc>
+  <loc>http://www.worksmartevents.com/events-in-andheri-west/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-bandra/?area=bandra</loc>
+  <loc>http://www.worksmartevents.com/events-in-bandra/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-bhayandar/?area=bhayandar</loc>
+  <loc>http://www.worksmartevents.com/events-in-bhayandar/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-colaba-causeway/?area=colaba-causeway</loc>
+  <loc>http://www.worksmartevents.com/events-in-colaba-causeway/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-kurla-west/?area=kurla-west</loc>
+  <loc>http://www.worksmartevents.com/events-in-kurla-west/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-lower-parel-west/?area=lower-parel-west</loc>
+  <loc>http://www.worksmartevents.com/events-in-lower-parel-west/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-malad/?area=malad</loc>
+  <loc>http://www.worksmartevents.com/events-in-malad/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-mumbai-all/?area=mumbai-all</loc>
+  <loc>http://www.worksmartevents.com/events-in-mumbai-all/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-mumbai-central/?area=mumbai-central</loc>
+  <loc>http://www.worksmartevents.com/events-in-mumbai-central/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-navi-mumbai/?area=navi-mumbai</loc>
+  <loc>http://www.worksmartevents.com/events-in-navi-mumbai/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-pune/?area=pune</loc>
+  <loc>http://www.worksmartevents.com/events-in-pune/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-seepz/?area=seepz</loc>
+  <loc>http://www.worksmartevents.com/events-in-seepz/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-thane/?area=thane</loc>
+  <loc>http://www.worksmartevents.com/events-in-thane/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-vashi/?area=vashi</loc>
+  <loc>http://www.worksmartevents.com/events-in-vashi/</loc>
   <changefreq>daily</changefreq>
   <priority>0.64</priority>
 </url>
@@ -217,32 +217,42 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-mumbai-city/?city=mumbai&amp;page=1</loc>
+  <loc>http://www.worksmartevents.com/events-in-mumbai-city/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-mumbai-city/?city=mumbai&amp;page=2</loc>
+  <loc>http://www.worksmartevents.com/events-in-mumbai-city/?page=2</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-mumbai-city/?city=mumbai&amp;page=3</loc>
+  <loc>http://www.worksmartevents.com/events-in-mumbai-city/?page=3</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-mumbai-city/?city=mumbai&amp;page=4</loc>
+  <loc>http://www.worksmartevents.com/events-in-mumbai-city/?page=4</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events/google/133/</loc>
+  <loc>http://www.worksmartevents.com/events-in-pune-city/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-pune-city/?city=pune&amp;page=1</loc>
+  <loc>http://www.worksmartevents.com/events-in-pune-city/?page=2</loc>
+  <changefreq>daily</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.worksmartevents.com/events-in-pune-city/?page=3</loc>
+  <changefreq>daily</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.worksmartevents.com/events-in-pune-city/?page=4</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
@@ -252,17 +262,17 @@
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-andheri/?page=1&amp;area=andheri</loc>
+  <loc>http://www.worksmartevents.com/events-in-andheri/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-andheri-east/?page=1&amp;area=andheri-east</loc>
+  <loc>http://www.worksmartevents.com/events-in-andheri-east/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-andheri-west/?page=1&amp;area=andheri-west</loc>
+  <loc>http://www.worksmartevents.com/events-in-andheri-west/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
@@ -272,7 +282,7 @@
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-bandra/?page=1&amp;area=bandra</loc>
+  <loc>http://www.worksmartevents.com/events-in-bandra/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
@@ -287,7 +297,7 @@
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-bhayandar/?page=1&amp;area=bhayandar</loc>
+  <loc>http://www.worksmartevents.com/events-in-bhayandar/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
@@ -297,7 +307,7 @@
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-colaba-causeway/?page=1&amp;area=colaba-causeway</loc>
+  <loc>http://www.worksmartevents.com/events-in-colaba-causeway/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
@@ -307,7 +317,7 @@
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-kurla-west/?page=1&amp;area=kurla-west</loc>
+  <loc>http://www.worksmartevents.com/events-in-kurla-west/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
@@ -317,12 +327,12 @@
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-lower-parel-west/?page=1&amp;area=lower-parel-west</loc>
+  <loc>http://www.worksmartevents.com/events-in-lower-parel-west/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-malad/?page=1&amp;area=malad</loc>
+  <loc>http://www.worksmartevents.com/events-in-malad/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
@@ -357,7 +367,7 @@
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-mumbai-all/?page=1&amp;area=mumbai-all</loc>
+  <loc>http://www.worksmartevents.com/events-in-mumbai-all/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
@@ -367,17 +377,22 @@
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-mumbai-central/?page=1&amp;area=mumbai-central</loc>
+  <loc>http://www.worksmartevents.com/events-in-mumbai-central/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-navi-mumbai/?page=1&amp;area=navi-mumbai</loc>
+  <loc>http://www.worksmartevents.com/events-in-navi-mumbai/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-pune/?page=1&amp;area=pune</loc>
+  <loc>http://www.worksmartevents.com/events/google/133/</loc>
+  <changefreq>daily</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://www.worksmartevents.com/events-in-pune/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
@@ -387,7 +402,7 @@
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-seepz/?page=1&amp;area=seepz</loc>
+  <loc>http://www.worksmartevents.com/events-in-seepz/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
@@ -397,7 +412,7 @@
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-thane/?page=1&amp;area=thane</loc>
+  <loc>http://www.worksmartevents.com/events-in-thane/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
@@ -407,7 +422,7 @@
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>http://www.worksmartevents.com/events-in-vashi/?page=1&amp;area=vashi</loc>
+  <loc>http://www.worksmartevents.com/events-in-vashi/?page=1</loc>
   <changefreq>daily</changefreq>
   <priority>0.51</priority>
 </url>
