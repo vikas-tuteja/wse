@@ -30,6 +30,7 @@ from master.sitemap import sitemap, sitemap_redirect
 urlpatterns = [
     url(r'^google7016c5c21c248bea.html', lambda r: HttpResponse("google-site-verification: google7016c5c21c248bea.html", content_type="text/plain")),
     url(r'^sitemap\.xml$', TemplateView.as_view(template_name='sitemap.xml', content_type='text/xml')),
+    url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     url(r'^$', Home.as_view(), name="home"), 
     url(r'^admin/', admin.site.urls),
     url(r'^static/(?P<path>.*)$', django.views.static.serve,  {'document_root': settings.STATIC_ROOT }),

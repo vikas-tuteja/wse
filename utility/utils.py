@@ -121,6 +121,9 @@ def slugify(string):
     newstr = string.lower().replace(" ","-")
     return re.sub('[^a-zA-Z0-9-]', '', newstr)
 
+def unslugify(string):
+    names = string.split("-")
+    return " ".join([x.title() for x in names])
 
 def null_to_empty(func):
     def inner(*args, **kwargs):

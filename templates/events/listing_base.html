@@ -7,10 +7,17 @@
 
 <!-- canonicals -->
 {% block head %}
-<link rel="prev" href="">
-<link rel="next" href="">
-<link rel="canonical" href="">
+
+{% if previous %}
+    <link rel="prev" href="{{previous}}">
+{% endif %}
+{% if next %}
+    <link rel="next" href="{{next}}">
+{% endif %}
+    <link rel="canonical" href="{{canonical}}">
 {% endblock head %}
+
+
 {% block body %}
 <!-- menu bar -->
 {% include "shared/menu.html" %}

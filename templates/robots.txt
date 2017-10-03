@@ -1,0 +1,6 @@
+# robots.txt for http://www.worksmartevents.com/
+
+User-agent: *
+Disallow: /termsandconditions/
+Disallow: /privacypolicy/
+

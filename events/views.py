@@ -16,7 +16,7 @@ from rest_framework.response import Response
 from filters import EventFilters, EventFilterBackend
 from models import Event, Requirement, RequirementApplication, Schedule
 from master.models import Area, City, HighestQualification
-from utility.utils import get_prefix, getobj, slugify, SendMail
+from utility.utils import get_prefix, getobj, slugify, unslugify, SendMail
 from utility.restrictions import AccessToAView
 from events.choices import CANDIDATE_TYPE, CANDIDATE_CLASS, GENDER
 from users.models import CandidateType, LANGUAGE_PROFICIENCY
@@ -62,6 +62,14 @@ class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
         response.data['sort_order'] = get_prefix(request.GET.get('sort'))
         response.data['filters'] = request.GET.dict()
         response.data['type'] = CANDIDATE_TYPE
+
+        if kwargs.get('city_slug'):
+            response.data['location'] = unslugify(kwargs.get('city_slug'))
+
+        if kwargs.get('area_slug'):
+            response.data['location'] = unslugify(kwargs.get('area_slug'))
+        
+        response.data['canonical'] = request.path
 
         return response
 

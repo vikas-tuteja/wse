@@ -3,7 +3,7 @@
             <div class="col left-fixed">
                 <div class="filter-head">
                     <div class="filter-left">
-                        <h3 class="filter-name">Filters</h3>
+                        <p class="filter-name">Filters</p>
                     </div>
                     <div class="filter-right">
                         <span id="clear" class="clear-btn orange">
@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="boxes no-shadow">
-                    <h4 class="bar-head">City<span class="apply clear-btn blue" style="float:right;"><b>Apply</b></span></h4>
+                    <p class="bar-head">City<span class="apply clear-btn blue" style="float:right;"><b>Apply</b></span></p>
                     <div class="filter-content">
                         {% for c in city %}
                             <label><input type="radio" name="city" id="city" value="{{c.slug}}"
@@ -33,7 +33,7 @@
                         {% endfor %}
                     </div>
 
-                    <h4 class="bar-head">Area<span class="apply clear-btn blue" style="float:right;"><b>Apply</b></span></h4>
+                    <p class="bar-head">Area<span class="apply clear-btn blue" style="float:right;"><b>Apply</b></span></p>
                     <div class="filter-content">
                         {% for a in area %}
                             <label><input type="checkbox" name="area" id="area" value="{{a.slug}}"
@@ -48,13 +48,13 @@
                             </label>
                         {% endfor %}
                     </div>
-                    <h4 class="bar-head">Gender<span class="apply clear-btn blue" style="float:right;"><b>Apply</b></span></h4>
+                    <p class="bar-head">Gender<span class="apply clear-btn blue" style="float:right;"><b>Apply</b></span></p>
                     <div class="filter-content">
                         <label><input type="radio" name="gender" id="gender" value="m" {% if filters.gender == "m" %} checked {% endif %}> Male</label>
                         <label><input type="radio" name="gender" id="gender" value="f" {% if filters.gender == "f" %} checked {% endif %}> Female</label>
                     </div>
                                         
-                    <h4 class="bar-head">Event Duration<span class="apply clear-btn blue" style="float:right;"><b>Apply</b></span></h4>
+                    <p class="bar-head">Event Duration<span class="apply clear-btn blue" style="float:right;"><b>Apply</b></span></p>
                     <div class="filter-content">
                         <label><input type="radio" name="duration" id="duration" value="1" {% if filters.duration == "1" %} checked {% endif %}> 1 Day</label>
                         <label><input type="radio" name="duration" id="duration" value="7" {% if filters.duration == "7" %} checked {% endif %}> Upto 7 Days</label>
@@ -62,7 +62,7 @@
                         <label><input type="radio" name="duration" id="duration" value="2" {% if filters.duration == "2" %} checked {% endif %}> Only Weekends</label>
                     </div>
                     
-                    <h4 class="bar-head">Candidate Type<span class="apply clear-btn blue" style="float:right;"><b>Apply</b></span></h4>
+                    <p class="bar-head">Candidate Type<span class="apply clear-btn blue" style="float:right;"><b>Apply</b></span></p>
                     <div class="filter-content">
                         {% for t in type %}
                             <label><input type="checkbox" name="type" id="type" value="{{t.0}}" {% if t.0 in filters.requirement %} checked {%endif%}>{{t.1}}</label>
