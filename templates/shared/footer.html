@@ -1,6 +1,9 @@
 <div id="alert_message" class="alert_message orange">
     <button class="btn-close"><i class="fa fa-times" aria-hidden="true"></i></button>
 </div>
+<div class="boxes blue mt-15" style="margin-bottom:-10px; text-align:center;">
+    WorksmartEvents is available only in <a class="blue" href="{% url 'event_listing_city' city_slug='mumbai' %}">Mumbai.</a> We are expanding &amp; will soon be available across top 8 cities in India.
+</div>
 <div class="footer_wrapper">
     <div class="subscribe">
         {% if not user %}
