@@ -25,7 +25,7 @@
                                 checked>
                                 {{c.name}}
                             {% else %}>
-                                <a href="{% url 'event_listing_city' city_slug=c.slug %}?city={{c.slug}}">
+                                <a href="{% url 'event_listing_city' city_slug=c.slug %}">
                                 {{c.name}}
                                 </a>
                             {% endif %}
@@ -41,7 +41,7 @@
                                 checked>
                                 {{a.name}}
                             {% else %}>
-                                <a href="{% url 'event_listing_area' area_slug=a.slug %}?area={{a.slug}}">
+                                <a href="{% url 'event_listing_area' area_slug=a.slug %}">
                                 {{a.name}}
                                 </a>
                             {% endif %}
