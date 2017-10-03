@@ -1,15 +1,15 @@
 
-<div class="unauthorized smallsub">
     {% if not accessibility %}
+        <div class="unauthorized smallsub">
         <p>You are not authorized to Post an Event.</p>
         {% if not user %}
             <p>Please <a class="force-register" data-user_type="client" style="color:blue;" href="#">Login / Register</a> with us a Client.</p>
         {% else %}
             <p>Please <a style="color:blue;" href="/logout/">Logout</a> first and then Login / Register as a Client.</p>
         {% endif %}
+        </div>
         
     {% else %}
-        </div>
         <div>
         <form id="msform" class="form-style-10">
         <h1>Create an Event<span></span></h1>
@@ -49,22 +49,22 @@
                 <!-- event schedule starts -->
                     <div class="demo-div mt20px">
                         <label class="js-date">
-                            <span>Start Date <b>*</b></span><input type="text" name="start_date_1" id="start_date_1" class=" input"/><span><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img"></span>
+                            <span>Start Date <b>*</b></span><input type="text" name="start_date_1" id="start_date_1" class=" input"/><span><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img" alt="Select Start Date"></span>
                         </label>
                         <label class="js-date">
-                            <span>End Date <b>*</b></span><input type="text" name="end_date_1" id="end_date_1" class=" input"/><span><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img"></span>
+                            <span>End Date <b>*</b></span><input type="text" name="end_date_1" id="end_date_1" class=" input"/><span><img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img" alt="Select End Date"></span>
                         </label>
                         <label class=" js-time"> 
-                            <span>Start Time <b>*</b></span><input type="text" name="start_time_1" id="start_time_1" class=" input timepicker"/><span><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img "></span>
+                            <span>Start Time <b>*</b></span><input type="text" name="start_time_1" id="start_time_1" class=" input timepicker"/><span><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img " alt="Select Start Time"></span>
                         </label>
                         <label class=" js-time">
-                            <span>End Time <b>*</b></span><input type="text" name="end_time_1" id="end_time_1" class=" input timepicker"/><span><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img "></span>
+                            <span>End Time <b>*</b></span><input type="text" name="end_time_1" id="end_time_1" class=" input timepicker"/><span><img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img " alt="Select End Time"></span>
                         </label>
                     </div>
                 <!-- event schedule starts -->
                 <span class="big-input" style="font: 13px Arial, Helvetica, sans-serif;color: #888;">Event scheduled on non-continous days ?<br><br>
                 <div class="schedules"></div>
-                <a class="add_more_schedule"><img class="small-img" src="{{STATIC_URL}}shared/images/calendar-add-128.png">Add More Schedules</a></span>
+                <a class="add_more_schedule"><img class="small-img" alt="Add More Schedules" src="{{STATIC_URL}}shared/images/calendar-add-128.png">Add More Schedules</a></span>
 
             </div>
         <input type="button" name="next" class="next action-button" value="Save & Proceed" id="post_events_1"/>
@@ -161,7 +161,7 @@
               {% endfor %}
               <span class="big-input" style="font: 13px Arial, Helvetica, sans-serif;color: #888;">
                   <a class="add_more_requirements">
-                      <img class="small-img" src="{{STATIC_URL}}shared/images/add1.png">
+                      <img class="small-img" src="{{STATIC_URL}}shared/images/add1.png" alt="Add More Requirements">
                       Add More Requirements
                   </a>
               </span>
@@ -188,13 +188,13 @@
                 <label class="event-inline w-33 wm-50 ws-100">
                     <span class="title  wmin-100">Briefing Date </span><input type="text" name="briefing_datetime" id="briefing_datetime" class=" input"/>
                     <span>
-                    <img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img ">
+                    <img src="{{STATIC_URL}}shared/images/calendar-icon.png" class="medium-img" alt="Select Briefing Date">
                     </span>
                 </label>
                 <label class="event-inline w-33 wm-50 ws-100">
                     <span class="title wmin-100">Briefing Time </span><input type="text" name="briefing_time" id="briefing_time" class=" input timepicker"/>
                     <span>
-                    <img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img ">
+                    <img src="{{STATIC_URL}}shared/images/clock1.jpg" class="square-img" alt="Select Briefing Time">
                     </span>
                 </label>
                 <label class="event-inline w-33 wm-50 ws-100">

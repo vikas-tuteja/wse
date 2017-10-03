@@ -51,14 +51,14 @@
                     <input type="text" readonly class="dash-input" value="{{results.0.candidate_info.candidates_required.f}}">
                     <!--i class="icon-girl"></i-->
                     <span>
-                        <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/women.svg">
+                        <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/women.svg" alt="Female Required">
                     </span>
             {% endif %}
             {% if results.0.candidate_info.candidates_required.m %}
                     <input type="text" readonly class="dash-input" value="{{results.0.candidate_info.candidates_required.m}}">
                     <!--i class="icon-boy"></i-->
                     <span>
-                        <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/men.svg">
+                        <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/men.svg" alt="Male Required">
                     </span>
         {% endif %}
         </div>
@@ -82,7 +82,7 @@
             <button id="{{results.0.slug}}~~{{results.0.name}}~~{{results.0.id}}" class="event_apply btn btn-blue mt-15" disabled="true"> Cannot Apply </button><p class="sub" style="font-size:11px;color:red;">
             
         {% else %}
-            <button id="{{results.0.slug}}~~{{results.0.name}}~~{{results.0.id}}" {% if not results.0.is_applied %}class="event_apply btn btn-blue mt-15">Apply {%else%} class="event_apply btn btn-applied mt-15" disabled="true"> <img class="square-img" src = "{{STATIC_URL}}shared/images/tick.png"> {{results.0.is_applied|title}}{%endif%}</button><p class="sub" style="font-size:11px;color:red;">
+            <button id="{{results.0.slug}}~~{{results.0.name}}~~{{results.0.id}}" {% if not results.0.is_applied %}class="event_apply btn btn-blue mt-15">Apply {%else%} class="event_apply btn btn-applied mt-15" disabled="true"> <img class="square-img" alt="Applied" src = "{{STATIC_URL}}shared/images/tick.png"> {{results.0.is_applied|title}}{%endif%}</button><p class="sub" style="font-size:11px;color:red;">
         {% endif %}
 
         </div>

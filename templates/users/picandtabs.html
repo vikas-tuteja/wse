@@ -1,7 +1,7 @@
 <div class="columns-profile">
     <div class="user-pic">
         {% if results.0.image %}
-            <img src="{{results.0.image}}" alt="">
+            <img src="{{results.0.image}}" alt="{{results.0.username}}">
         {% else %}
             <img src="{{STATIC_URL}}shared/images/default.png" alt="image not available">
         {% endif %}

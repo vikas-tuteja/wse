@@ -7,7 +7,7 @@
                     <div class="right-result">
                         <a id="sort_name" data-key="name" data-order="{{sort_order}}"><i class="icon-short-by-name" title="sort by name"></i></a>
                         <a id="sort_date" data-key="date" data-order="{{sort_order}}"><i class="icon-short-by-type" title="sort by date"></i></a>
-                        <div class="filters"><img class="small-image" src="{{STATIC_URL}}shared/images/filters.png"></div>
+                        <div class="filters"><img class="small-image" src="{{STATIC_URL}}shared/images/filters.png" alt="Filter Events"></div>
                     </div>
                 </div>
                 {% for e in results  %}
@@ -43,7 +43,7 @@
                                             <input type="text" readonly class="dash-input" value="{{e.candidate_info.candidates_required.f}}">
                                             {#<!--i class="icon-girl"></i-->#}
                                             <span>
-                                                <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/women.svg">
+                                                <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/women.svg" alt="Female Required">
                                             </span>
                                         </div>
                                     </li>
@@ -54,7 +54,7 @@
                                             <input type="text" readonly class="dash-input" value="{{e.candidate_info.candidates_required.m}}">
                                             {#<!--i class="icon-boy"></i-->#}
                                             <span>
-                                                <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/men.svg">
+                                                <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/men.svg" alt="Male Required">
                                             </span>
                                         </div>
                                     </li>
@@ -68,7 +68,7 @@
                                 <i class="icon-rupees"></i>
                                 <p class="event-price"><span style="color:#ea6e32;font-size:24px;">{{e.candidate_info.paisa}}</span>/Day</p>
                             </div>
-                            <button id="{{e.slug}}~~{{e.name}}~~{{e.id}}" {% if not e.is_applied %}class="event_apply btn btn-blue mt-15">Apply {%else%} class="event_apply btn btn-applied mt-15" disabled="true"> <img class="square-img" src = "{{STATIC_URL}}shared/images/tick.png"> {{e.is_applied|title}}{%endif%}</button><p class="sub" style="font-size:11px;color:red;">
+                            <button id="{{e.slug}}~~{{e.name}}~~{{e.id}}" {% if not e.is_applied %}class="event_apply btn btn-blue mt-15">Apply {%else%} class="event_apply btn btn-applied mt-15" disabled="true"> <img class="square-img" src = "{{STATIC_URL}}shared/images/tick.png" alt="Applied"> {{e.is_applied|title}}{%endif%}</button><p class="sub" style="font-size:11px;color:red;">
                         </div>
                     </div>
                 {% endfor %}
