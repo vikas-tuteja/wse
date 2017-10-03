@@ -10,8 +10,13 @@ class EventFilterBackend(object):
     """
     def filter_queryset(self, request, queryset, view):
         area_slug = view.kwargs.get('area_slug')
+        city_slug = view.kwargs.get('city_slug')
+
         if area_slug and not request.GET.get('area'):
             queryset = queryset.filter(area__slug=area_slug)
+
+        if city_slug and not request.GET.get('city'):
+            queryset = queryset.filter(city__slug=city_slug)
 
         userrole = view.kwargs.get('userrole', 'candidate')
         if userrole == 'candidate':
