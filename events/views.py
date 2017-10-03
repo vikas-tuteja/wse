@@ -69,7 +69,7 @@ class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
         if kwargs.get('area_slug'):
             response.data['location'] = unslugify(kwargs.get('area_slug'))
         
-        response.data['canonical'] = request.path
+        response.data['canonical'] = request.get_full_path()
 
         return response
 
