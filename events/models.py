@@ -5,6 +5,7 @@ from itertools import chain
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 from choices import *
 from django_redis import get_redis_connection
@@ -123,6 +124,18 @@ class RequirementApplication(models.Model):
 
     def mobile(self):
         return self.candidate.userdetail.mobile
+
+    def user_page(self):
+        return '<a target="_blank" href="/admin/users/userdetail/%s/">User detail</a>' % self.candidate.userdetail.id
+
+    def event_page(self):
+        return '<a target="_blank" href="%s">Event detail</a>' % reverse('event_detail', kwargs={
+            'event_slug':self.requirement.event.slug,
+            'event_id':self.requirement.event.id
+        })
+
+    event_page.allow_tags = True
+    user_page.allow_tags = True
 
 
 class AllocationStatus(models.Model):

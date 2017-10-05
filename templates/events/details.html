@@ -47,7 +47,7 @@
         </div>
         <!--- male female required -->
         <div class="event-girls align-txtimg mt-15">
-        {% if results.0.candidate_info.candidates_required.f %}
+            {% if results.0.candidate_info.candidates_required.f %}
                     <input type="text" readonly class="dash-input" value="{{results.0.candidate_info.candidates_required.f}}">
                     <!--i class="icon-girl"></i-->
                     <span>
@@ -60,7 +60,11 @@
                     <span>
                         <img class="male-female-icon" src="{{STATIC_URL}}/shared/images/men.svg" alt="Male Required">
                     </span>
-        {% endif %}
+            {% endif %}
+            {% if results.0.candidate_info.candidates_required.a %}
+                    <input type="text" readonly class="dash-input" value="{{results.0.candidate_info.candidates_required.a}}"><span class="sub">People required</span>
+            {% endif %}
+
         </div>
         <div style="padding-top:20px;">
             <p><span class="blue">Contact Person :</span> <span class="sub">Mehul Tuteja</span></p>
@@ -135,6 +139,7 @@
         </div>
     </div>
     <div class="col ad-box-big">
+        {% include "shared/usermeter.html"%}
         {% include "shared/quicklinks.html"%}
         {% include "shared/follow.html"%}
         {% include "shared/adbox.html"%}

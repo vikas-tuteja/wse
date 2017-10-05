@@ -34,7 +34,7 @@ def bulk_update_allocation_status_for_candidates(modeladmin, request, queryset):
                 )
 
 class RequirementApplicationAdmin(admin.ModelAdmin):
-    list_display = ('requirement', 'candidate', 'application_datetime', 'application_status', 'mobile', 'allocation_status')
+    list_display = ('requirement', 'candidate', 'application_datetime', 'application_status', 'mobile', 'allocation_status', 'event_page', 'user_page')
     search_fields = ('requirement__event__name', )
     action_form = AllocationStatusForm
     actions = [bulk_update_allocation_status_for_candidates]

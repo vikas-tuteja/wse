@@ -26,7 +26,7 @@ from master.views import AreaList, CityList, StateList
 from master.models import HighestQualification, Area, City
 from users.choices import LOOKS, LANGUAGE_PROFICIENCY
 
-from filters import UserFilters
+from .filters import UserFilters
 from django.conf import settings
 
 # Create your views here.
@@ -288,7 +288,7 @@ class UserProfileCompletionMeter( generics.ListAPIView ):
         meter = ComputeCompletion(response.data['results'])
         
         return JsonResponse(data={
-            'profile_completed':meter.compute_percent(),
+            'profile_completed':int(meter.compute_percent()),
         })
 
 """class UpdateUserInfo( generics.UpdateAPIView ):

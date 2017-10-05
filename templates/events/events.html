@@ -63,6 +63,9 @@
                                         </div>
                                     </li>
                                     {% endif %}
+                                    {% if e.candidate_info.candidates_required.a %}
+                                            <input type="text" readonly class="dash-input" value="{{e.candidate_info.candidates_required.a}}"><span class="sub">People required</span>
+                                    {% endif %}
                                 </ol>
                             </div>
                             </a>
@@ -83,6 +86,7 @@
                 </div>
             </div>
             <div class="col ad-box">
+                {% include "shared/usermeter.html"%}
                 {% include "shared/quicklinks.html"%}
                 {% include "shared/follow.html"%}
                 {% include "shared/adbox.html"%}

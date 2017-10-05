@@ -3,6 +3,72 @@
     function init(options) {
     }
     
+    function guage_callback(meter_pointer) {
+        var opts = {
+            angle: -0.2, // The span of the gauge arc
+            lineWidth: 0.2, // The line thickness
+            radiusScale: 1, // Relative radius
+            pointer: {
+                length: 0.57, // // Relative to gauge radius
+                strokeWidth: 0.033, // The thickness
+                color: '#000000' // Fill color
+          },
+            limitMax: false,     // If false, max value increases automatically if value > maxValue
+            limitMin: false,     // If true, the min value of the gauge will be fixed
+            colorStart: '#6FADCF',   // Colors
+            colorStop: '#8FC0DA',    // just experiment with them
+            strokeColor: '#E0E0E0',  // to see which ones work best for you
+            generateGradient: true,
+            highDpiSupport: true,     // High resolution support
+            staticLabels: {
+            font: "10px sans-serif",  // Specifies font
+            labels: [0, 20, 40, 60, 80, 100],  // Print labels at these values
+            color: "#000000",  // Optional: Label text color
+            fractionDigits: 0  // Optional: Numerical precision. 0=round off.
+            },
+            staticZones: [
+                {strokeStyle: "#F03E3E", min: 0, max: 20}, // Red from 100 to 130
+                {strokeStyle: "#FFDD00", min: 20, max: 40}, // yellow
+                {strokeStyle: "#6fadcf", min: 40, max: 100}, // blue
+                ],
+        };
+        var percentColors = [[0.0, "red" ], [0.20, "#f9c802"], [1.0, "#ff0000"]];
+        
+        var target = document.getElementById('usermeter'); // your canvas element
+        var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+        gauge.maxValue = 100; // set max gauge value
+        gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+        gauge.animationSpeed = 22; // set animation speed (32 is default value)
+        gauge.set(meter_pointer); // set actual value
+    }
+
+    function load_scripts_async(user_id, script_path, callback, ajax) {
+
+        $.getScript( script_path )
+          .done(function( script, textStatus ) {
+                var data = {
+                    'userid':user_id,
+                    'format': 'json',
+                }
+                var x = ajaxcall(ajax, 'GET', data);
+            
+                x.done(function(resp){
+                    guage_callback(resp.profile_completed);
+                });           
+          })
+          .fail(function( jqxhr, settings, exception ) {
+            console.log( 'Failed' );
+        });
+    }
+
+    function load_iframe_async(which) {
+        if(which=='fb') {
+            $(window).load(function() {
+                $('#fb_load').hide();
+                $('#fb').attr('src', Common.fb);
+            });
+        }
+    }
     /*
     * input - search element id, result div id, ajax url, params
     * output - appends 10 results in the div
@@ -338,6 +404,8 @@
     Common.update_profile = "/update-info/";
     Common.check_eventexists = "/event-exists/";
     Common.change_password = "/change-password/";
+    Common.fb = "//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fworksmartofficial&width=140&layout=button_count&action=like&size=small&show_faces=true&share=true&height=46&appId=1667073276882154";
+    Common.usermeter = "/user-meter/";
 
 
     // list of all messages
@@ -378,5 +446,8 @@
     Common.empty_reqlist_hack = empty_reqlist_hack;
     Common.remove_error_class = remove_error_class;
     Common.bind_city_area_filter = bind_city_area_filter;
+    Common.load_scripts_async = load_scripts_async;
+    Common.load_iframe_async = load_iframe_async;
+    Common.guage_callback = guage_callback;
 
 })($,(window.Common = window.Common || {}));

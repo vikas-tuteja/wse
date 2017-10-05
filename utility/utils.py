@@ -60,7 +60,6 @@ class ComputeCompletion(object):
         if percent < 20:
             percent = 20
         
-        percent = "%s%s" %(percent, "%")
         return percent
 
 from urllib import urlencode

@@ -1134,6 +1134,14 @@ body {
   margin-top: -5px;
 }
 
+.usermeter {
+  width: 100%;
+}
+
+.align-center {
+  text-align: center;
+}
+
 .dash-tag {
   /*background-color: #ccc;*/
   border: 1px solid #787878;
