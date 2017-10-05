@@ -12,6 +12,10 @@ class AreaFilters(object):
     def filter_queryset(self, request, queryset, view):
         qs = queryset
         city_filter = request.GET.get('city')
+        if not city_filter:
+            try: city_filter = request.resolver_match.kwargs.get('city_slug')
+            except: pass
+            
         if city_filter:
             qs = qs.filter(city__slug=city_filter)
 
