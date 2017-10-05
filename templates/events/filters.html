@@ -21,7 +21,7 @@
                     <div class="filter-content">
                         {% for c in city %}
                             <label><input type="radio" name="city" id="city" value="{{c.slug}}"
-                            {% if c.slug in filters.city %}
+                            {% if c.slug in filters.city  or c.slug == location.slug %}
                                 checked>
                                 {{c.name}}
                             {% else %}>
@@ -37,7 +37,7 @@
                     <div class="filter-content">
                         {% for a in area %}
                             <label><input type="checkbox" name="area" id="area" value="{{a.slug}}"
-                            {% if a.slug in filters.area %}
+                            {% if a.slug in filters.area or a.slug == location.slug %}
                                 checked>
                                 {{a.name}}
                             {% else %}>

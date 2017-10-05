@@ -64,10 +64,17 @@ class EventListing( generics.ListAPIView, mygenerics.RelatedView ):
         response.data['type'] = CANDIDATE_TYPE
 
         if kwargs.get('city_slug'):
-            response.data['location'] = unslugify(kwargs.get('city_slug'))
+            response.data['location'] = {
+                'name': unslugify(kwargs.get('city_slug')),
+                'slug': kwargs.get('city_slug')
+            }
 
         if kwargs.get('area_slug'):
-            response.data['location'] = unslugify(kwargs.get('area_slug'))
+            response.data['location'] = {
+                'name': unslugify(kwargs.get('area_slug')),
+                'slug': kwargs.get('area_slug'),
+            }
+        
         
         response.data['canonical'] = request.get_full_path()
 
