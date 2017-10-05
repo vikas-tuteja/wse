@@ -62,12 +62,16 @@
     }
 
     function load_iframe_async(which) {
-        if(which=='fb') {
-            $(window).load(function() {
+        $(window).load(function() {
+            if(which=='fb') {
                 $('#fb_load').hide();
                 $('#fb').attr('src', Common.fb);
-            });
-        }
+            }
+            else if(which=='youtube') {
+                $('#youtube_load').hide();
+                $('#youtube').attr('src', Common.youtube);
+            }
+        });
     }
     /*
     * input - search element id, result div id, ajax url, params
@@ -404,8 +408,10 @@
     Common.update_profile = "/update-info/";
     Common.check_eventexists = "/event-exists/";
     Common.change_password = "/change-password/";
-    Common.fb = "//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fworksmartofficial&width=140&layout=button_count&action=like&size=small&show_faces=true&share=true&height=46&appId=1667073276882154";
+
     Common.usermeter = "/user-meter/";
+    Common.fb = "http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fworksmartofficial&width=140&layout=button_count&action=like&size=small&show_faces=true&share=true&height=46&appId=1667073276882154";
+    Common.youtube = "http://www.youtube.com/embed/gP639ZSQ8xk";
 
 
     // list of all messages

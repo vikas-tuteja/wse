@@ -183,6 +183,7 @@
             Common.load_scripts_async(options.user, "/static/shared/js/guage.js", Common.guage_callback, Common.usermeter);
         }
         Common.load_iframe_async("fb");
+        Common.load_iframe_async("youtube");
     }
     
 
