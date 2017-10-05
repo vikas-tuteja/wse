@@ -139,7 +139,9 @@
         </div>
     </div>
     <div class="col ad-box-big">
-        {% include "shared/usermeter.html"%}
+        {% if user %}
+            {% include "shared/usermeter.html"%}
+        {% endif %}
         {% include "shared/quicklinks.html"%}
         {% include "shared/follow.html"%}
         {% include "shared/adbox.html"%}
