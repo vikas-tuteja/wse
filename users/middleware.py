@@ -42,7 +42,7 @@ class BaseMiddleware(MiddlewareMixin):
                     meta = {
                         'title':eval(obj.title),
                         'keywords':obj.keywords,
-                        'description':obj.description,
+                        'description':eval(obj.description),
                     }
                     response.data['meta'] = meta
 
