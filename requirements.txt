@@ -5,7 +5,7 @@ django-filter==1.0.4
 django-filters==0.2.1
 django-js-asset==1.2.2
 django-redis==4.11.0
-djangorestframework==3.6.3
+djangorestframework==3.9.1
 mysqlclient==1.4.6
 olefile==0.44
 Pillow==4.1.1
