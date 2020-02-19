@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from models import Area, City, State
+from .models import Area, City, State
 
 class AreaSerializer( serializers.ModelSerializer ):
     #city = serializers.ReadOnlyField(source='city.name')

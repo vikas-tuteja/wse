@@ -13,9 +13,9 @@ from django_redis import get_redis_connection
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.core.urlresolvers import reverse
 
-from models import UserDetail, UserRole, ClientAttribute, CandidateAttribute
+from .models import UserDetail, UserRole, ClientAttribute, CandidateAttribute
 from utility.utils import ComputeCompletion, form_url, getobj, SendMail
-from serializers import UserSerializer, AuthUserSerializer, UserMeterSerializer
+from .serializers import UserSerializer, AuthUserSerializer, UserMeterSerializer
 from events.views import EventListing
 from events.models import AllocationStatus
 from events.serializers import ProfileEventSerializer

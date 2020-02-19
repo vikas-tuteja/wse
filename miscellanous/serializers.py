@@ -1,6 +1,6 @@
 import json
 from rest_framework import serializers
-from models import Miscellaneous, Testimonial, Article
+from .models import Miscellaneous, Testimonial, Article
 from users.serializers import AuthUserSer
 
 class FaqSerializer( serializers.ModelSerializer ):

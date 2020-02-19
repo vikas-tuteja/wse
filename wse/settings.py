@@ -25,7 +25,7 @@ SECRET_KEY = 'rjsddd!3e-$91)h=+v(*d#@$j@!yxw#(-(+xkmmegh36i3quuu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.worksmartevents.com', 'worksmartevents.com']
+ALLOWED_HOSTS = ['www.worksmartevents.com', 'worksmartevents.com', '127.0.0.1']
 
 
 # Application definition
@@ -96,8 +96,8 @@ WSGI_APPLICATION = 'wse.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'wse',                      # Or path to database file if using sqlite3.
-        'USER': 'root',                      # Not used with sqlite3.
+        'NAME': 'wse1',                      # Or path to database file if using sqlite3.
+        'USER': 'wse',                      # Not used with sqlite3.
         'PASSWORD': 'wse@1234',                  # Not used with sqlite3.
         'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.

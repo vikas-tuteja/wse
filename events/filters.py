@@ -1,6 +1,6 @@
 import django_filters
 
-from models import Event
+from .models import Event
 
 
 class EventFilterBackend(object):

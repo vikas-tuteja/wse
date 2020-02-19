@@ -4,8 +4,8 @@ from __future__ import unicode_literals
 from django.contrib import admin
 from django import forms
 
-from models import * 
-from choices import ALLOCATION_STATUS
+from .models import * 
+from .choices import ALLOCATION_STATUS
 
 from django.contrib.admin.helpers import ActionForm
 # ActionForm is the default form used by Django

@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from models import MetaData
-from forms import MyModelForm
+from .models import MetaData
+from .forms import MyModelForm
 
 # Register your models here.
 

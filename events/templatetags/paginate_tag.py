@@ -1,6 +1,6 @@
 import math
 import urllib
-import urlparse
+import urllib.parse as urlparse
 from django import template
 from django.template import Library
 from django.template.base import token_kwargs
@@ -25,7 +25,7 @@ class PaginateNode(template.Node):
         prevpage = max(1,currentpage-1)
         urlparts = urlparse.urlsplit(requrl)
         query_dict = dict(urlparse.parse_qs(urlparts.query))
-        query_dict = { k:','.join(v) for k,v in query_dict.iteritems() if k!= 'alert_message'}
+        query_dict = { k:','.join(v) for k,v in query_dict.items() if k!= 'alert_message'}
         query_dict['page'] = prevpage
         return totalpages, start, end, nextpage, urlparts, query_dict
 

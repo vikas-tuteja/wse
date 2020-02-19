@@ -13,8 +13,8 @@ from utility import mygenerics
 from rest_framework import generics
 from master.views import AreaList, CityList
 from rest_framework.response import Response
-from filters import EventFilters, EventFilterBackend
-from models import Event, Requirement, RequirementApplication, Schedule
+from .filters import EventFilters, EventFilterBackend
+from .models import Event, Requirement, RequirementApplication, Schedule
 from master.models import Area, City, HighestQualification
 from utility.utils import get_prefix, getobj, slugify, unslugify, SendMail
 from utility.restrictions import AccessToAView

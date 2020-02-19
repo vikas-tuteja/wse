@@ -7,8 +7,8 @@ from rest_framework import generics
 from utility import mygenerics
 from django.http import JsonResponse
 
-from serializers import AreaSerializer, CitySerializer, StateSerializer
-from models import Area, City, State
+from .serializers import AreaSerializer, CitySerializer, StateSerializer
+from .models import Area, City, State
 from .filters import AreaFilters, CityFilters
 
 # Create your views here.

@@ -4,7 +4,7 @@ from collections import OrderedDict
 
 from users.models import CandidateType
 from users.choices import LANGUAGE_PROFICIENCY
-from models import Event, Requirement, RequirementApplication
+from .models import Event, Requirement, RequirementApplication
 
 class ListEventSerializer( serializers.ModelSerializer ):
     client = serializers.CharField(read_only=True, source='client.auth_user.username')

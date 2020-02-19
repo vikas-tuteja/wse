@@ -1,7 +1,7 @@
 import django_filters
 from datetime import datetime
 
-from models import Area
+from .models import Area
 from events.models import Event
 
 class AreaFilters(object):

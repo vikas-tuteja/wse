@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from django.contrib.auth.models import User
-from models import UserDetail, CandidateAttribute
+from .models import UserDetail, CandidateAttribute
 from utility.fields import UserDetailFields, ClientAttributeFields, CandidateAttributeFields
 from utility.utils import null_to_empty, substring
 

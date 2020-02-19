@@ -1,5 +1,5 @@
 from django import forms
-from models import MetaData
+from .models import MetaData
 from django.template import Template, TemplateSyntaxError
 
 class MyModelForm(forms.ModelForm):

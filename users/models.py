@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django_redis import get_redis_connection
 
 from master.models import Area, State, City, HighestQualification
-from choices import *
+from .choices import *
 from django.conf import settings
 
 def uploadpath(instance, filename):

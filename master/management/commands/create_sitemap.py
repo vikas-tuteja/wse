@@ -19,7 +19,7 @@ sitemaps = {
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        print "=/= " * 20, "\nSitemap creation started @ %s" %(datetime.datetime.now())
+        print("=/= " * 20, "\nSitemap creation started @ %s" %(datetime.datetime.now()))
         count = -1
         if args:
             count = int(args[0]) if args[0].isdigit() else -1
@@ -87,7 +87,7 @@ class Command(BaseCommand):
 
             if not SuperSitemap.write_file.closed:
                     SuperSitemap.write_file.close()
-        except Exception, e:
+        except Exception as e:
             error_stream = traceback.format_exc()
             sys.stdout.write(error_stream)
             sys.stdout.write('\nExiting with error\n'+'*'*30+'\n')

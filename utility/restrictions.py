@@ -1,4 +1,4 @@
-from utils import getattrd
+from .utils import getattrd
 
 class AccessToAView(object):
     """

@@ -7,7 +7,7 @@ from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
-from choices import *
+from .choices import *
 from django_redis import get_redis_connection
 from users.choices import LANGUAGE_PROFICIENCY
 from users.models import UserDetail, CandidateType 

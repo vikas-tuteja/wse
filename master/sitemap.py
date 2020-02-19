@@ -1,9 +1,9 @@
 import os
 import stat
 import random
-import httplib
+import http.client as httplib
 import datetime
-from urlparse import urlparse
+import urllib.parse as urlparse
 from django.template import loader
 from django.utils.http import http_date
 from django.utils.encoding import smart_str

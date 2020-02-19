@@ -1,12 +1,12 @@
 import re
-import Queue
+import queue
 import logging
 import threading
 from django.conf import settings
 from django.core.mail import send_mail
 
 
-email_queue = Queue.Queue()
+email_queue = queue.Queue()
 logger = logging.getLogger('email_logs')
 
 class Mask(object):
@@ -62,7 +62,7 @@ class ComputeCompletion(object):
         
         return percent
 
-from urllib import urlencode
+from urllib.parse import urlencode
 def get_prefix(name=None):
     """
     if sort=data, then return None
@@ -103,7 +103,7 @@ def getattrd(obj, name, default=NoDefaultProvided):
 
     try:
         return reduce(getattr, name.split("."), obj)
-    except AttributeError, e:
+    except AttributeError as e:
         if default != NoDefaultProvided:
             return default
     except Exception:

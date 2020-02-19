@@ -1,5 +1,5 @@
 import django_filters
-from models import UserDetail
+from .models import UserDetail
 
 class UserFilters(django_filters.FilterSet):
     username = django_filters.Filter(method = "get_username")

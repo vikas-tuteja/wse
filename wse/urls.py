@@ -23,7 +23,7 @@ from django.views.generic import TemplateView
 from master.management.commands.create_sitemap import sitemaps
 from django.contrib.sitemaps.views import sitemap as dsitemap
 from django.conf.urls import include
-from views import Home
+from .views import Home
 from master.sitemap import sitemap, sitemap_redirect
 
 # url patterns here
