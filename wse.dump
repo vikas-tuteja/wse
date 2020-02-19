@@ -1,0 +1,948 @@
+-- MySQL dump 10.13  Distrib 5.7.16, for Linux (x86_64)
+--
+-- Host: localhost    Database: wse
+-- ------------------------------------------------------
+-- Server version	5.7.16-0ubuntu0.16.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `auth_group`
+--
+
+DROP TABLE IF EXISTS `auth_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_group` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(80) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_group`
+--
+
+LOCK TABLES `auth_group` WRITE;
+/*!40000 ALTER TABLE `auth_group` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_group` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_group_permissions`
+--
+
+DROP TABLE IF EXISTS `auth_group_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_group_permissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `group_id` int(11) NOT NULL,
+  `permission_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_group_permissions_group_id_permission_id_0cd325b0_uniq` (`group_id`,`permission_id`),
+  KEY `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` (`permission_id`),
+  CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
+  CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_group_permissions`
+--
+
+LOCK TABLES `auth_group_permissions` WRITE;
+/*!40000 ALTER TABLE `auth_group_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_group_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_permission`
+--
+
+DROP TABLE IF EXISTS `auth_permission`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `content_type_id` int(11) NOT NULL,
+  `codename` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
+  CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_permission`
+--
+
+LOCK TABLES `auth_permission` WRITE;
+/*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
+INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can add group',2,'add_group'),(5,'Can change group',2,'change_group'),(6,'Can delete group',2,'delete_group'),(7,'Can add permission',3,'add_permission'),(8,'Can change permission',3,'change_permission'),(9,'Can delete permission',3,'delete_permission'),(10,'Can add user',4,'add_user'),(11,'Can change user',4,'change_user'),(12,'Can delete user',4,'delete_user'),(13,'Can add content type',5,'add_contenttype'),(14,'Can change content type',5,'change_contenttype'),(15,'Can delete content type',5,'delete_contenttype'),(16,'Can add session',6,'add_session'),(17,'Can change session',6,'change_session'),(18,'Can delete session',6,'delete_session'),(19,'Can add area',7,'add_area'),(20,'Can change area',7,'change_area'),(21,'Can delete area',7,'delete_area'),(22,'Can add state',8,'add_state'),(23,'Can change state',8,'change_state'),(24,'Can delete state',8,'delete_state'),(25,'Can add city',9,'add_city'),(26,'Can change city',9,'change_city'),(27,'Can delete city',9,'delete_city'),(28,'Can add Client Attributes (to be filled only if user type is client)',10,'add_clientattribute'),(29,'Can change Client Attributes (to be filled only if user type is client)',10,'change_clientattribute'),(30,'Can delete Client Attributes (to be filled only if user type is client)',10,'delete_clientattribute'),(31,'Can add user role',11,'add_userrole'),(32,'Can change user role',11,'change_userrole'),(33,'Can delete user role',11,'delete_userrole'),(34,'Can add candidate type',12,'add_candidatetype'),(35,'Can change candidate type',12,'change_candidatetype'),(36,'Can delete candidate type',12,'delete_candidatetype'),(37,'Can add Candidate Attributes (to be filled only if user type is cordinator)',13,'add_candidateattribute'),(38,'Can change Candidate Attributes (to be filled only if user type is cordinator)',13,'change_candidateattribute'),(39,'Can delete Candidate Attributes (to be filled only if user type is cordinator)',13,'delete_candidateattribute'),(40,'Can add Cordinator Attributes (to be filled only if user type is cordinator)',14,'add_cordinatorattribute'),(41,'Can change Cordinator Attributes (to be filled only if user type is cordinator)',14,'change_cordinatorattribute'),(42,'Can delete Cordinator Attributes (to be filled only if user type is cordinator)',14,'delete_cordinatorattribute'),(43,'Can add Create / Modify User',15,'add_userdetail'),(44,'Can change Create / Modify User',15,'change_userdetail'),(45,'Can delete Create / Modify User',15,'delete_userdetail'),(46,'Can add event',16,'add_event'),(47,'Can change event',16,'change_event'),(48,'Can delete event',16,'delete_event'),(49,'Can add schedule',17,'add_schedule'),(50,'Can change schedule',17,'change_schedule'),(51,'Can delete schedule',17,'delete_schedule'),(52,'Can add requirement application',18,'add_requirementapplication'),(53,'Can change requirement application',18,'change_requirementapplication'),(54,'Can delete requirement application',18,'delete_requirementapplication'),(55,'Can add requirement',19,'add_requirement'),(56,'Can change requirement',19,'change_requirement'),(57,'Can delete requirement',19,'delete_requirement'),(58,'Can add allocation status',20,'add_allocationstatus'),(59,'Can change allocation status',20,'change_allocationstatus'),(60,'Can delete allocation status',20,'delete_allocationstatus'),(61,'Can add meta data',21,'add_metadata'),(62,'Can change meta data',21,'change_metadata'),(63,'Can delete meta data',21,'delete_metadata'),(64,'Can add miscellaneous',22,'add_miscellaneous'),(65,'Can change miscellaneous',22,'change_miscellaneous'),(66,'Can delete miscellaneous',22,'delete_miscellaneous'),(67,'Can add common publish',23,'add_commonpublish'),(68,'Can change common publish',23,'change_commonpublish'),(69,'Can delete common publish',23,'delete_commonpublish'),(70,'Can add testimonial',24,'add_testimonial'),(71,'Can change testimonial',24,'change_testimonial'),(72,'Can delete testimonial',24,'delete_testimonial'),(73,'Can add article',25,'add_article'),(74,'Can change article',25,'change_article'),(75,'Can delete article',25,'delete_article'),(76,'Can add highest qualification',26,'add_highestqualification'),(77,'Can change highest qualification',26,'change_highestqualification'),(78,'Can delete highest qualification',26,'delete_highestqualification');
+/*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user`
+--
+
+DROP TABLE IF EXISTS `auth_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `password` varchar(128) NOT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `is_superuser` tinyint(1) NOT NULL,
+  `username` varchar(150) NOT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `is_staff` tinyint(1) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `date_joined` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `auth_user_email_1c89df09_uniq` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user`
+--
+
+LOCK TABLES `auth_user` WRITE;
+/*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$36000$Db20526YDxBM$T7xyKkAEzbgMpE8n5kvxf+HhCFVQrMZQNDGCRLJ1qnM=','2017-09-08 06:38:23',1,'vikastuteja21@gmail.com','Vikas','Kumar','vikastuteja21@gmail.com',1,1,'2017-07-31 09:47:57'),(2,'pbkdf2_sha256$36000$y30BGft7xD7m$jink4+UBdpWDeMWBZvuPQgAOsVuwc97lpcsr5ACseVI=','2017-09-09 07:33:39',1,'testclient1@gmail.com','','','',0,1,'2017-08-03 18:37:50'),(3,'pbkdf2_sha256$36000$I8jXnpBVQuQV$Gc+oALA+pSomqeuExXQTfGxkkHIjrHA4iDiG6xnkgiU=','2017-08-29 05:56:58',1,'worksmartevent@gmail.com','','','worksmartevent@gmail.com',0,1,'2017-08-29 05:56:57');
+/*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user_groups`
+--
+
+DROP TABLE IF EXISTS `auth_user_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_user_groups_user_id_group_id_94350c0c_uniq` (`user_id`,`group_id`),
+  KEY `auth_user_groups_group_id_97559544_fk_auth_group_id` (`group_id`),
+  CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
+  CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user_groups`
+--
+
+LOCK TABLES `auth_user_groups` WRITE;
+/*!40000 ALTER TABLE `auth_user_groups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_user_groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `auth_user_user_permissions`
+--
+
+DROP TABLE IF EXISTS `auth_user_user_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `auth_user_user_permissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `permission_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq` (`user_id`,`permission_id`),
+  KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`),
+  CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
+  CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `auth_user_user_permissions`
+--
+
+LOCK TABLES `auth_user_user_permissions` WRITE;
+/*!40000 ALTER TABLE `auth_user_user_permissions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `auth_user_user_permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_admin_log`
+--
+
+DROP TABLE IF EXISTS `django_admin_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_admin_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `action_time` datetime NOT NULL,
+  `object_id` longtext,
+  `object_repr` varchar(200) NOT NULL,
+  `action_flag` smallint(5) unsigned NOT NULL,
+  `change_message` longtext NOT NULL,
+  `content_type_id` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `django_admin_log_content_type_id_c4bce8eb_fk_django_co` (`content_type_id`),
+  KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
+  CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
+  CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_admin_log`
+--
+
+LOCK TABLES `django_admin_log` WRITE;
+/*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
+INSERT INTO `django_admin_log` VALUES (1,'2017-08-03 17:46:47','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"faq_content\"]}}]',22,1),(2,'2017-08-03 17:49:19','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"faq_content\"]}}]',22,1),(3,'2017-08-03 17:55:49','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"faq_content\"]}}]',22,1),(4,'2017-08-03 18:15:13','1','Miscellaneous object',2,'[]',22,1),(5,'2017-08-03 18:37:50','2','testclient1@gmail.com',1,'[{\"added\": {}}]',4,1),(6,'2017-08-03 18:39:09','1','Maharashtra',1,'[{\"added\": {}}]',8,1),(7,'2017-08-03 18:39:13','1','Mumbai',1,'[{\"added\": {}}]',9,1),(8,'2017-08-03 18:39:15','1','Chembur',1,'[{\"added\": {}}]',7,1),(9,'2017-08-03 18:40:24','1','testclient1@gmail.com',1,'[{\"added\": {}}]',15,1),(10,'2017-08-03 18:41:38','3','test event 1',1,'[{\"added\": {}}, {\"added\": {\"object\": \"test event 1\", \"name\": \"schedule\"}}, {\"added\": {\"object\": \"test event 1-Promoter-m-5\", \"name\": \"requirement\"}}]',16,1),(11,'2017-08-03 18:42:51','3','test event 1',2,'[{\"added\": {\"object\": \"test event 1-Hostess-f-2\", \"name\": \"requirement\"}}]',16,1),(12,'2017-08-04 17:11:01','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(13,'2017-08-04 17:12:21','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(14,'2017-08-04 17:12:45','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(15,'2017-08-04 17:13:05','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(16,'2017-08-04 17:14:20','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(17,'2017-08-04 17:15:13','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(18,'2017-08-04 17:16:15','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(19,'2017-08-04 17:16:42','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(20,'2017-08-04 17:16:58','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(21,'2017-08-04 17:19:39','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(22,'2017-08-04 17:20:34','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(23,'2017-08-04 17:22:00','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(24,'2017-08-04 17:23:29','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(25,'2017-08-04 17:24:27','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(26,'2017-08-04 17:50:35','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(27,'2017-08-05 07:52:28','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(28,'2017-08-05 07:54:11','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(29,'2017-08-05 07:58:44','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(30,'2017-08-05 08:00:00','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(31,'2017-08-05 08:00:33','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(32,'2017-08-05 08:05:46','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(33,'2017-08-05 08:06:25','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(34,'2017-08-05 08:06:48','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(35,'2017-08-05 08:07:38','1','Miscellaneous object',2,'[{\"changed\": {\"fields\": [\"aboutus_content\"]}}]',22,1),(36,'2017-08-17 18:15:29','2','vikastuteja21@gmail.com',1,'[{\"added\": {}}, {\"added\": {\"object\": \"vikastuteja21@gmail.com\", \"name\": \"Candidate Attributes (to be filled only if user type is cordinator)\"}}]',15,1),(37,'2017-08-18 17:47:02','1','home',1,'[{\"added\": {}}]',21,1),(38,'2017-08-18 17:48:30','2','post_events',1,'[{\"added\": {}}]',21,1),(39,'2017-08-18 17:49:39','1','home',2,'[{\"changed\": {\"fields\": [\"title\", \"keywords\", \"description\"]}}]',21,1),(40,'2017-08-18 17:51:01','3','event_listing',1,'[{\"added\": {}}]',21,1),(41,'2017-08-18 17:51:48','4','event_detail',1,'[{\"added\": {}}]',21,1),(42,'2017-08-18 17:54:50','4','event_detail',2,'[{\"changed\": {\"fields\": [\"title\", \"description\"]}}]',21,1),(43,'2017-08-18 19:23:59','4','event_detail',2,'[{\"changed\": {\"fields\": [\"title\", \"description\"]}}]',21,1),(44,'2017-08-18 19:24:38','3','event_listing',2,'[{\"changed\": {\"fields\": [\"title\", \"description\"]}}]',21,1),(45,'2017-08-18 19:24:56','2','post_events',2,'[{\"changed\": {\"fields\": [\"title\", \"description\"]}}]',21,1),(46,'2017-08-18 19:25:47','1','home',2,'[{\"changed\": {\"fields\": [\"title\", \"description\"]}}]',21,1),(47,'2017-08-29 09:15:48','4','Telecalling event',2,'[{\"changed\": {\"fields\": [\"overview\", \"show_on_site\"]}}]',16,1),(48,'2017-09-01 12:33:42','5','Telecalling',2,'[{\"changed\": {\"fields\": [\"overview\", \"show_on_site\"]}}]',16,1),(49,'2017-09-03 12:13:54','1','12th',1,'[{\"added\": {}}]',26,1),(50,'2017-09-03 12:14:06','2','10th',1,'[{\"added\": {}}]',26,1),(51,'2017-09-06 03:33:26','6','Another test',1,'[{\"added\": {}}, {\"added\": {\"object\": \"Another test\", \"name\": \"schedule\"}}, {\"added\": {\"object\": \"Another test-Promoter-m-3\", \"name\": \"requirement\"}}]',16,1),(52,'2017-09-06 15:30:47','2','vikastuteja21@gmail.com',2,'[{\"changed\": {\"fields\": [\"language_proficiency\"], \"object\": \"vikastuteja21@gmail.com\", \"name\": \"Candidate Attributes (to be filled only if user type is cordinator)\"}}]',15,1),(53,'2017-09-06 15:31:03','2','vikastuteja21@gmail.com',2,'[{\"changed\": {\"fields\": [\"image\"]}}]',15,1);
+/*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_content_type`
+--
+
+DROP TABLE IF EXISTS `django_content_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_content_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `app_label` varchar(100) NOT NULL,
+  `model` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_content_type`
+--
+
+LOCK TABLES `django_content_type` WRITE;
+/*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
+INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(2,'auth','group'),(3,'auth','permission'),(4,'auth','user'),(5,'contenttypes','contenttype'),(20,'events','allocationstatus'),(16,'events','event'),(19,'events','requirement'),(18,'events','requirementapplication'),(17,'events','schedule'),(7,'master','area'),(9,'master','city'),(26,'master','highestqualification'),(8,'master','state'),(25,'miscellanous','article'),(23,'miscellanous','commonpublish'),(22,'miscellanous','miscellaneous'),(24,'miscellanous','testimonial'),(21,'seo','metadata'),(6,'sessions','session'),(13,'users','candidateattribute'),(12,'users','candidatetype'),(10,'users','clientattribute'),(14,'users','cordinatorattribute'),(15,'users','userdetail'),(11,'users','userrole');
+/*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_migrations`
+--
+
+DROP TABLE IF EXISTS `django_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_migrations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `app` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `applied` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_migrations`
+--
+
+LOCK TABLES `django_migrations` WRITE;
+/*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2017-07-31 09:46:37'),(2,'auth','0001_initial','2017-07-31 09:46:37'),(3,'admin','0001_initial','2017-07-31 09:46:37'),(4,'admin','0002_logentry_remove_auto_add','2017-07-31 09:46:37'),(5,'contenttypes','0002_remove_content_type_name','2017-07-31 09:46:37'),(6,'auth','0002_alter_permission_name_max_length','2017-07-31 09:46:37'),(7,'auth','0003_alter_user_email_max_length','2017-07-31 09:46:37'),(8,'auth','0004_alter_user_username_opts','2017-07-31 09:46:37'),(9,'auth','0005_alter_user_last_login_null','2017-07-31 09:46:37'),(10,'auth','0006_require_contenttypes_0002','2017-07-31 09:46:37'),(11,'auth','0007_alter_validators_add_error_messages','2017-07-31 09:46:37'),(12,'auth','0008_alter_user_username_max_length','2017-07-31 09:46:37'),(13,'master','0001_initial','2017-07-31 09:46:37'),(14,'users','0001_initial','2017-07-31 09:46:38'),(15,'events','0001_initial','2017-07-31 09:46:38'),(16,'miscellanous','0001_initial','2017-07-31 09:46:38'),(17,'seo','0001_initial','2017-07-31 09:46:39'),(18,'sessions','0001_initial','2017-07-31 09:46:39'),(19,'miscellanous','0002_auto_20170804_1129','2017-08-04 12:28:49'),(20,'events','0002_auto_20170807_1640','2017-08-09 07:58:34'),(21,'events','0003_auto_20170818_1454','2017-08-18 14:59:02'),(22,'events','0004_auto_20170820_1255','2017-08-21 10:50:06'),(23,'events','0005_requirement_education','2017-08-21 10:50:06'),(24,'events','0006_event_show_on_site','2017-08-21 13:39:30'),(25,'master','0002_highestqualification','2017-08-24 14:41:36'),(26,'events','0007_auto_20170824_1426','2017-08-24 14:41:42'),(27,'auth','0009_auto_20170626_0739','2017-09-03 09:25:10'),(28,'users','0002_userdetail_highest_qualification','2017-09-03 09:25:15'),(29,'users','0003_auto_20170903_1436','2017-09-03 14:37:04'),(30,'events','0008_auto_20170907_0729','2017-09-07 07:30:41'),(31,'users','0004_auto_20170907_0729','2017-09-07 07:30:42'),(32,'events','0009_auto_20170908_0615','2017-09-08 06:15:56');
+/*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `django_session`
+--
+
+DROP TABLE IF EXISTS `django_session`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `django_session` (
+  `session_key` varchar(40) NOT NULL,
+  `session_data` longtext NOT NULL,
+  `expire_date` datetime NOT NULL,
+  PRIMARY KEY (`session_key`),
+  KEY `django_session_expire_date_a5c62663` (`expire_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `django_session`
+--
+
+LOCK TABLES `django_session` WRITE;
+/*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
+INSERT INTO `django_session` VALUES ('07me2yv6dl18kgklik0q7wqfyzcfxi7f','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-08-24 06:07:40'),('0ilcc73a0ybr0zpt3sfta0df8qzjz388','MTZmYTVmMDg1M2Y4NDczNTVhN2ZmYjdiZTIwZjRlZjkyNGY4Njc1Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjA5YTA4OTIwYzdiMTZkY2I3M2E0ZjA2ZWMxZmY3NTBlM2ZiYmUwZTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=','2017-08-28 10:47:23'),('31nxpcruv0pmct3ghvw1ef97hhfji6gb','MTZmYTVmMDg1M2Y4NDczNTVhN2ZmYjdiZTIwZjRlZjkyNGY4Njc1Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjA5YTA4OTIwYzdiMTZkY2I3M2E0ZjA2ZWMxZmY3NTBlM2ZiYmUwZTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=','2017-09-23 07:33:39'),('49qan6zbz58b96ysi7ptrycnidmutx51','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-08-21 16:01:17'),('510zob5nofkrufch6v5e9nb43ytkwuuc','MTZmYTVmMDg1M2Y4NDczNTVhN2ZmYjdiZTIwZjRlZjkyNGY4Njc1Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjA5YTA4OTIwYzdiMTZkY2I3M2E0ZjA2ZWMxZmY3NTBlM2ZiYmUwZTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=','2017-09-21 07:18:34'),('5nl7hi397k7tzhlsk65oeqq2s4i48h64','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-08-17 17:26:14'),('60kpki4f3yn0q1ob909m6y0m2t38ffut','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-08-18 16:50:36'),('bfkz2tteu7qcrtct79tjd1nxrdikn7i9','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-08-23 08:12:08'),('bssrr0g0hjjemvz6q19juy7r1qfi2kjg','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-09-15 12:29:13'),('ci1k9mmffry70yxzytzdpx1w5k8yjppq','MTZmYTVmMDg1M2Y4NDczNTVhN2ZmYjdiZTIwZjRlZjkyNGY4Njc1Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjA5YTA4OTIwYzdiMTZkY2I3M2E0ZjA2ZWMxZmY3NTBlM2ZiYmUwZTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=','2017-09-12 06:01:39'),('e0s1i5wzv9kog5lsymm3eu0akt9mpibs','MTZmYTVmMDg1M2Y4NDczNTVhN2ZmYjdiZTIwZjRlZjkyNGY4Njc1Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjA5YTA4OTIwYzdiMTZkY2I3M2E0ZjA2ZWMxZmY3NTBlM2ZiYmUwZTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=','2017-09-20 04:05:00'),('esal7jx8qhucrvzur2ojiomrqevmug6y','MTZmYTVmMDg1M2Y4NDczNTVhN2ZmYjdiZTIwZjRlZjkyNGY4Njc1Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjA5YTA4OTIwYzdiMTZkY2I3M2E0ZjA2ZWMxZmY3NTBlM2ZiYmUwZTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=','2017-09-01 18:57:54'),('ezlw00rys7fcnswgvbnffsvxnfwlvag6','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-09-07 19:27:20'),('f27srbgaatjbv6klvsd0tle6xdged0re','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-08-14 09:49:00'),('fjxuylbwu3z9vj10hersmsps9plf6ej7','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-08-23 17:46:01'),('j3f3ivfx7csofsjxpv5b3e9c0106xjdk','MTZmYTVmMDg1M2Y4NDczNTVhN2ZmYjdiZTIwZjRlZjkyNGY4Njc1Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjA5YTA4OTIwYzdiMTZkY2I3M2E0ZjA2ZWMxZmY3NTBlM2ZiYmUwZTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=','2017-08-27 18:13:52'),('j9l5h4tqialuvj88tk12vawltvtf2txo','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-08-17 16:36:21'),('jl07ml5ns3mfta51xte8xoirw24inuri','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-08-24 04:04:55'),('jy3fvrl1e3yp1gb9ftih2qv2gey4pf7n','MTZmYTVmMDg1M2Y4NDczNTVhN2ZmYjdiZTIwZjRlZjkyNGY4Njc1Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjA5YTA4OTIwYzdiMTZkY2I3M2E0ZjA2ZWMxZmY3NTBlM2ZiYmUwZTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=','2017-08-30 12:46:58'),('m401wv2hf8amfw3k3mw2herfugqsu0zz','MTZmYTVmMDg1M2Y4NDczNTVhN2ZmYjdiZTIwZjRlZjkyNGY4Njc1Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjA5YTA4OTIwYzdiMTZkY2I3M2E0ZjA2ZWMxZmY3NTBlM2ZiYmUwZTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=','2017-09-12 08:54:08'),('my0n4y1virl5uw162fqmjcvmbtwepj6u','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-09-15 17:07:18'),('nyeymc1r19swqq5xx467yhmv2ybto2db','MTZmYTVmMDg1M2Y4NDczNTVhN2ZmYjdiZTIwZjRlZjkyNGY4Njc1Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjA5YTA4OTIwYzdiMTZkY2I3M2E0ZjA2ZWMxZmY3NTBlM2ZiYmUwZTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=','2017-08-29 10:56:42'),('pc244iwuc7ruw9c86ctlmscsdpf9m2r3','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-08-31 18:16:25'),('q1wrxofiq2r120bfvrypey2x9kpxamd8','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-08-19 17:44:27'),('r8levu72r0k0ipdhr4w6hkleavb0v4gx','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-08-17 17:55:18'),('rsygijmxvdzfg7ires7oyn8yqqh2hout','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-09-17 09:23:43'),('v9q975p5enauwly14z7qcuq4v7miwjrk','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-09-04 10:46:56'),('wd27yow9j5zqs6xvpaqdmubrglsz814b','MTZmYTVmMDg1M2Y4NDczNTVhN2ZmYjdiZTIwZjRlZjkyNGY4Njc1Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjA5YTA4OTIwYzdiMTZkY2I3M2E0ZjA2ZWMxZmY3NTBlM2ZiYmUwZTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=','2017-09-12 09:11:38'),('wjx33vnzi6q7z6a2uvbvjtq1rpumbd06','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-09-15 17:16:51'),('x2y6swjlr4pm7xv618zf38w6nldl9nu0','MTZmYTVmMDg1M2Y4NDczNTVhN2ZmYjdiZTIwZjRlZjkyNGY4Njc1Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjA5YTA4OTIwYzdiMTZkY2I3M2E0ZjA2ZWMxZmY3NTBlM2ZiYmUwZTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=','2017-09-01 12:50:16'),('x9flyylrfckpspzwm72ucvwhm7abzxny','MTZmYTVmMDg1M2Y4NDczNTVhN2ZmYjdiZTIwZjRlZjkyNGY4Njc1Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjA5YTA4OTIwYzdiMTZkY2I3M2E0ZjA2ZWMxZmY3NTBlM2ZiYmUwZTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIyIn0=','2017-09-07 14:42:21'),('zswot64covoou98pt8g8kfye55aiuygr','NDk2ZTM2ZDdhMzI2ODljYjUzNmJkM2IxODAxNDRhZjcxZGQwNWY4ODp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MjkxMjZjOTg3OGQ0MGQ0NjExZmQ0ODU2MWQ3Mjc4Zjk5NGZlZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-09-01 18:59:12');
+/*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `events_allocationstatus`
+--
+
+DROP TABLE IF EXISTS `events_allocationstatus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `events_allocationstatus` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `allocation_datetime` datetime NOT NULL,
+  `allocation_status` varchar(50) NOT NULL,
+  `application_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `events_allocationsta_application_id_383aa6cc_fk_events_re` (`application_id`),
+  CONSTRAINT `events_allocationsta_application_id_383aa6cc_fk_events_re` FOREIGN KEY (`application_id`) REFERENCES `events_requirementapplication` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `events_allocationstatus`
+--
+
+LOCK TABLES `events_allocationstatus` WRITE;
+/*!40000 ALTER TABLE `events_allocationstatus` DISABLE KEYS */;
+INSERT INTO `events_allocationstatus` VALUES (1,'2017-06-30 17:58:09','rejected',3),(2,'2017-06-30 17:58:09','shortlisted',2),(3,'2017-06-30 17:58:09','shortlisted',1);
+/*!40000 ALTER TABLE `events_allocationstatus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `events_event`
+--
+
+DROP TABLE IF EXISTS `events_event`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `events_event` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `slug` varchar(100) NOT NULL,
+  `short_description` longtext NOT NULL,
+  `overview` longtext,
+  `venue` varchar(100) NOT NULL,
+  `briefing_datetime` datetime DEFAULT NULL,
+  `briefing_venue` varchar(100) DEFAULT NULL,
+  `contact_person_name` varchar(100) DEFAULT NULL,
+  `contact_person_number` bigint(20) DEFAULT NULL,
+  `is_onboard` tinyint(1) NOT NULL,
+  `total_payment` bigint(20) DEFAULT NULL,
+  `created_datetime` datetime NOT NULL,
+  `modify_date` datetime NOT NULL,
+  `area_id` int(11) NOT NULL,
+  `city_id` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `posted_by_id` int(11) NOT NULL,
+  `eligibility` longtext,
+  `payments` longtext,
+  `selection_n_screening` longtext,
+  `t_n_c` longtext,
+  `venue_n_timing` longtext,
+  `show_on_site` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `events_event_area_id_53d9cc8c_fk_master_area_id` (`area_id`),
+  KEY `events_event_city_id_3c8b63c9_fk_master_city_id` (`city_id`),
+  KEY `events_event_client_id_dc0c6190_fk_auth_user_id` (`client_id`),
+  KEY `events_event_posted_by_id_c289b886_fk_auth_user_id` (`posted_by_id`),
+  KEY `events_event_slug_b44b2c04` (`slug`),
+  CONSTRAINT `events_event_area_id_53d9cc8c_fk_master_area_id` FOREIGN KEY (`area_id`) REFERENCES `master_area` (`id`),
+  CONSTRAINT `events_event_city_id_3c8b63c9_fk_master_city_id` FOREIGN KEY (`city_id`) REFERENCES `master_city` (`id`),
+  CONSTRAINT `events_event_client_id_dc0c6190_fk_auth_user_id` FOREIGN KEY (`client_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `events_event_posted_by_id_c289b886_fk_auth_user_id` FOREIGN KEY (`posted_by_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `events_event`
+--
+
+LOCK TABLES `events_event` WRITE;
+/*!40000 ALTER TABLE `events_event` DISABLE KEYS */;
+INSERT INTO `events_event` VALUES (1,'Budweiser promotion','{\'eligibility\':\'some eligibility criteria\', \'screening\':\'dummy screening\'}','Koregaon park, Dombivali, Mumbai','Just give gifts to the customer who buy the Budweiser','2017-07-01 10:00:00','0000-00-00 00:00:00','Mehul Tuteja','9987511133',0,127,108,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,0,2017,2017,NULL,NULL,NULL,NULL,NULL,1),(2,'test 2 event','qwerty','sion','qwertyu','',NULL,NULL,NULL,0,0,283,'0000-00-00 00:00:00','0000-00-00 00:00:00',1,0,2017,2017,NULL,NULL,NULL,NULL,NULL,1),(3,'test event 1','test-event-1','','qwerty','k-star',NULL,NULL,NULL,NULL,0,NULL,'2017-08-03 18:41:38','2017-08-03 18:42:51',1,1,2,2,NULL,NULL,NULL,NULL,NULL,1),(4,'Telecalling event','telecalling-event','Girls need to contact all the guests in RSVP list','Test','Hema Malini\'s house, Juhu',NULL,NULL,'Mehul',9987511133,0,NULL,'2017-08-29 08:58:18','2017-08-29 09:15:48',144,1,2,2,'Good communication','1000','On call','','Juhu',1),(5,'Telecalling','telecalling','Telecalling is solely calling people to communicate something','test','Juhu',NULL,NULL,'Mehul Tuteja',9987511133,0,NULL,'2017-09-01 12:23:22','2017-09-01 12:33:42',144,1,2,2,'Good communication in English','800','On call','','Juhu, 12-7',1),(6,'Another test','another-test','iutrtyu','oiuytyu','nbnm',NULL,NULL,NULL,NULL,0,NULL,'2017-09-06 03:33:26','2017-09-06 03:33:26',1,1,2,2,'','','','','',1),(7,'Another test 1','another-test-1','test','','asd',NULL,NULL,'asdas',987654567,0,NULL,'2017-09-06 04:46:06','2017-09-06 04:46:06',1,1,2,2,NULL,'test',NULL,NULL,NULL,0),(8,'lalit hotel event','lalit-hotel-event','testing','','Inorbit Mall',NULL,NULL,'mehul',9876543211,0,NULL,'2017-09-07 07:21:37','2017-09-07 07:21:37',5,1,2,2,NULL,'testing',NULL,NULL,NULL,0),(10,'lalit hotel event 1','lalit-hotel-event-1','testing','','Inorbit Mall',NULL,NULL,'mehul',9876543211,0,NULL,'2017-09-07 07:28:12','2017-09-07 07:28:12',5,1,2,2,NULL,'testing',NULL,NULL,NULL,0),(11,'test','test','test',NULL,'k-star',NULL,NULL,'mm',9876543211,0,NULL,'2017-09-08 06:20:08','2017-09-08 06:20:08',17,1,2,2,NULL,'test',NULL,NULL,NULL,0),(12,'test','test','test',NULL,'Inorbit Mall',NULL,NULL,'qasd',9876567898,0,NULL,'2017-09-08 06:37:47','2017-09-08 06:37:47',17,1,2,2,NULL,'test',NULL,NULL,NULL,0);
+/*!40000 ALTER TABLE `events_event` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `events_requirement`
+--
+
+DROP TABLE IF EXISTS `events_requirement`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `events_requirement` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gender` varchar(20) NOT NULL,
+  `no_of_candidates` int(11) NOT NULL,
+  `no_of_days` int(11) NOT NULL,
+  `daily_wage_per_candidate` int(11) NOT NULL,
+  `dress_code` varchar(100) DEFAULT NULL,
+  `candidate_class` varchar(10) DEFAULT NULL,
+  `communication_criteria` varchar(100) DEFAULT NULL,
+  `candidate_type_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `education_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `events_requirement_candidate_type_id_0c8aa58a_fk_users_can` (`candidate_type_id`),
+  KEY `events_requirement_event_id_f7b0ed02_fk_events_event_id` (`event_id`),
+  KEY `events_requirement_education_id_a5b686ee` (`education_id`),
+  CONSTRAINT `events_requirement_candidate_type_id_0c8aa58a_fk_users_can` FOREIGN KEY (`candidate_type_id`) REFERENCES `users_candidatetype` (`id`),
+  CONSTRAINT `events_requirement_education_id_a5b686ee_fk_master_hi` FOREIGN KEY (`education_id`) REFERENCES `master_highestqualification` (`id`),
+  CONSTRAINT `events_requirement_event_id_f7b0ed02_fk_events_event_id` FOREIGN KEY (`event_id`) REFERENCES `events_event` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `events_requirement`
+--
+
+LOCK TABLES `events_requirement` WRITE;
+/*!40000 ALTER TABLE `events_requirement` DISABLE KEYS */;
+INSERT INTO `events_requirement` VALUES (1,'1',0,25,5,'350','T-shirt wi','A',0,1,NULL),(2,'5',0,5,5,'3000','Doesn\'t ma','A+',0,1,NULL),(3,'1',0,5,5,'850',NULL,NULL,0,2,NULL),(4,'m',5,30,800,NULL,NULL,NULL,1,3,NULL),(5,'f',2,2,1000,NULL,NULL,NULL,2,3,NULL),(6,'f',2,3,1000,NULL,NULL,NULL,1,4,NULL),(7,'f',1,1,800,NULL,NULL,NULL,9,5,NULL),(8,'m',3,3,4,NULL,NULL,NULL,1,6,NULL),(9,'m',5,5,500,NULL,NULL,'1',1,7,1),(10,'m',5,5,500,'a/b',NULL,'1',2,10,1),(11,'m',5,5,500,'sdasd/ad',NULL,'1',1,11,1),(12,'m',5,5,500,'eqweqwe',NULL,'1',2,12,1);
+/*!40000 ALTER TABLE `events_requirement` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `events_requirementapplication`
+--
+
+DROP TABLE IF EXISTS `events_requirementapplication`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `events_requirementapplication` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `application_datetime` datetime NOT NULL,
+  `application_status` varchar(20) NOT NULL,
+  `candidate_id` int(11) NOT NULL,
+  `requirement_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `events_requirementapplic_requirement_id_candidate_f506b906_uniq` (`requirement_id`,`candidate_id`),
+  KEY `events_requirementap_candidate_id_4f287727_fk_auth_user` (`candidate_id`),
+  CONSTRAINT `events_requirementap_candidate_id_4f287727_fk_auth_user` FOREIGN KEY (`candidate_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `events_requirementap_requirement_id_b988ab3f_fk_events_re` FOREIGN KEY (`requirement_id`) REFERENCES `events_requirement` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `events_requirementapplication`
+--
+
+LOCK TABLES `events_requirementapplication` WRITE;
+/*!40000 ALTER TABLE `events_requirementapplication` DISABLE KEYS */;
+INSERT INTO `events_requirementapplication` VALUES (1,'2017-06-30 17:52:32','applied',2,1),(2,'2017-06-30 17:53:13','applied',3,1),(3,'2017-06-30 17:54:56','wl',4,2),(4,'2017-08-18 16:43:15','applied',1,4),(5,'2017-09-08 06:23:04','applied',1,11);
+/*!40000 ALTER TABLE `events_requirementapplication` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `events_schedule`
+--
+
+DROP TABLE IF EXISTS `events_schedule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `events_schedule` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
+  `event_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `events_schedule_event_id_1ee0a938_fk_events_event_id` (`event_id`),
+  CONSTRAINT `events_schedule_event_id_1ee0a938_fk_events_event_id` FOREIGN KEY (`event_id`) REFERENCES `events_event` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `events_schedule`
+--
+
+LOCK TABLES `events_schedule` WRITE;
+/*!40000 ALTER TABLE `events_schedule` DISABLE KEYS */;
+INSERT INTO `events_schedule` VALUES (1,'2017-10-02','2017-10-06','00:00:01','22:00:00',18),(2,'2017-09-30','2017-10-09','00:00:02','18:14:03',18),(3,'2017-10-31','2017-11-29','18:41:15','18:41:16',3),(4,'2017-10-29','2017-10-31','10:00:00','17:00:00',4),(5,'2017-11-01','2017-11-01','12:00:00','19:00:00',5),(6,'2017-09-06','2017-09-06','03:32:27','03:32:28',6),(7,'2017-09-01','2017-09-08','11:00:00','13:00:00',7),(8,'2017-10-14','2017-10-21','10:00:00','12:00:00',8),(9,'2017-10-14','2017-10-21','10:00:00','12:00:00',10),(10,'2017-10-07','2017-10-07','13:00:00','13:00:00',11),(11,'2017-10-07','2017-10-14','11:00:00','12:00:00',12);
+/*!40000 ALTER TABLE `events_schedule` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `master_area`
+--
+
+DROP TABLE IF EXISTS `master_area`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `master_area` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `slug` varchar(50) NOT NULL,
+  `city_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `master_area_slug_70337bcd` (`slug`),
+  KEY `master_area_city_id_837a6842_fk_master_city_id` (`city_id`),
+  CONSTRAINT `master_area_city_id_837a6842_fk_master_city_id` FOREIGN KEY (`city_id`) REFERENCES `master_city` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=314 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `master_area`
+--
+
+LOCK TABLES `master_area` WRITE;
+/*!40000 ALTER TABLE `master_area` DISABLE KEYS */;
+INSERT INTO `master_area` VALUES (1,'Chembur','chembur',1),(2,'Andheri West','andheri-west',1),(3,'Kharghar','kharghar',1),(4,'Malad West','malad-west',1),(5,'Andheri East','andheri-east',1),(6,'Bandra West','bandra-west',1),(7,'Goregaon West','goregaon-west',1),(8,'Kandivali East','kandivali-east',1),(9,'Ghodbunder Road','ghodbunder-road',1),(10,'Navi Mumbai','navi-mumbai',1),(11,'Bhandup West','bhandup-west',1),(12,'Borivali West','borivali-west',1),(13,'Panvel','panvel',1),(14,'Khar East','khar-east',1),(15,'Kandivali West','kandivali-west',1),(16,'Goregaon East','goregaon-east',1),(17,'90 Feet Road','90-feet-road',1),(18,'Nelson Manickam Road','nelson-manickam-road',1),(19,'Abdul Rehman Street','abdul-rehman-street',1),(20,'Agripada','agripada',1),(21,'Airoli','airoli',1),(22,'Airoli Sector 4','airoli-sector-4',1),(23,'Airoli Sector 8','airoli-sector-8',1),(24,'Altamount Road','altamount-road',1),(25,'Ambarnath','ambarnath',1),(26,'Ambarnath East','ambarnath-east',1),(27,'Ambernath West','ambernath-west',1),(28,'Amboli','amboli',1),(29,'Andheri Kurla Road','andheri-kurla-road',1),(30,'Andheri Sahar Road','andheri-sahar-road',1),(31,'Antop Hill','antop-hill',1),(32,'Apollo Bunder','apollo-bunder',1),(33,'August Kranti Maidan','august-kranti-maidan',1),(34,'Babulnath Road','babulnath-road',1),(35,'Badlapur','badlapur',1),(36,'Ballard Estate','ballard-estate',1),(37,'Bandra East','bandra-east',1),(38,'Belapur','belapur',1),(39,'Bhandup','bhandup',1),(40,'Bhandup East','bhandup-east',1),(41,'Bhayandar','bhayandar',1),(42,'Bhayandar East','bhayandar-east',1),(43,'Bhayandar Wada','bhayandar-wada',1),(44,'Bhayandar West','bhayandar-west',1),(45,'Bhayander','bhayander',1),(46,'Bhayander East','bhayander-east',1),(47,'Bhayander West','bhayander-west',1),(48,'Bhindi Bazaar','bhindi-bazaar',1),(49,'Bhiwandi','bhiwandi',1),(50,'Bhiwandi','bhiwandi',1),(51,'Bhoiwada','bhoiwada',1),(52,'Bhulabhai Desai Road','bhulabhai-desai-road',1),(53,'Bhuleshwar','bhuleshwar',1),(54,'Bhyandar East','bhyandar-east',1),(55,'Boisar','boisar',1),(56,'Boisar West','boisar-west',1),(57,'Borivali','borivali',1),(58,'Borivali East','borivali-east',1),(59,'Breach Candy','breach-candy',1),(60,'Byculla','byculla',1),(61,'Byculla East','byculla-east',1),(62,'Byculla West','byculla-west',1),(63,'CP Tank','cp-tank',1),(64,'Chhatrapati Shivaji Terminus','chhatrapati-shivaji-terminus',1),(65,'Carnac Bunder','carnac-bunder',1),(66,'CBD Belapur','cbd-belapur',1),(67,'CBD Belapur Sector 11','cbd-belapur-sector-11',1),(68,'Chakala','chakala',1),(69,'Chandivali','chandivali',1),(70,'Charkop','charkop',1),(71,'Charni Road','charni-road',1),(72,'Charni Road East','charni-road-east',1),(73,'Chembur Camp','chembur-camp',1),(74,'Chembur Colony','chembur-colony',1),(75,'Chembur East','chembur-east',1),(76,'Chembur West','chembur-west',1),(77,'Chinch Bandar','chinch-bandar',1),(78,'Chinch Bunder','chinch-bunder',1),(79,'Chinchpokli','chinchpokli',1),(80,'Chinchpokli East','chinchpokli-east',1),(81,'Chinchpokli West','chinchpokli-west',1),(82,'Chira Bazaar','chira-bazaar',1),(83,'Chowpatti','chowpatti',1),(84,'Chuna Bhatti','chuna-bhatti',1),(85,'Churchgate','churchgate',1),(86,'Colaba Causeway','colaba-causeway',1),(87,'Cotton Green','cotton-green',1),(88,'Cotton Green West','cotton-green-west',1),(89,'Crawford Market','crawford-market',1),(90,'Cuffe Parade','cuffe-parade',1),(91,'Cumbala Hill','cumbala-hill',1),(92,'Currey Road','currey-road',1),(93,'Dadabhai Naoroji Road','dadabhai-naoroji-road',1),(94,'Dadar East','dadar-east',1),(95,'Dadar T T','dadar-t-t',1),(96,'Dadar West','dadar-west',1),(97,'Dahisar','dahisar',1),(98,'Dahisar East','dahisar-east',1),(99,'Dahisar West','dahisar-west',1),(100,'Dana Bunder','dana-bunder',1),(101,'Delisle Road','delisle-road',1),(102,'Deonar','deonar',1),(103,'Deonar East','deonar-east',1),(104,'Dharavi','dharavi',1),(105,'Dhobhi Talao','dhobhi-talao',1),(106,'Dhobi Talao','dhobi-talao',1),(107,'Dockyard','dockyard',1),(108,'Dombivali','dombivali',1),(109,'Dombivali East','dombivali-east',1),(110,'Dombivali West','dombivali-west',1),(111,'Dongri','dongri',1),(112,'Elphinstone Road','elphinstone-road',1),(113,'Flora Fountain','flora-fountain',1),(114,'Fort','fort',1),(115,'Gamdevi','gamdevi',1),(116,'Ghansoli','ghansoli',1),(117,'Ghatkopar','ghatkopar',1),(118,'Ghatkopar East','ghatkopar-east',1),(119,'Ghatkopar West','ghatkopar-west',1),(120,'Ghodbandar Road','ghodbandar-road',1),(121,'Girgaon','girgaon',1),(122,'Girgaon Chowpatty','girgaon-chowpatty',1),(123,'Girgaum','girgaum',1),(124,'Goregaon East','goregaon-east',1),(125,'Goregaon West','goregaon-west',1),(126,'Govandi','govandi',1),(127,'Govandi East','govandi-east',1),(128,'Govandi West','govandi-west',1),(129,'Gowalia Tank','gowalia-tank',1),(130,'Grant Road','grant-road',1),(131,'Grant Road East','grant-road-east',1),(132,'Grant Road West','grant-road-west',1),(133,'Green Park Extension','green-park-extension',1),(134,'Gulalwadi','gulalwadi',1),(135,'Haji Ali','haji-ali',1),(136,'Horiman Circle','horiman-circle',1),(137,'Hughes Road','hughes-road',1),(138,'Hutatma Chowk','hutatma-chowk',1),(139,'J B Nagar','j-b-nagar',1),(140,'Jacob Circle','jacob-circle',1),(141,'Jogeshwari','jogeshwari',1),(142,'Jogeshwari East','jogeshwari-east',1),(143,'Jogeshwari West','jogeshwari-west',1),(144,'Juhu Scheme','juhu-scheme',1),(145,'Juhu Tara Road','juhu-tara-road',1),(146,'Kalachowki','kalachowki',1),(147,'Kala Ghoda','kala-ghoda',1),(148,'Kalamboli','kalamboli',1),(149,'Kalbadevi','kalbadevi',1),(150,'Kalina','kalina',1),(151,'Kalwa','kalwa',1),(152,'Kalwa West','kalwa-west',1),(153,'Kalyan','kalyan',1),(154,'Kalyan East','kalyan-east',1),(155,'Kalyan West','kalyan-west',1),(156,'Kamothe','kamothe',1),(157,'Kandivali','kandivali',1),(158,'Kanjur Marg East','kanjur-marg-east',1),(159,'Kanjur Marg West','kanjur-marg-west',1),(160,'Kanjurmarg','kanjurmarg',1),(161,'Kanjurmarg East','kanjurmarg-east',1),(162,'Kanjurmarg West','kanjurmarg-west',1),(163,'Kazi Sayed Street','kazi-sayed-street',1),(164,'Kemps Corner','kemps-corner',1),(165,'Khar','khar',1),(166,'Khar Danda','khar-danda',1),(167,'Khar West','khar-west',1),(168,'Kharghar Sector 12','kharghar-sector-12',1),(169,'Kharghar Sector 2','kharghar-sector-2',1),(170,'Kharghar Sector 7','kharghar-sector-7',1),(171,'Khetwadi','khetwadi',1),(172,'Khopoli','khopoli',1),(173,'Kings Circle','kings-circle',1),(174,'Kopar Khairane','kopar-khairane',1),(175,'Koper Khraine','koper-khraine',1),(176,'Andheri Kurla Road','andheri-kurla-road',1),(177,'Kurla East','kurla-east',1),(178,'Kurla West','kurla-west',1),(179,'Lal Bahadur Shastri Marg','lal-bahadur-shastri-marg',1),(180,'Lal Baug','lal-baug',1),(181,'Lalbaug','lalbaug',1),(182,'Lamington Road','lamington-road',1),(183,'LBS Marg','lbs-marg',1),(184,'Link Road','link-road',1),(185,'Lohar Chawl','lohar-chawl',1),(186,'Lokhandwala','lokhandwala',1),(187,'Parel','parel',1),(188,'Lower Parel East','lower-parel-east',1),(189,'Lower Parel West','lower-parel-west',1),(190,'M G Road','m-g-road',1),(191,'Mahakali Caves Road','mahakali-caves-road',1),(192,'Mahalaxmi','mahalaxmi',1),(193,'Mahalaxmi West','mahalaxmi-west',1),(194,'Mahape','mahape',1),(195,'Mahim','mahim',1),(196,'Mahim East','mahim-east',1),(197,'Mahim West','mahim-west',1),(198,'Malabar Hill','malabar-hill',1),(199,'Aarey Milk Colony','aarey-milk-colony',1),(200,'Airport','airport',1),(201,'Ambewadi','ambewadi',1),(202,'Andheri','andheri',1),(203,'Asvini','asvini',1),(204,'Azad Nagar','azad-nagar',1),(205,'BPT Colony','bpt-colony',1),(206,'BN Bhavan','bn-bhavan',1),(207,'Bandra','bandra',1),(208,'Bazargate','bazargate',1),(209,'Bharat Nagar','bharat-nagar',1),(210,'Bhavani Shankar Road','bhavani-shankar-road',1),(211,'CGS Colony','cgs-colony',1),(212,'Air India Staff Colony','air-india-staff-colony',1),(213,'Century Mills Worli','century-mills-worli',1),(214,'Chamar Baug','chamar-baug',1),(215,'Colaba','colaba',1),(216,'Cotton Exchange','cotton-exchange',1),(217,'Dadar Colony','dadar-colony',1),(218,'Dadar','dadar',1),(219,'Danda','danda',1),(220,'Dockyard Road','dockyard-road',1),(221,'Dr Deshmukh Marg','dr-deshmukh-marg',1),(222,'Falkland Road','falkland-road',1),(223,'Girgaon Mdg','girgaon-mdg',1),(224,'Gokhale Road','gokhale-road',1),(225,'Goregoan','goregoan',1),(226,'Government Colony','government-colony',1),(227,'HMP School','hmp-school',1),(228,'Haffkine Institute','haffkine-institute',1),(229,'Haines Road','haines-road',1),(230,'Hanuman Road','hanuman-road',1),(231,'High Court Building','high-court-building',1),(232,'Holiday Camp','holiday-camp',1),(233,'INS Hamla','ins-hamla',1),(234,'Central Building','central-building',1),(235,'Parel Naka','parel-naka',1),(236,'Oshiwara','oshiwara',1),(237,'Opera House','opera-house',1),(238,'New Yogakshema','new-yogakshema',1),(239,'New Prabhadevi Road','new-prabhadevi-road',1),(240,'N S Patkar Marg','n-s-patkar-marg',1),(241,'Mori Road','mori-road',1),(242,'Mazgaon Road','mazgaon-road',1),(243,'JJ Hospital','jj-hospital',1),(244,'Juhu','juhu',1),(245,'Kamathipura','kamathipura',1),(246,'Ketkipada','ketkipada',1),(247,'Kherwadi','kherwadi',1),(248,'Kidwai Nagar','kidwai-nagar',1),(249,'Liberty Garden','liberty-garden',1),(250,'Mazagon Dock','mazagon-dock',1),(251,'Naigaon','naigaon',1),(252,'Mumbai Central','mumbai-central',1),(253,'Orlem','orlem',1),(254,'Nagardas Road','nagardas-road',1),(255,'Madhavbaug','madhavbaug',1),(256,'Khar Delivery','khar-delivery',1),(257,'MPT','mpt',1),(258,'M A Marg','m-a-marg',1),(259,'Magathane','magathane',1),(260,'LBSNE College','lbsne-college',1),(261,'Mazagaon','mazagaon',1),(262,'Matunga Railway Workshop','matunga-railway-workshop',1),(263,'Motilal Nagar','motilal-nagar',1),(264,'Nariman Point','nariman-point',1),(265,'International Airport','international-airport',1),(266,'Irla','irla',1),(267,'Malad','malad',1),(268,'Mantralaya','mantralaya',1),(269,'Marine Lines','marine-lines',1),(270,'Marol Naka','marol-naka',1),(271,'Prabhadevi','prabhadevi',1),(272,'Princess Dock','princess-dock',1),(273,'Raj Bhavan','raj-bhavan',1),(274,'Rajendra Nagar','rajendra-nagar',1),(275,'Ramwadi','ramwadi',1),(276,'Ranade Road','ranade-road',1),(277,'Rani Sati Marg','rani-sati-marg',1),(278,'SRPF Camp','srpf-camp',1),(279,'S Savarkar Marg','s-savarkar-marg',1),(281,'Sahar PT Colony','sahar-pt-colony',1),(282,'Sahargaon','sahargaon',1),(283,'Santacruz Central','santacruz-central',1),(284,'Santacruz P AND T Colony','santacruz-p-and-t-colony',1),(285,'Santacruz','santacruz',1),(286,'Secretariat','secretariat',1),(287,'SEEPZ','seepz',1),(288,'Sewri','sewri',1),(289,'Sharma Estate','sharma-estate',1),(290,'Shroffmahajan','shroffmahajan',1),(291,'Shroff Mahajan','shroff-mahajan',1),(292,'Stock Exchange','stock-exchange',1),(293,'Tajmahal','tajmahal',1),(294,'Tajmahal Hotel','tajmahal-hotel',1),(295,'Tank Road','tank-road',1),(296,'Tardeo','tardeo',1),(297,'Taj Mahal Hotel','taj-mahal-hotel',1),(298,'Thakurdwar','thakurdwar',1),(299,'Town Hall','town-hall',1),(300,'Tulsiwadi','tulsiwadi',1),(301,'VJB Udyan','vjb-udyan',1),(302,'VK Bhavan','vk-bhavan',1),(303,'VP Road','vp-road',1),(304,'VWTC','vwtc',1),(305,'Vakola','vakola',1),(306,'Vesava','vesava',1),(307,'Vidyanagari','vidyanagari',1),(308,'Vileeparle','vileeparle',1),(309,'Vile Parle','vile-parle',1),(310,'Wadala','wadala',1),(311,'Worli','worli',1),(312,'Ambarnath West','ambarnath-west',1),(313,'Kharghar','kharghar',1);
+/*!40000 ALTER TABLE `master_area` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `master_city`
+--
+
+DROP TABLE IF EXISTS `master_city`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `master_city` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `slug` varchar(50) NOT NULL,
+  `state_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `master_city_slug_ad94e5f1` (`slug`),
+  KEY `master_city_state_id_5e69920c_fk_master_state_id` (`state_id`),
+  CONSTRAINT `master_city_state_id_5e69920c_fk_master_state_id` FOREIGN KEY (`state_id`) REFERENCES `master_state` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `master_city`
+--
+
+LOCK TABLES `master_city` WRITE;
+/*!40000 ALTER TABLE `master_city` DISABLE KEYS */;
+INSERT INTO `master_city` VALUES (1,'Mumbai','mumbai',1);
+/*!40000 ALTER TABLE `master_city` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `master_highestqualification`
+--
+
+DROP TABLE IF EXISTS `master_highestqualification`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `master_highestqualification` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `slug` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `master_highestqualification_slug_2232060c` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `master_highestqualification`
+--
+
+LOCK TABLES `master_highestqualification` WRITE;
+/*!40000 ALTER TABLE `master_highestqualification` DISABLE KEYS */;
+INSERT INTO `master_highestqualification` VALUES (1,'12th','12th'),(2,'10th','10th');
+/*!40000 ALTER TABLE `master_highestqualification` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `master_state`
+--
+
+DROP TABLE IF EXISTS `master_state`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `master_state` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `slug` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `master_state_slug_61fd4daf` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `master_state`
+--
+
+LOCK TABLES `master_state` WRITE;
+/*!40000 ALTER TABLE `master_state` DISABLE KEYS */;
+INSERT INTO `master_state` VALUES (1,'Maharashtra','maharashtra');
+/*!40000 ALTER TABLE `master_state` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `miscellanous_article`
+--
+
+DROP TABLE IF EXISTS `miscellanous_article`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `miscellanous_article` (
+  `commonpublish_ptr_id` int(11) NOT NULL,
+  PRIMARY KEY (`commonpublish_ptr_id`),
+  CONSTRAINT `miscellanous_article_commonpublish_ptr_id_72382466_fk_miscellan` FOREIGN KEY (`commonpublish_ptr_id`) REFERENCES `miscellanous_commonpublish` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `miscellanous_article`
+--
+
+LOCK TABLES `miscellanous_article` WRITE;
+/*!40000 ALTER TABLE `miscellanous_article` DISABLE KEYS */;
+/*!40000 ALTER TABLE `miscellanous_article` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `miscellanous_commonpublish`
+--
+
+DROP TABLE IF EXISTS `miscellanous_commonpublish`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `miscellanous_commonpublish` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL,
+  `content` longtext NOT NULL,
+  `show_on_site` tinyint(1) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `miscellanous_commonpublish_user_id_40ad8844_fk_auth_user_id` (`user_id`),
+  CONSTRAINT `miscellanous_commonpublish_user_id_40ad8844_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `miscellanous_commonpublish`
+--
+
+LOCK TABLES `miscellanous_commonpublish` WRITE;
+/*!40000 ALTER TABLE `miscellanous_commonpublish` DISABLE KEYS */;
+/*!40000 ALTER TABLE `miscellanous_commonpublish` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `miscellanous_miscellaneous`
+--
+
+DROP TABLE IF EXISTS `miscellanous_miscellaneous`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `miscellanous_miscellaneous` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `faq_content` longtext NOT NULL,
+  `aboutus_content` longtext NOT NULL,
+  `contactus_content` longtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `miscellanous_miscellaneous`
+--
+
+LOCK TABLES `miscellanous_miscellaneous` WRITE;
+/*!40000 ALTER TABLE `miscellanous_miscellaneous` DISABLE KEYS */;
+INSERT INTO `miscellanous_miscellaneous` VALUES (1,'[\r\n[\"What is Worksmart events?\",\"Worksmart Events connects 3C\'s that is Clients, Co-ordinators and Candidates and establishes a connection in such a way that everyone gets benefits while working together.\"],\r\n[\"Why Worksmart events?\",\"Because it is one of the name who gives the highest and timely payouts, regular and temporary employements which suits everyone\'s needs. Apart from money you may get vouchers and certificate too for Worksmart certified events.\"],\r\n[\"What is Worksmart certified?\",\"Worksmart certified is any event/co-ordinator who is trusted and verified by us and we will be solely responsible for everything from day 1 till the pay clearance day.\"],\r\n[\"How do I apply for an event?\",\"Click on apply besides the event details and relax, we will get in touch with you if you meet the requirements.\"],\r\n[\"What if I want to apply for an event whose positions are full?\",\"Still join the waitlist and relax, if required we will get in touch with you.\"]\r\n]','[{\r\n		\"WHO WE ARE \": \"Worksmart Events is an on-demand staffing platform that provides a comprehensive service to a wide range of clients across a variety of events and activities. We simplify workforce management through both talent and technology. WorksmartEvents has close to 10, 000 registered staff experienced in events, hospitality, promotions and basic administration. Each staff has detailed information and profile so that businesses are able to closely match the staff required to complete their job. For our staff we offer a flexible way to make money, gain experience and manage whilst providing short term employment opportunities to deserving candidates.\"\r\n	},\r\n\r\n	{\r\n		\"WHAT DO WE DO\": \"An event is as successful as the people running the show. We are committed to connect hard working, determined and talented people with the best clients in events and entertainment industry.\"\r\n	},\r\n\r\n	{\r\n		\"WHERE ARE OUR SERVICES AVAILABLE\": \"WorksmartEvents services is currently available only in Mumbai\\/Navi Mumbai. We are aggressively expanding and soon will be available in up to 10 cities across the length and breadth of the country, so you can find experienced staff for events across the country when required.\"\r\n	},\r\n\r\n	{\r\n		\"MEET OUR TEAM\": [\r\n			[\"Vikas Tuteja\", \"Head of Technology & Co-Founder\", \"7+ years of experience in Software Development and Web Technologies.\", \"F2344.jpg\"],\r\n			[\"Koushik Patnaik\", \"Product Head & Co-Founder\", \"Vast experience of approximately 8 years in designing products.\"],\r\n			[\"Mehul Tuteja\", \"Sales / Operations Head & Co-Founder\", \"3+ years of experience in Managing Events and Sales / Operations.\"]\r\n		]\r\n	}\r\n]','[\"not decided yet\",]');
+/*!40000 ALTER TABLE `miscellanous_miscellaneous` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `miscellanous_testimonial`
+--
+
+DROP TABLE IF EXISTS `miscellanous_testimonial`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `miscellanous_testimonial` (
+  `commonpublish_ptr_id` int(11) NOT NULL,
+  PRIMARY KEY (`commonpublish_ptr_id`),
+  CONSTRAINT `miscellanous_testimo_commonpublish_ptr_id_2b69cb2c_fk_miscellan` FOREIGN KEY (`commonpublish_ptr_id`) REFERENCES `miscellanous_commonpublish` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `miscellanous_testimonial`
+--
+
+LOCK TABLES `miscellanous_testimonial` WRITE;
+/*!40000 ALTER TABLE `miscellanous_testimonial` DISABLE KEYS */;
+/*!40000 ALTER TABLE `miscellanous_testimonial` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `seo_metadata`
+--
+
+DROP TABLE IF EXISTS `seo_metadata`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `seo_metadata` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `regular_expression` tinyint(1) NOT NULL,
+  `path` varchar(250) NOT NULL,
+  `title` longtext NOT NULL,
+  `keywords` longtext NOT NULL,
+  `description` longtext NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `path` (`path`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `seo_metadata`
+--
+
+LOCK TABLES `seo_metadata` WRITE;
+/*!40000 ALTER TABLE `seo_metadata` DISABLE KEYS */;
+INSERT INTO `seo_metadata` VALUES (1,1,'home','\"Work Smart Events | On Demand Staffing | Part Time Jobs\"','part time jobs, part time job opportunities, event promotion, event promotion agency, event promotion agency in mumbai','\"*1,000+ verified candidate profiles*100+ part time jobs posted per month*Best staffing solutions provider in Mumbai. Free Registration! Call - 9876543210\"'),(2,1,'post_events','\"Work Smart Events | Mumbai | Post Event Query\"','','\"Hire short term resources for  events from 1000+ verified users in Mumbai. Cost Effective. Free Registration! Pay after task completion. Call - 9876543210\"'),(3,1,'event_listing','\"Work Smart Events | Mumbai | Apply & Earn | Part Time Jobs\"','','\"Apply and Earn from 100+ verified part time jobs posted in Mumbai. Limited Positions Offered. New events posted daily. Register Now! or Call - 9876543210\"'),(4,1,'event_detail','\"Work Smart Events | Mumbai | %s Promotion\" % (response.data[\'results\'][0][\'name\'],)','','\"%s Event Description\" %(response.data[\'results\'][0][\'name\'],)');
+/*!40000 ALTER TABLE `seo_metadata` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users_candidateattribute`
+--
+
+DROP TABLE IF EXISTS `users_candidateattribute`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users_candidateattribute` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `language_proficiency` varchar(50) DEFAULT NULL,
+  `looks` varchar(50) DEFAULT NULL,
+  `open_to_which_kind_of_job` varchar(100) DEFAULT NULL,
+  `pay_scale` varchar(100) DEFAULT NULL,
+  `comfortable_travelling_outdoor` int(11) NOT NULL,
+  `comfortable_for_liquor_promotion` int(11) NOT NULL,
+  `comfortable_working_at_odd_timings` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `users_candidateattribute_user_id_28c116a4_fk_users_userdetail_id` (`user_id`),
+  CONSTRAINT `users_candidateattribute_user_id_28c116a4_fk_users_userdetail_id` FOREIGN KEY (`user_id`) REFERENCES `users_userdetail` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users_candidateattribute`
+--
+
+LOCK TABLES `users_candidateattribute` WRITE;
+/*!40000 ALTER TABLE `users_candidateattribute` DISABLE KEYS */;
+INSERT INTO `users_candidateattribute` VALUES (1,'1','cool','all','56',1,0,-1,2);
+/*!40000 ALTER TABLE `users_candidateattribute` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users_candidateattribute_candidate_profile`
+--
+
+DROP TABLE IF EXISTS `users_candidateattribute_candidate_profile`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users_candidateattribute_candidate_profile` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `candidateattribute_id` int(11) NOT NULL,
+  `candidatetype_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_candidateattribute_candidateattribute_id_ca_75f982db_uniq` (`candidateattribute_id`,`candidatetype_id`),
+  KEY `users_candidateattri_candidatetype_id_ad4f6bb3_fk_users_can` (`candidatetype_id`),
+  CONSTRAINT `users_candidateattri_candidateattribute_i_d885fc8c_fk_users_can` FOREIGN KEY (`candidateattribute_id`) REFERENCES `users_candidateattribute` (`id`),
+  CONSTRAINT `users_candidateattri_candidatetype_id_ad4f6bb3_fk_users_can` FOREIGN KEY (`candidatetype_id`) REFERENCES `users_candidatetype` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users_candidateattribute_candidate_profile`
+--
+
+LOCK TABLES `users_candidateattribute_candidate_profile` WRITE;
+/*!40000 ALTER TABLE `users_candidateattribute_candidate_profile` DISABLE KEYS */;
+INSERT INTO `users_candidateattribute_candidate_profile` VALUES (1,1,1),(2,1,5);
+/*!40000 ALTER TABLE `users_candidateattribute_candidate_profile` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users_candidatetype`
+--
+
+DROP TABLE IF EXISTS `users_candidatetype`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users_candidatetype` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `slug` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `users_candidatetype_slug_4ffeb65c` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users_candidatetype`
+--
+
+LOCK TABLES `users_candidatetype` WRITE;
+/*!40000 ALTER TABLE `users_candidatetype` DISABLE KEYS */;
+INSERT INTO `users_candidatetype` VALUES (1,'Promoter','promter'),(2,'Hostess','hostess'),(3,'Emcee','emcee'),(4,'Actor','actor'),(5,'Anchor','anchor'),(6,'Mascot','mascot'),(7,'Model','model'),(8,'Lookwalker','lookwalker'),(9,'Others','others'),(10,'Biker','biker');
+/*!40000 ALTER TABLE `users_candidatetype` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users_clientattribute`
+--
+
+DROP TABLE IF EXISTS `users_clientattribute`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users_clientattribute` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `designation` varchar(100) DEFAULT NULL,
+  `company_name` varchar(100) DEFAULT NULL,
+  `company_address` varchar(100) DEFAULT NULL,
+  `establishment_year` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `users_clientattribute_user_id_4744519e_fk_users_userdetail_id` (`user_id`),
+  CONSTRAINT `users_clientattribute_user_id_4744519e_fk_users_userdetail_id` FOREIGN KEY (`user_id`) REFERENCES `users_userdetail` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users_clientattribute`
+--
+
+LOCK TABLES `users_clientattribute` WRITE;
+/*!40000 ALTER TABLE `users_clientattribute` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users_clientattribute` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users_cordinatorattribute`
+--
+
+DROP TABLE IF EXISTS `users_cordinatorattribute`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users_cordinatorattribute` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `working_for` varchar(50) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `users_cordinatorattr_user_id_4e025e91_fk_users_use` (`user_id`),
+  CONSTRAINT `users_cordinatorattr_user_id_4e025e91_fk_users_use` FOREIGN KEY (`user_id`) REFERENCES `users_userdetail` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users_cordinatorattribute`
+--
+
+LOCK TABLES `users_cordinatorattribute` WRITE;
+/*!40000 ALTER TABLE `users_cordinatorattribute` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users_cordinatorattribute` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users_userdetail`
+--
+
+DROP TABLE IF EXISTS `users_userdetail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users_userdetail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mobile` bigint(20) NOT NULL,
+  `whatsapp_number` bigint(20) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `image` varchar(100) DEFAULT NULL,
+  `blacklist_flag` int(11) NOT NULL,
+  `area_id` int(11) DEFAULT NULL,
+  `auth_user_id` int(11) NOT NULL,
+  `city_id` int(11) DEFAULT NULL,
+  `state_id` int(11) DEFAULT NULL,
+  `type_id` int(11) NOT NULL,
+  `highest_qualification_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `mobile` (`mobile`),
+  UNIQUE KEY `auth_user_id` (`auth_user_id`),
+  KEY `users_userdetail_area_id_99f20a09_fk_master_area_id` (`area_id`),
+  KEY `users_userdetail_city_id_59b0ad88_fk_master_city_id` (`city_id`),
+  KEY `users_userdetail_state_id_02e4a537_fk_master_state_id` (`state_id`),
+  KEY `users_userdetail_type_id_a8fef658_fk_users_userrole_id` (`type_id`),
+  KEY `users_userdetail_highest_qualificatio_c63930eb_fk_master_hi` (`highest_qualification_id`),
+  CONSTRAINT `users_userdetail_area_id_99f20a09_fk_master_area_id` FOREIGN KEY (`area_id`) REFERENCES `master_area` (`id`),
+  CONSTRAINT `users_userdetail_auth_user_id_4e966a0f_fk_auth_user_id` FOREIGN KEY (`auth_user_id`) REFERENCES `auth_user` (`id`),
+  CONSTRAINT `users_userdetail_city_id_59b0ad88_fk_master_city_id` FOREIGN KEY (`city_id`) REFERENCES `master_city` (`id`),
+  CONSTRAINT `users_userdetail_highest_qualificatio_c63930eb_fk_master_hi` FOREIGN KEY (`highest_qualification_id`) REFERENCES `master_highestqualification` (`id`),
+  CONSTRAINT `users_userdetail_state_id_02e4a537_fk_master_state_id` FOREIGN KEY (`state_id`) REFERENCES `master_state` (`id`),
+  CONSTRAINT `users_userdetail_type_id_a8fef658_fk_users_userrole_id` FOREIGN KEY (`type_id`) REFERENCES `users_userrole` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users_userdetail`
+--
+
+LOCK TABLES `users_userdetail` WRITE;
+/*!40000 ALTER TABLE `users_userdetail` DISABLE KEYS */;
+INSERT INTO `users_userdetail` VALUES (1,9821115500,NULL,NULL,'',0,NULL,2,NULL,NULL,15,NULL),(2,9999999999,7777777771,'i dont knows','uploads/profile/vikastuteja21@gmail.com/salah.jpg',0,1,1,1,NULL,14,1),(3,7021115997,NULL,NULL,'',0,NULL,3,NULL,NULL,14,NULL);
+/*!40000 ALTER TABLE `users_userdetail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users_userrole`
+--
+
+DROP TABLE IF EXISTS `users_userrole`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users_userrole` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `slug` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `users_userrole_slug_7c16e4aa` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users_userrole`
+--
+
+LOCK TABLES `users_userrole` WRITE;
+/*!40000 ALTER TABLE `users_userrole` DISABLE KEYS */;
+INSERT INTO `users_userrole` VALUES (14,'Candidate','candidate'),(15,'Client','client'),(16,'Coordinator','coordinator');
+/*!40000 ALTER TABLE `users_userrole` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-09-09 13:08:33
