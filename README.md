@@ -6,3 +6,6 @@ git clone https://github.com/vikas-tuteja/wse.git<br>
 virtualenv -p python3 ~/.virtual/wse<br>
 cd wse<br>
 pip install -r requirements.txt<br>
+
+# Create log files
+sudo touch /var/log/django/email-logs.txt<br>
