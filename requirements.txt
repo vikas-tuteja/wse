@@ -1,5 +1,5 @@
 config-parser==0.0.1
-Django==1.11.2
+Django==1.11.29
 django-ckeditor==5.9.0
 django-filter==1.0.4
 django-filters==0.2.1
